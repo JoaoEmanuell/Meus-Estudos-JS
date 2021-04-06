@@ -1,3 +1,0 @@
-Esse exercicio seviu para definir a criação do modelo:
-
-Utilizando a tag "script src" e colocando o nome do arquivo ele ira criar um arquivo script de js.
