@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>País</title>
+</head>
+<body>
+    <h1>País</h1>
+    Diga o seu País: <input type="text" name="país" id="país"> <input type="button" value="Confirmar" onclick="verificar()"> <!--input para colocar texto, com o nome e id sendo país, input de botão, chamado confirmar, evento de clique chamado verificar-->
+    <div id="res"> <!--div chamada res-->
+
+    </div>
+    <script>
+        function verificar() {//função que é utilizada caso verificar seja possitivo
+            var país = document.querySelector("input#país")// variavel que recebe o input com a id país
+            var res = document.querySelector("div#res")//variavel que recebe a div com a id res
+            var vel = String(país.value)//variavel que converte a var país para um valor str
+            res.innerHTML = `<p>Seu país é ${vel}</p>`//escreve na res
+            if (vel == 'Brasil'){//if o pais for igual a Brasil
+                res.innerHTML += `<p>Você é Brasileiro</p>`//escreva de forma concatenada na res
+            }else {//se não
+                res.innerHTML += `<p>Você é Estrangeiro</p>`//escreva de forma concatenada na res
+            }
+        }
+    </script>
+</body>
+</html>

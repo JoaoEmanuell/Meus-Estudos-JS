@@ -1,0 +1,29 @@
+Nessa aula iremos aprender sobre a estrutura for
+
+A estrutura for no js é composta por três partes:
+
+for (inicio;teste;incr){
+
+//bloco
+
+}
+
+ela verifica o inicio e faz um teste, se o teste for positivo ela executa o bloco e incrementa
+
+Codigo while e codigo for:
+
+var c=1
+while (c<=10){
+
+c++
+}
+
+for (var c=1;c<=10;c++){
+
+}
+
+no caso do for eu uso principalmente quando eu sei os limites de execução, caso eu não saiba não é vantajoso usar ela.
+
+no for o primeiro ; recebe os dados do inicio, o do meio recebe o fim e o ultimo recebe o incremento
+
+Nessa aula aprendemos tmb sobre deupuração, para depurar primeiramente eu seleciono o inicio, depois eu vou em executar e em depuração, seleciona o node.js e vai em inspeção, em inspeção vc coloca a variavel que vc quer observar, dessa forma ao apertar F10 ele ira rodar linha por linha do codigo, sempre verificando, dessa forma é mais facil detecar erros sintaticos no progama

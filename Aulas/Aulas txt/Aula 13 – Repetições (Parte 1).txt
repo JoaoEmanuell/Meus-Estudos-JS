@@ -1,0 +1,21 @@
+Nesse vídeo iremos aprender sobre a condição while
+
+Para executarmos ela usamos: 
+
+while(condição({
+
+//bloco de comando
+
+}
+
+enquanto a condição for verdadeira o bloco é executado quando a condição se tornar falsa o laço é encerrado
+
+difertente do py no js existe tambem a repetição que executa primeiro e depois testa se a situação for possitiva, essa repetição é chamada de "do while"
+
+var c = 1
+do {
+    console.log(`Passo ${c}`)
+    c++ //mesma coisa de eu colocar c += 1
+}while (c <= 150)
+
+primeiro ele executa e depois ele testa a condição, os resultados são praticamente iguais

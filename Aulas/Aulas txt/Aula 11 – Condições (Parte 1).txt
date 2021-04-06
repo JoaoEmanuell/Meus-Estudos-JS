@@ -1,0 +1,54 @@
+Condições, aplica-se a mesma regra das condições em python, usando o comando if e o comando else
+
+Porem diferente do python no js tem que criar o if colocar a codição entre () e criar o bloco:
+
+if (condição) {
+
+// Codigo, caso a condição seja // verdadeira
+
+}else{
+
+//codigo, caso a condição seja 
+// falsa
+
+}
+
+==================================
+Tipos de Condição:
+
+CONDIÇÃO SIMPLES
+
+Composto apenas com um if e um bloco, caso a condição seja falsa o progama continua normalmente
+
+exemplo:
+
+var vel = 60
+console.log(`A velocidade do seu carro é ${vel}Km/h`)
+
+if (vel > 80.0){ //condição simples
+
+    console.log('Você ultrapassou a velocidade permitida. MULTADO')
+
+}
+
+console.log('Diriga sempre usando cinto de segurança')
+
+/* nesse caso ela é chamada de condição simples pois não tem else */
+
+= = =
+
+CONDIÇÃO COMPOSTA
+
+São condições que além de apresentarem um if apresentam também um else
+
+exemplo:
+
+var país = 'França'
+console.log(`Vivendo em ${país}`)
+if (país == 'Brasil') {
+    console.log('Você é Brasileiro')
+} else {
+    console.log('Você é Estrangeiro')
+}
+
+/* Caso o pais seja diferente de Brasil o progama ira exibir "Você é Estrangeiro" */

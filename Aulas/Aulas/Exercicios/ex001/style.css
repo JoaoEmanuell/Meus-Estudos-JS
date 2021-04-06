@@ -1,0 +1,25 @@
+body {
+    background-color: rgb(83, 83, 236);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header{
+    color: white;
+    text-align: center;/* Alinha o texto no centro */
+}
+
+section{
+    background-color: white;/* Define a cor de fundo da section como sendo branca */
+    border-radius: 10px;/* Define a borda com 10px ficando redodinha */
+    padding: 15px;/* Define o tamanho da altura sendo de 15px */
+    width: 500px;/* Define a largura como sendo 500px */
+    margin: auto;/* Alinha automaticamente ao centro da tela */
+    text-align: center;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.349);/* Cria uma sombra na box */
+}
+
+footer{
+    color: white;
+    text-align: center;
+    font-style: italic;/* Estilo da fonte italico */
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de idade</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Verificador de Idade</h1>
+    </header>
+    <section>
+        <div id="ano">
+            <p>Ano de nascimento
+                <input type="number" name="txtano" id="txtano" min="0"><!--Input de botão number-->
+            </p>
+            <p>Sexo
+                <input type="radio" name="radsex" id="mas" checked><!--input do tipo radio que recebe um nome e id, a primeira caixa já é marcada como positivo-->
+                <label for="mas">Masculino</label><!--label for que recebe a id do radio acima, e o nome da caixa-->
+                <input type="radio" name="radsex" id="fem"><!--input do tipo radio que recebe um nome e id-->
+                <label for="fem">Feminino</label><!--label for que recebe a id do radio acima, e o nome da caixa-->
+            </p>           
+            <p>
+                <input type="button" value="Verificar" onclick="verificar()"><!--input do tipo button com o nome verificar que dispara a função verificar-->
+            </p>
+        </div>
+        <div id="foto">
+            <p>Preencha os dados acima para ver o resultado</p>
+            <br>
+
+        </div>
+    </section>
+    <footer>
+        <p>&copy;JoãoEmanuel</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

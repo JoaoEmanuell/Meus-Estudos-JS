@@ -1,0 +1,3 @@
+Resumo:
+
+Falou sobre a criação do javascript e a padronização dele pelo EMCA

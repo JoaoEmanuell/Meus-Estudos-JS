@@ -1,0 +1,20 @@
+
+Nessa aula aprendemos comandos basicos
+
+==================================
+
+window é um comando que normalmente serve para exibir mensagens na tela, porem ele é opcional em alguns casos
+
+==================================
+
+alert = exibe uma mensagem de alerta, pode ser util para informar erros e ect
+
+==================================
+
+confirm = exibe uma mensagem que tem as opções de confirmar (ok) ou cancelar
+
+==================================
+
+prompt = exibe uma mensagem com uma caixa de pergunta em baixo, permitindo um alerta interativo
+
+==================================

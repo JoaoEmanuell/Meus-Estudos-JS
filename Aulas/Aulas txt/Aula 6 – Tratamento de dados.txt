@@ -1,0 +1,75 @@
+Como ja sabemos uma variavel pode ter operações e ect
+
+Se o comando utilizado for:
+
+var n1 = window.prompt('Digite um numero')
+
+ele ira retornar uma str ao inves de um numero, por causa disso haverá um problema na hora de fazer a soma, pois a regra diz:
+
+Se (number + number) o sinal de + ira retornar uma adição
+
+Se (str + str) o sinal de + ira retornar uma concatenação
+
+Portanto nesse caso eu tenho que converter a str para number
+
+Existe três formas de fazer isso:
+
+Number.parseFloat = ira converter o numero para um numero decimal (pode usar tambem "parseFloat" irar ter o mesmo resultado)
+
+Number.parseInt = ira converter o numero para um numero inteiro (pode usar tambem "parseInt" irar ter o mesmo resultado)
+
+Number = ira converter o numero automaticamente, sendo ele numero inteiro ou real, dessa forma é so colocar a variavel entre () apos o Number
+
+Ja para converter um numero para string existe duas opçoes:
+
+String = ira recerber o numero entre ()
+
+var.toString() = antes do . recebe a variavel e a converte para texto
+
+Formatação
+
+Ao inves de ficar se matando para fechar '' e colocar + nome, você pode simplismente usar "${variavel}" mas para isso o texto inteiro tem que estar entre ` ` essa forma se chama templet strings
+
+`O aluno ${nome} tem ${idade} anos e tirou a nota ${nota}`
+
+dessa forma o codigo ira ficar mais organizado (seria a mesma coisa do f no python porem um pouco mais chato de digitar
+
+Tamanho str:
+
+usando o comando:
+
+variavel.length = ele ira dizer quantos caracteres tem a string
+
+Deixar a str em letras maisculas:
+
+usando o comando:
+
+variavel.toUpperCase() = ele ira fazer a str ficar em full letras maisculas
+
+Deixar a str em letras minusculas:
+
+usando o comando:
+
+variavel.toLowerCase() = ele ira fazer a str ficar full letras minusculas
+
+Deixar um numero com casas decimais fixas:
+
+para realizar essa ação usa-se o comando:
+
+variavel.ToFixed(numero de casas decimais)
+
+dessa forma ele ira escrever a variavel com o numero de casas decimais informado
+
+Trocar . por ,:
+
+Para fazer isso usa-se o comando:
+
+variavel.replace('.', ',') 
+
+dessa forma ele ira trocar todos os pontos por virgulas
+
+Converter o numero para moedas de outros paises ou para o real:
+
+variavel.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
+
+primeiro ele ira pegar a variavel e converter ela para uma str global, no caso (pt-BR), depois ele ira dizer que o estilo de conversão é 'currency' que siginifica dinheiro, depois a formatação de moeda sera: 'BRL' que é o real do brasil, subistiturindo o BRL por outras moedas temos resultados diferentes, formatações em outras moedas.

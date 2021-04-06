@@ -1,0 +1,65 @@
+Primeiro para enteder os eventos temos que enteder as funções:
+
+Funções são condições para a execução do codigo:
+
+Dentro da função temos o bloco de codigo que é delimitado pelas {}
+
+Para definir a função se coloca o codigo:
+
+function ação(parametro[opicional]) {
+
+bloco
+
+}
+
+dessa forma teremos uma função que caso a ação seja realizada o bloco sera executado
+
+==================================
+
+Eventos basicos com o mouse:
+
+Existe duas formas de configurar a observação de eventos:
+
+Direto na tag:
+
+Depois da id da tag eu coloco o comando que eu quero que seja detecado e dentro das aspas eu coloco o nome da função e ():
+
+
+onclik = ira detectar se teve um clique na tag
+
+onmouseover = ira detectar se o mouse entrou na tag
+
+onmouseout = ira detectar se o mouse saiu da tag
+
+
+No script:
+
+para excecutar no script primeiro eu tenho que criar uma var que receba as informações da tag:
+
+var a = window.document.getElementById('nome')
+
+depois disso eu crio o "escutador" de eventos
+
+a.addEventLister('click', clicar)
+
+nesse caso eu não precisei usar o on antes do evento, o nome depois da , é o nome da função
+
+= = =
+
+Agora para usar a função você utiliza:
+
+function nome da função() {
+
+bloco de comando
+
+}
+
+dessa forma quando a função for true o bloco de comando sera excecutado
+
+= = =
+
+O comando input cria um bloco que recebe valor depedendo da configuração que você queria realizar:
+
+number = cria um bloco que recebe numero
+
+button = cria um bloco de botão

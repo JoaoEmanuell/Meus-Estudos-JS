@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+    <style>
+        body {
+            font: normal 20pt Arial;
+        }
+    </style>
+</head>
+<body>
+    
+    <script>
+        var nome = window.prompt("Qual é o seu nome? ")
+        document.write(`Olá <strong></strong>! Seu nome tem ${nome.length} letras.<br>`)//document.write serve para escrever na tela, ja o length serve para dizer o numero de caracteres da str
+        document.write(`Seu nome em letras maiúsculas é ${nome.toUpperCase()}<br>`)//O comando .toUpperCase serve para deixar a str em full maisculas
+        document.write(`Seu nome em letras minusculas é ${nome.toLowerCase()}`)
+    </script>
+</body>
+</html>

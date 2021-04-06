@@ -1,0 +1,1 @@
+O Javascript serve tanto para o lado do cliente quanto para o lado do servidor, nesse curso ele ira focar para o lado do cliente, o Javascript no geral serve para fazer a interatividade do site, animações interativas e ect

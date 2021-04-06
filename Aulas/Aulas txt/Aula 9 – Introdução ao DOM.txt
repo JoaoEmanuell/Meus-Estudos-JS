@@ -1,0 +1,105 @@
+Dom siginifica Document Object Model
+
+Uma arvore DOM de um site sempre começa com window
+
+Dentro de window ter varias informações como o document por exemplo
+
+O document tem dentro dele o html
+
+Que é dividio em "head" e "body"
+
+==================================
+
+Usando o comando:
+
+window.document.write(window.document.URL)
+
+eu posso escrever a URL do site
+
+==================================
+
+window.document.write(window.document.charset)
+
+eu posso escrever a configuração de UTF do site
+
+==================================
+
+window.document.write(window.navigator.appName)
+
+eu posso escrever o navegador que está sendo utilizado no momento
+
+==================================
+
+Selecionando elementos:
+
+Para selecionar um elemento na arvore DOM, eu posso acessar por:
+
+Marca
+
+ID
+
+Nome 
+
+Classe
+
+Seletor
+
+==================================
+
+Para selecionar por marca, usá-se o comando:
+
+window.document.getElementsByTagName('tag')[numero da tag (começando em 0)]
+
+dessa forma ele ira "pegar" a tag que está naquela posição
+
+para escrever na tela usa-se o comando:
+
+window.document.write(p1.innerText)
+
+caso eu tenha criado uma variavel
+
+ou 
+
+window.document.write(window.document.getElementsByTagName('p')[0].innerText)
+
+caso eu não tenha criado uma var
+
+o comando innerText serve para pegar o texto que está na tag
+
+caso eu queria mudar a cor do elemento pego eu uso:
+
+var.style.color = 'cor'
+
+dessa forma o script ira modificar a cor da var indicada
+
+Caso você queira escrever com o HTML usá-se o comando:
+
+document.write(var.innerHTML)
+
+dessa forma ele ira escreve exatamente o que está no html
+
+==================================
+
+Para localizar por id você precisa definir um id a tag especifica:
+
+<tag id="nome da id">
+
+Para pegar essa id você usa o comando:
+
+window.document.getElementById('id')
+
+dessa forma você pode modificar as coisas especificas para aquela id
+
+==================================
+
+para pegar por nome usa-se o mesmo comando porem troca o id na tag por name e o comando por getElementsByName, informa o nome e a posição
+
+==================================
+
+para pegar por querry selector usa-se:
+
+window.document.querySelector('div#msg')
+
+caso a tag seja "div" usa-se # caso seja outra usa-se .
+
+==================================
