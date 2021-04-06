@@ -1,0 +1,73 @@
+===========================
+
+Operadores Aritméticos
+
+São operadores que realizam operações matematicas
+
+Operadores:
+
++ = adição
+
+- = subtração
+
+* = multiplicação
+
+/ = divisão real (com virgula)
+
+% = resto da divisão inteira
+
+** = potenciação
+
+===========================
+
+Precedencia de operação:
+
+Determinas quais operadores vem primeiro para que a conta esteja correta:
+
+() = parenteses em primeiro
+
+[] = colchetes em segundo
+
+{} = chaves em terceiro
+
+² = potencias em quarto
+
+* / % = mutiplicações, divisões e resto da divisão em quinto (começando da esquerda para direita)
+
++ - = soma e subtração em sexto
+===========================
+
+Atribuição Simples:
+
+Atribuição Simples seria o sinal de "=" que siginifica recebe
+
+===========================
+
+Auto-atribuições
+
+Auto-atribuições são atribuiçoes que acressentam o valor da variavel mais outro valor para a propia variavel:
+
+var n = 3
+n = n + 4
+
+agora n sera igual a 7
+
+Para simplificar é so fazer a var receber ela com a operação desejada:
+
+var n = 3
+n =+ 4 
+
+agora n sera igual a 7, basicamente o mesmo resultado e com um codigo mais simples
+===========================
+
+Incremento
+
+O incremento é a simplificação do metodo anterior porem ele so adiciona 1 valor;
+
+Ao inves de usar var = var - num ou var += num pode usar o sinal da operação 2 vezes:
+
+var x = 5
+x ++
+
+Dessa forma a var x ira ser igual a 6
+===========================
