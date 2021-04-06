@@ -1,0 +1,27 @@
+Variaveis:
+
+Assim como no python o sinal "=" siginifica recebe ao inves de igual
+
+Para limpar uma variavel usa-se o comando null (variavel = null)
+
+O comando "var" serve para criar uma variavel, também pode usar a palavra "let" serve para o mesmo proposito
+
+Para criar variaveis com str pode se usar:
+
+aspas duplas ""
+aspas simples ''
+crase ``
+
+O nome das variaveis podem começar com:
+
+letra, $ ou _
+
+Não pode começar com números
+
+É possível usar letras ou números
+
+É possível usar acentos e símbolos
+
+Não podem conter espaços (no lugar do espaço usa-se " _ "
+
+Não podem ser palavras reservadas (palavras que já são interpretadas como comandos)

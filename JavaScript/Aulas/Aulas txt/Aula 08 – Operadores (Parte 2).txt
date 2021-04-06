@@ -1,0 +1,107 @@
+===========================
+
+Operadores Relacionais:
+
+> = maior
+
+< = menor
+
+>= = maior ou igual
+
+<= menor ou igual
+
+== = igual
+
+!= = DIFERENTE
+
+Os operadores relacionais sempre dão valores boleanos (true ou false)
+
+5 > 2 = true
+
+7 < 4 = false
+
+8 >= 8 = true
+
+9 <= 7 = false
+
+5 == 5 = true
+
+4 != 4 = false
+
+Caso você tenha operadores aritimeticos e relacionais na mesma linha, o aritimetico sera calculado primeiro
+
+===========================
+
+Operador de Identidade
+
+É representado com === serve para verificar se um valor é verdadeiramente igual a outro pois para o JS caso um valor seja int e o outro um str com o mesmo valor de int ele ira contar como iguais, mas usando o operador de Identidade ele ira retornar falso ou verdadeiro se os valores forem veradeiramente iguais;
+
+5 == 5 = true
+
+5 == '5' = true
+
+5 === '5' = false
+
+5 === 5 = true
+
+veja que no segundo caso ele indicou como verdadeiro pois os valores tem a mesma grandeza mas no terceiro ele indicou como falso pois o operador de Indentidade indicou que é falso
+
+Pode usar também para diferente, nesse caso é so adicionar mais um = ao final do !=
+
+!==
+
+===========================
+
+Operadores Lógicos
+
+! = negação
+
+&& = conjunção
+
+|| = disjunção (esse sinal fica no mesmo lugar da barra invertida)
+
+Negação:
+
+Basicamente so retorna 2 valores, true ou false, se uma coisa não é verdadeira ela é falsa se uma coisa não é falsa ela é verdadeira.
+
+Conjução:
+
+Ele recebe 2 valores em true ou false, se ele receber 2 valores true o valor que ele retorna sera true, se ele receber qualquer combinação diferente de true true ele retorna false.
+
+Disjunção:
+
+Ele é semelhante ao da Conjução porem basta que um dos valores seja verdadeiro para o resultado ser verdadeiro.
+
+A ordem de procedencia semrpe sera:
+
+! = primeiro
+
+&& = segundo
+
+|| = terceiro
+
+Ordem de precedencia absoluta:
+
+Primeiro os operadores aritimeticos
+
+Depois os operadores relacionais da esquerada para direita
+
+Depois a negação
+
+Depois a conjução
+
+E por ultimo a disjunção
+
+===========================
+
+Ternário
+
+Ele recebe 3 operadores
+
+O primeiro normalmente é a variavel
+
+Depois vem uma ? Com algo que ele retorna (um valor True personalizado)
+
+Depois vem : (um valor falso personalizado)
+
+Serve como o if e else de py, so que de uma forma mais simplificado e so executa uma vez caso esteja colocado em uma variavel
