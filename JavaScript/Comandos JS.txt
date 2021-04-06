@@ -1,4 +1,4 @@
-
+a
 Comandos
 
 ==================================
@@ -229,5 +229,57 @@ label for = recebe a id do radio e nela sera colocado o nome do elemento
 while = primeiro testa se a condição for positivo, depois executa o bloco
 
 do while = primeiro executa o bloco e depois testa se a condição é positiva, os resultados são praticamente os mesmos
+
+==================================
+//aula 15
+
+CRIAR
+
+var name = [] = cria uma array, cada item dentro de uma array é delimitado por ,
+
+= = =
+
+EXIBIR ITEM ESPECIFICO
+
+console.log(array[n.i]) = ira escrever o item que se encontra na chave indicada
+
+= = =
+
+ADICIONAR ITENS
+
+array[key] = item = acresenta um item dentro da chave indicada
+
+array.push(item) = adiciona um item depois da ultima chave da array
+
+= = =
+
+TAMANHO
+
+array.length = indica o tamanho da array
+
+= = =
+
+VALORES CRESENTES
+
+array.sort(function(a, b){return a-b}) = organiaza os valores de forma cresente, se usar somento o sort ele ira bugar
+
+= = =
+
+ESCREVER CADA VALOR
+
+for (var c = 0; c < array.lenght, c++){
+   console.log(array[c])
+} = ele ira escrever cada valor
+
+or
+
+for (var c in array) {
+   console.log(array[c]) = essa forma é bem mais simples e bem mais eficazes do que a anterior
+
+= = =
+
+LOCALIZAR
+
+array.indexOf(item) = localiza um item dentro da lista, caso o encontre retorna a chave caso não encontre-o retorna -1
 
 ==================================
