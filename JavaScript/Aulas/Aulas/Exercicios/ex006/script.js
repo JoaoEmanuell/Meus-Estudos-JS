@@ -13,11 +13,11 @@ function env(){
         //variavel de mutiplicador
         let m = 1
         //execução
-        res.innerHTML = ''
+        res.innerHTML = ''//serve parar limpar a lista
         for (n; m <= 10; m++){
-            let item = window.document.createElement('option')
-            item.text = `${n} x ${m} = ${n * m} `
-            res.appendChild(item)
+            let item = window.document.createElement('option')//cria um elemento opition dentro do documento
+            item.text = `${n} x ${m} = ${n * m} `//coloca o texto dentro da var intem
+            res.appendChild(item)//adiciona a var intem dentro da var res
         }
         
     }
