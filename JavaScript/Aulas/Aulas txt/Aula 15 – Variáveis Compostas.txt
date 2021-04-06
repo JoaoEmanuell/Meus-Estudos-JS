@@ -1,0 +1,94 @@
+Variaveis simples so conseguem armazenar um valor por vez.
+
+Ja as variaveis compostas conseguem armazenar varios valores em uma mesma estrutura.
+
+Uma varivael composta é chamada de array (vetor) dentro de cada array temos um índice chave (key), temos o elemento e o conteúdo da chave
+
+Para declaramos array usamos o comando:
+
+var name = [item1,item2,item3]
+
+lembresse sempre que array começam a contar a partir do 0 e não a partir do 1
+
+As arrays obedecem quase a mesma logica do python
+
+Para escrever uma array pode-se usar o comando:
+
+console.log(array)
+
+dessa forma ele ira escrever dentro do console, todos os itens da array, caso queira escrever um item especifico pode-se usar o [] depois da array
+
+console.log(array[n.i])
+
+n.i = siginifica o numero do item ou a chave que ele se encontra
+
+Pelo que eu percebi a array pode conter valores tantos numericos quanto valores str
+
+Pelo que eu notei da para fazer somas indicando quais valores foram digitados, utilizando a array e a chave:
+
+console.log(`${a[0]} + ${a[2]} = ${a[0] + a[2]}`)
+
+==================================
+Para acresentar valores a uma array pode usar 2 metodos:
+
+1°
+
+array[key] = item
+
+2°
+
+array.push(item)
+
+= = =
+
+No primeiro metodo, adicionamos o item na posição que queremos especificando ela (note que caso eu não tenha o a chave criada ele ira criar uma)
+
+Ja no segundo metodo, adicionamos o item na ultima posição da array independente de qual seja ela
+
+==================================
+
+Para saber o tamanho total de uma array usa-se o comando
+
+array.length
+
+dessa forma ele ira nos retornar o tamanho total da array
+
+==================================
+
+Para colocar os valores em um array de forma cresente usa-se o comando:
+
+array.sort(function(a, b){return a-b})
+
+se usar o metodo sort de forma solo ele ira bugar, pois organizara por numero de casas decimais, fazendo com que caso o numero tenha + de 2 casas e esteja em uma posição acima do q so tem 1 casa e o que tem 1 casa tem o valor superior a 2 ele ira bugar, fazendo com que a organização não funcione
+
+Dessa forma usando a funcition que recebe os valores a partir da key 0 ate a key final e depois retornando eles de forma a serem ordenados, dessa forma ele colocara ordenado de forma crescente
+
+==================================
+
+Para escrever cada valor dentro da array sendo individual (sem colchetes)
+
+Pode se usar uma estrutura for:
+
+for (var c = 0; c < array.lenght, c++){
+   console.log(array[c])
+}
+
+dessa forma ele ira escrever cada valor da array ate o fim dela
+
+Porem existe uma forma ainda mais simples de fazer isso
+
+for (var c in array) {
+   console.log(array[c])
+
+essa segunda forma é bem mais simplificada, mais leve e rapida e criada especialmente para as arrays
+==================================
+
+Para localizar itens dentro de arrays é bem simples
+
+array.indexOf(item)
+
+caso exista o item dentro do valor ele ira retornar a chave onde o valor de encontra
+
+caso não exista ele ira retornar -1
+
+==================================
