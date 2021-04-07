@@ -21,3 +21,5 @@ let v = function(x){//sim, é possivel existir uma função dentro de uma variav
 }
 
 console.log(v(20))
+
+Recursividade é quando a função chama a propia função dentro dela
