@@ -14,7 +14,7 @@ section{
     padding: 15px;/* Define o tamanho da altura sendo de 15px */
     width: 500px;/* Define a largura como sendo 500px */
     margin: auto;/* Alinha automaticamente ao centro da tela */
-    text-align: center;
+    /*text-align: center;*/
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.349);/* Cria uma sombra na box */
 }
 
