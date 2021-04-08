@@ -31,6 +31,5 @@ function add(){
         window.alert('Valor invalido ou ja encontrado na lista')
     }
     num.value = ''
-    num.focus()
-    
+    num.focus()//focus serve para fazer o cursor focar aquela posição
 }
