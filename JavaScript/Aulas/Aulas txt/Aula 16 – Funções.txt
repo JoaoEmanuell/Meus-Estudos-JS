@@ -1,0 +1,25 @@
+Funções são ações executadas assim que são chamadas ou em decorrência de algum evento.
+
+Uma função pode receber parâmetros e retornar um resultado
+
+Os parametros podem ser definidos como opcionais (acaba evitando bugs) para definir um parametro como opicional escreva:
+
+p=o
+
+p = paramentro
+
+= = recebe
+
+o = opção
+
+dessa forma o paramentro sera pré-definido
+
+as funções podem estar dentro de variaveis:
+
+let v = function(x){//sim, é possivel existir uma função dentro de uma variavel e ela pode ser escrita tanto dessa maneira quanto escrito tudo em uma linha so.
+    return x*2
+}
+
+console.log(v(20))
+
+Recursividade é quando a função chama a propia função dentro dela
