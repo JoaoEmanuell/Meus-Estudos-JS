@@ -23,3 +23,8 @@ footer{
     text-align: center;
     font-style: italic;/* Estilo da fonte italico */
 }
+
+select#lista{
+    width: 150px;
+    padding: 100px;
+}
