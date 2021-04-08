@@ -1,0 +1,9 @@
+Os objetos são semelhantes aos arrays porem com a diferença que eles se parece mais com os dicionarios
+
+Para declarar um objeto você declara o objeto com {}
+
+O objeto pode receber além dos atributos cada chave pode receber um nome para fazer isso é so declarar dentro do obejeto
+
+let Object = {key_name:item}
+
+Alem disso objetos podem receber funções, uma FUNÇÃO dentro de um objeto.
