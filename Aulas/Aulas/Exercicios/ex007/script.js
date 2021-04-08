@@ -22,8 +22,15 @@ function inLista(n, l){
 function add(){
     if (isNumber(num.value) && !inLista(num.value, valores)) {
         valores.push(Number(num.value))
-        window.alert(valores)
+        let item = window.document.createElement('option' )
+        item.text = `Valor ${num.value} adicionado.`
+        lista.appendChild(item)
+        console.log(item)
+        
     }else{
         window.alert('Valor invalido ou ja encontrado na lista')
     }
+    num.value = ''
+    num.focus()
+    
 }
