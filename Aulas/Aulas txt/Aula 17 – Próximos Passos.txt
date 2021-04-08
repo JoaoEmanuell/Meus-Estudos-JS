@@ -7,3 +7,12 @@ O objeto pode receber além dos atributos cada chave pode receber um nome para f
 let Object = {key_name:item}
 
 Alem disso objetos podem receber funções, uma FUNÇÃO dentro de um objeto.
+
+
+Para exibir um item especifico dentro de um objeto, usa-se o nome do objeto e o nome da chave
+
+object_name.key_name
+
+caso eu utilize uma função dentro de um objeto é a mesma logica, so que dessa vez eu passo o paramentro (se tiver)
+
+object_name.funcition_name(parametre)
