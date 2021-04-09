@@ -231,3 +231,49 @@ while = primeiro testa se a condição for positivo, depois executa o bloco
 do while = primeiro executa o bloco e depois testa se a condição é positiva, os resultados são praticamente os mesmos
 
 ==================================
+//aula 15
+
+let name = [] = declara uma array string
+
+array[n.i] = numero da chave, exibe o item que está em determinada chave
+
+array[key] = item = adiciona um item na key especificada
+
+array.push(item) = adiciona um item em uma key apos a ultima key da array
+
+array.length = exibe quantos intem tem a array
+
+array.sort(function(a, b){return a-b}) = deixa a array em ordem cresente (caso seja uma array so de numeros)
+
+= = =
+
+for (var c = 0; c < array.lenght, c++){
+   console.log(array[c])
+} = escreve cada item da array de forma individual
+
+ou de forma mais simplificada
+
+for (var c in array) {
+   console.log(array[c])
+
+= = =
+
+array.indexOf(item) = localiza um item dentro da array, caso ele não exista ele retorna -1
+
+==================================
+//aula 16
+
+function(p) = cada função pode receber um paramentro
+
+let v = function(p){} = uma função dentro de uma varivael
+
+object = {function(p){}} = uma função dentro de um objeto
+
+==================================
+//aula 17
+
+let object = {key_name:item} = cria um objeto que cada chave pode receber um nome e um item e pode receber funções dentro dele
+
+this.name = é um metodo que faz com que ele se referencie a uma chave dentro do propio objeto, util para funções
+
+==================================
