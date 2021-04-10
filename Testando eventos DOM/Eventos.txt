@@ -1,0 +1,1 @@
+'click' = se ouver um clice dentro da area ele ira ativar a função
