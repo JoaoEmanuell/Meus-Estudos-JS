@@ -1,1 +1,16 @@
+codigo base:
+
+</head>
+<body>
+    <div id="evento">
+        <p>Oi</p>
+    </div>
+    <script>
+        var res = window.document.getElementById('evento')
+        res.addEventListener('mouseover', click)
+        function click() {
+            res.style.background = 'black'
+        }
+    </script>
+
 'click' = se ouver um clice dentro da area ele ira ativar a função
