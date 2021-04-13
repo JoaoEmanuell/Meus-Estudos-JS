@@ -13,4 +13,6 @@ codigo base:
         }
     </script>
 
-'click' = se ouver um clice dentro da area ele ira ativar a função
+'click' = se ouver um clice dentro da area ele ira ativar o evento
+
+'mouseover' = se o mouse passar por cima da area ele ativa o evento
