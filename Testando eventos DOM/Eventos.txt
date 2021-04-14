@@ -22,3 +22,5 @@ codigo base:
 'oncontextmenu' = se o usuario clicar com o BOTÃO DIREITO ele ativa o evento
 
 'onmousedown' = se o usuario presionar o botão do mouse ele ativa o evento
+
+'onmouseenter' = se o usuario passar com o cursor do mouse em cima ele ativa o evento
