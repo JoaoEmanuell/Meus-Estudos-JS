@@ -40,3 +40,5 @@ EVENTOS DE MOUSE
 Eventos de clipboard
 
 'oncopy' = se o usuario copiar o elemento (com o crtl + c ou com o direito) o evento é ativado
+
+'oncut' = se o usuario cortar o elemento (ctrl + x) o evento é ativado
