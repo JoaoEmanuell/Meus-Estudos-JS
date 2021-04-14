@@ -24,3 +24,5 @@ codigo base:
 'onmousedown' = se o usuario presionar o botão do mouse ele ativa o evento
 
 'onmouseenter' = se o usuario passar com o cursor do mouse em cima ele ativa o evento
+
+'onmouseleave' = se o usuario retirar o cursor do mouse de cima do elemento ele ativa o evento
