@@ -26,3 +26,5 @@ codigo base:
 'onmouseenter' = se o usuario passar com o cursor do mouse em cima ele ativa o evento
 
 'onmouseleave' = se o usuario retirar o cursor do mouse de cima do elemento ele ativa o evento
+
+'onmousemove' = se o usuario mover o mouse dentro do elemento ele ativa o evento
