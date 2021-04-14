@@ -18,3 +18,5 @@ codigo base:
 'mouseover' = se o mouse passar por cima da area ele ativa o evento
 
 'ondblclick' = se o usuario der 2 cliques ele ativa o evento
+
+'oncontextmenu' = se o usuario clicar com o BOTÃO DIREITO ele ativa o evento
