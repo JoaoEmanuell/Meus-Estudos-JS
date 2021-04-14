@@ -13,6 +13,8 @@ codigo base:
         }
     </script>
 
-'click' = se ouver um clice dentro da area ele ira ativar o evento
+'click' = se ouver um clice dentro da area ele ira ativar o evento, "onclick" faz a mesma coisa
 
 'mouseover' = se o mouse passar por cima da area ele ativa o evento
+
+'ondblclick' = se o usuario der 2 cliques ele ativa o evento

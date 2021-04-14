@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="evento">
-        <p>Oi</p>
+    <div id="evento" ondblclick="click()">
+        <p ondblclick="click2()">Oi</p>
     </div>
     <script>
         var res = window.document.getElementById('evento')
-        res.addEventListener('altKey', click)
-        function click() {
+        //res.addEventListener('onclick', click)
+        function click2() {
             res.style.background = 'black'
         }
     </script>
