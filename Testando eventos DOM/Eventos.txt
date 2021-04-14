@@ -20,3 +20,5 @@ codigo base:
 'ondblclick' = se o usuario der 2 cliques ele ativa o evento
 
 'oncontextmenu' = se o usuario clicar com o BOTÃO DIREITO ele ativa o evento
+
+'onmousedown' = se o usuario presionar o botão do mouse ele ativa o evento
