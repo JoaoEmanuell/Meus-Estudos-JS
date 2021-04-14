@@ -28,3 +28,5 @@ codigo base:
 'onmouseleave' = se o usuario retirar o cursor do mouse de cima do elemento ele ativa o evento
 
 'onmousemove' = se o usuario mover o mouse dentro do elemento ele ativa o evento
+
+'onmouseout' = se o usuario mover o mouse para fora do elemento ou de um de seus filhos ele ativa o evento
