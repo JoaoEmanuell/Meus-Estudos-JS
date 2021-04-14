@@ -32,3 +32,5 @@ codigo base:
 'onmouseout' = se o usuario mover o mouse para fora do elemento ou de um de seus filhos ele ativa o evento
 
 'onmouseover' = se o usuario mover o mouse para dentro do elemento ou de um de seus filhos ele ativa o evento
+
+'onmouseup' = se o usuario liberar o botão do mouse sobre o elemento o evento é ativado
