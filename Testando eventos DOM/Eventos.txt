@@ -13,6 +13,8 @@ codigo base:
         }
     </script>
 
+EVENTOS DE MOUSE
+
 'click' = se ouver um clice dentro da area ele ira ativar o evento, "onclick" faz a mesma coisa
 
 'mouseover' = se o mouse passar por cima da area ele ativa o evento
@@ -34,3 +36,7 @@ codigo base:
 'onmouseover' = se o usuario mover o mouse para dentro do elemento ou de um de seus filhos ele ativa o evento
 
 'onmouseup' = se o usuario liberar o botão do mouse sobre o elemento o evento é ativado
+
+Eventos de clipboard
+
+'oncopy' = se o usuario copiar o elemento (com o crtl + c ou com o direito) o evento é ativado
