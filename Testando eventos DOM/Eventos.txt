@@ -37,8 +37,10 @@ EVENTOS DE MOUSE
 
 'onmouseup' = se o usuario liberar o botão do mouse sobre o elemento o evento é ativado
 
-Eventos de clipboard
+EVENTOS DE CLIPBOARD
 
 'oncopy' = se o usuario copiar o elemento (com o crtl + c ou com o direito) o evento é ativado
 
 'oncut' = se o usuario cortar o elemento (ctrl + x) o evento é ativado
+
+'onpaste' = se o usario selecionar o elemento e usar ctrl + v o evento é ativado
