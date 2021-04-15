@@ -56,3 +56,5 @@ eventos de arrastar
 'ondragleave' = quando o objeto sai da area do destino o evento é ativado
 
 'ondragover' = quando o objeto esta sobre o destino de soltar o evento é ativado
+
+'ondragstart' = quando o usuario inicia o arrasto do object o evento é ativado
