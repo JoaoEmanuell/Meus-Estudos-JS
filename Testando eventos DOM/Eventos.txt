@@ -48,3 +48,5 @@ EVENTOS DE CLIPBOARD
 eventos de arrastar
 
 'ondrag' = se o usuario arrastar o elemento o evento é ativado
+
+'ondragend' = quando o usuario terminar de arrastar o elemento o evento é ativado
