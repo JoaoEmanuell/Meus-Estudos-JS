@@ -53,3 +53,4 @@ eventos de arrastar
 
 'ondragenter' = quando o objeto entra no destino de soltar o evento é ativado
 
+'ondragleave' = quando o objeto sai da area do destino o evento é ativado
