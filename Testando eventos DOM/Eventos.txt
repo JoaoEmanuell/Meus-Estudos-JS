@@ -44,3 +44,7 @@ EVENTOS DE CLIPBOARD
 'oncut' = se o usuario cortar o elemento (ctrl + x) o evento é ativado
 
 'onpaste' = se o usario selecionar o elemento e usar ctrl + v o evento é ativado
+
+eventos de arrastar
+
+'ondrag' = se o usuario arrastar o elemento o evento é ativado
