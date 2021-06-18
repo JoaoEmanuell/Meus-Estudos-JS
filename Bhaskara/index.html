@@ -9,10 +9,17 @@
 </head>
 <body>
     <h1>Insira os elementos:</h1>
-    <p><strong>A</strong> <input type="number" name="element_a" id="element_a"></p>
-    <p><strong>B</strong> <input type="number" name="element_b" id="element_b"></p>
-    <p><strong>C</strong> <input type="number" name="element_c" id="element_c"></p>
-    <input type="button" value="Calcular" onclick="env()">
+    <div>
+        <p><strong>A</strong> <input type="text" name="txtano" id="txtano"></p>
+        <p><strong>B</strong> <input type="number" name="element_b" id="element_b"></p>
+        <p><strong>C</strong> <input type="number" name="element_c" id="element_c"></p>
+        <p><input type="button" value="Calcular" onclick="env()"></p>
+    </div>
+    <div class="res">
+        <p id='delta'></p>
+        <p id='x1'></p>
+        <p id='x2'></p>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
