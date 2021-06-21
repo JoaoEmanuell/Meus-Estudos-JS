@@ -1,5 +1,5 @@
 function env(){
-    var element_a = window.document.getElementById('txtano')
+    var element_a = window.document.getElementById('element_a')
     var element_b = window.document.getElementById("element_b")
     var element_c = window.document.getElementById("element_c")
     element_a = element_a.value
@@ -7,15 +7,16 @@ function env(){
     element_c = element_c.value
     var raizess = raizes(element_a, element_b, element_c)
     console.log(raizess)
-    var del = window.document.getElementById('delta')
+    let del = window.document.getElementById('delta')
+    let delt = delta(element_a, element_b, element_c)
+    let x1 = window.document.getElementById('x1')
+    let x2 = window.document.getElementById('x2')
     if (raizess === 999){
-        let delt = delta(element_a, element_b, element_c)
         del.innerHTML = `Delta é igual a ${delt}, portanto a equação não possui raizes reais.`
+        x1.innerHTML = ""
+        x2.innerHTML = ""
     }
     else{
-        let delt = delta(element_a, element_b, element_c)
-        var x1 = window.document.getElementById('x1')
-        var x2 = window.document.getElementById('x2')
         del.innerHTML = `Delta = ${delt}`
         x1.innerHTML = `X' = ${Math.round(raizess[0])}`
         x2.innerHTML = `X'' = ${Math.round(raizess[1])}`

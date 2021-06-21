@@ -9,10 +9,13 @@
 </head>
 <body>
     <h1>Insira os elementos:</h1>
-    <div>
-        <p><strong>A</strong> <input type="text" name="txtano" id="txtano"></p>
-        <p><strong>B</strong> <input type="number" name="element_b" id="element_b"></p>
-        <p><strong>C</strong> <input type="number" name="element_c" id="element_c"></p>
+    <div id="instruções">
+        <p>Insira os números correspondendentes a A B C, no elementos indicados abaixo:</p>
+    </div>
+    <div id="elementos">
+        <p><label for="element_a"><strong>A</strong> <input type="number" name="element_a" id="element_a" class="element"></label></p>
+        <p><label for="element_b"><strong>B</strong> <input type="number" name="element_b" id="element_b" class="element"></label></p>
+        <p><label for="element_c"><strong>C</strong> <input type="number" name="element_c" id="element_c" class="element"></label></p>
         <p><input type="button" value="Calcular" onclick="env()"></p>
     </div>
     <div class="res">

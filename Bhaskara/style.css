@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+h1{
+    text-align: left;
+}
+
+.element{
+    background-color: rgba(202, 200, 200, 0.651);
+}
+
+strong{
+    padding-right: 15px;
+}
