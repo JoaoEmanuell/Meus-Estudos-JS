@@ -1,3 +1,9 @@
-# Meus-Estudos-JS
-Olá, se esta lendo isso é porque eu ja acabei o curso basico de JS, porem ainda existe coisas que eu quero testar, portanto quando tiver mais tempo livre eu irei testar
-os eventos DOM e mais algumas coisas
+# Meus-estudos-JS
+Meus estudos da linguagem de programação JavaScript.
+
+# My-studies-JS
+My studies of the JavaScript programming language.
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/81983803/126824118-7fca07ce-aa74-4bbe-91d6-0e61aa2f439d.png" alt="JavaScript Icon"/>
+</p>
