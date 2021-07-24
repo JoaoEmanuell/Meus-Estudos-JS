@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fórmula de Bhaskara</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Calculadora de Bhaskara</h1>
+        <div id="instruções">
+            <p>Insira os números correspondendentes a A B C, no elementos indicados abaixo:</p>
+            <p id="help" onclick="help()" class="help-off">Não sabe quais são os números correspondentes? Clique em mim para exibir uma ajuda.</p>
+            <p id="help-exib"></p>
+        </div>
+    </header>
+<section>
+        <div id="elementos">
+            <p><label for="element_a"><strong>A</strong> <input type="number" name="element_a" id="element_a" class="element"></label></p>
+            <p><label for="element_b"><strong>B</strong> <input type="number" name="element_b" id="element_b" class="element"></label></p>
+            <p><label for="element_c"><strong>C</strong> <input type="number" name="element_c" id="element_c" class="element"></label></p>
+            <p><input type="button" value="Calcular" onclick="env()"></p>
+        </div>
+</section>
+    <div class="res">
+        <p id='delta'></p>
+        <p id='x1'></p>
+        <p id='x2'></p>
+    </div>
+    <script src="./js/script.js"></script>
+    <script src="./js/bhaskara.js"></script>
+</body>
+</html>

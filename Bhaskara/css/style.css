@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+/*
+Cores:
+Lightblue #90CBFB , Dark blue #110066 , Yellow #FFD432 , White #FFFFFF , Grey #919191
+*/
+
+:root {
+    --lightblue: #90CBFB;
+    --darkblue: #110066; 
+    --yellow: #FFD432;  
+    --white: #FFFFFF;  
+    --grey: #EDEDED;
+    --black: #000000;
+}
+
+/*Corpo*/
+
+body{
+    font-family: arial, helvatica, sans-serif;
+}
+
+/*H1*/
+
+h1{
+    text-align: left;
+    font-size: 32px;
+}
+
+/*Section*/
+
+.element{
+    background-color: var(--grey);
+    margin-left: 15px;
+}
+
+#elementos strong{
+    
+}
+
+.help-off {
+    color: blue;
+    text-align: justify;
+}
+
+.help-on{
+    color: red;
+    text-align: justify;
+}
+
+/*Res*/
