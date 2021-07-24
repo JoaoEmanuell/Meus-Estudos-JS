@@ -1,22 +1,51 @@
 @charset "UTF-8";
 
-h1{
-    text-align: left;
+/*
+Cores:
+Lightblue #90CBFB , Dark blue #110066 , Yellow #FFD432 , White #FFFFFF , Grey #919191
+*/
+
+:root {
+    --lightblue: #90CBFB;
+    --darkblue: #110066; 
+    --yellow: #FFD432;  
+    --white: #FFFFFF;  
+    --grey: #EDEDED;
+    --black: #000000;
 }
 
+/*Corpo*/
+
+body{
+    font-family: arial, helvatica, sans-serif;
+}
+
+/*H1*/
+
+h1{
+    text-align: left;
+    font-size: 32px;
+}
+
+/*Section*/
+
 .element{
-    background-color: rgba(202, 200, 200, 0.651);
+    background-color: var(--grey);
+    margin-left: 15px;
 }
 
 #elementos strong{
-    padding-right: 15px;
+    
 }
 
-#help{
+.help-off {
     color: blue;
     text-align: justify;
 }
 
-/*
-    Oi, faça o botão de #help receber uma cor azul quando estiver off e depois uma cor vermelha quando estiver on!
-*/
+.help-on{
+    color: red;
+    text-align: justify;
+}
+
+/*Res*/

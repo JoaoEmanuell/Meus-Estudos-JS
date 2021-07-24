@@ -5,25 +5,34 @@ function env(){
     element_a = element_a.value
     element_b = element_b.value
     element_c = element_c.value
-    var raizess = raizes(element_a, element_b, element_c)
-    console.log(raizess)
     let del = window.document.getElementById('delta')
     let delt = delta(element_a, element_b, element_c)
     let x1 = window.document.getElementById('x1')
-    let x2 = window.document.getElementById('x2')
-    if (raizess === 999){
-        del.innerHTML = `Delta é igual a ${delt}, portanto a equação não possui raizes reais.`
-        x1.innerHTML = ""
-        x2.innerHTML = ""
-    }
-    else{
-        del.innerHTML = `Delta = ${delt}`
-        x1.innerHTML = `X' = ${Math.round(raizess[0])}`
-        x2.innerHTML = `X'' = ${Math.round(raizess[1])}`
+    let x2 = window.document.getElementById('x2');
+    
+    if (element_a == 0 && element_b == 0 && element_c == 0){
+        del.innerHTML = `Δ = 0`
+        x1.innerHTML = `X' = 0`
+        x2.innerHTML = `X'' = 0`
+    } else {
+        var raizess = raizes(element_a, element_b, element_c)
+        console.log(raizess)
+        if (raizess === 999){
+            del.innerHTML = `Delta é igual a ${delt}, portanto a equação não possui raizes reais.`
+            x1.innerHTML = ""
+            x2.innerHTML = ""
+        }
+        else if (Number.isInteger(raizess[0])){
+            del.innerHTML = `Δ = ${delt}`
+            x1.innerHTML = `X' = ${raizess[0]}`
+            x2.innerHTML = `X'' = ${raizess[1]}`
+        } else{
+            del.innerHTML = `Δ = ${delt}`
+            x1.innerHTML = `X' ≈ ${Math.round(raizess[0])}`
+            x2.innerHTML = `X'' ≈ ${Math.round(raizess[1])}`
+        }
     }
 }
-
-
 
 function raizes(a, b, c){
     let delt = delta(a, b, c)
