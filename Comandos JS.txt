@@ -277,3 +277,9 @@ let object = {key_name:item} = cria um objeto que cada chave pode receber um nom
 this.name = é um metodo que faz com que ele se referencie a uma chave dentro do propio objeto, util para funções
 
 ==================================
+
+HTMLITEM.className = 'name' // modifica o nome da classe de um determinado HTMLITEM
+
+HTMLITEM.id = 'id' // modifica o nome do id de um determinado HTMLITEM
+
+HTMLITEM.src = 'src' // modifica o src de um determinado HTMLITEM
