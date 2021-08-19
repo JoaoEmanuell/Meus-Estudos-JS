@@ -17,19 +17,19 @@ function env(){
     } else {
         var raizess = raizes(element_a, element_b, element_c)
         console.log(raizess)
-        if (raizess === 999){
-            del.innerHTML = `Delta é igual a ${delt}, portanto a equação não possui raizes reais.`
+        if (raizess[0] < 0){
+            del.innerHTML = `Delta é igual a ${raizess[0]}, portanto a equação não possui raizes reais.`
             x1.innerHTML = ""
             x2.innerHTML = ""
         }
-        else if (Number.isInteger(raizess[0])){
+        else if (Number.isInteger(raizess[1])){
             del.innerHTML = `Δ = ${delt}`
-            x1.innerHTML = `X' = ${raizess[0]}`
-            x2.innerHTML = `X'' = ${raizess[1]}`
+            x1.innerHTML = `X' = ${raizess[1]}`
+            x2.innerHTML = `X'' = ${raizess[2]}`
         } else{
             del.innerHTML = `Δ = ${delt}`
-            x1.innerHTML = `X' ≈ ${Math.round(raizess[0])}`
-            x2.innerHTML = `X'' ≈ ${Math.round(raizess[1])}`
+            x1.innerHTML = `X' ≈ ${Math.round(raizess[1])}`
+            x2.innerHTML = `X'' ≈ ${Math.round(raizess[2])}`
         }
     }
 }
@@ -38,37 +38,16 @@ function raizes(a, b, c){
     let delt = delta(a, b, c)
     if (delt < 0){
         console.log(`Delta é igual a ${delt}, portanto a equação não possui raizes reais.`)
-        return 999
+        return [delt, 0, 0]
     }
     else{
         delt = Math.sqrt(delta(a, b, c))
-        if (a < 0){
-            var divisor = 2 * (-a)
-        }
-        else{
-            var divisor = 2 * a
-        }
-        if (b < 0){
-            var x1 = Math.abs(b)
-            var x2 = x1
-        }
-        else{
-            var x1 = (-b)
-            var x2 = x1
-        }
-        x1 = x1 += delt
-        x2 = x2 -= delt
-        let final_x1 = x1 / divisor
-        let final_x2 = x2 / divisor
-        let x1_x2 = [(final_x1), (final_x2)]
-        return x1_x2
+        let x1 = (-b + delt) / (2*a)
+        let x2 = (-b - delt) / (2*a)
+        return [delt, x1, x2]
     }
 }
 
 function delta(a, b, c){
-    let b2 = Math.abs(Math.pow(b, 2)) //b²
-    let a_x_c = a * c // a * c
-    let axc_x_4 = -4 * a_x_c // 4 * (a * c)
-    let end = b2 - (-axc_x_4) // b² - [4 * (a * c)]
-    return end
+    return (b**2) - (4*a*c); 
 }
