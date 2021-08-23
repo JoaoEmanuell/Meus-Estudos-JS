@@ -283,3 +283,14 @@ HTMLITEM.className = 'name' // modifica o nome da classe de um determinado HTMLI
 HTMLITEM.id = 'id' // modifica o nome do id de um determinado HTMLITEM
 
 HTMLITEM.src = 'src' // modifica o src de um determinado HTMLITEM
+
+==================================
+
+CONEXÃO COM API
+
+let request = new XMLHttpRequest(); // Request se torna um objeto com as mesmas caracteristicas da classe XMLHttpRequest()
+request.open("GET", url, false); // Metodo GET, pede a url e um paramentro falso
+request.send(); // Envia o pedido para a url
+request.responseText; // Converte os dados do request em um texto
+JSON.parse(request); // Converte os dados do texto responsivo em um Json
+request.key; // // Extrai os dados que estão na key com o nome informado, basicamente se eu tenho uma key chamada "oi" e os dados dela são "ola" ele irá extrair o ola
