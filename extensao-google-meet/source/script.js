@@ -1,7 +1,7 @@
 var links = []
 const interval = setInterval(() => {
     main();
-}, 5000);
+}, 1000);
 
 function main(){
     let mens = mensages();
