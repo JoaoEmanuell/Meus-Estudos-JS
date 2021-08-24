@@ -1,7 +1,7 @@
 var links = []
 const interval = setInterval(() => {
     main();
-}, 1000);
+}, 5000);
 
 function main(){
     let mens = mensages();
@@ -22,8 +22,13 @@ function main(){
                 }
             }    
             if (validURL(el)){
-                links.push(el);
-                mensage(area, "Link capturado, use !links para retornar a lista de links disponibilizados hoje!", button);
+                if (urlRepetVerify(el, links)){
+                    console.log("Link pode ser adicionado");
+                    links.push(el);
+                    mensage(area, "Link capturado, use !links para retornar a lista de links disponibilizados hoje!", button);
+                } else{
+                    console.log("Link já foi adicionado");
+                }
             } else{
                 console.log("Não é um link!")
             }
@@ -60,6 +65,17 @@ function mensage(area, mensage, button){
     sendMensage(button)
 }
 
+function urlRepetVerify(url, listLinks){
+    let iq = 0;
+    listLinks.forEach(links => {
+        if (links === url){ iq ++; }
+    });
+    if (iq != 0){
+        return false;
+    } else{
+        return true;
+    }
+}
 function validURL(str) {
     var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
       '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
