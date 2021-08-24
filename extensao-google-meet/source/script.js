@@ -13,27 +13,17 @@ function main(){
             if (el === '!links'){
                 if (links.length != 0){
                     links.forEach(element => {
-                        $(area).val(element);
-                        button.removeAttribute("disabled");
-                        $(button).click();
+                        mensage(area, element, button)
                     });
-                    $(area).val("Links de hoje :)");
-                    button.removeAttribute("disabled");
-                    $(button).click();
+                    mensage(area, "Links de hoje :)", button);
                 }
                 else{
-                    area.dir = "ltr";
-                    $(area).val("Nenhum link de frequencia foi disponibilizado ainda!");
-                    button.removeAttribute("disabled");
-                    $(button).click();
+                    mensage(area, "Nenhum link de frequencia foi disponibilizado ainda!", button);
                 }
             }    
             if (validURL(el)){
                 links.push(el);
-                $(area).val("Link capturado, use !links para retornar a lista de links disponibilizados hoje!");
-                button.removeAttribute("disabled");
-                $(button).click();
-                console.log(links)
+                mensage(area, "Link capturado, use !links para retornar a lista de links disponibilizados hoje!", button);
             } else{
                 console.log("Não é um link!")
             }
@@ -42,6 +32,8 @@ function main(){
         console.log("Chat limpo!")
     }
 }
+
+//FUNCTIONS
 
 function mensages(){
     let men = document.querySelectorAll(".oIy2qc");
@@ -56,6 +48,16 @@ function text_area(){
 function mensage_button(){
     button = document.getElementsByClassName("VfPpkd-Bz112c-LgbsSe yHy1rc eT1oJ tWDL4c Cs0vCd");
     return button[0];
+}
+
+function sendMensage(button){
+    button.removeAttribute("disabled");
+    $(button).click();
+}
+
+function mensage(area, mensage, button){
+    $(area).val(mensage);
+    sendMensage(button)
 }
 
 function validURL(str) {
