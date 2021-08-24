@@ -1,7 +1,7 @@
 var links = []
 const interval = setInterval(() => {
     main();
-}, 10000);
+}, 1000);
 
 function main(){
     let mens = mensages();
@@ -17,6 +17,9 @@ function main(){
                         button.removeAttribute("disabled");
                         $(button).click();
                     });
+                    $(area).val("Links de hoje :)");
+                    button.removeAttribute("disabled");
+                    $(button).click();
                 }
                 else{
                     area.dir = "ltr";
@@ -27,6 +30,10 @@ function main(){
             }    
             if (validURL(el)){
                 links.push(el);
+                $(area).val("Link capturado, use !links para retornar a lista de links disponibilizados hoje!");
+                button.removeAttribute("disabled");
+                $(button).click();
+                console.log(links)
             } else{
                 console.log("Não é um link!")
             }
