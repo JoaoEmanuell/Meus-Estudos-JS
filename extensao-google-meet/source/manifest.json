@@ -1,0 +1,24 @@
+{
+    "manifest_version":2,
+    "name":"Links Frequencia Meet",
+    "version":"0.0.1",
+    "description":"Extensão para capturar os links de frequencia do google meet",
+    "content_scripts": 
+    [
+        {
+            "matches": 
+            [
+                "https://meet.google.com/*"
+            ],
+            "css":
+            [
+                "style.css"
+            ],
+            "js":
+            [
+                "script.js"
+            ]
+        }
+    ]
+    
+}
