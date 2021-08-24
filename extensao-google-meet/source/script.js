@@ -6,6 +6,7 @@ const interval = setInterval(() => {
 function main(){
     let mens = mensages();
     let area = text_area();
+    let button = mensage_button();
     if (mens.length != 0) {
         
             let el = $(mens[mens.length - 1]).text();
@@ -13,10 +14,15 @@ function main(){
                 if (links.length != 0){
                     links.forEach(element => {
                         $(area).val(element);
+                        button.removeAttribute("disabled");
+                        $(button).click();
                     });
                 }
                 else{
+                    area.dir = "ltr";
                     $(area).val("Nenhum link de frequencia foi disponibilizado ainda!");
+                    button.removeAttribute("disabled");
+                    $(button).click();
                 }
             }    
             if (validURL(el)){
@@ -38,6 +44,11 @@ function mensages(){
 function text_area(){
     let area = document.querySelector("textarea");
     return area;
+}
+
+function mensage_button(){
+    button = document.getElementsByClassName("VfPpkd-Bz112c-LgbsSe yHy1rc eT1oJ tWDL4c Cs0vCd");
+    return button[0];
 }
 
 function validURL(str) {
