@@ -71,6 +71,7 @@ function urlRepetVerify(url, listLinks){
         return true;
     }
 }
+// URL VALIDATIONS:
 function validURL(str) {
     var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
       '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
@@ -80,6 +81,16 @@ function validURL(str) {
       '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
     return !!pattern.test(str);
   }
+
+function validURL_Docs_Google(str) {
+    var pattern = new RegExp('\^(https:\/\/docs.google.com)')
+    return pattern.test(str);
+}
+
+function validURL_Forms_Google(str) {
+    var pattern = new RegExp('^(https:\/\/forms\.gle\/)')
+    return pattern.test(str);
+}
 
 // Sudo Commands
 
@@ -165,11 +176,10 @@ function publicCommands(el, area, button){
 function addUrl(el, area, button){
     if (validURL(el)){
         if (urlRepetVerify(el, links)){
-            console.log("Link pode ser adicionado");
-            links.push(el);
-            mensage(area, "Link capturado, use !links para retornar a lista de links disponibilizados hoje!", button);
-        } else{
-            //console.log("Link já foi adicionado");
+            if (validURL_Docs_Google(el)||validURL_Forms_Google(el)){
+                links.push(el);
+                mensage(area, "Link capturado, use !links para retornar a lista de links disponibilizados hoje!", button);
+            }
         }
         console.log(links)
     }
