@@ -96,37 +96,45 @@ function validURL_Forms_Google(str) {
 
 function sudoCommands(el, area, button){
     el = String(el).toLowerCase().replace(/\s/g, '');
-    disable(el, area, button);
-    enable(el, area, button);
-    remove(el,area,button);
-    help(el,area,button);
-
+    const sudoPrefix = `)`
+    if (names() === 'Você'){
+        disable(el, area, button);
+        enable(el, area, button);
+        remove(el,area,button);
+        help(el,area,button);
+    } else if(validPrefixSudoCommand(el)){
+        mensage(area, `Desculpe ${names()} mas você não tem permisão para usar comandos de administrador da extensão :/`, button);
+    }
     // local functions
+    function validPrefixSudoCommand(str) {
+        var pattern = new RegExp('^[\)]')
+        return pattern.test(str);
+    }
     function disable(el,area,button){
-        if (el === '+disable' && names() === 'Você'){
+        if (el === `${sudoPrefix}disable`){
             mensage(area, "Extensão desabilitada!", button)
             isAbilite = false;
         }
     }
     function enable(el, area, button){
-        if (el === '+enable' && names() === 'Você'){
+        if (el === `${sudoPrefix}enable`){
             mensage(area, "Extensão habilitada!", button)
             isAbilite = true;
         }
     }
     function remove(el,area,button){
-        if (el === '+remove' && names() === 'Você'){
+        if (el === `${sudoPrefix}remove`){
             links.pop();
             mensage(area, "Ultimo Link removido!", button)
         }
     }
     function help(el,area,button){
-        if (el === '+help' && names() === 'Você'){
+        if (el === `${sudoPrefix}help`){
             mensage(area, "Os comandos de permissão de administrador foram enviados para o console de log!", button);
-            console.log("+disable : desabilita a execução da extensão.");
-            console.log("+enable : habilita a execução da extensão.");
-            console.log("+remove : remove o ultimo link que está na lista de links.");
-            console.log("+help : exibe esse quadro de ajuda.")
+            console.log(`${sudoPrefix}disable : desabilita a execução da extensão.`);
+            console.log(`${sudoPrefix}enable : habilita a execução da extensão.`);
+            console.log(`${sudoPrefix}remove : remove o ultimo link que está na lista de links.`);
+            console.log(`${sudoPrefix}help : exibe esse quadro de ajuda.`)
     }
 }
 
