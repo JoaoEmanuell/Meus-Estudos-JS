@@ -3,6 +3,7 @@
     "name":"Links Frequencia Meet",
     "version":"0.0.1",
     "description":"Extensão para capturar os links de frequencia do google meet",
+    "author":"João Emanuel",
     "content_scripts": 
     [
         {

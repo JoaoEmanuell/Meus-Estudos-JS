@@ -294,3 +294,20 @@ request.send(); // Envia o pedido para a url
 request.responseText; // Converte os dados do request em um texto
 JSON.parse(request); // Converte os dados do texto responsivo em um Json
 request.key; // // Extrai os dados que estão na key com o nome informado, basicamente se eu tenho uma key chamada "oi" e os dados dela são "ola" ele irá extrair o ola
+
+==================================
+
+CONSTANTES CONST
+
+Constantes são espaços de memorias que não podem ser sobreescritos, eles são usados na declaração de dados que devem sofrer alterações.
+
+Declaração:
+
+    const nome = dado;
+    
+Porém se eu criar uma const que receba um array ou um objeto, eu posso alterar as mesmas sem que seja retornado um erro
+
+    const linguagens = ['python', 'java', 'javascrip'];
+    
+    linguagens[1] = 'php';
+==================================
