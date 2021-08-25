@@ -8,13 +8,20 @@ Assim quando um estudante digitar um !links ele irá retornar os links da chamad
 
 ## OBJETIVOS
 
-**VERSÃO: 0.0.1**
+- [x] **VERSÃO: 0.0.1**
 
-* Captura absoluta de links colocados no chat durante a chamada.
-* Comando de retorno dos links e auto envio da mensagem.
+  * Captura absoluta de links colocados no chat durante a chamada.
+  * Comando de retorno dos links e auto envio da mensagem.
+#####
+- [x] **VERSÃO: 0.0.2**
 
-**VERSÃO: 0.0.2**
+  * Verificação de links que pertencem ao **[Google Forms](https://www.google.com/forms/)**
 
-* Verificação de links que pertencem ao **[Google Forms](https://www.google.com/forms/)**
+  * Retorno dos links.
 
-* Retorno dos links.
+####
+- [ ] **Versão: 0.0.3**
+
+    * Impedimento de spwan para envitar que os usuarios chamem a extensão muitas vezes em um curto periodo de tempo.
+
+    * Comando para setar o tempo de execuções da extensão.
