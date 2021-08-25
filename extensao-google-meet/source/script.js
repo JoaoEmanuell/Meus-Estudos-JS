@@ -84,7 +84,7 @@ function validURL(str) {
 // Sudo Commands
 
 function sudoCommands(el, area, button){
-    el = String(el).toLowerCase();
+    el = String(el).toLowerCase().replace(/\s/g, '');
     disable(el, area, button);
     enable(el, area, button);
     remove(el,area,button);
@@ -110,7 +110,7 @@ function sudoCommands(el, area, button){
         }
     }
     function help(el,area,button){
-        if (el === '+help'){
+        if (el === '+help' && names() === 'Você'){
             mensage(area, "Os comandos de permissão de administrador foram enviados para o console de log!", button);
             console.log("+disable : desabilita a execução da extensão.");
             console.log("+enable : habilita a execução da extensão.");
@@ -124,7 +124,7 @@ function sudoCommands(el, area, button){
 // Public Commands
 
 function publicCommands(el, area, button){
-    el = String(el).toLowerCase();
+    el = String(el).toLowerCase().replace(/\s/g, '');
     getLinks(el, area, button);
     getTime(el, area, button)
     getHelp(el,area,button);
