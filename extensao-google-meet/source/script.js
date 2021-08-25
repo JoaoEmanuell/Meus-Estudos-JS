@@ -1,3 +1,4 @@
+var isAbilite = true;
 var links = []
 const interval = setInterval(() => {
     main();
@@ -8,33 +9,48 @@ function main(){
     let area = text_area();
     let button = mensage_button();
     if (mens.length != 0) {
-        
+            //sudo commands
             let el = $(mens[mens.length - 1]).text();
-            if (el === '!links'){
-                if (links.length != 0){
-                    links.forEach(element => {
-                        mensage(area, element, button)
-                    });
-                    mensage(area, "Links de hoje :)", button);
-                }
-                else{
-                    mensage(area, "Nenhum link de frequencia foi disponibilizado ainda!", button);
-                }
-            }    
-            if (validURL(el)){
-                if (urlRepetVerify(el, links)){
-                    console.log("Link pode ser adicionado");
-                    links.push(el);
-                    mensage(area, "Link capturado, use !links para retornar a lista de links disponibilizados hoje!", button);
+            if (el === '+disable' && names() === 'Você'){
+                console.log("Extensão desabilitada");
+                isAbilite = false;
+            }else if (el === '+enable' && names() === 'Você'){
+                console.log("Extensão habilitada");
+                isAbilite = true;
+            }else if (el === '+remove' && names() === 'Você'){
+                console.log("Ultimo link removido");
+                links.pop();
+            }
+            // public commands
+            else if (isAbilite){
+                if (el === '!links'){
+                    if (links.length != 0){
+                        links.forEach(element => {
+                            mensage(area, element, button)
+                        });
+                        mensage(area, "Links de hoje :)", button);
+                    }
+                    else{
+                        mensage(area, "Nenhum link de frequencia foi disponibilizado ainda!", button);
+                    }
+                }    
+                if (validURL(el)){
+                    if (urlRepetVerify(el, links)){
+                        console.log("Link pode ser adicionado");
+                        links.push(el);
+                        mensage(area, "Link capturado, use !links para retornar a lista de links disponibilizados hoje!", button);
+                    } else{
+                        //console.log("Link já foi adicionado");
+                    }
+                    console.log(links)
                 } else{
-                    console.log("Link já foi adicionado");
+                    //console.log("Não é um link!")
                 }
-            } else{
-                console.log("Não é um link!")
+                
             }
         
     }else{
-        console.log("Chat limpo!")
+        //console.log("Chat limpo!")
     }
 }
 
@@ -53,6 +69,12 @@ function text_area(){
 function mensage_button(){
     button = document.getElementsByClassName("VfPpkd-Bz112c-LgbsSe yHy1rc eT1oJ tWDL4c Cs0vCd");
     return button[0];
+}
+
+function names(){
+    let nameees = document.querySelectorAll(".YTbUzc");
+    let lastname = $(nameees[nameees.length - 1]).text();
+    return lastname;
 }
 
 function sendMensage(button){
