@@ -100,7 +100,7 @@ function validURL_Forms_Google(str) {
 // Sudo Commands
 
 function sudoCommands(el, area, button){
-    el = String(el).toLowerCase().replace(/\s/g, '');
+    el = String(el).toLowerCase().trim();
     if (names() === 'Você'){
         disable(el, area, button);
         enable(el, area, button);
@@ -143,7 +143,7 @@ function sudoCommands(el, area, button){
 // Public Commands
 
 function publicCommands(el, area, button){
-    el = String(el).toLowerCase().replace(/\s/g, '');
+    el = String(el).toLowerCase().trim();
     getLinks(el, area, button);
     getTime(el, area, button)
     // getHelp(el,area,button);
