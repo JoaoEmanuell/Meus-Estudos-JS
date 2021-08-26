@@ -1,6 +1,19 @@
 class urlsVerify{
-    constructor (men){
+    constructor (men, area, button){
         this._men = String(men);
+        this._area = area;
+        this._button = button;
+    }
+
+    main(){
+        if (this.urlRepetVerify(links)){
+            if (this.validURL_Docs_Google()||this.validURL_Forms_Google(this._men)){
+                links.push(this._men);
+                mensage(this._area, "Link capturado, use !links ou !li para retornar a lista de links disponibilizados hoje!", this._button);
+                mensage(this._area, "Mensagem automatica.", this._button);
+                console.log(links)
+            }
+        }
     }
     urlRepetVerify(listLinks){
     let iq = 0;

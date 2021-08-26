@@ -84,15 +84,8 @@ function PC(el, area, button){
 // Add url
 
 function addUrl(el, area, button){
-    const urlValidate = new urlsVerify(el);
-    if (urlValidate.urlRepetVerify(links)){
-        if (urlValidate.validURL_Docs_Google()||urlValidate.validURL_Forms_Google(el)){
-            links.push(el);
-            mensage(area, "Link capturado, use !links ou !li para retornar a lista de links disponibilizados hoje!", button);
-            mensage(area, "Mensagem automatica.", button);
-            console.log(links)
-        }
-    }
+    const urlvalidate = new urlsVerify(el, area, button);
+    urlvalidate.main();
 }
 
 // Span
