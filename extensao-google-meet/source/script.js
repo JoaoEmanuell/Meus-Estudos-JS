@@ -1,6 +1,7 @@
 var isAbilite = true;
 var links = [];
 var time = 0;
+var span_time = 0;
 const sudoPrefix = `¬`
 const publicPrefix = `!`
 const interval = setInterval(() => {
@@ -24,7 +25,9 @@ function main(){
         if (isAbilite){
 
             // public commands
-            if (String(el)[0] === publicPrefix){
+            if (String(el)[0] === publicPrefix && span_time >= time){
+                mensage(area, `Por favor espere mais ${span_time - time} segundos para chamar o comando novamente`, button)
+            } else if (String(el)[0] === publicPrefix){
                 publicCommands(el, area, button);
             }
             // add Url
@@ -101,6 +104,7 @@ function validURL_Forms_Google(str) {
 
 function sudoCommands(el, area, button){
     el = String(el).toLowerCase().trim();
+    //verificate if your name is a sudo name
     if (names() === 'Você'){
         disable(el, area, button);
         enable(el, area, button);
@@ -156,6 +160,7 @@ function publicCommands(el, area, button){
             mensage(area, `${publicPrefix}links ou ${publicPrefix}li : Retorna os links que foram colocados no chat até o exato momento, caso não tenha nenhum link ela irá retornar "Nenhum link de frequencia foi disponibilizado ainda!".`, button);
             mensage(area, `${publicPrefix}help ou ${publicPrefix}h : Retorna esse bloco de comandos, espero que ele esteja sendo util!`, button);
             mensage(area, `${publicPrefix}time ou ${publicPrefix}t : Retorna a quanto segundos estamos na aula! No caso agora estamos há ${time} segundos!`,button);
+            setSpanTime(15);
         }
     }
 
@@ -170,11 +175,13 @@ function publicCommands(el, area, button){
             else{
                 mensage(area, "Nenhum link de frequencia foi disponibilizado ainda!", button);
             }
+            setSpanTime(15);
         }
     }
     function getTime(el, area, button){
         if (el == `${publicPrefix}time` || el === `${publicPrefix}t`){
             mensage(area, `Estamos aqui a ${time} segundos`, button)
+            setSpanTime(15);
         }
     }
 }
@@ -190,6 +197,13 @@ function addUrl(el, area, button){
                 console.log(links)
             }
         }
+}
+
+// Span
+
+function setSpanTime(tim){
+    span_time = time + tim;
+    console.log(span_time)
 }
 
 /*! jQuery v3.6.0 | (c) OpenJS Foundation and other contributors | jquery.org/license */
