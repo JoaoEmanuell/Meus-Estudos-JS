@@ -106,14 +106,10 @@ function sudoCommands(el, area, button){
         enable(el, area, button);
         remove(el,area,button);
         help(el,area,button);
-    } else if(validPrefixSudoCommand(el)){
+    } else if(el[0] === sudoPrefix){
         mensage(area, `Desculpe ${names()} mas você não tem permisão para usar comandos de administrador da extensão :/`, button);
     }
     // local functions
-    function validPrefixSudoCommand(str) {
-        var pattern = new RegExp('^[\)]')
-        return pattern.test(str);
-    }
     function disable(el,area,button){
         if (el === `${sudoPrefix}disable`){
             mensage(area, "Extensão desabilitada!", button)
