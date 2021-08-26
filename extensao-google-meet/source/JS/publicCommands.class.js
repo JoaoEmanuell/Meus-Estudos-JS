@@ -4,6 +4,12 @@ class publicCommands{
         this._area = area;
         this._button = button;
     }
+
+    main(){
+        this.getHelp();
+        this.getLinks();
+        this.getTime();
+    }
     // Local Methods
     getHelp(){
         if (this._el === `${publicPrefix}help` || this._el === `${publicPrefix}h`){

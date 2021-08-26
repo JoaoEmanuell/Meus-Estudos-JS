@@ -78,10 +78,8 @@ function SC(el, area, button){
 // Public Commands
 
 function PC(el, area, button){
-    const publicCommnds = new publicCommands(el, area, button);
-    publicCommnds.getHelp();
-    publicCommnds.getLinks();
-    publicCommnds.getTime();
+    const publiccommands = new publicCommands(el, area, button);
+    publiccommands.main();
 }
 // Add url
 
