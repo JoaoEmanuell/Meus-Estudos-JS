@@ -22,6 +22,6 @@ Assim quando um estudante digitar um !links ele irá retornar os links da chamad
 ####
 - [ ] **Versão: 0.0.3**
 
-    * Impedimento de spwan para evitar que os usuarios chamem a extensão muitas vezes em um curto periodo de tempo.
+    * Anti-span para evitar que os usuarios chamem a extensão muitas vezes em um curto periodo de tempo.
 
-    * Comando para setar o tempo de execuções da extensão.
+    * Help publico basico criado
