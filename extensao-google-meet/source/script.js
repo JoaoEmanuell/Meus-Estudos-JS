@@ -150,16 +150,14 @@ function publicCommands(el, area, button){
     el = String(el).toLowerCase().trim();
     getLinks(el, area, button);
     getTime(el, area, button)
-    // getHelp(el,area,button);
+    getHelp(el,area,button);
     // Local Functions
 
     function getHelp(el ,area, button){
         if (el === `${publicPrefix}help` || el === `${publicPrefix}h`){
-            mensage(area, `Ola ${String(names())}, seja muito bem vindo ou bem vinda ao sistema de ajuda da extensão`, button);
-            mensage(area, "COMANDOS:", button);
-            mensage(area, `${publicPrefix}links ou ${publicPrefix}li : Retorna os links que foram colocados no chat até o exato momento, caso não tenha nenhum link ela irá retornar "Nenhum link de frequencia foi disponibilizado ainda!".`, button);
-            mensage(area, `${publicPrefix}help ou ${publicPrefix}h : Retorna esse bloco de comandos, espero que ele esteja sendo util!`, button);
-            mensage(area, `${publicPrefix}time ou ${publicPrefix}t : Retorna a quanto segundos estamos na aula! No caso agora estamos há ${time} segundos!`,button);
+            mensage(area, `"${publicPrefix}links" ou " ${publicPrefix}li " : Retorna os links que foram colocados no chat até o exato momento`, button);
+            mensage(area, `"${publicPrefix}help" ou " ${publicPrefix}h " : Retorna esse bloco de comandos`, button);
+            mensage(area, `"${publicPrefix}time" ou " ${publicPrefix}t " : Retorna a quanto segundos estamos na aula!`,button);
             setSpanTime(15);
         }
     }
