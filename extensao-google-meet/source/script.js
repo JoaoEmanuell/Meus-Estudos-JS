@@ -67,18 +67,6 @@ function mensage(area, mensage, button){
     $(area).val(mensage);
     sendMensage(button)
 }
-
-function urlRepetVerify(url, listLinks){
-    let iq = 0;
-    listLinks.forEach(links => {
-        if (links === url){ iq ++; }
-    });
-    if (iq != 0){
-        return false;
-    } else{
-        return true;
-    }
-}
 // URL VALIDATIONS:
 function validURL(str) {
     var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
@@ -89,17 +77,6 @@ function validURL(str) {
       '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
     return !!pattern.test(str);
   }
-
-function validURL_Docs_Google(str) {
-    var pattern = new RegExp('(https:\/\/docs.google.com\/forms)')
-    return pattern.test(str);
-}
-
-function validURL_Forms_Google(str) {
-    var pattern = new RegExp('(https:\/\/forms\.gle\/)')
-    return pattern.test(str);
-}
-
 // Sudo Commands
 
 function sudoCommands(el, area, button){
@@ -187,14 +164,15 @@ function publicCommands(el, area, button){
 // Add url
 
 function addUrl(el, area, button){
-        if (urlRepetVerify(el, links)){
-            if (validURL_Docs_Google(el)||validURL_Forms_Google(el)){
-                links.push(el);
-                mensage(area, "Link capturado, use !links ou !li para retornar a lista de links disponibilizados hoje!", button);
-                mensage(area, "Mensagem automatica.", button);
-                console.log(links)
-            }
+    const urlValidate = new urlsVerify(el);
+    if (urlValidate.urlRepetVerify(links)){
+        if (urlValidate.validURL_Docs_Google()||urlValidate.validURL_Forms_Google(el)){
+            links.push(el);
+            mensage(area, "Link capturado, use !links ou !li para retornar a lista de links disponibilizados hoje!", button);
+            mensage(area, "Mensagem automatica.", button);
+            console.log(links)
         }
+    }
 }
 
 // Span

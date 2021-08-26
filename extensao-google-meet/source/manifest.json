@@ -17,9 +17,8 @@
             ],
             "js":
             [
-                "script.js"
+                "script.js", "./JS/urlsVerify.class.js"
             ]
         }
     ]
-    
 }
