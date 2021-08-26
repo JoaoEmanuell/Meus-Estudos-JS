@@ -5,11 +5,6 @@ class publicCommands{
         this._button = button;
     }
     // Local Methods
-    /*
-    getLinks();
-    getTime();
-    getHelp();
-    */
     getHelp(){
         if (this._el === `${publicPrefix}help` || this._el === `${publicPrefix}h`){
             mensage(this._area, `"${publicPrefix}links" ou " ${publicPrefix}li " : Retorna os links que foram colocados no chat até o exato momento`, this._button);

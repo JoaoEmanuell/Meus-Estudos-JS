@@ -18,7 +18,7 @@ function main(){
         let el = $(mens[mens.length - 1]).text();
         //sudo commands
         if (String(el)[0] === sudoPrefix){
-            sudoCommands(el, area, button);
+            SC(el, area, button);
         }
             
 
@@ -70,46 +70,9 @@ function mensage(area, mensage, button){
 }
 // Sudo Commands
 
-function sudoCommands(el, area, button){
-    el = String(el).toLowerCase().trim();
-    //verificate if your name is a sudo name
-    if (names() === 'Você'){
-        disable(el, area, button);
-        enable(el, area, button);
-        remove(el,area,button);
-        help(el,area,button);
-    } else if(el[0] === sudoPrefix){
-        mensage(area, `Desculpe ${names()} mas você não tem permisão para usar comandos de administrador da extensão :/`, button);
-    }
-    // local functions
-    function disable(el,area,button){
-        if (el === `${sudoPrefix}disable`){
-            mensage(area, "Extensão desabilitada!", button)
-            isAbilite = false;
-        }
-    }
-    function enable(el, area, button){
-        if (el === `${sudoPrefix}enable`){
-            mensage(area, "Extensão habilitada!", button)
-            isAbilite = true;
-        }
-    }
-    function remove(el,area,button){
-        if (el === `${sudoPrefix}remove`){
-            links.pop();
-            mensage(area, "Ultimo Link removido!", button)
-        }
-    }
-    function help(el,area,button){
-        if (el === `${sudoPrefix}help`){
-            mensage(area, "Os comandos de permissão de administrador foram enviados para o console de log!", button);
-            console.log(`${sudoPrefix}disable : desabilita a execução da extensão.`);
-            console.log(`${sudoPrefix}enable : habilita a execução da extensão.`);
-            console.log(`${sudoPrefix}remove : remove o ultimo link que está na lista de links.`);
-            console.log(`${sudoPrefix}help : exibe esse quadro de ajuda.`)
-    }
-}
-
+function SC(el, area, button){
+    const sudocommands = new sudoCommands(el, area, button);
+    sudocommands.main();
 }
 
 // Public Commands
