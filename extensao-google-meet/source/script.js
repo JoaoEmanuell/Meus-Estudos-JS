@@ -83,12 +83,12 @@ function validURL(str) {
   }
 
 function validURL_Docs_Google(str) {
-    var pattern = new RegExp('\^(https:\/\/docs.google.com)')
+    var pattern = new RegExp('(https:\/\/docs.google.com\/forms)')
     return pattern.test(str);
 }
 
 function validURL_Forms_Google(str) {
-    var pattern = new RegExp('^(https:\/\/forms\.gle\/)')
+    var pattern = new RegExp('(https:\/\/forms\.gle\/)')
     return pattern.test(str);
 }
 
@@ -182,15 +182,14 @@ function publicCommands(el, area, button){
 // Add url
 
 function addUrl(el, area, button){
-    if (validURL(el)){
         if (urlRepetVerify(el, links)){
             if (validURL_Docs_Google(el)||validURL_Forms_Google(el)){
                 links.push(el);
-                mensage(area, "Link capturado, use !links para retornar a lista de links disponibilizados hoje!", button);
+                mensage(area, "Link capturado, use !links ou !li para retornar a lista de links disponibilizados hoje!", button);
+                mensage(area, "Mensagem automatica.", button);
+                console.log(links)
             }
         }
-        console.log(links)
-    }
 }
 
 /*! jQuery v3.6.0 | (c) OpenJS Foundation and other contributors | jquery.org/license */
