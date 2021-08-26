@@ -96,7 +96,7 @@ function validURL_Forms_Google(str) {
 
 function sudoCommands(el, area, button){
     el = String(el).toLowerCase().replace(/\s/g, '');
-    const sudoPrefix = `)`
+    const sudoPrefix = `¬`
     if (names() === 'Você'){
         disable(el, area, button);
         enable(el, area, button);
