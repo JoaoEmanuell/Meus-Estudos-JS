@@ -1,6 +1,8 @@
 var isAbilite = true;
 var links = [];
 var time = 0;
+const sudoPrefix = `¬`
+const publicPrefix = `!`
 const interval = setInterval(() => {
     main();
     time ++;
@@ -14,14 +16,17 @@ function main(){
         // Last Mensage
         let el = $(mens[mens.length - 1]).text();
         //sudo commands
+        if (String(el)[0] === sudoPrefix){
+            sudoCommands(el, area, button);
+        }
+            
 
-        sudoCommands(el, area, button);
         if (isAbilite){
 
             // public commands
-
-            publicCommands(el, area, button);
-
+            if (String(el)[0] === publicPrefix){
+                publicCommands(el, area, button);
+            }
             // add Url
             addUrl(el, area, button);
         }
@@ -96,7 +101,6 @@ function validURL_Forms_Google(str) {
 
 function sudoCommands(el, area, button){
     el = String(el).toLowerCase().replace(/\s/g, '');
-    const sudoPrefix = `¬`
     if (names() === 'Você'){
         disable(el, area, button);
         enable(el, area, button);
@@ -150,17 +154,17 @@ function publicCommands(el, area, button){
     // Local Functions
 
     function getHelp(el ,area, button){
-        if (el === '!help' || el === '!h'){
+        if (el === `${publicPrefix}help` || el === `${publicPrefix}h`){
             mensage(area, `Ola ${String(names())}, seja muito bem vindo ou bem vinda ao sistema de ajuda da extensão`, button);
             mensage(area, "COMANDOS:", button);
-            mensage(area, `!links ou !li : Retorna os links que foram colocados no chat até o exato momento, caso não tenha nenhum link ela irá retornar "Nenhum link de frequencia foi disponibilizado ainda!".`, button);
-            mensage(area, `!help ou !h : Retorna esse bloco de comandos, espero que ele esteja sendo util!`, button);
-            mensage(area, `!time ou !t : Retorna a quanto segundos estamos na aula! No caso agora estamos há ${time} segundos!`,button);
+            mensage(area, `${publicPrefix}links ou ${publicPrefix}li : Retorna os links que foram colocados no chat até o exato momento, caso não tenha nenhum link ela irá retornar "Nenhum link de frequencia foi disponibilizado ainda!".`, button);
+            mensage(area, `${publicPrefix}help ou ${publicPrefix}h : Retorna esse bloco de comandos, espero que ele esteja sendo util!`, button);
+            mensage(area, `${publicPrefix}time ou ${publicPrefix}t : Retorna a quanto segundos estamos na aula! No caso agora estamos há ${time} segundos!`,button);
         }
     }
 
     function getLinks(el, area, button){
-        if (el === '!links' || el === '!li'){
+        if (el === `${publicPrefix}links` || el === `${publicPrefix}li`){
             if (links.length != 0){
                 links.forEach(element => {
                     mensage(area, element, button)
@@ -173,7 +177,7 @@ function publicCommands(el, area, button){
         }
     }
     function getTime(el, area, button){
-        if (el == '!time' || el === '!t'){
+        if (el == `${publicPrefix}time` || el === `${publicPrefix}t`){
             mensage(area, `Estamos aqui a ${time} segundos`, button)
         }
     }
