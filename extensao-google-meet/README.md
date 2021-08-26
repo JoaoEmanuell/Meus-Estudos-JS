@@ -20,8 +20,20 @@ Assim quando um estudante digitar um !links ele irá retornar os links da chamad
   * Retorno dos links.
 
 ####
-- [ ] **Versão: 0.0.3**
+- [x] **Versão: 0.0.3**
 
     * Anti-span para evitar que os usuarios chamem a extensão muitas vezes em um curto periodo de tempo.
 
-    * Help publico basico criado
+    * Help publico basico criado.
+
+####
+
+- [ ] **Versão: 0.0.4**
+
+    * Função publica para deixar o texto todo em caracteres maiusculos.
+
+    * Função publica para deixar o texto todo em caracteres minusculos.
+
+    * Função publica para deixar o texto em um caracter minusculo e outro maisculo.
+
+    * Função privada para adicionar uma frase de exceção que não será adicionada caso seja um link.
