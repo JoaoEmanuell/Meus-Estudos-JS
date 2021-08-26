@@ -146,7 +146,7 @@ function publicCommands(el, area, button){
     el = String(el).toLowerCase().replace(/\s/g, '');
     getLinks(el, area, button);
     getTime(el, area, button)
-    getHelp(el,area,button);
+    // getHelp(el,area,button);
     // Local Functions
 
     function getHelp(el ,area, button){
