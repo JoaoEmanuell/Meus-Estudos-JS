@@ -49,7 +49,7 @@ class publicCommands{
             let text = this._el.replace(`${publicPrefix}upper `, ``)
             text = text.replace(`${publicPrefix}up `, ``);
             mensage(this._area, `${text.toUpperCase()}`, this._button);
-            setSpanTime(15);
+            setSpanTime(5);
         }
     }
     setTextToLowerCase(){
@@ -58,7 +58,7 @@ class publicCommands{
             let text = this._el.replace(`${publicPrefix}lower `, ``)
             text = text.replace(`${publicPrefix}lo `, ``);
             mensage(this._area, `${text.toLowerCase()}`, this._button);
-            setSpanTime(15);
+            setSpanTime(5);
         }
     }
     setTextToUpperCaseAndLowerCase(){
@@ -77,6 +77,7 @@ class publicCommands{
                 letter ++;
             }
             mensage(this._area, text_convert, this._button);
+            setSpanTime(5);
         }
     }
 }

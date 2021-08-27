@@ -7,7 +7,7 @@ const publicPrefix = `!`
 const interval = setInterval(() => {
     main();
     time ++;
-}, 3000);
+}, 1000);
 
 function main(){
     var mens = document.querySelectorAll(".oIy2qc");
