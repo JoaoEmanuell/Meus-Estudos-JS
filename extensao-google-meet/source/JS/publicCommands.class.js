@@ -9,7 +9,8 @@ class publicCommands{
         this.getHelp();
         this.getLinks();
         this.getTime();
-        this.setTextToUpperCase();
+        this.setTexToUpperCase();
+        this.setTextToLowerCase();
     }
     // Local Methods
     getHelp(){
@@ -41,11 +42,21 @@ class publicCommands{
             setSpanTime(15);
         }
     }
-    setTextToUpperCase(){
-        if (this._el.indexOf(`${publicPrefix}upper` >= 0) || this._el.indexOf(`${publicPrefix}up` >= 0)){
+    setTexToUpperCase(){
+        if (this._el.indexOf(`${publicPrefix}upper`) >= 0 || this._el.indexOf(`${publicPrefix}up`) >= 0 ){
+            console.log("setTexToUpperCase")
             let text = this._el.replace(`${publicPrefix}upper `, ``)
             text = text.replace(`${publicPrefix}up `, ``);
             mensage(this._area, `${text.toUpperCase()}`, this._button);
+            setSpanTime(15);
+        }
+    }
+    setTextToLowerCase(){
+        if (this._el.indexOf(`${publicPrefix}lower`) >= 0 || this._el.indexOf(`${publicPrefix}lo`) >= 0 ){
+            console.log("setTextToLowerCase")
+            let text = this._el.replace(`${publicPrefix}lower `, ``)
+            text = text.replace(`${publicPrefix}lo `, ``);
+            mensage(this._area, `${text.toLowerCase()}`, this._button);
             setSpanTime(15);
         }
     }
