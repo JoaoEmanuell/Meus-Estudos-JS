@@ -11,6 +11,7 @@ class publicCommands{
         this.getTime();
         this.setTexToUpperCase();
         this.setTextToLowerCase();
+        this.setTextToUpperCaseAndLowerCase();
     }
     // Local Methods
     getHelp(){
@@ -58,6 +59,24 @@ class publicCommands{
             text = text.replace(`${publicPrefix}lo `, ``);
             mensage(this._area, `${text.toLowerCase()}`, this._button);
             setSpanTime(15);
+        }
+    }
+    setTextToUpperCaseAndLowerCase(){
+        if (this._el.indexOf(`${publicPrefix}lp`) >= 0){
+            this._el = this._el.replace(`${publicPrefix}upperlower `, ``);
+            this._el = this._el.replace(`${publicPrefix}lp `, ``);
+            let letter = 0;
+            let text_convert = '';
+            while (letter != this._el.length){
+                const div = (letter % 2);
+                if (div === 0){
+                    text_convert += this._el[letter].toUpperCase();
+                } else if(div === 1){
+                    text_convert += this._el[letter].toLowerCase();
+                }
+                letter ++;
+            }
+            mensage(this._area, text_convert, this._button);
         }
     }
 }
