@@ -10,9 +10,9 @@ const interval = setInterval(() => {
 }, 1000);
 
 function main(){
-    let mens = getMensages();
-    let area = getText_area();
-    let button = getMensage_button();
+    var mens = document.querySelectorAll(".oIy2qc");
+    var area = document.querySelector("textarea");
+    var button = document.getElementsByClassName("VfPpkd-Bz112c-LgbsSe yHy1rc eT1oJ tWDL4c Cs0vCd")[0];
     if (mens.length != 0) {
         // Last Mensage
         let el = $(mens[mens.length - 1]).text();
@@ -38,35 +38,16 @@ function main(){
 
 //FUNCTIONS
 
-function getMensages(){
-    let men = document.querySelectorAll(".oIy2qc");
-    return men;
-}
-
-function getText_area(){
-    let area = document.querySelector("textarea");
-    return area;
-}
-
-function getMensage_button(){
-    let button = document.getElementsByClassName("VfPpkd-Bz112c-LgbsSe yHy1rc eT1oJ tWDL4c Cs0vCd");
-    return button[0];
-}
-
 function names(){
-    let nameees = document.querySelectorAll(".YTbUzc");
+    const nameees = document.querySelectorAll(".YTbUzc");
     let lastname = $(nameees[nameees.length - 1]).text();
     return lastname;
 }
 
-function sendMensage(button){
-    button.removeAttribute("disabled");
-    $(button).click();
-}
-
 function mensage(area, mensage, button){
     $(area).val(mensage);
-    sendMensage(button)
+    button.removeAttribute("disabled");
+    $(button).click();
 }
 // Sudo Commands
 

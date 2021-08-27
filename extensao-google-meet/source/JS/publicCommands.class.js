@@ -23,8 +23,8 @@ class publicCommands{
     getLinks(){
         if (this._el === `${publicPrefix}links` || this._el === `${publicPrefix}li`){
             if (links.length != 0){
-                links.forEach(element => {
-                    mensage(this._area, element, this._button)
+                links.forEach(link => {
+                    mensage(this._area, link, this._button)
                 });
                 mensage(this._area, "Links de hoje :)", this._button);
             }
