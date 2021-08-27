@@ -18,7 +18,7 @@ class urlsVerify{
     urlRepetVerify(listLinks){
     let iq = 0;
     listLinks.forEach(links => {
-        if (links === this._men){ iq ++}
+        if (links === this._men || links.indexOf(this._men) <= 0){ iq ++}
     });
     if (iq != 0){
         return false;
