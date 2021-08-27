@@ -9,6 +9,7 @@ class publicCommands{
         this.getHelp();
         this.getLinks();
         this.getTime();
+        this.setTextToUpperCase();
     }
     // Local Methods
     getHelp(){
@@ -37,6 +38,14 @@ class publicCommands{
     getTime(){
         if (this._el == `${publicPrefix}time` || this._el === `${publicPrefix}t`){
             mensage(this._area, `Estamos aqui a ${time} segundos`, this._button)
+            setSpanTime(15);
+        }
+    }
+    setTextToUpperCase(){
+        if (this._el.indexOf(`${publicPrefix}upper` >= 0) || this._el.indexOf(`${publicPrefix}up` >= 0)){
+            let text = this._el.replace(`${publicPrefix}upper `, ``)
+            text = text.replace(`${publicPrefix}up `, ``);
+            mensage(this._area, `${text.toUpperCase()}`, this._button);
             setSpanTime(15);
         }
     }
