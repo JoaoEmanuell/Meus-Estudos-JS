@@ -13,6 +13,7 @@ class sudoCommands{
         this.enable();
         this.remove();
         this.help();
+        this.links();
         
     } else if(this._el[0] === sudoPrefix){
         mensage(this._area, `Desculpe ${names()} mas você não tem permisão para usar comandos de administrador da extensão :/`, this._button);
@@ -44,6 +45,13 @@ class sudoCommands{
             console.log(`${sudoPrefix}enable : habilita a execução da extensão.`);
             console.log(`${sudoPrefix}remove : remove o ultimo link que está na lista de links.`);
             console.log(`${sudoPrefix}help : exibe esse quadro de ajuda.`)
+        }
+    }
+    links(){
+        if (this._el === `${sudoPrefix}links`){
+            const publiccommands = new publicCommands(this._el.replace("¬", "!"), this._area, this._button);
+            publiccommands.getLinks(); 
+            span_time = 0;
         }
     }
 }
