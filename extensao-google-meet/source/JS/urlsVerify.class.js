@@ -7,7 +7,7 @@ class urlsVerify{
 
     main(){
         if (this.urlRepetVerify(links)){
-            if (this.validURL_Docs_Google()||this.validURL_Forms_Google(this._men)){
+            if (this.validURL_Docs_Google()||this.validURL_Forms_Google()){
                 links.push(this._men);
                 mensage(this._area, "Link capturado, use !links ou !li para retornar a lista de links disponibilizados hoje!", this._button);
                 mensage(this._area, "Mensagem automatica.", this._button);
@@ -18,7 +18,7 @@ class urlsVerify{
     urlRepetVerify(listLinks){
     let iq = 0;
     listLinks.forEach(links => {
-        if (links === this._men || links.indexOf(this._men) <= 0){ iq ++}
+        if (links === this._men|| this._men.indexOf(links) >= 0){ iq ++}
     });
     if (iq != 0){
         return false;

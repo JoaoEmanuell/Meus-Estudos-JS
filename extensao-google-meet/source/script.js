@@ -2,6 +2,7 @@ var isAbilite = true;
 var links = [];
 var time = 0;
 var span_time = 0;
+var linkExcpetion = [];
 const sudoPrefix = `¬`
 const publicPrefix = `!`
 const interval = setInterval(() => {

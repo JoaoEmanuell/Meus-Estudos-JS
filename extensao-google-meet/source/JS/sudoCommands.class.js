@@ -54,4 +54,11 @@ class sudoCommands{
             span_time = 0;
         }
     }
+    setLinkExcept(){
+        if (this._el.indexOf(`${sudoPrefix}linkExcept`) >= 0){
+            const word = this._el.replace(`${sudoPrefix}linkExcept `, ``);
+            linkExcpetion.push(word);
+            mensage(this._area, `${word} adicionado a lista de exeção`, this._button);
+        }
+    }
 }
