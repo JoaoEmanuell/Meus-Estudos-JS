@@ -32,7 +32,7 @@ function main(){
                 PC(el, area, button);
             }
             // add Url
-            addUrl(el, area, button);
+            const addUrl = new urlsVerify(el, area, button);
         }
     }
 }
@@ -63,13 +63,6 @@ function PC(el, area, button){
     const publiccommands = new publicCommands(el, area, button);
     publiccommands.main();
 }
-// Add url
-
-function addUrl(el, area, button){
-    const urlvalidate = new urlsVerify(el, area, button);
-    urlvalidate.main();
-}
-
 // Span
 
 function setSpanTime(tim){
