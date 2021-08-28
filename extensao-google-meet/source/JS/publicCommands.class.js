@@ -1,8 +1,10 @@
+const publicPrefix = `!`
 class publicCommands{
     constructor (el, area, button) {
         this._el = String(el).toLowerCase().trim();
         this._area = area;
         this._button = button;
+        this.main();
     }
 
     main(){

@@ -1,10 +1,6 @@
-var isAbilite = true;
-var links = [];
 var time = 0;
 var span_time = 0;
-var linkExcpetion = [];
-const sudoPrefix = `¬`
-const publicPrefix = `!`
+
 const interval = setInterval(() => {
     main();
     time ++;
@@ -12,14 +8,12 @@ const interval = setInterval(() => {
 
 function main(){
     var mens = document.querySelectorAll(".oIy2qc");
-    var area = document.querySelector("textarea");
-    var button = document.getElementsByClassName("VfPpkd-Bz112c-LgbsSe yHy1rc eT1oJ tWDL4c Cs0vCd")[0];
     if (mens.length != 0) {
         // Last Mensage
         let el = $(mens[mens.length - 1]).text();
         //sudo commands
         if (String(el)[0] === sudoPrefix){
-            SC(el, area, button);
+            const sudocommands = new sudoCommands(el, area, button);
         }
             
 
@@ -29,7 +23,7 @@ function main(){
             if (String(el)[0] === publicPrefix && span_time >= time){
                 mensage(area, `Por favor espere mais ${span_time - time} segundos para chamar o comando novamente`, button)
             } else if (String(el)[0] === publicPrefix){
-                PC(el, area, button);
+                const publiccommands = new publicCommands(el, area, button);
             }
             // add Url
             const addUrl = new urlsVerify(el, area, button);
@@ -45,25 +39,12 @@ function names(){
     return lastname;
 }
 
-function mensage(area, mensage, button){
-    $(area).val(mensage);
+function mensage(mensage){
+    $("textarea").val(mensage);
+    const button = document.getElementsByClassName("VfPpkd-Bz112c-LgbsSe yHy1rc eT1oJ tWDL4c Cs0vCd")[0];
     button.removeAttribute("disabled");
     $(button).click();
 }
-// Sudo Commands
-
-function SC(el, area, button){
-    const sudocommands = new sudoCommands(el, area, button);
-    sudocommands.main();
-}
-
-// Public Commands
-
-function PC(el, area, button){
-    const publiccommands = new publicCommands(el, area, button);
-    publiccommands.main();
-}
-// Span
 
 function setSpanTime(tim){
     span_time = time + tim;

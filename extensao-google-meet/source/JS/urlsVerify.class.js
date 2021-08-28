@@ -1,3 +1,4 @@
+var links = [];
 class urlsVerify{
     constructor (men, area, button){
         this._men = String(men);

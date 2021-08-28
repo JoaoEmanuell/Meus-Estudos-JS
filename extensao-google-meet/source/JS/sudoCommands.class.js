@@ -1,8 +1,12 @@
+const sudoPrefix = `¬`
+var isAbilite = true;
+var linkExcpetion = [];
 class sudoCommands{
     constructor (el, area, button){
         this._el = String(el).toLowerCase().trim();
         this._area = area;
         this._button = button;
+        this.main();
     }
     main(){
         //verificate if your name is a sudo name
@@ -14,6 +18,7 @@ class sudoCommands{
         this.remove();
         this.help();
         this.links();
+        this.setLinkExcept();
         
     } else if(this._el[0] === sudoPrefix){
         mensage(this._area, `Desculpe ${names()} mas você não tem permisão para usar comandos de administrador da extensão :/`, this._button);
@@ -50,13 +55,12 @@ class sudoCommands{
     links(){
         if (this._el === `${sudoPrefix}links`){
             const publiccommands = new publicCommands(this._el.replace("¬", "!"), this._area, this._button);
-            publiccommands.getLinks(); 
             span_time = 0;
         }
     }
     setLinkExcept(){
-        if (this._el.indexOf(`${sudoPrefix}linkExcept`) >= 0){
-            const word = this._el.replace(`${sudoPrefix}linkExcept `, ``);
+        if (this._el.indexOf(`${sudoPrefix}linkexcept`) >= 0){
+            const word = this._el.replace(`${sudoPrefix}linkexcept `, ``);
             linkExcpetion.push(word);
             mensage(this._area, `${word} adicionado a lista de exeção`, this._button);
         }
