@@ -35,5 +35,3 @@ Assim quando um estudante digitar um !links ele irá retornar os links da chamad
     * Função publica para deixar o texto todo em caracteres minusculos.
 
     * Função publica para deixar o texto em um caracter minusculo e outro maisculo.
-
-    * Função privada para adicionar uma frase de exceção que não será adicionada caso seja um link.
