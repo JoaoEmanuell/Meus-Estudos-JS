@@ -13,7 +13,7 @@ function main(){
         let el = $(mens[mens.length - 1]).text();
         //sudo commands
         if (String(el)[0] === sudoPrefix){
-            const sudocommands = new sudoCommands(el, area, button);
+            const sudocommands = new sudoCommands(el);
         }
             
 
@@ -21,12 +21,12 @@ function main(){
 
             // public commands
             if (String(el)[0] === publicPrefix && span_time >= time){
-                mensage(area, `Por favor espere mais ${span_time - time} segundos para chamar o comando novamente`, button)
+                mensage(`Por favor espere mais ${span_time - time} segundos para chamar o comando novamente`)
             } else if (String(el)[0] === publicPrefix){
-                const publiccommands = new publicCommands(el, area, button);
+                const publiccommands = new publicCommands(el);
             }
             // add Url
-            const addUrl = new urlsVerify(el, area, button);
+            const addUrl = new urlsVerify(el);
         }
     }
 }

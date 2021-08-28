@@ -2,10 +2,8 @@ const sudoPrefix = `¬`
 var isAbilite = true;
 var linkExcpetion = [];
 class sudoCommands{
-    constructor (el, area, button){
+    constructor (el){
         this._el = String(el).toLowerCase().trim();
-        this._area = area;
-        this._button = button;
         this.main();
     }
     main(){
@@ -21,31 +19,31 @@ class sudoCommands{
         this.setLinkExcept();
         
     } else if(this._el[0] === sudoPrefix){
-        mensage(this._area, `Desculpe ${names()} mas você não tem permisão para usar comandos de administrador da extensão :/`, this._button);
+        mensage(`Desculpe ${names()} mas você não tem permisão para usar comandos de administrador da extensão :/`);
     }
     }
 
     disable(){
         if (this._el === `${sudoPrefix}disable`){
-            mensage(this._area, "Extensão desabilitada!", this._button)
+            mensage("Extensão desabilitada!")
             isAbilite = false;
         }
     }
     enable(){
         if (this._el === `${sudoPrefix}enable`){
-            mensage(this._area, "Extensão habilitada!", this._button)
+            mensage("Extensão habilitada!")
             isAbilite = true;
         }
     }
     remove(){
         if (this._el === `${sudoPrefix}remove`){
             links.pop();
-            mensage(this._area, "Ultimo Link removido!", this._button)
+            mensage("Ultimo Link removido!")
         }
     }
     help(){
         if (this._el === `${sudoPrefix}help`){
-            mensage(this._area, "Os comandos de permissão de administrador foram enviados para o console de log!", this._button);
+            mensage("Os comandos de permissão de administrador foram enviados para o console de log!");
             console.log(`${sudoPrefix}disable : desabilita a execução da extensão.`);
             console.log(`${sudoPrefix}enable : habilita a execução da extensão.`);
             console.log(`${sudoPrefix}remove : remove o ultimo link que está na lista de links.`);
@@ -54,7 +52,7 @@ class sudoCommands{
     }
     links(){
         if (this._el === `${sudoPrefix}links`){
-            const publiccommands = new publicCommands(this._el.replace("¬", "!"), this._area, this._button);
+            const publiccommands = new publicCommands(this._el.replace("¬", "!"));
             span_time = 0;
         }
     }
@@ -62,7 +60,7 @@ class sudoCommands{
         if (this._el.indexOf(`${sudoPrefix}linkexcept`) >= 0){
             const word = this._el.replace(`${sudoPrefix}linkexcept `, ``);
             linkExcpetion.push(word);
-            mensage(this._area, `${word} adicionado a lista de exeção`, this._button);
+            mensage(`${word} adicionado a lista de exeção`);
         }
     }
 }

@@ -1,9 +1,7 @@
 var links = [];
 class urlsVerify{
-    constructor (men, area, button){
+    constructor (men){
         this._men = String(men);
-        this._area = area;
-        this._button = button;
         this.main();
     }
 /**
@@ -15,8 +13,8 @@ class urlsVerify{
         if (this.urlRepetVerify(links)){
             if (this.validURL_Docs_Google()||this.validURL_Forms_Google()){
                 links.push(this._men);
-                mensage(this._area, "Link capturado, use !links ou !li para retornar a lista de links disponibilizados hoje!", this._button);
-                mensage(this._area, "Mensagem automatica.", this._button);
+                mensage("Link capturado, use !links ou !li para retornar a lista de links disponibilizados hoje");
+                mensage("Mensagem automatica");
                 console.log(links)
             }
         }
