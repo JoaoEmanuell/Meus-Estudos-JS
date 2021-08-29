@@ -4,9 +4,16 @@ A extensão se trata de uma extensão que server para modificar o funcionamento 
 
 ## Index
 
-[Propiedades Padrão](#propiedades-padrão)
-
-[Main](#main)
+- [Documentação da extensão](#documentação-da-extensão)
+  - [Index](#index)
+- [Propiedades Padrão](#propiedades-padrão)
+- [Main](#main)
+  - [Esquema de funcionalidade main:](#esquema-de-funcionalidade-main)
+  - [FUNÇÕES MAIN](#funções-main)
+    - [Names](#names)
+    - [Mensage](#mensage)
+    - [SetSpanTime](#setspantime)
+     
 
 # Propiedades Padrão
 
@@ -34,7 +41,7 @@ Main é a função padrão da injeção de JavaScript no site.
 
 Main é responsavel por chamar todas as outras classes e funções, ela é o "coração" da extensão.
 
-## Esquema de funcionalidade: 
+## Esquema de funcionalidade main: 
 
 Assim que main é chamada ela cria duas variaveis.
 
@@ -115,7 +122,7 @@ Após todas essas verificações uma constante chamada de *addUrl* sera criada e
 const addUrl = new urlsVerify(el);
 ```
 
-## FUNÇÕES
+## FUNÇÕES MAIN
 
 ### Names
 
@@ -177,3 +184,5 @@ Por ultimo span_time é escrito no console
 ```
 console.log(span_time)
 ```
+
+[Retorne ao inicio](#index)
