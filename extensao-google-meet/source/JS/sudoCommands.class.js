@@ -15,7 +15,6 @@ class sudoCommands{
         this.remove();
         this.help();
         this.links();
-        this.setLinkExcept();
         
     } else if(this._el[0] === sudoPrefix){
         mensage(`Desculpe ${names()} mas você não tem permisão para usar comandos de administrador da extensão :/`);

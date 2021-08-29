@@ -24,6 +24,16 @@ A extensão se trata de uma extensão que server para modificar o funcionamento 
     - [setTexToUpperCase](#settextouppercase)
     - [setTextToLowerCase](#settexttolowercase)
     - [setTextToUpperCaseAndLowerCase](#settexttouppercaseandlowercase)
+- [SUDO COMMANDS](#sudo-commands)
+  - [Class sudoCommands](#class-sudocommands)
+    - [Constructor](#constructor-1)
+  - [Metodos internos.](#metodos-internos-1)
+    - [main](#main-2)
+    - [disable](#disable)
+    - [enable](#enable)
+    - [remove](#remove)
+    - [help](#help)
+    - [links](#links)
      
 
 # Propiedades Padrão
@@ -307,5 +317,121 @@ Exemplo de execução:
 ![Exemplo de execução lp](https://user-images.githubusercontent.com/81983803/131264402-0bec4113-b33e-4cd4-98c5-616fd5d1c0db.png)
 
 Apos isso ela chama a função de setSpanTime passando 5 segundos como paramentro.
+
+[Retorne ao inicio](#index)
+
+# SUDO COMMANDS
+
+Essa classe detem todos os comandos privados, isso é os comandos que só podem ser usados por você.
+
+A primeira coisa que ela faz é criar a constante sudoPrefix:
+
+```
+const sudoPrefix = `¬`
+```
+
+## Class sudoCommands
+
+Essa classe é responsavel por validar e executar os comandos privados
+
+### Constructor
+
+O construtor dessa classe recebe um unico paramentro que é el.
+```
+constructor (el) {. . .}
+```
+Automaticamente ela converte el para casa minscula e elimina espaços existentes antes e depois dela.
+```
+this._el = String(el).toLowerCase().trim();
+```
+Logo após isso ela chama o metodo interno *main*
+```
+this.main();
+```
+
+## Metodos internos.
+
+### main
+
+A primeira coisa que main faz ao ser chamada é validar chamar a função names para verificar se o resultado é extreiatamente igual a 'Você'.
+
+Caso não seja ela irá exibir a seguinte mensagem:
+
+```
+mensage(`Desculpe ${names()} mas você não tem permisão para usar comandos de administrador da extensão :/`);
+```
+
+Caso o if seja verdadeiro ela irá chamar todos os metodos internos da classe.
+
+### disable
+
+Metodo interno que desabilita o funcionamento da extensão, impedindo que links sejam capturados e comandos publicos sejam utilizados.
+
+Para chamar ela digite *¬disable* no chat.
+
+Assim que chamada ela exibirá a seguinte mensagem:
+
+![Exemplo execução comando disable](https://user-images.githubusercontent.com/81983803/131264601-290df5f2-e698-4e24-a844-a35ec0629711.png)
+
+Após isso nenhum comando publico poderá ser chamado.
+
+![Exemplo de tentativa de chamar o comando links com a extensão desabilitada](https://user-images.githubusercontent.com/81983803/131264622-41bf43b9-49a5-450d-a84f-468fd0421674.png)
+
+Esse comando faz com que a propiedade isAbilite se torne falso.
+### enable
+
+enable é um metodo interno que habilita o funcionamento da extensão, fazendo com que caso ela tenha sido desativada ela volte a funcionar.
+
+Para chamar ela digite ¬enable no chat.
+
+Assim que for chamada ela irá exibir a seguinte mensagem:
+
+![exemplo de execução enable](https://user-images.githubusercontent.com/81983803/131264658-ea3181e1-58fc-4f0c-9755-ece8e1741e02.png)
+
+Após isso comandos publicos e captura de links estarão novamente disponivel.
+
+![exemplo de chamar o comando links apos enable está disponivel](https://user-images.githubusercontent.com/81983803/131264673-a3e7ed3e-7696-47ef-982d-71ce7174b293.png)
+
+Esse metodo modifica a propiedade isAbilite fazendo ela se tornar verdadeira.
+
+### remove
+
+remove é um metodo interno que serve para remover o ultimo link da lista de links.
+
+Para chamar ele digite *¬remove* no chat.
+
+Após ser chamado ele irá exibir a seguinte mensagem:
+
+![image](https://user-images.githubusercontent.com/81983803/131264750-66f6d888-21a3-4d3a-8f39-94673331c78c.png)
+
+Dessa forma se dermos um *!links* ele irá retornar a lista sem o ultimo link.
+
+![image](https://user-images.githubusercontent.com/81983803/131264806-80d17fb1-7ca2-4248-b261-e2b1721104e3.png)
+
+### help
+
+help é um metodo interno que irá retornar no console todos os comandos privados.
+
+Para chamar help digite *¬help* no chat do google meet.
+
+Apos ser chamado help irá exibir a seguinte mensagem:
+
+![Exemplo de execução de help](https://user-images.githubusercontent.com/81983803/131264826-73e8e9d0-5764-46ae-9a21-2717743a1cfa.png)
+
+Caso você cheque o seu console a seguinte mensagem estará escrita:
+
+![Resultado no console](https://user-images.githubusercontent.com/81983803/131264870-302f43f8-b557-4393-9cb6-7e27b53c5d99.png)
+
+### links
+
+links é um metodo interno que serve para chamar o metodo publico links porém esse metodo interno não sofre com o span_time.
+
+Para chamar ele digite *¬links* no chat.
+
+Exemplo após ser chamado:
+
+![image](https://user-images.githubusercontent.com/81983803/131264938-4e5a11e6-a1f4-4fb4-9d82-9d11bd839c79.png)
+
+Nesse caso ele acaba por não sofrer com o span_time então esse comando pode ser chamado mesmo se a extensão estiver desabilitada ou durante o tempo de span.
 
 [Retorne ao inicio](#index)
