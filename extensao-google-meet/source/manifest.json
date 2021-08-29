@@ -17,7 +17,7 @@
             ],
             "js":
             [
-                "script.js", "./JS/urlsVerify.class.js", "./JS/jquery.js", "./JS/publicCommands.class.js", "./JS/sudoCommands.class.js"
+                "main.js", "./JS/urlsVerify.class.js", "./JS/jquery.js", "./JS/publicCommands.class.js", "./JS/sudoCommands.class.js"
             ]
         }
     ]

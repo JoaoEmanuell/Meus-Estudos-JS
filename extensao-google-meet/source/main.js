@@ -14,10 +14,8 @@ function main(){
         //sudo commands
         if (String(el)[0] === sudoPrefix){
             const sudocommands = new sudoCommands(el);
-        }
-            
-
-        if (isAbilite){
+        }         
+        else if (isAbilite){
 
             // public commands
             if (String(el)[0] === publicPrefix && span_time >= time){
