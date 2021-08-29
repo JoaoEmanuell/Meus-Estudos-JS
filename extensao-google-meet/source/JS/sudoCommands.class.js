@@ -1,6 +1,5 @@
 const sudoPrefix = `¬`
 var isAbilite = true;
-var linkExcpetion = [];
 class sudoCommands{
     constructor (el){
         this._el = String(el).toLowerCase().trim();
@@ -54,13 +53,6 @@ class sudoCommands{
         if (this._el === `${sudoPrefix}links`){
             const publiccommands = new publicCommands(this._el.replace("¬", "!"));
             span_time = 0;
-        }
-    }
-    setLinkExcept(){
-        if (this._el.indexOf(`${sudoPrefix}linkexcept`) >= 0){
-            const word = this._el.replace(`${sudoPrefix}linkexcept `, ``);
-            linkExcpetion.push(word);
-            mensage(`${word} adicionado a lista de exeção`);
         }
     }
 }
