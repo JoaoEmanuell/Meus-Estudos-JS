@@ -34,6 +34,13 @@ A extensão se trata de uma extensão que server para modificar o funcionamento 
     - [remove](#remove)
     - [help](#help)
     - [links](#links)
+- [Verificação de url](#verificação-de-url)
+  - [Class urlsVerify](#class-urlsverify)
+    - [constructor](#constructor-2)
+    - [main](#main-3)
+    - [urlRepetVerify](#urlrepetverify)
+    - [validURL_Docs_Google](#validurl_docs_google)
+    - [validURL_Forms_Google](#validurl_forms_google)
      
 
 # Propiedades Padrão
@@ -435,3 +442,81 @@ Exemplo após ser chamado:
 Nesse caso ele acaba por não sofrer com o span_time então esse comando pode ser chamado mesmo se a extensão estiver desabilitada ou durante o tempo de span.
 
 [Retorne ao inicio](#index)
+
+# Verificação de url
+
+Essa classe detem todas os metodos de verificação e validação de url.
+
+A primeira coisa que ela faz é criar a lista de links, que começa com uma lista vazia.
+
+```
+var links = [];
+```
+
+## Class urlsVerify
+
+Essa classe detem todas os metodos de verificação e validação de url e permite com que links sejam adicionados a lista.
+
+### constructor
+
+O construtor dessa classe recebe um paramentro *men* que é uma String.
+
+Logo em seguida ele chama o metodo main.
+
+### main
+
+main é o metodo principal da classe, ele é responsavel por chamar os outros metodos.
+
+Inicialmente main verifica se a url é repetida, por meio do metodo *urlRepetVerify* passando a lista de links como paramentro.
+
+Caso o if seja falso nada acontece.
+
+Caso ele seja verdadeiro outro if é acionado, esse if chama duas funções a *validURL_Docs_Google* e *validURL_Forms_Google* que servem para verificar o dominio do link, alguma das duas funções seja verdadeira o progama irá adicionar o link a lista de links e em seguida escrever.
+
+```
+mensage("Link capturado, use !links ou !li para retornar a lista de links disponibilizados hoje");
+mensage("Mensagem automatica");
+```
+
+### urlRepetVerify
+
+urlRepetVerify é um metodo interno que recebe um paramentro chamado de *listLinks* esse paramentro deve ser um array.
+
+```
+urlRepetVerify(listLinks) {. . .}
+```
+
+Assim que é chamada ela cria uma variavel local chamada *iq* e faz um foreach dentro de *listlinks* e verifica se o link é igual ao link da mensagem ou se a mensagem possui um link.
+```
+let iq = 0;
+listLinks.forEach(links => {. . .})
+```
+
+Caso possua ele irá fazer a variavel local *iq* receber ela mais ela mesmo.
+
+```
+if (links === this._men|| this._men.indexOf(links) >= 0){ iq ++}
+```
+
+Caso *iq* seja igual a zero o metodo irá retornar verdadeiro pois isso inidica que *iq* foi intocada, senão ele irá retornar falso.
+
+```
+switch (iq){
+    case 0:
+        return true;
+    default:
+        return false;
+}
+```
+
+### validURL_Docs_Google
+
+validURL_Docs_Google é um metodo interno que serve para validar se o dominio da url é *https://docs.google.com/forms* que é a versão não encurtada.
+
+Ela faz isso por meio do RegExp.
+
+### validURL_Forms_Google
+
+validURL_Forms_Google é um metodo interno que serve para validar se o dominio da url é *https://forms.gle/*
+
+Ela faz isso por meio do RegExp.
