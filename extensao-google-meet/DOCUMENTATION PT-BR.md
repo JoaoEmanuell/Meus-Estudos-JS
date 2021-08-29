@@ -517,6 +517,6 @@ Ela faz isso por meio do RegExp.
 
 ### validURL_Forms_Google
 
-validURL_Forms_Google é um metodo interno que serve para validar se o dominio da url é *https://forms.gle/*
+validURL_Forms_Google é um metodo interno que serve para validar se o dominio da url é *https://forms.gle/* que é a versão encurtada
 
 Ela faz isso por meio do RegExp.

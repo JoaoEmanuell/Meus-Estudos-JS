@@ -28,7 +28,7 @@ Assim quando um estudante digitar um !links ele irá retornar os links da chamad
 
 ####
 
-- [ ] **Versão: 0.0.4**
+- [x] **Versão: 0.0.4**
 
     * Função publica para deixar o texto todo em caracteres maiusculos.
 
