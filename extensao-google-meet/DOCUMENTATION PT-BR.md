@@ -13,6 +13,17 @@ A extensão se trata de uma extensão que server para modificar o funcionamento 
     - [Names](#names)
     - [Mensage](#mensage)
     - [SetSpanTime](#setspantime)
+- [PUBLIC COMMANDS](#public-commands)
+  - [Class publicCommands](#class-publiccommands)
+    - [Constructor](#constructor)
+  - [Metodos internos.](#metodos-internos)
+    - [main](#main-1)
+    - [getHelp](#gethelp)
+    - [getLinks](#getlinks)
+    - [getTime](#gettime)
+    - [setTexToUpperCase](#settextouppercase)
+    - [setTextToLowerCase](#settexttolowercase)
+    - [setTextToUpperCaseAndLowerCase](#settexttouppercaseandlowercase)
      
 
 # Propiedades Padrão
@@ -184,5 +195,117 @@ Por ultimo span_time é escrito no console
 ```
 console.log(span_time)
 ```
+
+[Retorne ao inicio](#index)
+
+# PUBLIC COMMANDS
+
+Essa classe detem todos os comandos publicos, isso é os comandos que podem ser usados por qualquer usuario.
+
+A primeira coisa que ela faz é criar a constante publicprefix:
+
+```
+const publicPrefix = `!`
+```
+
+## Class publicCommands
+
+Essa classe é responsavel por validar e executar os comandos publicos
+
+### Constructor
+
+O construtor dessa classe recebe um unico paramentro que é el.
+```
+constructor (el) {. . .}
+```
+Automaticamente ela converte el para casa minscula e elimina espaços existentes antes e depois dela.
+```
+this._el = String(el).toLowerCase().trim();
+```
+Logo após isso ela chama o metodo interno *main*
+```
+this.main();
+```
+
+## Metodos internos.
+### main
+
+Main é o metodo prinicipal da classe *publicCommands*, sendo responsavel por chamar todas os metodos internos da classe.
+
+### getHelp
+
+getHelp é um metodo interno responsavel por retornar a guia de ajuda da extensão. 
+
+Que por sua vez retorna todos os comandos publicos disponiveis.
+
+Para chamar getHelp digite *!help* ou *!h* no chat do google meet.
+
+Exemplo de utilização de help:
+
+![Exemplo de utilização de !help](https://user-images.githubusercontent.com/81983803/131263965-0e7e6803-b257-404b-b54a-f8f6f5e1b811.png)
+
+Após sua utilização ela utiliza a função setSpanTime passando 15 segundos como paramentro.
+### getLinks
+
+Metodo interno que retorna os links armazenados até o momento.
+
+Para chamar getLinks digite *!links* ou *!li* no chat do google meet.
+
+Caso não aja nenhum link armazenado em links ela irá retornar a seguinte mensagem:
+
+![Caso não exista nenhum link](https://user-images.githubusercontent.com/81983803/131264124-9e441882-88df-4074-b429-d63800ee6c25.png)
+
+Mas caso aja algum link armazenenado dentro de links ela irá retornar:
+
+![Caso aja algum link](https://user-images.githubusercontent.com/81983803/131264168-6e523c39-b3ae-4def-bf89-bfea3c890275.png)
+
+Apos isso ela chama a função de setSpanTime passando 15 segundos como paramentro.
+### getTime
+
+getTime retorna a quantos segundos a extensão está sendo executada.
+
+Para chamar getTime digite *!time* ou *!t* no chat do google meet.
+
+Exemplo de execução:
+
+![Exemplo de execução de getTime](https://user-images.githubusercontent.com/81983803/131264205-f46d9bd4-6953-4ad0-9d3c-11a8599ac364.png)
+
+Apos isso ela chama a função de setSpanTime passando 15 segundos como paramentro.
+
+### setTexToUpperCase
+
+setTexToUpperCase é um metodo interno que faz qualquer texto colocado apos o comando ser devolvido em caixa alta.
+
+Para chamar setTexToUpperCase digite *!upper* ou *!up* de um espaço e digite o texto.
+
+Exemplo de execução:
+
+![Exemplo de execução upper](https://user-images.githubusercontent.com/81983803/131264291-39faacb7-8d17-41b0-ad5a-6bfd70f6ad09.png)
+
+Apos isso ela chama a função de setSpanTime passando 5 segundos como paramentro.
+
+### setTextToLowerCase
+
+setTextToLowerCase é um metodo interno que faz qualquer texto colocado apos o comando ser devolvido em caixa baixa.
+
+Para chamar setTextToLowerCase digite *!lower* ou *!lo* de um espaço e digite o texto.
+
+Exemplo de execução:
+
+![Exemplo de execução lower](https://user-images.githubusercontent.com/81983803/131264346-c4827a0e-d32b-4a42-8f3a-6ce5c9e3ab73.png)
+
+Apos isso ela chama a função de setSpanTime passando 5 segundos como paramentro.
+
+### setTextToUpperCaseAndLowerCase
+
+setTextToUpperCaseAndLowerCase é um metodo interno que faz com quer a primeira letra da palavra fique em caixa alta, logo apos isso a segunda fica em caixa baixa e assim o ciclo continua até acabar a frase.
+
+Para chamar setTextToUpperCaseAndLowerCase digite *!lp* de um espaço e digite o texto.
+
+Exemplo de execução:
+
+![Exemplo de execução lp](https://user-images.githubusercontent.com/81983803/131264402-0bec4113-b33e-4cd4-98c5-616fd5d1c0db.png)
+
+Apos isso ela chama a função de setSpanTime passando 5 segundos como paramentro.
 
 [Retorne ao inicio](#index)
