@@ -12,7 +12,7 @@ A extensão se trata de uma extensão que server para modificar o funcionamento 
 
 **TIME :** Essa propiedade sempre recebe ela mais um a cada ciclo de execução da extensão, servindo para contabilizar quanto tempo a extensão está sendo executada e também servindo para facilitar a progamação da função span time.
 
-**SPAN_TIME :** Essa propeidade é chamada pela função *setSpanTime* recebendo um valor, esse valor é verificado durante a execução da função *main* se o *span_time* for superior a propiedade *time* os comandos de execução publicos não poderão ser executados, portanto uma mensagem será exibida:
+[**SPAN_TIME :**](#setspantime) Essa propeidade é chamada pela função *setSpanTime* recebendo um valor, esse valor é verificado durante a execução da função *main* se o *span_time* for superior a propiedade *time* os comandos de execução publicos não poderão ser executados, portanto uma mensagem será exibida:
 
 ```
 mensage(`Por favor espere mais ${span_time - time} segundos para chamar o comando novamente`)
@@ -109,8 +109,71 @@ Caso isso seja verdadeiro uma constante com o nome de *publiccommands* será cri
 const publiccommands = new publicCommands(el);
 ```
 
-Após todas essas verificações uma constante chamada de *addUrl* recebera todos metodos internos da classe *urlsVerify* e passará a ultima mensagem que foi enviada como pedido do constructor, esse caso ela passará *el* :
+Após todas essas verificações uma constante chamada de *addUrl* sera criada e ela recebera todos metodos internos da classe *urlsVerify* e passará a ultima mensagem que foi enviada como pedido do constructor, esse caso ela passará *el* :
 
 ```
 const addUrl = new urlsVerify(el);
+```
+
+## FUNÇÕES
+
+### Names
+
+Essa função serve para retornar o nome de quem enviou a ultima mensagem.
+
+Essa função não recebe paramentros, a primeira coisa que ela faz quando é executada é criar uma constante chamada de nameees, que recebe todos os dados de todas as divs que detem os nomes na página.
+
+```
+const nameees = document.querySelectorAll(".YTbUzc");
+```
+
+Após isso uma let chamada de lastname é criada, essa let receberá a conversão em texto da constante nameees.
+
+```
+let lastname = $(nameees[nameees.length - 1]).text();
+```
+
+Por ultimo a função retornará o lastname.
+
+```
+return lastname;
+```
+### Mensage
+
+Essa função serve para enviar uma mensagem no chat.
+
+Essa função recebe a mensagem como paramentro, o paramentro *mensagem* deve ser uma string.
+
+Primeiramente essa função atribue ao campo do "textarea" o valor da mensagem.
+```
+$("textarea").val(mensage);
+```
+
+Após isso uma constante chamada *button* é criada, ela pega todos os elementos que possuem o ClassName *"VfPpkd-Bz112c-LgbsSe yHy1rc eT1oJ tWDL4c Cs0vCd"* e retorna o primeiro indice que é o botão de enviar mensagens que fica ao lado ta text-area.
+```
+const button = document.getElementsByClassName("VfPpkd-Bz112c-LgbsSe yHy1rc eT1oJ tWDL4c Cs0vCd")[0];
+```
+
+Após isso ela remove o atributo desabilitado do botão, dessa forma permitindo que mensagens sejam enviadas.
+```
+button.removeAttribute("disabled");
+```
+
+E por ultimo ela envia o sinal de click para o botão, fazendo com que ele seja clicado, dessa forma a mensagem é enviada
+```
+$(button).click();
+```
+### SetSpanTime
+
+Essa função serve para setar um valor na propiedade [span_time](#propiedades-padrão).
+
+Essa função recebe um paramentro chamado de *tim* esse paramentro deve ser um numero.
+
+A propiedade span_time recebe time mais tim
+```
+span_time = time + tim;
+```
+Por ultimo span_time é escrito no console
+```
+console.log(span_time)
 ```
