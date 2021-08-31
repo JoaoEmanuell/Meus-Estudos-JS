@@ -213,6 +213,20 @@ Por ultimo span_time é escrito no console
 console.log(span_time)
 ```
 
+**Exit**
+
+Essa função serve para perguntar se você deseja sair da pagina, para evitar que todos os links sejam perdidos.
+
+Por algum motivo o google meet acaba retirando vc da reunião assim que vc sai ou recarega a chamada, por isso a extensão irá colar os links no console, copie-os e adicione novamente.
+
+```
+function confirmExit() {
+  links.forEach(link => {
+      console.log(link)
+  });
+}
+```
+
 [Retorne ao inicio](#index)
 
 # PUBLIC COMMANDS
