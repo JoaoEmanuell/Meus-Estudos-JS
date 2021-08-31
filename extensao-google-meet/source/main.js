@@ -2,6 +2,7 @@ var time = 0;
 var span_time = 0;
 
 const interval = setInterval(() => {
+    exit();
     main();
     time ++;
 }, 1000);
@@ -47,4 +48,14 @@ function mensage(mensage){
 function setSpanTime(tim){
     span_time = time + tim;
     console.log(span_time)
+}
+
+function exit(){
+    window.onbeforeunload = confirmExit;
+    function confirmExit() {
+    links.forEach(link => {
+        console.log(link)
+    });
+    return "You have attempted to leave this page. Are you sure?";
+    }
 }
