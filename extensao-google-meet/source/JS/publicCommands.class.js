@@ -15,11 +15,14 @@ class publicCommands{
     }
     // Local Methods
     getHelp(){
-        if (this._el === `${publicPrefix}help` || this._el === `${publicPrefix}h`){
-            mensage(`"${publicPrefix}links" ou " ${publicPrefix}li " : Retorna os links que foram colocados no chat até o exato momento`);
-            mensage(`"${publicPrefix}help" ou " ${publicPrefix}h " : Retorna esse bloco de comandos`);
-            mensage(`"${publicPrefix}time" ou " ${publicPrefix}t " : Retorna a quanto segundos estamos na aula!`);
-            setSpanTime(15);
+        if (validHelp(this._el)){
+            const help = new helpPublicCommands(this._el);
+        }
+        function validHelp(men) {
+            const help = new RegExp(`^(${publicPrefix}help)`);
+            const simplHelp = new RegExp(`^(${publicPrefix}h)`)
+            if (help.test(men) || simplHelp.test(men)) { return true; }
+            else { return false; }
         }
     }
 
@@ -79,5 +82,33 @@ class publicCommands{
             mensage(text_convert);
             setSpanTime(5);
         }
+    }
+}
+
+class helpPublicCommands{
+    constructor (el){
+        this._el = String(el).replace(`${publicPrefix}help `, '').replace(`${publicPrefix}h `, '');
+        this.main();
+    }
+    main(){
+        if (this._el == 1){ this.pag1(); }
+        else if (this._el == 2){ this.pag2(); }
+        else{
+            mensage(`Pagina invalida, digite ${publicPrefix}help pagina ou ${publicPrefix}h pagina, as paginas vão até a pagina numero 2`);
+            setSpanTime(5);
+        }
+    }
+
+    pag1(){
+        mensage(`"${publicPrefix}links" ou " ${publicPrefix}li " : Retorna os links que foram colocados no chat até o exato momento`);
+        mensage(`"${publicPrefix}help" ou " ${publicPrefix}h " : Retorna esse bloco de comandos`);
+        mensage(`"${publicPrefix}time" ou " ${publicPrefix}t " : Retorna a quanto segundos estamos na aula!`);
+        setSpanTime(15);
+    } 
+    pag2(){
+        mensage(`"${publicPrefix}upper texto" ou " ${publicPrefix}up texto" retorna o texto inserido em letras maiusculas.`)
+        mensage(`"${publicPrefix}lower texto" ou " ${publicPrefix}lo texto" retorna o texto inserido em letras minusculas.`)
+        mensage(`"${publicPrefix}lp texto" retorna o texto inserido em uma letra maiscula e outra minuscula, exemplo "ExEmPlO"`)
+        setSpanTime(15);
     }
 }
