@@ -6,6 +6,6 @@ O objetivo dessa extensão será pegar as mensagens referentes aos links de cham
 
 Assim quando um estudante digitar um !links ele irá retornar os links da chamada.
 
-Leia a documentação clicando **[aqui](./DOCUMENTATION%20PT-BR.md)**
+Leia a documentação clicando **[aqui](./DOCUMENTATION-PT-BR.md)**
 
 Leia os objetivos por versão clicando **[aqui](./OBJECTIVES.md)**
