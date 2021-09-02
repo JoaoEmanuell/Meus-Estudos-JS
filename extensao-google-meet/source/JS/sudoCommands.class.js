@@ -46,6 +46,7 @@ class sudoCommands{
             console.log(`${sudoPrefix}enable : habilita a execução da extensão.`);
             console.log(`${sudoPrefix}remove : remove o ultimo link que está na lista de links.`);
             console.log(`${sudoPrefix}help : exibe esse quadro de ajuda.`)
+            console.log(`${sudoPrefix}links : Exibe no chat os links colocados e seta o spantime para 0`)
         }
     }
     links(){
