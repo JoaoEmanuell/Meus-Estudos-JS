@@ -27,3 +27,7 @@
     * Função publica para deixar o texto todo em caracteres minusculos.
 
     * Função publica para deixar o texto em um caracter minusculo e outro maisculo.
+
+- [ ] **Versão: 0.0.5**
+
+  * Sistema de paginação do !help
