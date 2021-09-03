@@ -24,11 +24,16 @@ A extensão se trata de uma extensão que server para modificar o funcionamento 
     - [setTexToUpperCase](#settextouppercase)
     - [setTextToLowerCase](#settexttolowercase)
     - [setTextToUpperCaseAndLowerCase](#settexttouppercaseandlowercase)
+  - [Classe helpPublicCommands](#classe-helppubliccommands)
+    - [Constructor](#constructor-1)
+  - [Métodos internos](#métodos-internos)
+    - [Main](#main-2)
+    - [Pages](#pages)
 - [SUDO COMMANDS](#sudo-commands)
   - [Class sudoCommands](#class-sudocommands)
-    - [Constructor](#constructor-1)
+    - [Constructor](#constructor-2)
   - [Metodos internos.](#metodos-internos-1)
-    - [main](#main-2)
+    - [main](#main-3)
     - [disable](#disable)
     - [enable](#enable)
     - [remove](#remove)
@@ -36,8 +41,8 @@ A extensão se trata de uma extensão que server para modificar o funcionamento 
     - [links](#links)
 - [Verificação de url](#verificação-de-url)
   - [Class urlsVerify](#class-urlsverify)
-    - [constructor](#constructor-2)
-    - [main](#main-3)
+    - [constructor](#constructor-3)
+    - [main](#main-4)
     - [urlRepetVerify](#urlrepetverify)
     - [validURL_Docs_Google](#validurl_docs_google)
     - [validURL_Forms_Google](#validurl_forms_google)
@@ -269,13 +274,15 @@ getHelp é um metodo interno responsavel por retornar a guia de ajuda da extens�
 
 Que por sua vez retorna todos os comandos publicos disponiveis.
 
-Para chamar getHelp digite *!help* ou *!h* no chat do google meet.
+Para chamar getHelp digite *!help pagina* ou *!h pagina* no chat do google meet.
 
 Exemplo de utilização de help:
 
-![Exemplo de utilização de !help](https://user-images.githubusercontent.com/81983803/131263965-0e7e6803-b257-404b-b54a-f8f6f5e1b811.png)
+![Exemplo de utilização de !help](https://user-images.githubusercontent.com/81983803/131933893-4968a458-a36f-4ca9-9a0f-8ecd62ca0fb4.png)
 
 Após sua utilização ela utiliza a função setSpanTime passando 15 segundos como paramentro.
+
+Para aprender sobre as páginas do help [clique aqui](#pages)
 ### getLinks
 
 Metodo interno que retorna os links armazenados até o momento.
@@ -338,6 +345,60 @@ Exemplo de execução:
 ![Exemplo de execução lp](https://user-images.githubusercontent.com/81983803/131264402-0bec4113-b33e-4cd4-98c5-616fd5d1c0db.png)
 
 Apos isso ela chama a função de setSpanTime passando 5 segundos como paramentro.
+
+## Classe helpPublicCommands
+
+Essa classe é responsavel pela paginação do comando help, sendo ela um guia de ajuda para o uso da extensão e facilitadora do tamanho do help.
+
+### Constructor
+
+O construtor dessa classe recebe um unico paramentro que é el, el representa a ultima mensagem do chat.
+
+```
+constructor (el){. . .}
+```
+
+Automaticamente el é convertida para a casa minuscula e recebe dois replaces para subistituir o *!help* ou o *!h* deixando apenas um número que será a pagina de ajuda e por ultimo atribuida a *this._el*
+
+```
+this._el = String(el).toLowerCase().replace(`${publicPrefix}help `, '').replace(`${publicPrefix}h `, '');
+```
+
+Logo após isso o constructor chama a main.
+
+```        
+this.main();
+```
+
+## Métodos internos
+
+### Main
+
+Main é a função principal da classe, ela é responsavel por verificar se após o replace a pagina é um numero valido e a qual página ele corresponde, a partir disso ela irá chamar a página correspondende, caso não tenha nenhuma página correspondente ela irá exbiri uma mensagem de erro e setar 5 segundos de span_time.
+
+
+```
+main(){
+  if (this._el == 1){ this.pag1(); }
+  else if (this._el == 2){ this.pag2(); }
+  else{
+      mensage(`Pagina invalida, digite ${publicPrefix}help pagina ou ${publicPrefix}h pagina, as paginas vão até a pagina numero 2`);
+      setSpanTime(5);
+  }
+}
+```
+
+### Pages
+
+Pages são metodos internos que são denominados pela seguinte nomeclatura:
+
+```
+pagNumero(){. . .}
+```
+
+Eles são as páginas do sistema de help, servindo para enviar as mensagens referentes a página especificada.
+
+Lembrando que a cada nova pagina criada, uma nova regra de verificação deve ser adicionada a main.
 
 [Retorne ao inicio](#index)
 
@@ -534,3 +595,5 @@ Ela faz isso por meio do RegExp.
 validURL_Forms_Google é um metodo interno que serve para validar se o dominio da url é *https://forms.gle/* que é a versão encurtada
 
 Ela faz isso por meio do RegExp.
+
+[Retorne ao inicio](#index)

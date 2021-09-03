@@ -87,7 +87,7 @@ class publicCommands{
 
 class helpPublicCommands{
     constructor (el){
-        this._el = String(el).replace(`${publicPrefix}help `, '').replace(`${publicPrefix}h `, '');
+        this._el = String(el).toLowerCase().replace(`${publicPrefix}help `, '').replace(`${publicPrefix}h `, '');
         this.main();
     }
     main(){
