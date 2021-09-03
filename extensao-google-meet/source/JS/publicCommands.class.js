@@ -1,10 +1,19 @@
 const publicPrefix = `!`
+/**
+ * Execute all public commands.
+ */
 class publicCommands{
+    /**
+     * constructor publicCommands, call the main method
+     * @param {String} el last mensage sent in chat
+     */
     constructor (el) {
         this._el = String(el).toLowerCase().trim();
         this.main();
     }
-
+/**
+ * main method, call all methods.
+ */
     main(){
         this.getHelp();
         this.getLinks();
@@ -14,18 +23,18 @@ class publicCommands{
         this.setTextToUpperCaseAndLowerCase();
     }
     // Local Methods
+    /**
+     * get Help, check if mensage is a help mensage, if is true call the helpPublicCommands class
+     */
     getHelp(){
         if (this._el.indexOf(`${publicPrefix}help`) === 0 || this._el.indexOf(`${publicPrefix}h`) === 0 ){
             const help = new helpPublicCommands(this._el);
         }
-        function validHelp(men) {
-            const help = new RegExp(`^(${publicPrefix}help)`);
-            const simplHelp = new RegExp(`^(${publicPrefix}h)`)
-            if (help.test(men) || simplHelp.test(men)) { return true; }
-            else { return false; }
-        }
     }
-
+/**
+ * get Links, check if message is a get link message, if is true send a links list.
+ * else send a mensage.
+ */
     getLinks(){
         if (this._el === `${publicPrefix}links` || this._el === `${publicPrefix}li`){
             let preText = '';
@@ -41,12 +50,18 @@ class publicCommands{
             setSpanTime(15);
         }
     }
+    /**
+     * get Time, if a last message is a getTime message, send the time.
+     */
     getTime(){
         if (this._el == `${publicPrefix}time` || this._el === `${publicPrefix}t`){
             mensage(`Estamos aqui a ${time} segundos`)
             setSpanTime(15);
         }
     }
+    /**
+     * set Tex To UpperCase, check if a last message is a setTexToUpperCase, if is true return the text in full uppercase.
+     */
     setTexToUpperCase(){
         if (this._el.indexOf(`${publicPrefix}upper`) >= 0 || this._el.indexOf(`${publicPrefix}up`) >= 0 ){
             console.log("setTexToUpperCase")
@@ -56,6 +71,9 @@ class publicCommands{
             setSpanTime(5);
         }
     }
+    /**
+     * set Text To LowerCase, check if a last message is a setTextToLowerCase, if is true return the text in full lowercase.
+     */
     setTextToLowerCase(){
         if (this._el.indexOf(`${publicPrefix}lower`) >= 0 || this._el.indexOf(`${publicPrefix}lo`) >= 0 ){
             console.log("setTextToLowerCase")
@@ -65,6 +83,11 @@ class publicCommands{
             setSpanTime(5);
         }
     }
+    /**
+     * set Text To UpperCase And LowerCase, check if a last message is a setTextToUpperCaseAndLowerCase, if is true return the text in a char "A" and char "b".
+     * 
+     * Exemple : "Hello World" => "HeLlO WoRlD".
+     */
     setTextToUpperCaseAndLowerCase(){
         if (this._el.indexOf(`${publicPrefix}lp`) >= 0){
             this._el = this._el.replace(`${publicPrefix}upperlower `, ``);
