@@ -28,6 +28,6 @@
 
     * Função publica para deixar o texto em um caracter minusculo e outro maisculo.
 
-- [ ] **Versão: 0.0.5**
+- [x] **Versão: 0.0.5**
 
   * Sistema de paginação do !help
