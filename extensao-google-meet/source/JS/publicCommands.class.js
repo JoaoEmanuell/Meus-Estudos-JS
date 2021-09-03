@@ -91,10 +91,15 @@ class helpPublicCommands{
         this.main();
     }
     main(){
-        if (this._el == 1){ this.pag1(); }
-        else if (this._el == 2){ this.pag2(); }
-        else{
-            mensage(`Pagina invalida, digite ${publicPrefix}help pagina ou ${publicPrefix}h pagina, as paginas vão até a pagina numero 2`);
+        switch (this._el){
+            case "1":
+                this.pag1();
+                break;
+            case "2":
+                this.pag2();
+                break;
+            default:
+                mensage(`Pagina invalida, digite ${publicPrefix}help pagina ou ${publicPrefix}h pagina, as paginas vão até a pagina numero 2`);
             setSpanTime(5);
         }
     }
@@ -106,9 +111,9 @@ class helpPublicCommands{
         setSpanTime(15);
     } 
     pag2(){
-        mensage(`"${publicPrefix}upper texto" ou " ${publicPrefix}up texto" retorna o texto inserido em letras maiusculas.`)
-        mensage(`"${publicPrefix}lower texto" ou " ${publicPrefix}lo texto" retorna o texto inserido em letras minusculas.`)
-        mensage(`"${publicPrefix}lp texto" retorna o texto inserido em uma letra maiscula e outra minuscula, exemplo "ExEmPlO"`)
+        mensage(`"${publicPrefix}upper texto" ou " ${publicPrefix}up texto" : retorna o texto inserido em letras maiúsculas.`)
+        mensage(`"${publicPrefix}lower texto" ou " ${publicPrefix}lo texto" : retorna o texto inserido em letras minúsculas.`)
+        mensage(`"${publicPrefix}lp texto" : retorna o texto inserido em uma letra maiscula e outra minuscula, exemplo "ExEmPlO"`)
         setSpanTime(15);
     }
 }
