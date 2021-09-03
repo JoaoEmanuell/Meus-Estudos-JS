@@ -13,8 +13,7 @@ class urlsVerify{
         if (this.urlRepetVerify(links)){
             if (this.validURL_Docs_Google()||this.validURL_Forms_Google()){
                 links.push(this._men);
-                mensage("Link capturado, use !links ou !li para retornar a lista de links disponibilizados hoje");
-                mensage("Mensagem automatica");
+                mensage("Link capturado, use !links ou !li para retornar a lista de links disponibilizados hoje\nMensagem automatica");
                 console.log(links)
             }
         }
