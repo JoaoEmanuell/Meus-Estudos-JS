@@ -15,7 +15,7 @@ class publicCommands{
     }
     // Local Methods
     getHelp(){
-        if (validHelp(this._el)){
+        if (this._el.indexOf(`${publicPrefix}help`) === 0 || this._el.indexOf(`${publicPrefix}h`) === 0 ){
             const help = new helpPublicCommands(this._el);
         }
         function validHelp(men) {
@@ -28,11 +28,12 @@ class publicCommands{
 
     getLinks(){
         if (this._el === `${publicPrefix}links` || this._el === `${publicPrefix}li`){
+            let preText = '';
             if (links.length != 0){
                 links.forEach(link => {
-                    mensage(link)
+                    preText += `${link}\n`
                 });
-                mensage("Links de hoje :)");
+                mensage(`${preText}\nLinks de hoje :)`);
             }
             else{
                 mensage("Nenhum link de frequencia foi disponibilizado ainda!");
@@ -99,21 +100,21 @@ class helpPublicCommands{
                 this.pag2();
                 break;
             default:
-                mensage(`Pagina invalida, digite ${publicPrefix}help pagina ou ${publicPrefix}h pagina, as paginas vão até a pagina numero 2`);
-            setSpanTime(5);
+                mensage(`Pagina invalida, digite "${publicPrefix}help pagina" ou "${publicPrefix}h pagina", as paginas vão até a pagina numero 2`);
+            setSpanTime(3);
         }
     }
 
     pag1(){
-        mensage(`"${publicPrefix}links" ou " ${publicPrefix}li " : Retorna os links que foram colocados no chat até o exato momento`);
-        mensage(`"${publicPrefix}help" ou " ${publicPrefix}h " : Retorna esse bloco de comandos`);
-        mensage(`"${publicPrefix}time" ou " ${publicPrefix}t " : Retorna a quanto segundos estamos na aula!`);
+        mensage(`"${publicPrefix}links" ou " ${publicPrefix}li " : Retorna os links que foram colocados no chat até o exato momento
+        \n"${publicPrefix}help" ou " ${publicPrefix}h " : Retorna esse bloco de comandos mensagem
+        \n"${publicPrefix}time" ou " ${publicPrefix}t " : Retorna a quanto segundos estamos na aula!`);
         setSpanTime(15);
     } 
     pag2(){
-        mensage(`"${publicPrefix}upper texto" ou " ${publicPrefix}up texto" : retorna o texto inserido em letras maiúsculas.`)
-        mensage(`"${publicPrefix}lower texto" ou " ${publicPrefix}lo texto" : retorna o texto inserido em letras minúsculas.`)
-        mensage(`"${publicPrefix}lp texto" : retorna o texto inserido em uma letra maiscula e outra minuscula, exemplo "ExEmPlO"`)
+        mensage(`"${publicPrefix}upper texto" ou " ${publicPrefix}up texto" : retorna o texto inserido em letras maiúsculas.
+        \n"${publicPrefix}lower texto" ou " ${publicPrefix}lo texto" : retorna o texto inserido em letras minúsculas.
+        \n"${publicPrefix}lp texto" : retorna o texto inserido em uma letra maiscula e outra minuscula, exemplo "ExEmPlO"`);
         setSpanTime(15);
     }
 }

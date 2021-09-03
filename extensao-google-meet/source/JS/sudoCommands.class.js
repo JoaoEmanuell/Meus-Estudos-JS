@@ -41,7 +41,7 @@ class sudoCommands{
     }
     help(){
         if (this._el === `${sudoPrefix}help`){
-            mensage("Os comandos de permissão de administrador foram enviados para o console de log!");
+            mensage("Os comandos de permissão de administrador foram enviados para o console!");
             console.log(`${sudoPrefix}disable : desabilita a execução da extensão.`);
             console.log(`${sudoPrefix}enable : habilita a execução da extensão.`);
             console.log(`${sudoPrefix}remove : remove o ultimo link que está na lista de links.`);
