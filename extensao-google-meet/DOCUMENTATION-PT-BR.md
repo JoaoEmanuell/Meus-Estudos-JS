@@ -283,6 +283,8 @@ Exemplo de utilização de help:
 Após sua utilização ela utiliza a função setSpanTime passando 15 segundos como paramentro.
 
 Para aprender sobre as páginas do help [clique aqui](#pages)
+
+getHelp possui também uma função interna, que serve para validar se o texto digitado é realmente um *!help* ou *!h* isso para que o sistema de paginção funcione
 ### getLinks
 
 Metodo interno que retorna os links armazenados até o momento.
