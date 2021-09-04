@@ -39,10 +39,14 @@ A extensão se trata de uma extensão que server para modificar o funcionamento 
     - [remove](#remove)
     - [help](#help)
     - [links](#links)
+    - [setSilence](#setsilence)
+  - [Class SudoHelp](#class-sudohelp)
+    - [Constructor](#constructor-3)
+    - [Main](#main-4)
 - [Verificação de url](#verificação-de-url)
   - [Class urlsVerify](#class-urlsverify)
-    - [constructor](#constructor-3)
-    - [main](#main-4)
+    - [constructor](#constructor-4)
+    - [main](#main-5)
     - [urlRepetVerify](#urlrepetverify)
     - [validURL_Docs_Google](#validurl_docs_google)
     - [validURL_Forms_Google](#validurl_forms_google)
@@ -68,6 +72,7 @@ Serve para verificar se os comandos publicos podem ser chamados, caso ela esteja
 
 **PUBLICPREFIX :** Essa propiedade determina o prefixo dos comandos publicos.
 
+**SILENCE :** Essa propiedade é definida como false por padrão, caso ela seja alterada para verdadeira a mensagem de link capturado não será enviada.
 # Main
 
 Main é a função padrão da injeção de JavaScript no site.
@@ -518,6 +523,49 @@ Exemplo após ser chamado:
 
 Nesse caso ele acaba por não sofrer com o span_time então esse comando pode ser chamado mesmo se a extensão estiver desabilitada ou durante o tempo de span.
 
+### setSilence
+
+setSilence serve para modificar o valor da propiedade silence.
+
+Para chamar ela digite no chat *¬setsilence estado*
+
+Caso o estado seja igual a *on* ela irá retornar o seguinte:
+
+![Exemplo Silence On](https://user-images.githubusercontent.com/81983803/132108077-97cb3226-65dc-4cf3-bf00-3db6c37e41db.png)
+
+E irá definir *silence* como **true**.
+
+Caso o estado seja igual a *off* ela irá retornar o seguinte:
+
+![Exemplo Silence Off](https://user-images.githubusercontent.com/81983803/132108098-4ded3477-2cda-42a8-8fcd-74ab487d0374.png)
+
+E irá definir *silence* como **false**.
+
+Caso o estado seja invalido, ela irá retornar o seguinte.
+
+![Exemplo Silence Invalido](https://user-images.githubusercontent.com/81983803/132108111-64aa361c-7b22-4dc3-ad7a-6a4f5808d2fa.png)
+
+## Class SudoHelp
+
+Essa classe detem o sistema de ajuda dos metodos internos da classe SudoCommands.
+
+### Constructor
+
+O constructor não recebe paramentros e automaticamente chama a main.
+
+### Main
+
+Main é a função principal da classe.
+
+Uma vez chamada ela irá retornar todos os comandos de sudo no console.
+
+E exibir a seguinte mensagem no chat:
+
+```
+mensage("Os comandos de permissão de administrador foram enviados para o console!");
+```
+
+
 [Retorne ao inicio](#index)
 
 # Verificação de url
@@ -548,12 +596,14 @@ Inicialmente main verifica se a url é repetida, por meio do metodo *urlRepetVer
 
 Caso o if seja falso nada acontece.
 
-Caso ele seja verdadeiro outro if é acionado, esse if chama duas funções a *validURL_Docs_Google* e *validURL_Forms_Google* que servem para verificar o dominio do link, alguma das duas funções seja verdadeira o progama irá adicionar o link a lista de links e em seguida escrever.
+Caso ele seja verdadeiro outro if é acionado, esse if chama duas funções a *validURL_Docs_Google* e *validURL_Forms_Google* que servem para verificar o dominio do link, alguma das duas funções seja verdadeira o progama irá adicionar o link a lista de links e caso silence seja falso ele irá escrever:
 
 ```
 mensage("Link capturado, use !links ou !li para retornar a lista de links disponibilizados hoje");
 mensage("Mensagem automatica");
 ```
+
+Senão nada será escrito.
 
 ### urlRepetVerify
 
