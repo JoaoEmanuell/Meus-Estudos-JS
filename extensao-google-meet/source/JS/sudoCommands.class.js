@@ -63,6 +63,8 @@ class sudoCommands{
                     silence = false;
                     mensage("Extensão sendo executada em modo normal.");
                     break;
+                default:
+                    mensage(`Paramentro invalido, os unicos aceitos são "on" e "off"`);
             }
         }
     }
