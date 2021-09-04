@@ -1,4 +1,5 @@
 var links = [];
+var silence = false;
 class urlsVerify{
     constructor (men){
         this._men = String(men);
@@ -8,12 +9,17 @@ class urlsVerify{
  * Main function, check if a link is addable for links list.
  * If link is valid add a links list.
  * Else iginorate this link.
+ * If silence is true no send mensage.
+ * Else send a mensage.
  */
     main(){
         if (this.urlRepetVerify(links)){
             if (this.validURL_Docs_Google()||this.validURL_Forms_Google()){
                 links.push(this._men);
-                mensage("Link capturado, use !links ou !li para retornar a lista de links disponibilizados hoje\nMensagem automatica");
+                if (silence){}
+                if (silence === false){
+                    mensage("Link capturado, use !links ou !li para retornar a lista de links disponibilizados hoje\nMensagem automatica");
+                }
                 console.log(links)
             }
         }

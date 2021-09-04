@@ -15,6 +15,7 @@ class sudoCommands{
         this.remove();
         this.help();
         this.links();
+        this.setSilence();
         
     } else if(this._el[0] === sudoPrefix){
         mensage(`Desculpe ${names()} mas você não tem permisão para usar comandos de administrador da extensão :/`);
@@ -45,14 +46,30 @@ class sudoCommands{
             console.log(`${sudoPrefix}disable : desabilita a execução da extensão.`);
             console.log(`${sudoPrefix}enable : habilita a execução da extensão.`);
             console.log(`${sudoPrefix}remove : remove o ultimo link que está na lista de links.`);
-            console.log(`${sudoPrefix}help : exibe esse quadro de ajuda.`)
-            console.log(`${sudoPrefix}links : Exibe no chat os links colocados e seta o spantime para 0`)
+            console.log(`${sudoPrefix}help : exibe esse quadro de ajuda.`);
+            console.log(`${sudoPrefix}links : Exibe no chat os links colocados e seta o spantime para 0`);
+            console.log(`${sudoPrefix}setsilence : recebe o paramentro on ou off, caso seja on a extensão irá executar em modo silencioso, isso é quando ela capturar os links ela não irá exibir mensagens, caso seja off ela irá exibir mensagens normalmente.`);
         }
     }
     links(){
         if (this._el === `${sudoPrefix}links`){
             const publiccommands = new publicCommands(this._el.replace("¬", "!"));
             span_time = 0;
+        }
+    }
+    setSilence(){
+        if (this._el.indexOf(`${sudoPrefix}setsilence`) >= 0){
+            const men = this._el.replace(`${sudoPrefix}setsilence `, ``);
+            switch (men){
+                case "on":
+                    silence = true;
+                    mensage("Extensão sendo executada em modo silencioso.");
+                    break;
+                case "off":
+                    silence = false;
+                    mensage("Extensão sendo executada em modo normal.");
+                    break;
+            }
         }
     }
 }
