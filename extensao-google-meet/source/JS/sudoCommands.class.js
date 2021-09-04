@@ -42,13 +42,7 @@ class sudoCommands{
     }
     help(){
         if (this._el === `${sudoPrefix}help`){
-            mensage("Os comandos de permissão de administrador foram enviados para o console!");
-            console.log(`${sudoPrefix}disable : desabilita a execução da extensão.`);
-            console.log(`${sudoPrefix}enable : habilita a execução da extensão.`);
-            console.log(`${sudoPrefix}remove : remove o ultimo link que está na lista de links.`);
-            console.log(`${sudoPrefix}help : exibe esse quadro de ajuda.`);
-            console.log(`${sudoPrefix}links : Exibe no chat os links colocados e seta o spantime para 0`);
-            console.log(`${sudoPrefix}setsilence : recebe o paramentro on ou off, caso seja on a extensão irá executar em modo silencioso, isso é quando ela capturar os links ela não irá exibir mensagens, caso seja off ela irá exibir mensagens normalmente.`);
+            const help = new SudoHelp();
         }
     }
     links(){
@@ -71,5 +65,20 @@ class sudoCommands{
                     break;
             }
         }
+    }
+}
+
+class SudoHelp{
+    constructor(){
+        this.main();
+    }
+    main(){
+        mensage("Os comandos de permissão de administrador foram enviados para o console!");
+            console.log(`${sudoPrefix}disable : desabilita a execução da extensão.`);
+            console.log(`${sudoPrefix}enable : habilita a execução da extensão.`);
+            console.log(`${sudoPrefix}remove : remove o ultimo link que está na lista de links.`);
+            console.log(`${sudoPrefix}help : exibe esse quadro de ajuda.`);
+            console.log(`${sudoPrefix}links : Exibe no chat os links colocados e seta o spantime para 0`);
+            console.log(`${sudoPrefix}setsilence : recebe o paramentro on ou off, caso seja on a extensão irá executar em modo silencioso, isso é quando ela capturar os links ela não irá exibir mensagens, caso seja off ela irá exibir mensagens normalmente.`);
     }
 }
