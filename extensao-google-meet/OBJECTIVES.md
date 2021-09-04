@@ -31,3 +31,11 @@
 - [x] **Versão: 0.0.5**
 
   * Sistema de paginação do !help
+
+- [ ] **Versão: 0.0.6**
+
+  * Sistema de silenciamento, servindo para capturar links de forma silenciosa, sem exibir a mensagem.
+
+- [ ] **Versão: 0.0.7**
+
+  * Sistema de piadas com pelo menos 50 piadas cadastradas.
