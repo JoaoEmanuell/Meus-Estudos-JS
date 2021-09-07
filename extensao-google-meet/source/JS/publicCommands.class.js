@@ -21,6 +21,7 @@ class publicCommands{
         this.setTexToUpperCase();
         this.setTextToLowerCase();
         this.setTextToUpperCaseAndLowerCase();
+        this.getJoker();
     }
     // Local Methods
     /**
@@ -105,6 +106,12 @@ class publicCommands{
             }
             mensage(text_convert);
             setSpanTime(5);
+        }
+    }
+    getJoker(){
+        if (this._el === `${publicPrefix}joker` || this._el === `${publicPrefix}jk`){
+            const joker = new jokes();
+            //setSpanTime(20);
         }
     }
 }
