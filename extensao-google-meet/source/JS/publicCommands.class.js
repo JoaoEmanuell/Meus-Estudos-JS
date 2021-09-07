@@ -111,7 +111,7 @@ class publicCommands{
     getJoker(){
         if (this._el === `${publicPrefix}joker` || this._el === `${publicPrefix}jk` || this._el === `${publicPrefix}piada` || this._el === `${publicPrefix}pi`){
             const joker = new jokes();
-            //setSpanTime(20);
+            setSpanTime(20);
         }
     }
 }
@@ -141,6 +141,9 @@ class helpPublicCommands{
             case "2":
                 this.pag2();
                 break;
+            case "3":
+                this.pag3();
+                break;
             default:
                 mensage(`Pagina invalida, digite "${publicPrefix}help pagina" ou "${publicPrefix}h pagina", as paginas vão até a pagina numero 2`);
             setSpanTime(3);
@@ -163,5 +166,11 @@ class helpPublicCommands{
         \n"${publicPrefix}lower texto" ou " ${publicPrefix}lo texto" : retorna o texto inserido em letras minúsculas.
         \n"${publicPrefix}lp texto" : retorna o texto inserido em uma letra maiscula e outra minuscula, exemplo "ExEmPlO"`);
         setSpanTime(15);
+    }
+    /**
+     * Page 3 for help.
+     */
+    pag3(){
+        mensage(`"${publicPrefix}joker" ou "${publicPrefix}jk" ou "${publicPrefix}piada" ou "${publicPrefix}pi" : retorna uma piada aleatoria da lista de piadas.`)
     }
 }
