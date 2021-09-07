@@ -36,6 +36,6 @@
 
   * Sistema de silenciamento, servindo para capturar links de forma silenciosa, sem exibir a mensagem de captura.
 
-- [ ] **Versão: 0.0.7**
+- [x] **Versão: 0.0.7**
 
   * Sistema de piadas com pelo menos 50 piadas cadastradas.
