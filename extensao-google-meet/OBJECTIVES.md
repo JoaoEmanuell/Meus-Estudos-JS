@@ -32,9 +32,9 @@
 
   * Sistema de paginação do !help
 
-- [ ] **Versão: 0.0.6**
+- [x] **Versão: 0.0.6**
 
-  * Sistema de silenciamento, servindo para capturar links de forma silenciosa, sem exibir a mensagem.
+  * Sistema de silenciamento, servindo para capturar links de forma silenciosa, sem exibir a mensagem de captura.
 
 - [ ] **Versão: 0.0.7**
 
