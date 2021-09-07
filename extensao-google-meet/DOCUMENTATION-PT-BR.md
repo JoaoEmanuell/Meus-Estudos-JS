@@ -24,6 +24,7 @@ A extensão se trata de uma extensão que server para modificar o funcionamento 
     - [setTexToUpperCase](#settextouppercase)
     - [setTextToLowerCase](#settexttolowercase)
     - [setTextToUpperCaseAndLowerCase](#settexttouppercaseandlowercase)
+    - [getJoker](#getjoker)
   - [Classe helpPublicCommands](#classe-helppubliccommands)
     - [Constructor](#constructor-1)
   - [Métodos internos](#métodos-internos)
@@ -50,6 +51,14 @@ A extensão se trata de uma extensão que server para modificar o funcionamento 
     - [urlRepetVerify](#urlrepetverify)
     - [validURL_Docs_Google](#validurl_docs_google)
     - [validURL_Forms_Google](#validurl_forms_google)
+- [Piadas](#piadas)
+  - [Class jokes](#class-jokes)
+    - [Constructor](#constructor-5)
+  - [Metodos internos](#metodos-internos-2)
+    - [Main](#main-6)
+    - [getNumber](#getnumber)
+    - [question](#question)
+    - [answers](#answers)
      
 
 # Propiedades Padrão
@@ -353,6 +362,19 @@ Exemplo de execução:
 
 Apos isso ela chama a função de setSpanTime passando 5 segundos como paramentro.
 
+### getJoker
+
+getJoker é uma função que retorna uma piada aleatoria da lista de piadas.
+
+Para chamar getJoker digite *!joker* ou *!jk* ou *!piada* ou *!pi*
+
+Exemplo de execução:
+
+![Exemplo de execução comando joker](https://user-images.githubusercontent.com/81983803/132422496-286faa2c-a96d-4061-a898-673834292cc2.png)
+
+Sempre que é chamado ele gera retorna uma piada aleatoria, apesar da possibilidate ser baixa a piada pode acabar vindo repetida.
+
+Apos isso ela chama a função de setSpanTime passando 20 segundos como paramentro.
 ## Classe helpPublicCommands
 
 Essa classe é responsavel pela paginação do comando help, sendo ela um guia de ajuda para o uso da extensão e facilitadora do tamanho do help.
@@ -649,3 +671,58 @@ validURL_Forms_Google é um metodo interno que serve para validar se o dominio d
 Ela faz isso por meio do RegExp.
 
 [Retorne ao inicio](#index)
+
+# Piadas
+
+## Class jokes
+
+Essa classe detem as listas de piadas e os métodos para retornar uma piada aleatoria sempre que é chamada.
+
+### Constructor
+
+O construtor dessa classe chama o método interno main.
+
+## Metodos internos
+
+### Main
+
+O metodo interno main é o metodo interno principal dessa classe.
+
+Assim que é chamado ele cria uma constante que recebe o retorno do metodo interno question, no caso esse retorno é uma lista de perguntas que devem ser complementadas com as respostas.
+
+```
+const quest = this.question();
+```
+
+Logo em seguida ele cria outra const que irá deter todas as respostas das piadas.
+
+```
+const answer = this.answers();
+```
+
+Logo após isso uma constante chamada number irá ser criada, essa constante chama um método chamado *getNumber* esse método pede uma lista como paramentro e retorna uma posição aleatoria dessa lista.
+
+```
+const number = this.getNumber(quest);
+```
+
+Após isso ela irá enviar uma mensagem para o chat do google meet, essa mensagem irá conter a constante *quest* na posição *number*, logo em seguida uma quebra de linha e a constante *answer* na posição *number*.
+
+```
+mensage(`${quest[number]}\n${answer[number]}`);
+```
+### getNumber
+
+getNumber necessita de um paramentro que deve ser uma lista.
+
+Assim que for chamada ela irá retornar um numero aleatorio que será uma posição aleatoria dessa lista.
+
+### question
+
+Question retorna uma lista de perguntas que são basicamente perguntas de piadas.
+
+### answers
+
+Answers retora uma lista de respostas que são basicamente respostas das piadas que question detem.
+
+**[Retorne ao inicio](#index)**

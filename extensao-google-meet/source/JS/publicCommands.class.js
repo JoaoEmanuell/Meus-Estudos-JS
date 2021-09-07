@@ -108,6 +108,9 @@ class publicCommands{
             setSpanTime(5);
         }
     }
+    /**
+     * return a joker for joker list.
+     */
     getJoker(){
         if (this._el === `${publicPrefix}joker` || this._el === `${publicPrefix}jk` || this._el === `${publicPrefix}piada` || this._el === `${publicPrefix}pi`){
             const joker = new jokes();
