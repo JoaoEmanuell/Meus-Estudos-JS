@@ -109,7 +109,7 @@ class publicCommands{
         }
     }
     getJoker(){
-        if (this._el === `${publicPrefix}joker` || this._el === `${publicPrefix}jk`){
+        if (this._el === `${publicPrefix}joker` || this._el === `${publicPrefix}jk` || this._el === `${publicPrefix}piada` || this._el === `${publicPrefix}pi`){
             const joker = new jokes();
             //setSpanTime(20);
         }
