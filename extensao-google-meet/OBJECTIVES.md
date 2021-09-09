@@ -39,3 +39,8 @@
 - [x] **Versão: 0.0.7**
 
   * Sistema de piadas com pelo menos 50 piadas cadastradas.
+
+- [ ] **Versão: 0.0.8**
+  * Sistema de P.A.
+  * Sistema de retornar a razão de uma P.A.
+  * Sistema de Interpolação Aritmética
