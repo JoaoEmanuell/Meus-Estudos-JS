@@ -64,7 +64,7 @@ class publicCommands{
      * set Tex To UpperCase, check if a last message is a setTexToUpperCase, if is true return the text in full uppercase.
      */
     setTexToUpperCase(){
-        if (this._el.indexOf(`${publicPrefix}upper`) >= 0 || this._el.indexOf(`${publicPrefix}up`) >= 0 ){
+        if (this._el.indexOf(`${publicPrefix}upper `) >= 0 || this._el.indexOf(`${publicPrefix}up `) >= 0 ){
             console.log("setTexToUpperCase")
             let text = this._el.replace(`${publicPrefix}upper `, ``)
             text = text.replace(`${publicPrefix}up `, ``);
@@ -76,7 +76,7 @@ class publicCommands{
      * set Text To LowerCase, check if a last message is a setTextToLowerCase, if is true return the text in full lowercase.
      */
     setTextToLowerCase(){
-        if (this._el.indexOf(`${publicPrefix}lower`) >= 0 || this._el.indexOf(`${publicPrefix}lo`) >= 0 ){
+        if (this._el.indexOf(`${publicPrefix}lower `) >= 0 || this._el.indexOf(`${publicPrefix}lo `) >= 0 ){
             console.log("setTextToLowerCase")
             let text = this._el.replace(`${publicPrefix}lower `, ``)
             text = text.replace(`${publicPrefix}lo `, ``);
@@ -90,8 +90,7 @@ class publicCommands{
      * Exemple : "Hello World" => "HeLlO WoRlD".
      */
     setTextToUpperCaseAndLowerCase(){
-        if (this._el.indexOf(`${publicPrefix}lp`) >= 0){
-            this._el = this._el.replace(`${publicPrefix}upperlower `, ``);
+        if (this._el.indexOf(`${publicPrefix}lp `) >= 0){
             this._el = this._el.replace(`${publicPrefix}lp `, ``);
             let letter = 0;
             let text_convert = '';
@@ -148,7 +147,7 @@ class helpPublicCommands{
                 this.pag3();
                 break;
             default:
-                mensage(`Pagina invalida, digite "${publicPrefix}help pagina" ou "${publicPrefix}h pagina", as paginas vão até a pagina numero 2`);
+                mensage(`Pagina invalida, digite "${publicPrefix}help pagina" ou "${publicPrefix}h pagina", as paginas vão até a pagina numero 3`);
             setSpanTime(3);
         }
     }
