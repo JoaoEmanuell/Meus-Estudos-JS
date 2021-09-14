@@ -2,7 +2,7 @@ var time = 0;
 var span_time = 0;
 
 const interval = setInterval(() => {
-    exit();
+    //exit();
     main();
     time ++;
 }, 1000);
@@ -27,6 +27,9 @@ function main(){
                 mensage(`Por favor espere mais ${span_time - time} segundos para chamar o comando novamente`)
             } else if (String(el)[0] === publicPrefix){
                 const publiccommands = new publicCommands(el);
+            // math commands
+            } else if (String(el)[0] === mathPrefix){
+                const mathcommands = new mathCommands(el);
             }
             // add Url
             const addUrl = new urlsVerify(el);
