@@ -20,19 +20,23 @@ class mathCommands{
         }
     }
     // Validates
-    validateClassicPA(el){
-        this._el = String(el).replace(`${mathPrefix}p.a cl `, ``);
+    ExtractNumbers(el){
         let tmp = '';
         let listNumbers = [];
-        for (let e = 0; e < this._el.length; e++){
-            tmp += this._el[e];
-            if (this._el[e] == ' ' || this._el.length === e +1){
+        for (let e = 0; e < el.length; e++){
+            tmp += el[e];
+            if (el[e] == ' ' || el.length === e +1){
                 if(!isNaN(tmp)){
                     listNumbers.push(Number(tmp));
                     tmp = '';
                 }
             }
         }
+        return listNumbers;
+    }
+    validateClassicPA(el){
+        this._el = String(el).replace(`${mathPrefix}p.a cl `, ``);
+        const listNumbers = this.ExtractNumbers(this._el);
         if (listNumbers.length != 3){
             return `Algum numero invalido foi passado, tente novamente!`;
         } else{
@@ -42,17 +46,7 @@ class mathCommands{
     }
     validNPA(el){
         this._el = String(el).replace(`${mathPrefix}p.a n `, ``);
-        let tmp = '';
-        let listNumbers = [];
-        for (let e = 0; e < this._el.length; e++){
-            tmp += this._el[e];
-            if (this._el[e] == ' ' || this._el.length === e +1){
-                if(!isNaN(tmp)){
-                    listNumbers.push(Number(tmp));
-                    tmp = '';
-                }
-            }
-        }
+        const listNumbers = this.ExtractNumbers(this._el);
         if (listNumbers.length != 3){
             return `Algum numero invalido foi passado, tente novamente!`;
         } else{
@@ -62,17 +56,7 @@ class mathCommands{
     }
     validRPA(el){
         this._el = String(el).replace(`${mathPrefix}p.a r `, ``);
-        let tmp = '';
-        let listNumbers = [];
-        for (let e = 0; e < this._el.length; e++){
-            tmp += this._el[e];
-            if (this._el[e] == ' ' || this._el.length === e +1){
-                if(!isNaN(tmp)){
-                    listNumbers.push(Number(tmp));
-                    tmp = '';
-                }
-            }
-        }
+        const listNumbers = this.ExtractNumbers(this._el);
         if (listNumbers.length != 3){
             return `Algum numero invalido foi passado, tente novamente!`;
         } else{
@@ -82,17 +66,7 @@ class mathCommands{
     }
     validSPA(el){
         this._el = String(el).replace(`${mathPrefix}p.a s `, ``);
-        let tmp = '';
-        let listNumbers = [];
-        for (let e = 0; e < this._el.length; e++){
-            tmp += this._el[e];
-            if (this._el[e] == ' ' || this._el.length === e +1){
-                if(!isNaN(tmp)){
-                    listNumbers.push(Number(tmp));
-                    tmp = '';
-                }
-            }
-        }
+        const listNumbers = this.ExtractNumbers(this._el);
         if (listNumbers.length != 3){
             return `Algum numero invalido foi passado, tente novamente!`;
         } else{
