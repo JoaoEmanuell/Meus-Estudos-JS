@@ -127,8 +127,11 @@ class helpMath{
                 case "1":
                     this.pag1();
                     break;
+                case "2":
+                    this.pag2();
+                    break;
                 default:
-                    mensage(`Pagina invalida, digite "${mathPrefix}help pagina" ou "${mathPrefix}h pagina", as paginas vão até a pagina numero 1`);
+                    mensage(`Pagina invalida, digite "${mathPrefix}help pagina" ou "${mathPrefix}h pagina", as paginas vão até a pagina numero 2`);
                     setSpanTime(3);
             }
     }
@@ -137,6 +140,9 @@ class helpMath{
     pag1(){
         mensage(`"${mathPrefix}p.a cl primeiro-numero razão numero-de-termos" retorna uma p.a classica, escrevendo todos os termos possiveis. Exemplo: "${mathPrefix}p.a cl 2 2 10" => "2, 4, 6...
         \n"${mathPrefix}p.a n primeiro-numero razão numero-do-ultimo-termo" retorna o valor do ultimo termo da p.a. Exemplo: "${mathPrefix}p.a n 2 2 10" => 20`)
+        setSpanTime(15)
+    }
+    pag2(){
         mensage(`"${mathPrefix}p.a r primeiro-numero numero-de-termos valor-do-ultimo-termo" retorna a razão da P.A Exemplo: "${mathPrefix}p.a r 2 10 20" => 2
         \n"${mathPrefix}p.a s primeiro-termo valor-do-ultimo-termo numero-de-termos" Retorna a soma dos termos de uma P.A Exemplo: "${mathPrefix}p.a s 2 20 10"`);
         setSpanTime(15)
