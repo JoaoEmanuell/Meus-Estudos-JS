@@ -1,9 +1,10 @@
 class Math_PA{
-    /*
-    * Retorna todos os termos de uma P.A. sendo escritos de forma "termo, ".
-    * a1 = Primeiro termo, numero float.
-    * r = Razão da P.A. numero float.
-    * n = Posição do numero que será retornado, numero inteiro.
+   /**
+    * ClassicPA returns all terms of a P.A. being written in the form "term, ".
+    * @param {Float} a1 First term, float number.
+    * @param {Float} r P.A. ratio float number.
+    * @param {Int} n Position of the number that will be returned, integer. 
+    * @returns Returns all terms of a P.A. being written in the form "term, ".
     */
     classicPA(a1, r, n){
         this._a1 = a1;
@@ -17,13 +18,12 @@ class Math_PA{
         }
         return fullPA.slice(0, fullPA.length - 2);;
     }
-    /*
-    * Valor do termo N de uma P.A.
-    * Retorna o valor do termo N, isso é o valor do termo que detem a posição N de uma 
-    P.A
-    * a1 = Primeiro termo, numero float.
-    * r = Razão da P.A. numero float.
-    * n = Posição do numero que será retornado, numero inteiro.
+   /**
+    * Value of the N term of a P.A.
+    * @param {Float} a1 First term, float number.
+    * @param {Float} r P.A. ratio float number.
+    * @param {Int} n Position of the number that will be returned, integer. 
+    * @returns  Returns the value of the term N, this is the value of the term that holds the position N of a
     */
     NPA(a1, r, n){
         this._a1 = a1;
@@ -31,12 +31,12 @@ class Math_PA{
         this._n = n - 1;
         return this._a1 + (this._n * this._r);
     }
-    /*
-    * Razão de P.A.
-    * Retorna a razão de uma P.A.
-    * a1 = Primeiro termo, numero float.
-    * an = numero de termos, numero inteiro
-    * vf = valor do ultimo termo, numero float.
+   /**
+    * Ratio of a P.A.
+    * @param {Float} a1 First term, float number.
+    * @param {Int} an number of terms, integer
+    * @param {Float} vf value of the last term, float number.
+    * @returns Returns the ratio of a P.A.
     */
     RPA(a1, an, vf){
         this._a1 = a1;
@@ -51,6 +51,13 @@ class Math_PA{
     * a1 = primeiro termo, numero float.
     * an = Valor do ultimo termo, numero float.
     * n = numero de termos, numero inteiro.
+    */
+   /**
+    * Sum of P.A.
+    * @param {Float} a1 first term, float number.
+    * @param {Float} an Value of the last term, float number.
+    * @param {Int} n number of terms, integer.
+    * @returns Returns the sum of terms of a P.A.
     */
     SPA(a1, an, n){
         this._a1 = a1;
