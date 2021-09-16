@@ -59,6 +59,11 @@ A extensão se trata de uma extensão que server para modificar o funcionamento 
     - [getNumber](#getnumber)
     - [question](#question)
     - [answers](#answers)
+- [MATH COMMANDS](#math-commands)
+  - [Class mathCommands](#class-mathcommands)
+    - [Constructor](#constructor-6)
+  - [Metodos internos.](#metodos-internos-3)
+    - [Main](#main-7)
      
 
 # Propiedades Padrão
@@ -724,5 +729,51 @@ Question retorna uma lista de perguntas que são basicamente perguntas de piadas
 ### answers
 
 Answers retora uma lista de respostas que são basicamente respostas das piadas que question detem.
+
+**[Retorne ao inicio](#index)**
+
+# MATH COMMANDS
+
+Math Commands é a classe responsavel por validar os comandos matematicos e retornar os valores deles.
+
+Atualmente ela possui uma sub-classe que é responsavel por relizar operações de P.A.
+
+A primeira coisa que ela faz ao ser inicada é criar uma constante chamada de *"mathPrefix"* que irá deter o prefixo necessario para chamar todos os comandos dessa classe.
+
+```
+const mathPrefix = `+`;
+```
+
+## Class mathCommands
+### Constructor
+Assim que essa classe é instanciada na main ela irá pedir *el* que é a ultima mensagem passada, logo em seguida *el* será convertida para String e transformada em letras minuscula, após isso ela irá chamar o methodo interno *main*.
+
+```
+class mathCommands{
+    constructor (el){
+        this._el = String(el).toLowerCase();
+        this.main();
+    }
+```
+
+## Metodos internos.
+
+### Main
+
+Main é o método principal, ele é responsavel por criar duas constantes.
+
+Uma é chamada de *pa* essa constante herda todas as caracteristicas da classe *PA* e passa *this._el* como paramentro.
+
+Logo em seguida uma outra constante é criada, essa constante é chamada de *help* essa consante herda todas as caracteriscias da classe *helpMath* e passa *this._el* como paramentro.
+
+```
+    main(){
+        // PA
+        const pa = new PA(this._el);
+        // HELP
+        const help = new helpMath(this._el);
+    }
+}
+```
 
 **[Retorne ao inicio](#index)**
