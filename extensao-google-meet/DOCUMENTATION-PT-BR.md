@@ -177,6 +177,20 @@ Caso isso seja verdadeiro uma constante com o nome de *publiccommands* será cri
 const publiccommands = new publicCommands(el);
 ```
 
+Se o if acima não for verdadeiro então ocorrerá outra verificação.
+
+Essa verificação servirá convertera *el* para uma String e verificará se o primeiro caractere dela é verdadeiramente igual ao *mathPrefix* :
+
+```
+else if (String(el)[0] === mathPrefix){. . .}
+```
+
+Caso isso seja verdadeiro uma constante com o nome de *mathcommands* será criada, ela recebera todos os metodos internos da classe *mathCommands* e passará a ultima mensagem que foi enviada como pedido do constructor, esse caso ela passará *el* :
+
+```
+const mathcommands = new mathCommands(el);
+```
+
 Após todas essas verificações uma constante chamada de *addUrl* sera criada e ela recebera todos metodos internos da classe *urlsVerify* e passará a ultima mensagem que foi enviada como pedido do constructor, esse caso ela passará *el* :
 
 ```
