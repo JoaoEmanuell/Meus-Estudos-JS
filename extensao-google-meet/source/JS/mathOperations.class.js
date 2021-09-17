@@ -45,13 +45,6 @@ class Math_PA{
         const r = (this._vf + (-this._a1)) / this._an;
         return r;
     }
-    /*
-    * Soma de P.A.
-    * Retorna a soma dos termos de uma P.A.
-    * a1 = primeiro termo, numero float.
-    * an = Valor do ultimo termo, numero float.
-    * n = numero de termos, numero inteiro.
-    */
    /**
     * Sum of P.A.
     * @param {Float} a1 first term, float number.

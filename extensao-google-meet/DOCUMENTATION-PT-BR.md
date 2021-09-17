@@ -71,6 +71,7 @@ A extensão se trata de uma extensão que server para modificar o funcionamento 
     - [ExtractNumbers](#extractnumbers)
     - [validateClassicPA](#validateclassicpa)
     - [validNPA](#validnpa)
+    - [validRPA](#validrpa)
      
 
 # Propiedades Padrão
@@ -944,4 +945,45 @@ else{
   const classPa = new Math_PA();
   return classPa.NPA(listNumbers[0], listNumbers[1], listNumbers[2]);
   }
+```
+
+### validRPA
+
+validRPA é um método interno que valida se o comando passa números suficientes para que uma operação de N.P.A (isso é uma operação que tem por objetivo retornar o valor do termo desejado) seja executada.
+
+Ele pede a ultima mensagem como paramentro.
+
+Automaticamente ela converte a ultima mensagem para String e retira o comando dela, dessa forma deixando só os números.
+
+```
+this._el = String(el).replace(`${mathPrefix}p.a r `, ``);
+```
+
+Logo em seguida uma constante chamada de listNumbers é criada, ela recebe o retorno do método *ExtractNumbers* passando *this._el* como paramentro, dessa forma o método interno *ExtractNumbers* irá extair os números e retornar uma lista com eles.
+
+```
+const listNumbers = this.ExtractNumbers(this._el);
+```
+
+Se o length de listNumbers for diferente de 3 ela irá retornar "Algum numero invalido foi passado, tente novamente!"
+
+```
+if (listNumbers.length != 3){ return `Algum numero invalido foi passado, tente novamente!`; } 
+```
+
+Senão ela irá criar uma constante chamada de *classPa* que irá receber todos os métodos da classe *Math_PA*.
+
+Dessa forma ela irá retornar o valor de retorno da constante *classPa* chamando o método interno *RPA*, passando como paramentros: 
+
+*listNumbers* na posição 0, que é o valor do primeiro termo da P.A.
+
+*listNumbers* na posição 1, que é o número de termos da P.A.
+
+*listNumbers* na posição 2, que é o valor do ultimo termo conhecido da P.A.
+
+```
+else{
+  const classPa = new Math_PA();
+  return classPa.RPA(listNumbers[0], listNumbers[1], listNumbers[2]);
+}
 ```
