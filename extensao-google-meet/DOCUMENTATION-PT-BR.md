@@ -73,6 +73,10 @@ A extensão se trata de uma extensão que server para modificar o funcionamento 
     - [validNPA](#validnpa)
     - [validRPA](#validrpa)
     - [validSPA](#validspa)
+  - [Class helpMath](#class-helpmath)
+    - [constructor](#constructor-8)
+  - [Métodos Internos](#métodos-internos-2)
+    - [Main](#main-9)
      
 
 # Propiedades Padrão
@@ -1043,3 +1047,55 @@ else{
   return classPa.SPA(listNumbers[0], listNumbers[1], listNumbers[2]);
 }
 ```
+
+## Class helpMath
+
+Essa classe é responsavel por validar as páginas de help dos comandos de math.
+
+### constructor
+
+O constructor pede como paramentro *el* que é a ultima mensagem, *el* sera convetida para String e irá ser colocada em letras minusculas.
+
+```
+this._el = String(el).toLowerCase();
+```
+
+Então ocorrerá uma verificação, se dentro de *this._el* tiver *+help* ou *+h* ela irá converter *this._el* novamente para as letras minusculas e retirar o *+help* e *+h* deixando só o número da página.
+
+```
+this._el = String(el).toLowerCase();
+if (this._el.indexOf(`${mathPrefix}help`) === 0 || this._el.indexOf(`${mathPrefix}h`) === 0 ){
+    this._el = String(el).toLowerCase().replace(`${mathPrefix}help `, '').replace(`${mathPrefix}h `, '');
+```
+
+Logo após isso o método interno *main* será chamado.
+
+```
+this.main();
+```
+
+## Métodos Internos
+
+### Main
+
+Main é o método principal da classe *helpMath* ele é responsavel por validar as páginas e chamar a página correspondente aquele número.
+
+Ela faz isso por meio de um switch
+
+```
+switch(this._el){
+  case "pag":
+    pag;
+    break;
+}
+```
+
+Se nenhuma condição for atendia ela irá enviar a seguinte mensagem:
+
+"Pagina invalida, digite "+help pagina" ou "+h pagina", as paginas vão até a pagina numero 2"
+
+E setar 3 segundos de *SpanTime*
+
+Caso determinada página seja chamada a página irá enviar como mensagem o seu conteudo e setar um SpanTime de 15 segundos.
+
+**[Retorne ao inicio](#index)**
