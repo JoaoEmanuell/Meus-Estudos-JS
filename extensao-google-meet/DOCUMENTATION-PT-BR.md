@@ -77,6 +77,10 @@ A extensão se trata de uma extensão que server para modificar o funcionamento 
     - [constructor](#constructor-8)
   - [Métodos Internos](#métodos-internos-2)
     - [Main](#main-9)
+- [MATH OPERATIONS](#math-operations)
+  - [Class Math_PA](#class-math_pa)
+  - [Metodos internos](#metodos-internos-4)
+    - [classicPA](#classicpa)
      
 
 # Propiedades Padrão
@@ -803,8 +807,6 @@ Logo em seguida uma outra constante é criada, essa constante é chamada de *hel
 }
 ```
 
-**[Retorne ao inicio](#index)**
-
 ## Class PA
 
 Classe reponsavel por validar e retornar as respostas das progressões aritimeticas.
@@ -1099,3 +1101,78 @@ E setar 3 segundos de *SpanTime*
 Caso determinada página seja chamada a página irá enviar como mensagem o seu conteudo e setar um SpanTime de 15 segundos.
 
 **[Retorne ao inicio](#index)**
+
+# MATH OPERATIONS
+
+Math operations é a classe responsavel por realizar operações mátematicas.
+
+## Class Math_PA
+
+Math_PA é uma classe responsavel por realizar operações de progressão aritimetica ou P.A.
+
+Essa classe não possui um construtor.
+
+## Metodos internos
+
+### classicPA
+
+Esse método retorna uma P.A. com todos os membros dela escrito.
+
+Paramentros:
+
+a1 = Valor do primeiro termo da P.A.
+
+r = Razão da P.A.
+
+n = Ultimo termo da P.A.
+
+Assim que é chamado esse método cria 3 elementos propios.
+
+O primeiro chamado de *this._a1* recebe o resultado do paramentro a1.
+
+```
+this._a1 = a1;
+```
+
+O segundo chamado de *this._r* recebe o resultado do paramentro r.
+
+```
+this._r = r;
+```
+
+O terceiro chamado de *this._n* recebe o resultado do paramentro n.
+
+```
+this._n = n;
+```
+
+Logo em seguida ela cria uma let chamada de *tmp* que começa com 0, *tmp* é responsavel por limitar o funcionamento do for, assim impedindo ele de entrar em loop infinito.
+
+```
+let tmp = 0;
+```
+
+Após isso a variavel *fullPA* é criada, ela começa como uma string vazia e é responsavel por armazenar a P.A.
+
+```
+var fullPA = '';
+```
+
+Então occorre um for, a let *i* é criada, *i* começa com o valor de *this._a1* esse for ocorrera enquanto *tmp* for inferior a *this._n* e o *i* irá receber ele mais *this._r*.
+
+```
+for (let i = this._a1; tmp < this._n; i += this._r){. . .}
+```
+
+Sempre que o **for** for executado *tmp* irá receber ela mais ela mesmo e a variavel *fullPA* irá receber ela mais o valor de *i* com uma virgula e um espaço colocado.
+
+```
+tmp ++;
+fullPA += `${i}, `;
+```
+
+Após isso o método irá retornar a *fullPA* eliminando a virgula e o espaço final pois não existe nenhum numero após ele.
+
+```
+return fullPA.slice(0, fullPA.length - 2);;
+```
