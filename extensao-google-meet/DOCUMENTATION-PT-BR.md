@@ -83,6 +83,7 @@ A extensão se trata de uma extensão que server para modificar o funcionamento 
     - [classicPA](#classicpa)
     - [NPA](#npa)
     - [RPA](#rpa)
+    - [SPA](#spa)
      
 
 # Propiedades Padrão
@@ -1273,3 +1274,49 @@ Então ela irá retornar o valor de r:
 ```
 return r;
 ```
+
+### SPA
+
+Esse método retorna o valor do termo desejado de uma P.A.
+
+Por meio da formula do termo geral da P.A.:
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/81983803/134069723-71abfc67-a42b-467f-8235-9176960d4f05.png" alt="Formula do termo geral da P.A."/>
+</p>
+
+Paramentros:
+
+a1 = Valor do primeiro termo da P.A.
+
+an = Valor do ultimo termo da P.A.
+
+n = Numero de termos da P.A.
+
+Assim que é chamado esse método cria 3 elementos propios.
+
+O primeiro chamado de *this._a1* recebe o resultado do paramentro a1.
+
+```
+this._a1 = a1;
+```
+
+O segundo chamado de *this._an* recebe o resultado do paramentro an.
+
+```
+this._an = an;
+```
+
+O terceiro chamado de *this._n* recebe o resultado do paramentro n.
+
+```
+this._n = n;
+```
+
+Então ela irá retornar o valor de "*this._a1* + (*this._n* * *this._r*) / 2" conforme a formula acima ordena:
+
+```
+return ((this._a1 + this._an) * this._n) / 2;
+```
+
+**[Retorne ao inicio](#index)**
