@@ -82,6 +82,7 @@ A extensão se trata de uma extensão que server para modificar o funcionamento 
   - [Metodos internos](#metodos-internos-4)
     - [classicPA](#classicpa)
     - [NPA](#npa)
+    - [RPA](#rpa)
      
 
 # Propiedades Padrão
@@ -1220,4 +1221,55 @@ Então ela irá retornar o valor de "*this._a1* + (*this._n* * *this._r*)" confo
 
 ```
 return this._a1 + (this._n * this._r);
+```
+### RPA
+
+Esse método retorna a razão de uma P.A.
+
+Por meio da seguinte formula:
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/81983803/134068616-495b1c0c-8086-489f-af94-c611c58d90e7.png" alt="Formula da razão da P.A."/>
+</p>
+
+Paramentros:
+
+a1 = Valor do primeiro termo da P.A.
+
+an = Valor do ultimo termo da P.A.
+
+n = Numero de termos da P.A.
+
+Assim que é chamado esse método cria 3 elementos propios.
+
+O primeiro chamado de *this._a1* recebe o resultado do paramentro a1.
+
+```
+this._a1 = a1;
+```
+
+O segundo chamado de *this._an* recebe o resultado do paramentro an menos um.
+
+```
+this._an = an - 1;
+```
+
+O terceiro chamado de *this._vf* recebe o resultado do paramentro vf.
+
+```
+this._vf = vf;
+```
+
+Logo em seguida ela cria uma constante chamada de *r* que recebe "(*this._vf* + (-*this._a1*)) / *this._an*";
+
+```
+const r = (this._vf + (-this._a1)) / this._an;
+```
+
+O (-*this._a1*) serve para forçar o valor do this._a1 a se tornar negativo.
+
+Então ela irá retornar o valor de r:
+
+```
+return r;
 ```
