@@ -81,6 +81,7 @@ A extensão se trata de uma extensão que server para modificar o funcionamento 
   - [Class Math_PA](#class-math_pa)
   - [Metodos internos](#metodos-internos-4)
     - [classicPA](#classicpa)
+    - [NPA](#npa)
      
 
 # Propiedades Padrão
@@ -1175,4 +1176,48 @@ Após isso o método irá retornar a *fullPA* eliminando a virgula e o espaço f
 
 ```
 return fullPA.slice(0, fullPA.length - 2);;
+```
+
+### NPA
+
+Esse método retorna o valor do termo desejado de uma P.A.
+
+Por meio da formula do termo geral da P.A.:
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/81983803/133949215-93f3fa7c-709a-456f-a523-66afa7cb41c0.png" alt="Formula do termo geral da P.A."/>
+</p>
+
+Paramentros:
+
+a1 = Valor do primeiro termo da P.A.
+
+r = Razão da P.A.
+
+n = Ultimo termo da P.A.
+
+Assim que é chamado esse método cria 3 elementos propios.
+
+O primeiro chamado de *this._a1* recebe o resultado do paramentro a1.
+
+```
+this._a1 = a1;
+```
+
+O segundo chamado de *this._r* recebe o resultado do paramentro r.
+
+```
+this._r = r;
+```
+
+O terceiro chamado de *this._n* recebe o resultado do paramentro n menos um.
+
+```
+this._n = n - 1;
+```
+
+Então ela irá retornar o valor de "*this._a1* + (*this._n* * *this._r*)" conforme a formula acima ordena:
+
+```
+return this._a1 + (this._n * this._r);
 ```
