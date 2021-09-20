@@ -43,4 +43,17 @@
 - [x] **Versão: 0.0.8**
   * Sistema de P.A.
   * Sistema de retornar a razão de uma P.A.
-  * Sistema de Interpolação Aritmética
+  * Sistema de Interpolação Aritmética para P.A.
+
+- [ ] **Versão: 0.0.9**
+  * Refatoração do código das classes relacionadas a métodos matematicos.
+  * Melhoria no sistemas de help.
+  * Correção de quebra de linhas no retorno de links.
+
+- [ ] **Versão: 0.1.0**
+  * Sistema de calculo e retorno de uma equação do segundo grau.
+
+- [ ] **Versão: 0.1.1**
+  * Sistema de P.G.
+  * Sistema de retornar a razão de uma P.G.
+  * Sistema de Interpolação Aritmética para P.G.
