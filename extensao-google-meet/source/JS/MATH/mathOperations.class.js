@@ -59,12 +59,27 @@ class Math_PA{
         return ((this._a1 + this._an) * this._n) / 2
     }
 }
-
+/**
+ * Class to perform second degree equation
+ */
 class Math_EQ2{
+    /**
+     * Calculate a delt value.
+     * @param {float} a number corresponding to the letter a 
+     * @param {float} b number corresponding to the letter b
+     * @param {float} c number corresponding to the letter c
+     * @returns {float} the delt value
+     */
     delt(a, b, c){
         return (b**2) - (4*(a*c));
     }
-      
+    /**
+     * Calculate a roots
+     * @param {float} a number corresponding to the letter a
+     * @param {float} b number corresponding to the letter b
+     * @param {float} c number corresponding to the letter c
+     * @returns {Array} delt value, x' and x''
+     */  
     roots(a, b, c){
         let del = this.delt(a, b, c);
         if (del < 0 || a === 0){

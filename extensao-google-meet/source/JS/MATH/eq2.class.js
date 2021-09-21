@@ -1,5 +1,5 @@
 /**
- * Class for Second degree equation
+ * Class to validate a second degree equation
  */
 class EQ2{
     constructor (el){
