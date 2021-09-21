@@ -31,8 +31,11 @@ class helpMath{
                 case "2":
                     this.pag2();
                     break;
+                case "3":
+                    this.pag3();
+                    break;
                 default:
-                    mensage(`Pagina invalida, digite "${mathPrefix}help pagina" ou "${mathPrefix}h pagina", as paginas vão até a pagina numero 2`);
+                    mensage(`Pagina invalida, digite "${mathPrefix}help pagina" ou "${mathPrefix}h pagina", as paginas vão até a pagina numero 3`);
                     setSpanTime(3);
             }
     }
@@ -44,6 +47,10 @@ class helpMath{
     }
     pag2(){
         mensage(`"${mathPrefix}p.a r primeiro-numero numero-de-termos valor-do-ultimo-termo" retorna a razão da P.A Exemplo: "${mathPrefix}p.a r 2 10 20" => 2\n"${mathPrefix}p.a s primeiro-termo valor-do-ultimo-termo numero-de-termos" Retorna a soma dos termos de uma P.A Exemplo: "${mathPrefix}p.a s 2 20 10"`);
+        setSpanTime(15)
+    }
+    pag3(){
+        mensage(`"${mathPrefix}eq2 a b c" retorna o delta, x' e x'' de uma equação do segundo grau, subistitua as letras pelos valores na hora de colocar.`)
         setSpanTime(15)
     }
 }
