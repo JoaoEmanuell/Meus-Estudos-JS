@@ -28,7 +28,6 @@ class PA{
     validateClassicPA(el){
         this._el = String(el).replace(`${mathPrefix}p.a cl `, ``);
         const listNumbers = ExtractNumbers(this._el, ' ');
-        console.log(listNumbers)
         if (listNumbers.length != 3){
             return `Algum numero invalido foi passado, tente novamente!`;
         } else{

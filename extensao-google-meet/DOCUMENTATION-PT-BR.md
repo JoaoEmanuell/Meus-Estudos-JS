@@ -1286,6 +1286,8 @@ ExtractNumbers é um método interno que não é chamado por main, mas ele é es
 
 Como paramentro obrigatorio você deve passar a ultima mensagem, é desejavel que essa mensagem só tenha os números e que todo o texto dela tenha sido removido.
 
+E você deve passar o separador, separador é um caractere que indica a separação dos números.
+
 Assim que criado *ExtractNumbers* cria uma let chamada *tmp* que começa como uma string vazia, logo em seguida ela cria uma lista chamada de *listNumbers* que começa como uma lista vazia.
 
 ```
@@ -1305,15 +1307,18 @@ Para cada ciclo do for *tmp* recebe ela mais igual a *el* na posição *e*.
 tmp += el[e];
 ```
 
-Se o *el* na posição *e* for igual a um espaço o que indica que chegou a um ponto de ruptura e que o proximo elemento outro termo ou se o length de *el* for verdadeiramente igual a *e* mais um o que indica que o proximo caractere é o caractere final.
+Se o *el* na posição *e* for igual a *separate* o que indica que chegou a um ponto de ruptura e que o proximo elemento outro termo ou se o length de *el* for verdadeiramente igual a *e* mais um o que indica que o proximo caractere é o caractere final.
 
 ```
-if (el[e] == ' ' || el.length === e +1){ . . . }
+if (el[e] == separate || el.length === e +1){
 ```
+
+tmp remove o separate dela deixando somente os númeoros. 
 
 Se a negação de isNaN (Método interno do javascript que verifica se determinado termo não é um número, se for um número ele irá retornar false, senão for um número ele irá retornar True) for verdadeira então adicione a conversão númerica de *tmp* para *listNumbers* e faça *tmp* retorna a uma lista vazia
 
-```     
+```
+tmp = tmp.replace(separate, '');
 if(!isNaN(tmp)){
     listNumbers.push(Number(tmp));
     tmp = '';
