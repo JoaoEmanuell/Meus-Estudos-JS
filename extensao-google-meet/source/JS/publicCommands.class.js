@@ -43,7 +43,7 @@ class publicCommands{
                 links.forEach(link => {
                     preText += `${link}\n`
                 });
-                mensage(`${preText}\nLinks de hoje :)`);
+                mensage(`${preText}Links de hoje :)`);
             }
             else{
                 mensage("Nenhum link de frequencia foi disponibilizado ainda!");
