@@ -17,7 +17,7 @@
             ],
             "js":
             [
-                "main.js", "./JS/urlsVerify.class.js", "./JS/jquery.js", "./JS/publicCommands.class.js", "./JS/sudoCommands.class.js", "./JS/jokes.class.js", "./JS/mathCommands.class.js", "./JS/MATH/mathOperations.class.js", "./JS/MATH/mathEssential.js", "./JS/MATH/pa.class.js"
+                "main.js", "./JS/urlsVerify.class.js", "./JS/jquery.js", "./JS/publicCommands.class.js", "./JS/sudoCommands.class.js", "./JS/jokes.class.js", "./JS/mathCommands.class.js", "./JS/MATH/mathOperations.class.js", "./JS/MATH/mathEssential.js", "./JS/MATH/pa.class.js", "./JS/MATH/eq2.class.js"
             ]
         }
     ]
