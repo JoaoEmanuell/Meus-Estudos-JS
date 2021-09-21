@@ -64,19 +64,18 @@ A extensão se trata de uma extensão que server para modificar o funcionamento 
     - [Constructor](#constructor-6)
   - [Metodos internos.](#metodos-internos-3)
     - [Main](#main-7)
-  - [Class PA](#class-pa)
-    - [Constructor](#constructor-7)
-  - [Métodos internos.](#métodos-internos-1)
-    - [Main](#main-8)
-    - [ExtractNumbers](#extractnumbers)
-    - [validateClassicPA](#validateclassicpa)
-    - [validNPA](#validnpa)
-    - [validRPA](#validrpa)
-    - [validSPA](#validspa)
   - [Class helpMath](#class-helpmath)
-    - [constructor](#constructor-8)
-  - [Métodos Internos](#métodos-internos-2)
-    - [Main](#main-9)
+    - [constructor](#constructor-7)
+  - [Métodos Internos](#métodos-internos-1)
+    - [Main](#main-8)
+- [PA CLASS](#pa-class)
+  - [Constructor](#constructor-8)
+- [Métodos internos.](#métodos-internos-2)
+  - [Main](#main-9)
+  - [validateClassicPA](#validateclassicpa)
+  - [validNPA](#validnpa)
+  - [validRPA](#validrpa)
+  - [validSPA](#validspa)
 - [MATH OPERATIONS](#math-operations)
   - [Class Math_PA](#class-math_pa)
   - [Metodos internos](#metodos-internos-4)
@@ -84,6 +83,8 @@ A extensão se trata de uma extensão que server para modificar o funcionamento 
     - [NPA](#npa)
     - [RPA](#rpa)
     - [SPA](#spa)
+- [MATH ESSENTIAL](#math-essential)
+  - [ExtractNumbers](#extractnumbers)
      
 
 # Propiedades Padrão
@@ -810,249 +811,6 @@ Logo em seguida uma outra constante é criada, essa constante é chamada de *hel
 }
 ```
 
-## Class PA
-
-Classe reponsavel por validar e retornar as respostas das progressões aritimeticas.
-
-### Constructor
-
-O construtor dessa classe pede um paramentro, que é chamado de *el*, *el* corresponde a ultima mensagem que foi enviada, após isso *el* é convertido em *String* e transformado para letras minusculas.
-
-Logo em seguida o método interno *main* é chamado.
-
-```
-constructor (el){
-      this._el = String(el).toLowerCase();
-      this.main();
-  }
-```
-
-## Métodos internos.
-
-### Main
-
-Main é o método principal, ele é responsavel por validar se o comando corresponde a algum dos comandos desejados para realização de uma P.A.
-
-Primeiramente ele verifica se dentro da mensagem existe um comando para chamar a classe P.A.
-
- Caso isso seja possitivo ele verifica se dentro da mensagem existe um comando que seja valido, caso exista ele irá enviar uma mensagem que será o retorno do método interno *validate* daquele comando especificado.
-
-```
-if (this._el.indexOf(`${mathPrefix}p.a cl`) >= 0){
-  mensage(this.validateClassicPA(this._el));
-}
-```
-
-### ExtractNumbers
-
-ExtractNumbers é um método interno que não é chamado por main, mas ele é essencial para o funcionamento dos outros métodos internos, ExtractNumbers é reponsavel por retirar os números da mensagem e converte-los para números, ao final ele irá retornar a lista de números retirados da mensagem.
-
-Como paramentro obrigatorio você deve passar a ultima mensagem, é desejavel que essa mensagem só tenha os números e que todo o texto dela tenha sido removido.
-
-Assim que criado *ExtractNumbers* cria uma let chamada *tmp* que começa como uma string vazia, logo em seguida ela cria uma lista chamada de *listNumbers* que começa como uma lista vazia.
-
-```
-let tmp = '';
-let listNumbers = [];
-```
-
-Após isso ela faz um for começando com a let *e* no valor 0 enquanto *e* é inferior ao *el.length* e incrementando *e* mais um.
-
-```
-for (let e = 0; e < el.length; e++){ . . . }
-```
-
-Para cada ciclo do for *tmp* recebe ela mais igual a *el* na posição *e*.
-
-```
-tmp += el[e];
-```
-
-Se o *el* na posição *e* for igual a um espaço o que indica que chegou a um ponto de ruptura e que o proximo elemento outro termo ou se o length de *el* for verdadeiramente igual a *e* mais um o que indica que o proximo caractere é o caractere final.
-
-```
-if (el[e] == ' ' || el.length === e +1){ . . . }
-```
-
-Se a negação de isNaN (Método interno do javascript que verifica se determinado termo não é um número, se for um número ele irá retornar false, senão for um número ele irá retornar True) for verdadeira então adicione a conversão númerica de *tmp* para *listNumbers* e faça *tmp* retorna a uma lista vazia
-
-```     
-if(!isNaN(tmp)){
-    listNumbers.push(Number(tmp));
-    tmp = '';
-}
-        
-```
-
-Ao final de tudo isso retorne *listNumbers* que deve ser uma lista com todos os números extraidos da mensagem.
-
-```
-return listNumbers;
-```
-### validateClassicPA
-
-validateClassicPA é um método interno que valida se o comando passa números suficientes para que uma operação de P.A. classica seja executada.
-
-Ele pede a ultima mensagem como paramentro.
-
-Automaticamente ela converte a ultima mensagem para String e retira o comando dela, dessa forma deixando só os números.
-
-```
-this._el = String(el).replace(`${mathPrefix}p.a cl `, ``);
-```
-
-Logo em seguida uma constante chamada de listNumbers é criada, ela recebe o retorno do método *ExtractNumbers* passando *this._el* como paramentro, dessa forma o método interno *ExtractNumbers* irá extair os números e retornar uma lista com eles.
-
-```
-const listNumbers = this.ExtractNumbers(this._el);
-```
-
-Se o length de listNumbers for diferente de 3 ela irá retornar "Algum numero invalido foi passado, tente novamente!"
-
-```
-if (listNumbers.length != 3){ return `Algum numero invalido foi passado, tente novamente!`; } 
-```
-
-Senão ela irá criar uma constante chamada de *classPa* que irá receber todos os métodos da classe *Math_PA*.
-
-Dessa forma ela irá retornar o valor de retorno da constante *classPa* chamando o método interno *classicPA*, passando como paramentros: 
-
-*listNumbers* na posição 0, que é o valor do primeiro termo da P.A.
-
-*listNumbers* na posição 1, que é o valor da razão da P.A.
-
-*listNumbers* na posição 2, que é a quantidade de termos da P.A.
-
-```
-else{
-  const classPa = new Math_PA();
-  return classPa.classicPA(listNumbers[0], listNumbers[1], listNumbers[2]);
-}
-```
-
-### validNPA
-
-validNPA é um método interno que valida se o comando passa números suficientes para que uma operação de N.P.A (isso é uma operação que tem por objetivo retornar o valor do termo desejado) seja executada.
-
-Ele pede a ultima mensagem como paramentro.
-
-Automaticamente ela converte a ultima mensagem para String e retira o comando dela, dessa forma deixando só os números.
-
-```
-this._el = String(el).replace(`${mathPrefix}p.a n `, ``);
-```
-
-Logo em seguida uma constante chamada de listNumbers é criada, ela recebe o retorno do método *ExtractNumbers* passando *this._el* como paramentro, dessa forma o método interno *ExtractNumbers* irá extair os números e retornar uma lista com eles.
-
-```
-const listNumbers = this.ExtractNumbers(this._el);
-```
-
-Se o length de listNumbers for diferente de 3 ela irá retornar "Algum numero invalido foi passado, tente novamente!"
-
-```
-if (listNumbers.length != 3){ return `Algum numero invalido foi passado, tente novamente!`; } 
-```
-
-Senão ela irá criar uma constante chamada de *classPa* que irá receber todos os métodos da classe *Math_PA*.
-
-Dessa forma ela irá retornar o valor de retorno da constante *classPa* chamando o método interno *NPA*, passando como paramentros: 
-
-*listNumbers* na posição 0, que é o valor do primeiro termo da P.A.
-
-*listNumbers* na posição 1, que é o valor da razão da P.A.
-
-*listNumbers* na posição 2, que é o termo que deseja ser descoberto.
-
-```
-else{
-  const classPa = new Math_PA();
-  return classPa.NPA(listNumbers[0], listNumbers[1], listNumbers[2]);
-  }
-```
-
-### validRPA
-
-validRPA é um método interno que valida se o comando passa números suficientes para que uma operação de R.P.A (isso é uma operação que tem por objetivo retornar o valor do termo desejado) seja executada.
-
-Ele pede a ultima mensagem como paramentro.
-
-Automaticamente ela converte a ultima mensagem para String e retira o comando dela, dessa forma deixando só os números.
-
-```
-this._el = String(el).replace(`${mathPrefix}p.a r `, ``);
-```
-
-Logo em seguida uma constante chamada de listNumbers é criada, ela recebe o retorno do método *ExtractNumbers* passando *this._el* como paramentro, dessa forma o método interno *ExtractNumbers* irá extair os números e retornar uma lista com eles.
-
-```
-const listNumbers = this.ExtractNumbers(this._el);
-```
-
-Se o length de listNumbers for diferente de 3 ela irá retornar "Algum numero invalido foi passado, tente novamente!"
-
-```
-if (listNumbers.length != 3){ return `Algum numero invalido foi passado, tente novamente!`; } 
-```
-
-Senão ela irá criar uma constante chamada de *classPa* que irá receber todos os métodos da classe *Math_PA*.
-
-Dessa forma ela irá retornar o valor de retorno da constante *classPa* chamando o método interno *RPA*, passando como paramentros: 
-
-*listNumbers* na posição 0, que é o valor do primeiro termo da P.A.
-
-*listNumbers* na posição 1, que é o número de termos da P.A.
-
-*listNumbers* na posição 2, que é o valor do ultimo termo conhecido da P.A.
-
-```
-else{
-  const classPa = new Math_PA();
-  return classPa.RPA(listNumbers[0], listNumbers[1], listNumbers[2]);
-}
-```
-
-### validSPA
-
-validSPA é um método interno que valida se o comando passa números suficientes para que uma operação de S.P.A. (isso é uma operação que tem por objetivo retornar o valor da soma de todos os termos da P.A.) seja executada.
-
-Ele pede a ultima mensagem como paramentro.
-
-Automaticamente ela converte a ultima mensagem para String e retira o comando dela, dessa forma deixando só os números.
-
-```
-this._el = String(el).replace(`${mathPrefix}p.a s `, ``);
-```
-
-Logo em seguida uma constante chamada de listNumbers é criada, ela recebe o retorno do método *ExtractNumbers* passando *this._el* como paramentro, dessa forma o método interno *ExtractNumbers* irá extair os números e retornar uma lista com eles.
-
-```
-const listNumbers = this.ExtractNumbers(this._el);
-```
-
-Se o length de listNumbers for diferente de 3 ela irá retornar "Algum numero invalido foi passado, tente novamente!"
-
-```
-if (listNumbers.length != 3){ return `Algum numero invalido foi passado, tente novamente!`; } 
-```
-
-Senão ela irá criar uma constante chamada de *classPa* que irá receber todos os métodos da classe *Math_PA*.
-
-Dessa forma ela irá retornar o valor de retorno da constante *classPa* chamando o método interno *SPA*, passando como paramentros: 
-
-*listNumbers* na posição 0, que é o valor do primeiro termo da P.A.
-
-*listNumbers* na posição 1, que é o valor do ultimo termo da P.A.
-
-*listNumbers* na posição 2, que é o número de termos da P.A.
-
-```
-else{
-  const classPa = new Math_PA();
-  return classPa.SPA(listNumbers[0], listNumbers[1], listNumbers[2]);
-}
-```
-
 ## Class helpMath
 
 Essa classe é responsavel por validar as páginas de help dos comandos de math.
@@ -1104,6 +862,203 @@ E setar 3 segundos de *SpanTime*
 Caso determinada página seja chamada a página irá enviar como mensagem o seu conteudo e setar um SpanTime de 15 segundos.
 
 **[Retorne ao inicio](#index)**
+
+# PA CLASS
+
+Classe reponsavel por validar e retornar as respostas das progressões aritimeticas.
+
+## Constructor
+
+O construtor dessa classe pede um paramentro, que é chamado de *el*, *el* corresponde a ultima mensagem que foi enviada, após isso *el* é convertido em *String* e transformado para letras minusculas.
+
+Logo em seguida o método interno *main* é chamado.
+
+```
+constructor (el){
+      this._el = String(el).toLowerCase();
+      this.main();
+  }
+```
+
+# Métodos internos.
+
+## Main
+
+Main é o método principal, ele é responsavel por validar se o comando corresponde a algum dos comandos desejados para realização de uma P.A.
+
+Primeiramente ele verifica se dentro da mensagem existe um comando para chamar a classe P.A.
+
+ Caso isso seja possitivo ele verifica se dentro da mensagem existe um comando que seja valido, caso exista ele irá enviar uma mensagem que será o retorno do método interno *validate* daquele comando especificado.
+
+```
+if (this._el.indexOf(`${mathPrefix}p.a cl`) >= 0){
+  mensage(this.validateClassicPA(this._el));
+}
+```
+
+## validateClassicPA
+
+validateClassicPA é um método interno que valida se o comando passa números suficientes para que uma operação de P.A. classica seja executada.
+
+Ele pede a ultima mensagem como paramentro.
+
+Automaticamente ela converte a ultima mensagem para String e retira o comando dela, dessa forma deixando só os números.
+
+```
+this._el = String(el).replace(`${mathPrefix}p.a cl `, ``);
+```
+
+Logo em seguida uma constante chamada de listNumbers é criada, ela recebe o retorno da função *ExtractNumbers* passando *this._el* como paramentro, dessa forma o método interno *ExtractNumbers* irá extair os números e retornar uma lista com eles.
+
+```
+const listNumbers = ExtractNumbers(this._el);
+```
+
+Se o length de listNumbers for diferente de 3 ela irá retornar "Algum numero invalido foi passado, tente novamente!"
+
+```
+if (listNumbers.length != 3){ return `Algum numero invalido foi passado, tente novamente!`; } 
+```
+
+Senão ela irá criar uma constante chamada de *classPa* que irá receber todos os métodos da classe *Math_PA*.
+
+Dessa forma ela irá retornar o valor de retorno da constante *classPa* chamando o método interno *classicPA*, passando como paramentros: 
+
+*listNumbers* na posição 0, que é o valor do primeiro termo da P.A.
+
+*listNumbers* na posição 1, que é o valor da razão da P.A.
+
+*listNumbers* na posição 2, que é a quantidade de termos da P.A.
+
+```
+else{
+  const classPa = new Math_PA();
+  return classPa.classicPA(listNumbers[0], listNumbers[1], listNumbers[2]);
+}
+```
+
+## validNPA
+
+validNPA é um método interno que valida se o comando passa números suficientes para que uma operação de N.P.A (isso é uma operação que tem por objetivo retornar o valor do termo desejado) seja executada.
+
+Ele pede a ultima mensagem como paramentro.
+
+Automaticamente ela converte a ultima mensagem para String e retira o comando dela, dessa forma deixando só os números.
+
+```
+this._el = String(el).replace(`${mathPrefix}p.a n `, ``);
+```
+
+Logo em seguida uma constante chamada de listNumbers é criada, ela recebe o retorno da função *ExtractNumbers* passando *this._el* como paramentro, dessa forma o método interno *ExtractNumbers* irá extair os números e retornar uma lista com eles.
+
+```
+const listNumbers = ExtractNumbers(this._el);
+```
+
+Se o length de listNumbers for diferente de 3 ela irá retornar "Algum numero invalido foi passado, tente novamente!"
+
+```
+if (listNumbers.length != 3){ return `Algum numero invalido foi passado, tente novamente!`; } 
+```
+
+Senão ela irá criar uma constante chamada de *classPa* que irá receber todos os métodos da classe *Math_PA*.
+
+Dessa forma ela irá retornar o valor de retorno da constante *classPa* chamando o método interno *NPA*, passando como paramentros: 
+
+*listNumbers* na posição 0, que é o valor do primeiro termo da P.A.
+
+*listNumbers* na posição 1, que é o valor da razão da P.A.
+
+*listNumbers* na posição 2, que é o termo que deseja ser descoberto.
+
+```
+else{
+  const classPa = new Math_PA();
+  return classPa.NPA(listNumbers[0], listNumbers[1], listNumbers[2]);
+  }
+```
+
+## validRPA
+
+validRPA é um método interno que valida se o comando passa números suficientes para que uma operação de R.P.A (isso é uma operação que tem por objetivo retornar o valor do termo desejado) seja executada.
+
+Ele pede a ultima mensagem como paramentro.
+
+Automaticamente ela converte a ultima mensagem para String e retira o comando dela, dessa forma deixando só os números.
+
+```
+this._el = String(el).replace(`${mathPrefix}p.a r `, ``);
+```
+
+Logo em seguida uma constante chamada de listNumbers é criada, ela recebe o retorno da função *ExtractNumbers* passando *this._el* como paramentro, dessa forma o método interno *ExtractNumbers* irá extair os números e retornar uma lista com eles.
+
+```
+const listNumbers = ExtractNumbers(this._el);
+```
+
+Se o length de listNumbers for diferente de 3 ela irá retornar "Algum numero invalido foi passado, tente novamente!"
+
+```
+if (listNumbers.length != 3){ return `Algum numero invalido foi passado, tente novamente!`; } 
+```
+
+Senão ela irá criar uma constante chamada de *classPa* que irá receber todos os métodos da classe *Math_PA*.
+
+Dessa forma ela irá retornar o valor de retorno da constante *classPa* chamando o método interno *RPA*, passando como paramentros: 
+
+*listNumbers* na posição 0, que é o valor do primeiro termo da P.A.
+
+*listNumbers* na posição 1, que é o número de termos da P.A.
+
+*listNumbers* na posição 2, que é o valor do ultimo termo conhecido da P.A.
+
+```
+else{
+  const classPa = new Math_PA();
+  return classPa.RPA(listNumbers[0], listNumbers[1], listNumbers[2]);
+}
+```
+
+## validSPA
+
+validSPA é um método interno que valida se o comando passa números suficientes para que uma operação de S.P.A. (isso é uma operação que tem por objetivo retornar o valor da soma de todos os termos da P.A.) seja executada.
+
+Ele pede a ultima mensagem como paramentro.
+
+Automaticamente ela converte a ultima mensagem para String e retira o comando dela, dessa forma deixando só os números.
+
+```
+this._el = String(el).replace(`${mathPrefix}p.a s `, ``);
+```
+
+Logo em seguida uma constante chamada de listNumbers é criada, ela recebe o retorno da função *ExtractNumbers* passando *this._el* como paramentro, dessa forma o método interno *ExtractNumbers* irá extair os números e retornar uma lista com eles.
+
+```
+const listNumbers = ExtractNumbers(this._el);
+```
+
+Se o length de listNumbers for diferente de 3 ela irá retornar "Algum numero invalido foi passado, tente novamente!"
+
+```
+if (listNumbers.length != 3){ return `Algum numero invalido foi passado, tente novamente!`; } 
+```
+
+Senão ela irá criar uma constante chamada de *classPa* que irá receber todos os métodos da classe *Math_PA*.
+
+Dessa forma ela irá retornar o valor de retorno da constante *classPa* chamando o método interno *SPA*, passando como paramentros: 
+
+*listNumbers* na posição 0, que é o valor do primeiro termo da P.A.
+
+*listNumbers* na posição 1, que é o valor do ultimo termo da P.A.
+
+*listNumbers* na posição 2, que é o número de termos da P.A.
+
+```
+else{
+  const classPa = new Math_PA();
+  return classPa.SPA(listNumbers[0], listNumbers[1], listNumbers[2]);
+}
+```
 
 # MATH OPERATIONS
 
@@ -1317,6 +1272,57 @@ Então ela irá retornar o valor de "*this._a1* + (*this._n* * *this._r*) / 2" c
 
 ```
 return ((this._a1 + this._an) * this._n) / 2;
+```
+
+**[Retorne ao inicio](#index)**
+
+# MATH ESSENTIAL
+
+## ExtractNumbers
+
+ExtractNumbers é um método interno que não é chamado por main, mas ele é essencial para o funcionamento dos outros métodos internos, ExtractNumbers é reponsavel por retirar os números da mensagem e converte-los para números, ao final ele irá retornar a lista de números retirados da mensagem.
+
+Como paramentro obrigatorio você deve passar a ultima mensagem, é desejavel que essa mensagem só tenha os números e que todo o texto dela tenha sido removido.
+
+Assim que criado *ExtractNumbers* cria uma let chamada *tmp* que começa como uma string vazia, logo em seguida ela cria uma lista chamada de *listNumbers* que começa como uma lista vazia.
+
+```
+let tmp = '';
+let listNumbers = [];
+```
+
+Após isso ela faz um for começando com a let *e* no valor 0 enquanto *e* é inferior ao *el.length* e incrementando *e* mais um.
+
+```
+for (let e = 0; e < el.length; e++){ . . . }
+```
+
+Para cada ciclo do for *tmp* recebe ela mais igual a *el* na posição *e*.
+
+```
+tmp += el[e];
+```
+
+Se o *el* na posição *e* for igual a um espaço o que indica que chegou a um ponto de ruptura e que o proximo elemento outro termo ou se o length de *el* for verdadeiramente igual a *e* mais um o que indica que o proximo caractere é o caractere final.
+
+```
+if (el[e] == ' ' || el.length === e +1){ . . . }
+```
+
+Se a negação de isNaN (Método interno do javascript que verifica se determinado termo não é um número, se for um número ele irá retornar false, senão for um número ele irá retornar True) for verdadeira então adicione a conversão númerica de *tmp* para *listNumbers* e faça *tmp* retorna a uma lista vazia
+
+```     
+if(!isNaN(tmp)){
+    listNumbers.push(Number(tmp));
+    tmp = '';
+}
+        
+```
+
+Ao final de tudo isso retorne *listNumbers* que deve ser uma lista com todos os números extraidos da mensagem.
+
+```
+return listNumbers;
 ```
 
 **[Retorne ao inicio](#index)**
