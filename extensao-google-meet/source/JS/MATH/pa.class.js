@@ -27,7 +27,8 @@ class PA{
      */
     validateClassicPA(el){
         this._el = String(el).replace(`${mathPrefix}p.a cl `, ``);
-        const listNumbers = ExtractNumbers(this._el);
+        const listNumbers = ExtractNumbers(this._el, ' ');
+        console.log(listNumbers)
         if (listNumbers.length != 3){
             return `Algum numero invalido foi passado, tente novamente!`;
         } else{
@@ -42,7 +43,7 @@ class PA{
      */
     validNPA(el){
         this._el = String(el).replace(`${mathPrefix}p.a n `, ``);
-        const listNumbers = ExtractNumbers(this._el);
+        const listNumbers = ExtractNumbers(this._el, ' ');
         if (listNumbers.length != 3){
             return `Algum numero invalido foi passado, tente novamente!`;
         } else{
@@ -57,7 +58,7 @@ class PA{
      */
     validRPA(el){
         this._el = String(el).replace(`${mathPrefix}p.a r `, ``);
-        const listNumbers = ExtractNumbers(this._el);
+        const listNumbers = ExtractNumbers(this._el, ' ');
         if (listNumbers.length != 3){
             return `Algum numero invalido foi passado, tente novamente!`;
         } else{
@@ -72,7 +73,7 @@ class PA{
     */
     validSPA(el){
         this._el = String(el).replace(`${mathPrefix}p.a s `, ``);
-        const listNumbers = ExtractNumbers(this._el);
+        const listNumbers = ExtractNumbers(this._el, ' ');
         if (listNumbers.length != 3){
             return `Algum numero invalido foi passado, tente novamente!`;
         } else{

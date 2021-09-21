@@ -22,7 +22,7 @@ class EQ2{
     validateEq2(){
         const men = this._el.replace(`${mathPrefix}eq2 `, ``);
         console.log(men)
-        const numbers = ExtractNumbers(men);
+        const numbers = ExtractNumbers(men, ' ');
         console.log(numbers)
         if (numbers.length != 3){
             return "Algum numero invalido foi passado, por favor tente novamente!";
