@@ -59,3 +59,21 @@ class Math_PA{
         return ((this._a1 + this._an) * this._n) / 2
     }
 }
+
+class Math_EQ2{
+    delt(a, b, c){
+        return (b**2) - (4*(a*c));
+    }
+      
+    roots(a, b, c){
+        let del = this.delt(a, b, c);
+        if (del < 0 || a === 0){
+            return [del, 0, 0];
+        } else{
+            del = Math.sqrt(del);
+            const x1 = (-b + del) / (2*a);
+            const x2= (-b - del) / (2*a);
+            return [del**2, x1, x2];
+        }
+    }
+}

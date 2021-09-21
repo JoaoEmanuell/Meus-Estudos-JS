@@ -19,7 +19,9 @@ class EQ2{
         if (numbers.length != 3){
             return "Algum numero invalido foi passado, por favor tente novamente!";
         }else{
-            return "Pode ser realizado!";
+            const eq2 = new Math_EQ2;
+            const result = eq2.roots(numbers[0], numbers[1], numbers[2])
+            return `Δ = ${result[0]}\nX' = ${result[1]}\nX'' = ${result[2]}`;
         }
     }
 }
