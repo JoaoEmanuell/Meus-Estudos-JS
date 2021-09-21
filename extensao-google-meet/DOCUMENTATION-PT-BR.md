@@ -795,16 +795,20 @@ class mathCommands{
 
 ### Main
 
-Main é o método principal, ele é responsavel por criar duas constantes.
+Main é o método principal, ele é responsavel por criar três constantes.
 
-Uma é chamada de *pa* essa constante herda todas as caracteristicas da classe *PA* e passa *this._el* como paramentro.
+A primeira é chamada de *pa* essa constante herda todas as caracteristicas da classe *PA* e passa *this._el* como paramentro.
 
-Logo em seguida uma outra constante é criada, essa constante é chamada de *help* essa consante herda todas as caracteriscias da classe *helpMath* e passa *this._el* como paramentro.
+A segunda é chamada de *eq2* essa constante herda todas as caracteristicas da classe *EQ2* e passa *this._el* como paramentro.
+
+A terceira constante é criada, essa constante é chamada de *help* essa consante herda todas as caracteriscias da classe *helpMath* e passa *this._el* como paramentro.
 
 ```
     main(){
         // PA
         const pa = new PA(this._el);
+        // EQ 2
+        const eq2 = new EQ2(this._el);
         // HELP
         const help = new helpMath(this._el);
     }
