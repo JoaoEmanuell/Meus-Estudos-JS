@@ -23,8 +23,9 @@ function main(){
         else if (isAbilite){
 
             // public commands
-            if (String(el)[0] === publicPrefix && span_time > time){
+            if (String(el)[0] === publicPrefix && span_time > time || String(el)[0] === mathPrefix && span_time > time){
                 mensage(`Por favor espere mais ${span_time - time} segundos para chamar o comando novamente`)
+            // public commands
             } else if (String(el)[0] === publicPrefix){
                 const publiccommands = new publicCommands(el);
             // math commands
