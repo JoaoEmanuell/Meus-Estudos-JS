@@ -1278,6 +1278,8 @@ return ((this._a1 + this._an) * this._n) / 2;
 
 # MATH ESSENTIAL
 
+Math essential é um arquivo .js que detem funções essenciais para o funcionamento das funções matematicas.
+
 ## ExtractNumbers
 
 ExtractNumbers é um método interno que não é chamado por main, mas ele é essencial para o funcionamento dos outros métodos internos, ExtractNumbers é reponsavel por retirar os números da mensagem e converte-los para números, ao final ele irá retornar a lista de números retirados da mensagem.
