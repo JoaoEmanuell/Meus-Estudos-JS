@@ -33,25 +33,7 @@ class PA{
         }
     }
     // Validates
-    /**
-     * Extracts the numbers of the mensage
-     * @param {String} el Numbers to extract
-     * @returns Array, Valid numbers extracted.
-     */
-    ExtractNumbers(el){
-        let tmp = '';
-        let listNumbers = [];
-        for (let e = 0; e < el.length; e++){
-            tmp += el[e];
-            if (el[e] == ' ' || el.length === e +1){
-                if(!isNaN(tmp)){
-                    listNumbers.push(Number(tmp));
-                    tmp = '';
-                }
-            }
-        }
-        return listNumbers;
-    }
+    
     /**
      * Checks if the string has valid numbers to perform an operation that aims to return the numbers of a P.A, must be informed a1 = value of the first term, r = ratio, an = last term.
      * @param {String} el String
@@ -59,7 +41,7 @@ class PA{
      */
     validateClassicPA(el){
         this._el = String(el).replace(`${mathPrefix}p.a cl `, ``);
-        const listNumbers = this.ExtractNumbers(this._el);
+        const listNumbers = ExtractNumbers(this._el);
         if (listNumbers.length != 3){
             return `Algum numero invalido foi passado, tente novamente!`;
         } else{
@@ -74,7 +56,7 @@ class PA{
      */
     validNPA(el){
         this._el = String(el).replace(`${mathPrefix}p.a n `, ``);
-        const listNumbers = this.ExtractNumbers(this._el);
+        const listNumbers = ExtractNumbers(this._el);
         if (listNumbers.length != 3){
             return `Algum numero invalido foi passado, tente novamente!`;
         } else{
@@ -89,7 +71,7 @@ class PA{
      */
     validRPA(el){
         this._el = String(el).replace(`${mathPrefix}p.a r `, ``);
-        const listNumbers = this.ExtractNumbers(this._el);
+        const listNumbers = ExtractNumbers(this._el);
         if (listNumbers.length != 3){
             return `Algum numero invalido foi passado, tente novamente!`;
         } else{
@@ -104,7 +86,7 @@ class PA{
     */
     validSPA(el){
         this._el = String(el).replace(`${mathPrefix}p.a s `, ``);
-        const listNumbers = this.ExtractNumbers(this._el);
+        const listNumbers = ExtractNumbers(this._el);
         if (listNumbers.length != 3){
             return `Algum numero invalido foi passado, tente novamente!`;
         } else{
