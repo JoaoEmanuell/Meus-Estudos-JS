@@ -45,7 +45,7 @@
   * Sistema de retornar a razão de uma P.A.
   * Sistema de Interpolação Aritmética para P.A.
 
-- [ ] **Versão: 0.0.9**
+- [x] **Versão: 0.0.9**
   * Refatoração do código das classes relacionadas a métodos matematicos.
   * Melhoria no sistemas de help.
   * Correção de quebra de linhas no retorno de links.
