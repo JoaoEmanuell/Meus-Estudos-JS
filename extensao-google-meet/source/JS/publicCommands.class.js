@@ -155,18 +155,14 @@ class helpPublicCommands{
      * page 1 for help.
      */
     pag1(){
-        mensage(`"${publicPrefix}links" ou " ${publicPrefix}li " : Retorna os links que foram colocados no chat até o exato momento
-        \n"${publicPrefix}help" ou " ${publicPrefix}h " : Retorna esse bloco de comandos mensagem
-        \n"${publicPrefix}time" ou " ${publicPrefix}t " : Retorna a quanto segundos estamos na aula!`);
+        mensage(`"${publicPrefix}links" ou " ${publicPrefix}li " : Retorna os links que foram colocados no chat até o exato momento\n"${publicPrefix}help" ou " ${publicPrefix}h " : Retorna esse bloco de comandos mensagem\n"${publicPrefix}time" ou " ${publicPrefix}t " : Retorna a quanto segundos estamos na aula!`);
         setSpanTime(15);
     } 
     /**
      * page 2 for help.
      */
     pag2(){
-        mensage(`"${publicPrefix}upper texto" ou " ${publicPrefix}up texto" : retorna o texto inserido em letras maiúsculas.
-        \n"${publicPrefix}lower texto" ou " ${publicPrefix}lo texto" : retorna o texto inserido em letras minúsculas.
-        \n"${publicPrefix}lp texto" : retorna o texto inserido em uma letra maiscula e outra minuscula, exemplo "ExEmPlO"`);
+        mensage(`"${publicPrefix}upper texto" ou " ${publicPrefix}up texto" : retorna o texto inserido em letras maiúsculas.\n"${publicPrefix}lower texto" ou " ${publicPrefix}lo texto" : retorna o texto inserido em letras minúsculas.\n"${publicPrefix}lp texto" : retorna o texto inserido em uma letra maiscula e outra minuscula, exemplo "ExEmPlO"`);
         setSpanTime(15);
     }
     /**
