@@ -94,6 +94,13 @@ class Math_EQ2{
 }
 
 class Math_PG{
+    /**
+    * ClassicPA returns all terms of a P.G. being written in the form "term, ".
+    * @param {Float} a1 First term, float number.
+    * @param {Float} q P.G. ratio float number.
+    * @param {Int} n Position of the number that will be returned, integer. 
+    * @returns Returns all terms of a P.G. being written in the form "term, ".
+    */
     classicPG(a1, q, n){
             this._a1 = a1;
             this._q = q;
@@ -106,15 +113,35 @@ class Math_PG{
             }
             return fullPG.slice(0, fullPG.length - 2);
         }
+    /**
+    * Value of the N term of a P.G.
+    * @param {Float} a1 First term, float number.
+    * @param {Float} q P.G. ratio float number.
+    * @param {Int} n Position of the number that will be returned, integer. 
+    * @returns  Returns the value of the term N, this is the value of the term that holds the position N of a
+    */
     NPG(a1, q, n){
           this._a1 = a1;
           this._q = q;
           this._n = n - 1;
           return this._a1 * (this._q**this._n);
       }
+    /**
+    * Ratio of a P.G.
+    * @param {Float} a1 First term, float number.
+    * @param {Float} a2 Second term, float number.
+    * @returns Returns the ratio of a P.G.
+    */
     RPG(a1, a2){
       return a2/a1
     }
+    /**
+    * Sum of P.G.
+    * @param {Float} a1 first term, float number.
+    * @param {Float} q P.G. ratio float number.
+    * @param {Int} n number of terms, integer.
+    * @returns Returns the sum of terms of a P.G.
+    */
     SPG(a1, q, n){
           this._a1 = a1;
           this._q = q;
