@@ -50,7 +50,7 @@
   * Melhoria no sistemas de help.
   * Correção de quebra de linhas no retorno de links.
 
-- [ ] **Versão: 0.1.0**
+- [x] **Versão: 0.1.0**
   * Sistema de calculo e retorno de uma equação do segundo grau.
 
 - [ ] **Versão: 0.1.1**
