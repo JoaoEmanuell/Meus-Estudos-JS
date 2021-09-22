@@ -86,6 +86,7 @@ A extensão se trata de uma extensão que server para modificar o funcionamento 
 - [Métodos internos.](#métodos-internos-3)
   - [Main](#main-11)
   - [validateClassicPG](#validateclassicpg)
+  - [validNPG](#validnpg)
 - [MATH OPERATIONS](#math-operations)
   - [Class Math_PA](#class-math_pa)
   - [Metodos internos](#metodos-internos-5)
@@ -1235,6 +1236,47 @@ else{
   const classPg = new Math_PG();
   return classPg.classicPG(listNumbers[0], listNumbers[1], listNumbers[2]);
 }
+```
+
+## validNPG
+
+validNPG é um método interno que valida se o comando passa números suficientes para que uma operação de N.P.G (isso é uma operação que tem por objetivo retornar o valor do termo desejado) seja executada.
+
+Ele pede a ultima mensagem como paramentro.
+
+Automaticamente ela converte a ultima mensagem para String e retira o comando dela, dessa forma deixando só os números.
+
+```
+this._el = String(el).replace(`${mathPrefix}p.g n `, ``);
+```
+
+Logo em seguida uma constante chamada de listNumbers é criada, ela recebe o retorno da função *ExtractNumbers* passando *this._el* como paramentro, dessa forma o método interno *ExtractNumbers* irá extair os números e retornar uma lista com eles.
+
+```
+const listNumbers = ExtractNumbers(this._el);
+```
+
+Se o length de listNumbers for diferente de 3 ela irá retornar "Algum numero invalido foi passado, tente novamente!"
+
+```
+if (listNumbers.length != 3){ return `Algum numero invalido foi passado, tente novamente!`; } 
+```
+
+Senão ela irá criar uma constante chamada de *classPg* que irá receber todos os métodos da classe *Math_PG*.
+
+Dessa forma ela irá retornar o valor de retorno da constante *classPg* chamando o método interno *NPG*, passando como paramentros: 
+
+*listNumbers* na posição 0, que é o valor do primeiro termo da P.G.
+
+*listNumbers* na posição 1, que é o valor da razão da P.G.
+
+*listNumbers* na posição 2, que é o termo que deseja ser descoberto.
+
+```
+else{
+  const classPg = new Math_PG();
+  return classPg.NPG(listNumbers[0], listNumbers[1], listNumbers[2]);
+  }
 ```
 
 # MATH OPERATIONS
