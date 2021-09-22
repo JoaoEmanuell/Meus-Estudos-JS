@@ -10,6 +10,8 @@ class mathCommands{
         const pa = new PA(this._el);
         // EQ 2
         const eq2 = new EQ2(this._el);
+        // PG
+        const pg = new PG(this._el);
         // HELP
         const help = new helpMath(this._el);
     }
