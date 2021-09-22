@@ -92,3 +92,33 @@ class Math_EQ2{
         }
     }
 }
+
+class Math_PG{
+    classicPG(a1, q, n){
+            this._a1 = a1;
+            this._q = q;
+            this._n = n;
+            let tmp = 0;
+            var fullPG = '';
+            for (let i = this._a1; tmp < this._n; i *= this._q){
+                tmp ++;
+                fullPG += `${i}, `;
+            }
+            return fullPG.slice(0, fullPG.length - 2);
+        }
+    NPG(a1, q, n){
+          this._a1 = a1;
+          this._q = q;
+          this._n = n - 1;
+          return this._a1 * (this._q**this._n);
+      }
+    RPG(a1, a2){
+      return a2/a1
+    }
+    SPG(a1, q, n){
+          this._a1 = a1;
+          this._q = q;
+          this._n = n;
+          return this._a1 * ((this._q**this._n)- 1 ) / (this._q - 1);
+      }
+  }
