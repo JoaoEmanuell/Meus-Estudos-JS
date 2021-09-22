@@ -76,9 +76,14 @@ A extensão se trata de uma extensão que server para modificar o funcionamento 
   - [validNPA](#validnpa)
   - [validRPA](#validrpa)
   - [validSPA](#validspa)
+- [EQ2 CLASS](#eq2-class)
+  - [Constructor](#constructor-9)
+- [Metodos internos](#metodos-internos-4)
+  - [Main](#main-10)
+  - [validateEq2](#validateeq2)
 - [MATH OPERATIONS](#math-operations)
   - [Class Math_PA](#class-math_pa)
-  - [Metodos internos](#metodos-internos-4)
+  - [Metodos internos](#metodos-internos-5)
     - [classicPA](#classicpa)
     - [NPA](#npa)
     - [RPA](#rpa)
@@ -1063,7 +1068,90 @@ else{
   return classPa.SPA(listNumbers[0], listNumbers[1], listNumbers[2]);
 }
 ```
+**[Retorne ao inicio](#index)**
 
+# EQ2 CLASS
+
+Essa classe é responsavel por validar os dados para realizar uma operação de equação do segundo grau
+
+## Constructor
+
+O construtor dessa classe pede um paramentro que é chamado de *el*.
+
+Assim que é chamado ela cria um *this._el* que recebe o paramentro *el* convertido para String e colocado em letras minusculas.
+
+Logo em seguida chama o método interno main.
+
+```
+class EQ2{
+    constructor (el){
+        this._el = String(el).toLowerCase();
+        this.main();
+    }
+```
+
+# Metodos internos
+
+## Main
+
+Main é o método principal, ele é responsavel por verficar se a mensagem passada é valida para ser considerada uma equação do segundo grau.
+
+```
+if (this._el.indexOf(`${mathPrefix}eq2`) >= 0){. . .}
+```
+
+Caso seja ela enviar uma mensagem que contem o retorno do método **validateEq2** que irá validar os números passados e caso seja possivel retornar o valor do delta, x' e x''.
+
+```
+mensage(this.validateEq2());
+```
+
+## validateEq2
+
+Esse método valida se os números passados são possiveis de realizar uma equação do segundo grau.
+
+Assim que é chamado ele cria uma constante chamada de *men* essa constante recebe *this._el* e retira o "${mathPrefix}eq2 " deixando somente uma String com os números.
+
+```
+const men = this._el.replace(`${mathPrefix}eq2 `, ``);
+```
+
+Em seguida ela cria uma constante chamada de numbers essa constante recebe o resultado do retorno de *ExtractNumbers* passando *men* como paramentro de mensagem e ' ' como separador.
+
+```
+const numbers = ExtractNumbers(men, ' ');
+```
+
+Após isso ocorre uma verificação para saber se os números armazenados em *numbers* são diferentes de 3 pois caso seja isso quer dizer que algum número invalido foi passado, caso esse if seja verdadeiro ela irá retornar:
+
+```
+if (numbers.length != 3){
+  return "Algum numero invalido foi passado, por favor tente novamente!";
+```
+
+Se esse if não for verdadeiro uma constante chamada de *eq2* será criada, essa constante recebe todos os métodos da classe *Math_EQ2*
+
+```
+const eq2 = new Math_EQ2;
+```
+
+Outra constante será criada, essa constante é chamada de result, result recebe o resultado do retorno de *eq2.roots* passando:
+
+numbers[0] como letra A
+
+numbers[1] como letra B
+
+numbers[2] como letra C
+
+```
+const result = eq2.roots(numbers[0], numbers[1], numbers[2]);
+```
+
+Ao final disso ela irá retornar a seguinte mensagem:
+
+```
+return `Δ = ${result[0]}\nX' = ${result[1]}\nX'' = ${result[2]}`;
+```
 # MATH OPERATIONS
 
 Math operations é a classe responsavel por realizar operações mátematicas.
