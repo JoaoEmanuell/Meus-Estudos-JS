@@ -81,6 +81,11 @@ A extensão se trata de uma extensão que server para modificar o funcionamento 
 - [Metodos internos](#metodos-internos-4)
   - [Main](#main-10)
   - [validateEq2](#validateeq2)
+- [PG CLASS](#pg-class)
+  - [Constructor](#constructor-10)
+- [Métodos internos.](#métodos-internos-3)
+  - [Main](#main-11)
+  - [validateClassicPG](#validateclassicpg)
 - [MATH OPERATIONS](#math-operations)
   - [Class Math_PA](#class-math_pa)
   - [Metodos internos](#metodos-internos-5)
@@ -1159,6 +1164,79 @@ Ao final disso ela irá retornar a seguinte mensagem:
 ```
 return `Δ = ${result[0]}\nX' = ${result[1]}\nX'' = ${result[2]}`;
 ```
+
+# PG CLASS
+
+Classe reponsavel por validar e retornar as respostas das progressões geometricas.
+
+## Constructor
+
+O construtor dessa classe pede um paramentro, que é chamado de *el*, *el* corresponde a ultima mensagem que foi enviada, após isso *el* é convertido em *String* e transformado para letras minusculas.
+
+Logo em seguida o método interno *main* é chamado.
+
+```
+constructor (el){
+      this._el = String(el).toLowerCase();
+      this.main();
+  }
+```
+
+# Métodos internos.
+
+## Main
+
+Main é o método principal, ele é responsavel por validar se o comando corresponde a algum dos comandos desejados para realização de uma P.G.
+
+Primeiramente ele verifica se dentro da mensagem existe um comando para chamar a classe P.G.
+
+ Caso isso seja possitivo ele verifica se dentro da mensagem existe um comando que seja valido, caso exista ele irá enviar uma mensagem que será o retorno do método interno *validate* daquele comando especificado.
+
+```
+if (this._el.indexOf(`${mathPrefix}p.g cl`) >= 0){
+  mensage(this.validateClassicPA(this._el));
+}
+```
+
+## validateClassicPG
+
+validateClassicPG é um método interno que valida se o comando passa números suficientes para que uma operação de P.G. classica seja executada.
+
+Ele pede a ultima mensagem como paramentro.
+
+Automaticamente ela converte a ultima mensagem para String e retira o comando dela, dessa forma deixando só os números.
+```
+this._el = String(el).replace(`${mathPrefix}p.g cl `, ``);
+```
+Logo em seguida uma constante chamada de listNumbers é criada, ela recebe o retorno da função *ExtractNumbers* passando *this._el* como paramentro, dessa forma o método interno *ExtractNumbers* irá extair os números e retornar uma lista com eles.
+
+```
+const listNumbers = ExtractNumbers(this._el);
+```
+
+Se o length de listNumbers for diferente de 3 ela irá retornar "Algum numero invalido foi passado, tente novamente!"
+
+```
+if (listNumbers.length != 3){ return `Algum numero invalido foi passado, tente novamente!`; } 
+```
+
+Senão ela irá criar uma constante chamada de *classPg* que irá receber todos os métodos da classe *Math_PG*.
+
+Dessa forma ela irá retornar o valor de retorno da constante classPg chamando o método interno classicPG, passando como paramentros:
+
+listNumbers na posição 0, que é o valor do primeiro termo da P.G.
+
+listNumbers na posição 1, que é o valor da razão da P.G.
+
+listNumbers na posição 2, que é a quantidade de termos da P.G.
+
+```
+else{
+  const classPg = new Math_PG();
+  return classPg.classicPG(listNumbers[0], listNumbers[1], listNumbers[2]);
+}
+```
+
 # MATH OPERATIONS
 
 Math operations é a classe responsavel por realizar operações mátematicas.
