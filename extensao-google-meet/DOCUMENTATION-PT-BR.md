@@ -88,6 +88,9 @@ A extensão se trata de uma extensão que server para modificar o funcionamento 
     - [NPA](#npa)
     - [RPA](#rpa)
     - [SPA](#spa)
+  - [class Math_EQ2](#class-math_eq2)
+    - [delt](#delt)
+  - [roots](#roots)
 - [MATH ESSENTIAL](#math-essential)
   - [ExtractNumbers](#extractnumbers)
      
@@ -1364,6 +1367,83 @@ Então ela irá retornar o valor de "*this._a1* + (*this._n* * *this._r*) / 2" c
 
 ```
 return ((this._a1 + this._an) * this._n) / 2;
+```
+
+## class Math_EQ2
+
+Essa classe calcula uma equação do segundo grau por meio da formula de bhaskara.
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/81983803/134264350-7916fe1d-c58c-4091-b4b6-bfa9b5885e16.png" alt="JavaScript Icon"/>
+</p>
+
+### delt
+
+Delt é um metodo que retorna o valor do delta por meio da formula do delta:
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/81983803/134264396-c8814cc0-3006-4cae-8d5f-275e2d571fcb.png" alt="JavaScript Icon"/>
+</p>
+
+Paramentros:
+
+A = Valor correspondente a letra A
+
+B = Valor correspondente a letra B
+
+C = Valor correspondente a letra C
+
+Assim que é chamado ele retorna o valor dado pela formula acima.
+
+## roots
+
+roots retorna as raizes da equação por meio da formula de bhaskara.
+
+Paramentros:
+
+A = Valor correspondente a letra A
+
+B = Valor correspondente a letra B
+
+C = Valor correspondente a letra C
+
+Assim que é chamada roots cria uma let chamada de *del* que recebe o valor do retorno de *delt* passando a, b, c como paramentro.
+
+```
+let del = this.delt(a, b, c);
+```
+
+Então ocorre uma verificação, se *del* for inferior a zero ou *a* for verdadeiramente igual a zero então ela irá retornar um Array com três posições, na primeira o valor do *del* na segunda 0 e na terceira 0.
+
+```
+if (del < 0 || a === 0){
+  return [del, 0, 0];
+}
+```
+
+Senão, del irá receber a raiz quadrada de *del* por meio da função *Math.sqrt*
+
+```
+else{
+  del = Math.sqrt(del); 
+```
+
+Em seguida uma constante chamada de *x1* é criada, ela recebe "(-b + del) / (2*a)".
+
+```
+const x1 = (-b + del) / (2*a);
+```
+
+Após isso outra constante é criada, chamada de *x2*, ela recebe "(-b - del) / (2*a)".
+
+```
+const x2= (-b - del) / (2*a);
+```
+
+Então ao fim ela irá retornar um array de três posições, na primeira o valor de *del* potenciado a dois, na segunda *x1* e na terceira *x2*
+
+```
+return [del**2, x1, x2];
 ```
 
 **[Retorne ao inicio](#index)**
