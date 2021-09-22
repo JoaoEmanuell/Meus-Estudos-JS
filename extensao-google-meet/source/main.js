@@ -2,7 +2,7 @@ var time = 0;
 var span_time = 0;
 
 const interval = setInterval(() => {
-    exit();
+    //exit();
     main();
     time ++;
 }, 1000);

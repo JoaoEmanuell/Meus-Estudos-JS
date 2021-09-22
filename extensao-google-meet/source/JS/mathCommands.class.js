@@ -36,8 +36,14 @@ class helpMath{
                 case "3":
                     this.pag3();
                     break;
+                case "4":
+                    this.pag4();
+                    break;
+                case "5":
+                    this.pag5();
+                    break;
                 default:
-                    mensage(`Pagina invalida, digite "${mathPrefix}help pagina" ou "${mathPrefix}h pagina", as paginas vão até a pagina numero 3`);
+                    mensage(`Pagina invalida, digite "${mathPrefix}help pagina" ou "${mathPrefix}h pagina", as paginas vão até a pagina numero 5`);
                     setSpanTime(3);
             }
     }
@@ -45,14 +51,22 @@ class helpMath{
 
     pag1(){
         mensage(`"${mathPrefix}p.a cl primeiro-numero razão numero-de-termos" retorna uma p.a classica, escrevendo todos os termos possiveis. Exemplo: "${mathPrefix}p.a cl 2 2 10" => "2, 4, 6...\n"${mathPrefix}p.a n primeiro-numero razão numero-do-ultimo-termo" retorna o valor do ultimo termo da p.a. Exemplo: "${mathPrefix}p.a n 2 2 10" => 20`)
-        setSpanTime(15)
+        setSpanTime(15);
     }
     pag2(){
-        mensage(`"${mathPrefix}p.a r primeiro-numero numero-de-termos valor-do-ultimo-termo" retorna a razão da P.A Exemplo: "${mathPrefix}p.a r 2 10 20" => 2\n"${mathPrefix}p.a s primeiro-termo valor-do-ultimo-termo numero-de-termos" Retorna a soma dos termos de uma P.A Exemplo: "${mathPrefix}p.a s 2 20 10"`);
-        setSpanTime(15)
+        mensage(`"${mathPrefix}p.a r primeiro-numero numero-de-termos valor-do-ultimo-termo" retorna a razão da P.A Exemplo: "${mathPrefix}p.a r 2 10 20" => 2\n"${mathPrefix}p.a s primeiro-termo valor-do-ultimo-termo numero-de-termos" Retorna a soma dos termos de uma P.A Exemplo: "${mathPrefix}p.a s 2 20 10" => 110`);
+        setSpanTime(15);
     }
     pag3(){
-        mensage(`"${mathPrefix}eq2 a b c" retorna o delta, x' e x'' de uma equação do segundo grau, subistitua as letras pelos valores na hora de colocar.`)
+        mensage(`"${mathPrefix}eq2 a b c" retorna o delta, x' e x'' de uma equação do segundo grau, subistitua as letras pelos valores na hora de colocar.\n"${mathPrefix}p.g cl primeiro-numero razão numero-de-termos" retorna uma p.g classica, escrevendo todos os termos possiveis. Exemplo: "${mathPrefix}p.g cl 2 2 10" => "2, 4, 8...`);
+        setSpanTime(15);
+    }
+    pag4(){
+        mensage(`"${mathPrefix}p.g n primeiro-numero razão numero-do-ultimo-termo" retorna o valor do ultimo termo da p.g. Exemplo: "${mathPrefix}p.g n 2 2 10" => 1024\n"${mathPrefix}p.g q valor-do-primeiro-termo valor-do-segundo-termo" retorna a razão da P.G Exemplo: "${mathPrefix}p.g q 32 64" => 2`);
+        setSpanTime(15)
+    }
+    pag5(){
+        mensage(`"${mathPrefix}p.g s primeiro-termo razão numero-de-termos" Retorna a soma dos termos de uma P.G Exemplo: "${mathPrefix}p.g s 2 2 10" => 2046`);
         setSpanTime(15)
     }
 }
