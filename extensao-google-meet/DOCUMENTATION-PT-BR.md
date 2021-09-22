@@ -87,6 +87,8 @@ A extensão se trata de uma extensão que server para modificar o funcionamento 
   - [Main](#main-11)
   - [validateClassicPG](#validateclassicpg)
   - [validNPG](#validnpg)
+  - [validQPG](#validqpg)
+  - [validSPG](#validspg)
 - [MATH OPERATIONS](#math-operations)
   - [Class Math_PA](#class-math_pa)
   - [Metodos internos](#metodos-internos-5)
@@ -1279,6 +1281,86 @@ else{
   }
 ```
 
+## validQPG
+
+validQPG é um método interno que valida se o comando passa números suficientes para que uma operação de Q.P.G (isso é uma operação que tem por objetivo retornar o valor do termo desejado) seja executada.
+
+Ele pede a ultima mensagem como paramentro.
+
+Automaticamente ela converte a ultima mensagem para String e retira o comando dela, dessa forma deixando só os números.
+
+```
+this._el = String(el).replace(`${mathPrefix}p.a r `, ``);
+```
+
+Logo em seguida uma constante chamada de listNumbers é criada, ela recebe o retorno da função *ExtractNumbers* passando *this._el* como paramentro, dessa forma o método interno *ExtractNumbers* irá extair os números e retornar uma lista com eles.
+
+```
+const listNumbers = ExtractNumbers(this._el);
+```
+
+Se o length de listNumbers for diferente de 2 ela irá retornar "Algum numero invalido foi passado, tente novamente!"
+
+```
+if (listNumbers.length != 2){ return `Algum numero invalido foi passado, tente novamente!`; } 
+```
+
+Senão ela irá criar uma constante chamada de *classPg* que irá receber todos os métodos da classe *Math_PG*.
+
+Dessa forma ela irá retornar o valor de retorno da constante *classPg* chamando o método interno *QPG*, passando como paramentros: 
+
+*listNumbers* na posição 0, que é o valor do primeiro termo da P.G.
+
+*listNumbers* na posição 1, que é o valor do segundo termo da P.G.
+
+```
+else{
+  const classPg = new Math_PG();
+  return classPg.QPG(listNumbers[0], listNumbers[1], listNumbers[2]);
+}
+```
+
+## validSPG
+
+validSPG é um método interno que valida se o comando passa números suficientes para que uma operação de S.P.G. (isso é uma operação que tem por objetivo retornar o valor da soma de todos os termos da P.G.) seja executada.
+
+Ele pede a ultima mensagem como paramentro.
+
+Automaticamente ela converte a ultima mensagem para String e retira o comando dela, dessa forma deixando só os números.
+
+```
+this._el = String(el).replace(`${mathPrefix}p.a s `, ``);
+```
+
+Logo em seguida uma constante chamada de listNumbers é criada, ela recebe o retorno da função *ExtractNumbers* passando *this._el* como paramentro, dessa forma o método interno *ExtractNumbers* irá extair os números e retornar uma lista com eles.
+
+```
+const listNumbers = ExtractNumbers(this._el);
+```
+
+Se o length de listNumbers for diferente de 3 ela irá retornar "Algum numero invalido foi passado, tente novamente!"
+
+```
+if (listNumbers.length != 3){ return `Algum numero invalido foi passado, tente novamente!`; } 
+```
+
+Senão ela irá criar uma constante chamada de *classPg* que irá receber todos os métodos da classe *Math_PG*.
+
+Dessa forma ela irá retornar o valor de retorno da constante *classPg* chamando o método interno *SPG*, passando como paramentros: 
+
+*listNumbers* na posição 0, que é o valor do primeiro termo da P.G.
+
+*listNumbers* na posição 1, que é o valor da razão da P.G.
+
+*listNumbers* na posição 2, que é o número de termos da P.G.
+
+```
+else{
+  const classPg = new Math_PG();
+  return classPg.SPG(listNumbers[0], listNumbers[1], listNumbers[2]);
+}
+```
+**[Retorne ao inicio](#index)**
 # MATH OPERATIONS
 
 Math operations é a classe responsavel por realizar operações mátematicas.
