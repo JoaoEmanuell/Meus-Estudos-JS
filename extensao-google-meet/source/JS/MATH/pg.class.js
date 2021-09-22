@@ -6,13 +6,13 @@ class PG{
     main(){
         if (this._el.indexOf(`${mathPrefix}p.g`) >= 0){
             if (this._el.indexOf(`${mathPrefix}p.g cl`) >= 0){
-                mensage(this.validateClassicPA(this._el));
+                mensage(this.validateClassicPG(this._el));
             } else if(this._el.indexOf(`${mathPrefix}p.g n`) >= 0){
-                mensage(this.validNPA(this._el));
+                mensage(this.validNPG(this._el));
             } else if(this._el.indexOf(`${mathPrefix}p.g r`) >= 0){
-                mensage(this.validRPA(this._el));
+                mensage(this.validRPG(this._el));
             } else if(this._el.indexOf(`${mathPrefix}p.g s`) >= 0){
-                mensage(this.validSPA(this._el));
+                mensage(this.validSPG(this._el));
             }
         }
     }
@@ -39,7 +39,7 @@ class PG{
     validRPG(el){
         this._el = String(el).replace(`${mathPrefix}p.g r `, ``);
         const listNumbers = ExtractNumbers(this._el, ' ');
-        if (listNumbers.length != 3){
+        if (listNumbers.length != 2){
             return `Algum numero invalido foi passado, tente novamente!`;
         } else{
             const classPg = new Math_PG();
