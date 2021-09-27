@@ -19,3 +19,12 @@ function ExtractNumbers(el, separate){
     }
     return listNumbers;
 }
+/**
+ * 
+ * @param {Float} rooting rooting, value of the rooting, must be a number greater than or equal to zero, never a negative number.
+ * @param {Float} index index value of the root.
+ * @returns root value.
+ */
+function root(rooting, index){
+    return Math.pow(rooting, 1.0/index);
+}
