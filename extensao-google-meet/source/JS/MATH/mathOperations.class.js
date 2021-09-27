@@ -139,11 +139,12 @@ class Math_PG{
     /**
     * Ratio of a P.G.
     * @param {Float} a1 First term, float number.
-    * @param {Float} a2 Second term, float number.
+    * @param {Int} n Number of terms, Int number.
+    * @param {Float} an Value of the last term, float number.
     * @returns Returns the ratio of a P.G.
     */
-    RPG(a1, a2){
-      return a2/a1
+    RPG(a1, n, an){
+        return root((an / a1), n-1);
     }
     /**
     * Sum of P.G.
