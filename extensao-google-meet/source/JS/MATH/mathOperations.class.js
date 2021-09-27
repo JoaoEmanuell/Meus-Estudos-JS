@@ -58,6 +58,16 @@ class Math_PA{
         this._n = n;
         return ((this._a1 + this._an) * this._n) / 2
     }
+    /**
+     * Number of terms of a P.A.
+     * @param {Float} a1 first term, float number.
+     * @param {Float} r P.A. ratio float number.
+     * @param {Float} an Value of the last term, float number.
+     * @returns Number of terms of a P.A.
+     */
+    NTPA(a1, r, an){
+        return (an - a1 + r) / r;
+    }
 }
 /**
  * Class to perform second degree equation

@@ -1493,9 +1493,9 @@ Paramentros:
 
 a1 = Valor do primeiro termo da P.A.
 
-an = Valor do ultimo termo da P.A.
+an = Numero de termos da P.A.
 
-n = Numero de termos da P.A.
+vf = Valor do ultimo termo da P.A.
 
 Assim que é chamado esse método cria 3 elementos propios.
 
@@ -1533,12 +1533,12 @@ return r;
 
 ### SPA
 
-Esse método retorna o valor do termo desejado de uma P.A.
+Esse método retorna a soma dos termos de uma P.A.
 
-Por meio da formula do termo geral da P.A.:
+Por meio da formula da soma dos termos da P.A.:
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/81983803/134069723-71abfc67-a42b-467f-8235-9176960d4f05.png" alt="Formula do termo geral da P.A."/>
+  <img src="https://user-images.githubusercontent.com/81983803/134069723-71abfc67-a42b-467f-8235-9176960d4f05.png" alt="Formula da soma dos termos da P.A."/>
 </p>
 
 Paramentros:
