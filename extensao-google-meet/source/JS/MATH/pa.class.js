@@ -15,6 +15,8 @@ class PA{
                 mensage(this.validRPA(this._el));
             } else if(this._el.indexOf(`${mathPrefix}p.a s`) >= 0){
                 mensage(this.validSPA(this._el));
+            } else if(this._el.indexOf(`${mathPrefix}p.a t`) >= 0){
+                mensage(this.validNTPA(this._el));
             }
         }
     }
@@ -78,6 +80,21 @@ class PA{
         } else{
             const classPa = new Math_PA();
             return classPa.SPA(listNumbers[0], listNumbers[1], listNumbers[2]);
+        }
+    }
+    /**
+     * Checks if the string contains enough terms to perform an operation that will return the number of terms in the P.A, must be informed a1 = value of the first term, r = reason, an = term that you want to know the value.
+     * @param {String} el String
+     * @returns if the message informs the parameters correctly it will return the number of terms of the P.A otherwise it will return an error message.
+     */
+    validNTPA(el){
+        this._el = String(el).replace(`${mathPrefix}p.a t `, ``);
+        const listNumbers = ExtractNumbers(this._el, ' ');
+        if (listNumbers.length != 3){
+            return `Algum numero invalido foi passado, tente novamente!`;
+        } else{
+            const classPa = new Math_PA();
+            return classPa.NTPA(listNumbers[0], listNumbers[1], listNumbers[2]);
         }
     }
 }
