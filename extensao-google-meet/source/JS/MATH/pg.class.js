@@ -57,7 +57,7 @@ class PG{
     validQPG(el){
         this._el = String(el).replace(`${mathPrefix}p.g q `, ``);
         const listNumbers = ExtractNumbers(this._el, ' ');
-        if (listNumbers.length != 2){
+        if (listNumbers.length != 3){
             return `Algum numero invalido foi passado, tente novamente!`;
         } else{
             const classPg = new Math_PG();
