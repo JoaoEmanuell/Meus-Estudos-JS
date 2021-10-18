@@ -87,7 +87,7 @@ A extensão se trata de uma extensão que server para modificar o funcionamento 
   - [Main](#main-11)
   - [validateClassicPG](#validateclassicpg)
   - [validNPG](#validnpg)
-  - [validQPG](#validqpg)
+  - [validRPG](#validrpg)
   - [validSPG](#validspg)
 - [MATH OPERATIONS](#math-operations)
   - [Class Math_PA](#class-math_pa)
@@ -99,8 +99,15 @@ A extensão se trata de uma extensão que server para modificar o funcionamento 
   - [class Math_EQ2](#class-math_eq2)
     - [delt](#delt)
   - [roots](#roots)
+  - [class Math_PG](#class-math_pg)
+  - [Métodos internos](#métodos-internos-4)
+    - [classicPG](#classicpg)
+    - [NPG](#npg)
+    - [RPG](#rpg)
+    - [SPA](#spa-1)
 - [MATH ESSENTIAL](#math-essential)
   - [ExtractNumbers](#extractnumbers)
+  - [root](#root)
      
 
 # Propiedades Padrão
@@ -1281,9 +1288,9 @@ else{
   }
 ```
 
-## validQPG
+## validRPG
 
-validQPG é um método interno que valida se o comando passa números suficientes para que uma operação de Q.P.G (isso é uma operação que tem por objetivo retornar o valor do termo desejado) seja executada.
+validRPG é um método interno que valida se o comando passa números suficientes para que uma operação de R.P.G (isso é uma operação que tem por objetivo retornar o valor da razão da P.G) seja executada.
 
 Ele pede a ultima mensagem como paramentro.
 
@@ -1299,19 +1306,21 @@ Logo em seguida uma constante chamada de listNumbers é criada, ela recebe o ret
 const listNumbers = ExtractNumbers(this._el);
 ```
 
-Se o length de listNumbers for diferente de 2 ela irá retornar "Algum numero invalido foi passado, tente novamente!"
+Se o length de listNumbers for diferente de 3 ela irá retornar "Algum numero invalido foi passado, tente novamente!"
 
 ```
-if (listNumbers.length != 2){ return `Algum numero invalido foi passado, tente novamente!`; } 
+if (listNumbers.length != 3){ return `Algum numero invalido foi passado, tente novamente!`; } 
 ```
 
 Senão ela irá criar uma constante chamada de *classPg* que irá receber todos os métodos da classe *Math_PG*.
 
-Dessa forma ela irá retornar o valor de retorno da constante *classPg* chamando o método interno *QPG*, passando como paramentros: 
+Dessa forma ela irá retornar o valor de retorno da constante *classPg* chamando o método interno *RPG*, passando como paramentros: 
 
 *listNumbers* na posição 0, que é o valor do primeiro termo da P.G.
 
-*listNumbers* na posição 1, que é o valor do segundo termo da P.G.
+*listNumbers* na posição 1, que é o número de termos da P.G
+
+*listNumbers* na posição 2, que é o valor do ultimo termo da P.G.
 
 ```
 else{
@@ -1652,6 +1661,189 @@ Então ao fim ela irá retornar um array de três posições, na primeira o valo
 return [del**2, x1, x2];
 ```
 
+## class Math_PG
+
+Classe responsavel pode deter os métodos de resolução de uma P.G
+
+Essa classe não possui um construtor.
+
+## Métodos internos
+
+### classicPG
+
+Esse método retorna os números de uma P.G
+
+Paramentros :
+
+a1 : Valor do primeiro termo da P.G
+
+q : Razão da P.G
+
+n : Número de termos da P.G
+
+Assim que é chamado esse método cria 3 elementos propios.
+
+O primeiro chamado de *this._a1* recebe o resultado do paramentro a1.
+
+```
+this._a1 = a1;
+```
+
+O segundo chamado de *this._q* recebe o resultado do paramentro r.
+
+```
+this._q = q;
+```
+
+O terceiro chamado de *this._n* recebe o resultado do paramentro n.
+
+```
+this._n = n;
+```
+
+Logo em seguida ela cria uma let chamada de *tmp* que começa com 0, *tmp* é responsavel por limitar o funcionamento do for, assim impedindo ele de entrar em loop infinito.
+
+```
+let tmp = 0;
+```
+
+Após isso a variavel *fullPG* é criada, ela começa como uma string vazia e é responsavel por armazenar a P.G.
+
+```
+var fullPG = '';
+```
+
+Então occorre um for, a let *i* é criada, *i* começa com o valor de *this._a1* esse for ocorrera enquanto *tmp* for inferior a *this._n* e o *i* irá receber ele vezes *this._q*.
+
+```
+for (let i = this._a1; tmp < this._n; i += this._r){. . .}
+```
+
+Sempre que o **for** for executado *tmp* irá receber ela mais ela mesmo e a variavel *fullPG* irá receber ela mais o valor de *i* com uma virgula e um espaço colocado.
+
+```
+tmp ++;
+fullPG += `${i}, `;
+```
+
+Após isso o método irá retornar a *fullPG* eliminando a virgula e o espaço final pois não existe nenhum numero após ele.
+
+```
+return fullPG.slice(0, fullPG.length - 2);;
+```
+
+### NPG
+
+Esse método retorna o valor do termo desejado de uma P.G.
+
+Por meio da formula do termo geral da P.G.:
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/81983803/137778762-52e60820-1060-4b0a-9e3a-4016db49214b.png" alt="Formula do termo geral da P.G."/>
+</p>
+
+Paramentros:
+
+a1 = Valor do primeiro termo da P.G.
+
+q = Razão da P.G.
+
+n = Ultimo termo da P.G.
+
+Assim que é chamado esse método cria 3 elementos propios.
+
+O primeiro chamado de *this._a1* recebe o resultado do paramentro a1.
+
+```
+this._a1 = a1;
+```
+
+O segundo chamado de *this._q* recebe o resultado do paramentro q.
+
+```
+this._q = r;
+```
+
+O terceiro chamado de *this._n* recebe o resultado do paramentro n menos um.
+
+```
+this._n = n - 1;
+```
+
+Então ela irá retornar o valor de "*this._a1* + (*this._n* ** *this._q*)" conforme a formula acima ordena:
+
+```
+return this._a1 + (this._q ** this._r);
+```
+
+### RPG
+
+Esse método retorna a razão de uma P.G.
+
+Por meio da seguinte formula:
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/81983803/137778782-7ba2beb0-025f-4e77-bdff-b76bc84e44a5.png" alt="Formula da razão da P.G."/>
+</p>
+
+Paramentros:
+
+a1 = Valor do primeiro termo da P.G.
+
+n = Numero de termos da P.G.
+
+an = Valor do ultimo termo da P.G.
+
+Então ela irá retornar a raiz onde *n-1* é o índice e *an / a1* é o radicando.
+
+```
+return root((an / a1), n-1);
+```
+
+### SPA
+
+Esse método retorna a soma dos termos de uma P.G.
+
+Por meio da formula da soma dos termos da P.G.:
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/81983803/137778809-a9bfa57d-b991-41e5-a063-685341b849f8.png" alt="Formula da soma dos termos da P.G."/>
+</p>
+
+Paramentros:
+
+a1 = Valor do primeiro termo da P.G.
+
+q = Razão da P.G
+
+n = Numero de termos da P.G.
+
+Assim que é chamado esse método cria 3 elementos propios.
+
+O primeiro chamado de *this._a1* recebe o resultado do paramentro a1.
+
+```
+this._a1 = a1;
+```
+
+O segundo chamado de *this._q* recebe o resultado do paramentro q.
+
+```
+this._q = q;
+```
+
+O terceiro chamado de *this._n* recebe o resultado do paramentro n.
+
+```
+this._n = n;
+```
+
+Então ela irá retornar o valor de "*this._a1* * ((*this._q* ** *this._n*)- 1 ) / (*this._q* - 1)" conforme a formula acima ordena:
+
+```
+return this._a1 * ((this._q**this._n)- 1 ) / (this._q - 1);
+```
+
 **[Retorne ao inicio](#index)**
 
 # MATH ESSENTIAL
@@ -1708,6 +1900,22 @@ Ao final de tudo isso retorne *listNumbers* que deve ser uma lista com todos os 
 
 ```
 return listNumbers;
+```
+
+## root 
+
+root é um método que retorna uma raiz
+
+Paramentros :
+
+rooting : valor do radicando 
+
+index : valor do indice
+
+Então ela irá retornar o valor da raiz.
+
+```
+return Math.pow(rooting, 1.0/index);
 ```
 
 **[Retorne ao inicio](#index)**
