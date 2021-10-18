@@ -11,7 +11,7 @@ class PG{
             } else if(this._el.indexOf(`${mathPrefix}p.g n`) >= 0){
                 mensage(this.validNPG(this._el));
             } else if(this._el.indexOf(`${mathPrefix}p.g q`) >= 0){
-                mensage(this.validQPG(this._el));
+                mensage(this.validRPG(this._el));
             } else if(this._el.indexOf(`${mathPrefix}p.g s`) >= 0){
                 mensage(this.validSPG(this._el));
             }
@@ -54,7 +54,7 @@ class PG{
     * @param {String} el String
     * @returns if the message informs the parameters correctly it will return the P.G reason otherwise it will return an error message.
      */
-    validQPG(el){
+    validRPG(el){
         this._el = String(el).replace(`${mathPrefix}p.g q `, ``);
         const listNumbers = ExtractNumbers(this._el, ' ');
         if (listNumbers.length != 3){
