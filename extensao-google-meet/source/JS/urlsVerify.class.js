@@ -1,5 +1,5 @@
 var links = [];
-var silence = false;
+var silence = true;
 class urlsVerify{
     constructor (men){
         this._men = String(men);
