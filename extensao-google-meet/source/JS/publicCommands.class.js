@@ -15,13 +15,10 @@ class publicCommands{
  * main method, call all methods.
  */
     main(){
-        this.getHelp();
-        this.getLinks();
-        this.getTime();
-        this.setTexToUpperCase();
-        this.setTextToLowerCase();
-        this.setTextToUpperCaseAndLowerCase();
-        this.getJoker();
+        const main_dicty = {getHelp : this.getHelp(), getLinks : this.getLinks(), getTime : this.getTime(), setTexToUpperCase : this.setTexToUpperCase(), setTextToLowerCase : this.setTextToLowerCase(), setTextToUpperCaseAndLowerCase : this.setTextToUpperCaseAndLowerCase(), getJoker : this.getJoker()}
+
+        for (const key in main_dicty){ main_dicty[key] }
+
     }
     // Local Methods
     /**
@@ -65,7 +62,6 @@ class publicCommands{
      */
     setTexToUpperCase(){
         if (this._el.indexOf(`${publicPrefix}upper `) >= 0 || this._el.indexOf(`${publicPrefix}up `) >= 0 ){
-            console.log("setTexToUpperCase")
             let text = this._el.replace(`${publicPrefix}upper `, ``)
             text = text.replace(`${publicPrefix}up `, ``);
             mensage(`${text.toUpperCase()}`);
@@ -77,7 +73,6 @@ class publicCommands{
      */
     setTextToLowerCase(){
         if (this._el.indexOf(`${publicPrefix}lower `) >= 0 || this._el.indexOf(`${publicPrefix}lo `) >= 0 ){
-            console.log("setTextToLowerCase")
             let text = this._el.replace(`${publicPrefix}lower `, ``)
             text = text.replace(`${publicPrefix}lo `, ``);
             mensage(`${text.toLowerCase()}`);
