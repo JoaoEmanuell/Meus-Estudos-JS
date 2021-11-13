@@ -7,16 +7,16 @@ class PA{
     main(){
         // P.A
         if (this._el.indexOf(`${mathPrefix}p.a`) >= 0){
-            if (this._el.indexOf(`${mathPrefix}p.a cl`) >= 0){
-                mensage(this.validateClassicPA(this._el));
-            } else if(this._el.indexOf(`${mathPrefix}p.a n`) >= 0){
-                mensage(this.validNPA(this._el));
-            } else if(this._el.indexOf(`${mathPrefix}p.a r`) >= 0){
-                mensage(this.validRPA(this._el));
-            } else if(this._el.indexOf(`${mathPrefix}p.a s`) >= 0){
-                mensage(this.validSPA(this._el));
-            } else if(this._el.indexOf(`${mathPrefix}p.a t`) >= 0){
-                mensage(this.validNTPA(this._el));
+
+                    const men = this._el.replace(`${mathPrefix}p.a `, ``);
+
+                    const pa_dict = {cl : this.validateClassicPA(this._el), n : this.validNPA(this._el), r : this.validRPA(this._el), s : this.validSPA(this._el), t : this.validNTPA(this._el)};
+
+                    for (const key in pa_dict){
+                        if (men.indexOf(key) >= 0){
+                            mensage(pa_dict[key]);
+                            break;
+                    }
             }
         }
     }
