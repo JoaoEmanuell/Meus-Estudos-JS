@@ -8,15 +8,15 @@ class PA{
         // P.A
         if (this._el.indexOf(`${mathPrefix}p.a`) >= 0){
 
-                    const men = this._el.replace(`${mathPrefix}p.a `, ``);
+            const men = this._el.replace(`${mathPrefix}p.a `, ``);
 
-                    const pa_dict = {cl : this.validateClassicPA(this._el), n : this.validNPA(this._el), r : this.validRPA(this._el), s : this.validSPA(this._el), t : this.validNTPA(this._el)};
+            const pa_dict = {cl : this.validateClassicPA(this._el), n : this.validNPA(this._el), r : this.validRPA(this._el), s : this.validSPA(this._el), t : this.validNTPA(this._el)};
 
-                    for (const key in pa_dict){
-                        if (men.indexOf(key) >= 0){
-                            mensage(pa_dict[key]);
-                            break;
-                    }
+            for (const key in pa_dict){
+                if (men.indexOf(key) >= 0){
+                    mensage(pa_dict[key]);
+                    break;
+                }
             }
         }
     }

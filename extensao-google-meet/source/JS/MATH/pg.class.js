@@ -6,15 +6,13 @@ class PG{
     main(){
         // P.G
         if (this._el.indexOf(`${mathPrefix}p.g`) >= 0){
-            if (this._el.indexOf(`${mathPrefix}p.g cl`) >= 0){
-                mensage(this.validateClassicPG(this._el));
-            } else if(this._el.indexOf(`${mathPrefix}p.g n`) >= 0){
-                mensage(this.validNPG(this._el));
-            } else if(this._el.indexOf(`${mathPrefix}p.g q`) >= 0){
-                mensage(this.validRPG(this._el));
-            } else if(this._el.indexOf(`${mathPrefix}p.g s`) >= 0){
-                mensage(this.validSPG(this._el));
-            }
+
+            const men = this._el.replace(`${mathPrefix}p.g `, ``);
+
+            const pg_dict = {cl : this.validateClassicPG(this._el), n : this.validNPG(this._el), q : this.validRPG(this._el), s : this.validSPG(this._el)};
+
+            for (const key in pg_dict){ if (men.indexOf(key) >= 0){ mensage(pg_dict[key]); break;}}
+
         }
     }
     // Validates
