@@ -9,7 +9,7 @@ class Math_PA{
     classicPA(a1, r, n){
         this._a1 = a1;
         this._r = r;
-        this._n = n;
+        this._n = Math.abs(n);
         let tmp = 0;
         var fullPA = '';
         for (let i = this._a1; tmp < this._n; i += this._r){
@@ -114,7 +114,7 @@ class Math_PG{
     classicPG(a1, q, n){
             this._a1 = a1;
             this._q = q;
-            this._n = n;
+            this._n = Math.abs(n);
             let tmp = 0;
             var fullPG = '';
             for (let i = this._a1; tmp < this._n; i *= this._q){
