@@ -34,7 +34,7 @@ class publicCommands{
  * else send a mensage.
  */
     getLinks(){
-        if (this._el === `${publicPrefix}links` || this._el === `${publicPrefix}li`){
+        if (this._el === `${publicPrefix}links` || this._el === `${publicPrefix}li` || this._el === `${publicPrefix}link`){
             let preText = '';
             if (links.length != 0){
                 links.forEach(link => {
