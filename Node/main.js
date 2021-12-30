@@ -1,3 +1,7 @@
-var sumFunction = require("./source/sum");
+var http = require('http');
 
-console.log(sumFunction(1,2));
+http.createServer(function(req, res){
+    res.end("Hello World");
+}).listen(8786);
+
+console.log("Hello World");

@@ -11,3 +11,25 @@ Então para usar o objeto que foi exportado, você deve importar o objeto por me
 var sumFunction = require("./source/sum");
 
 Dessa forma poderá ser usado a função soma mesmo ela estando em outro arquivo.
+
+// Servidor
+
+Para criar um servidor é necessário importar o modulo http do node.
+
+var http = require('http');
+
+Após isso utilize a função createServer para criar um servidor e o método listen passando a porta onde o servidor irá responder.
+
+http.createServer(. . .).listen(porta);
+
+Dentro da função createServer ela recebe um callback (nada mais é do que uma função que recebe dois paramentros um chamado req [requisição] e outro chamado res que é a resposta do servidor) que é chamado quando o servidor recebe uma requisição, para retornar algo para o usuario você pode utilizar :
+
+    res.end("Mensage");
+
+// Exemplo
+
+    var http = require('http');
+
+    http.createServer(function(req, res){
+        res.end("Hello World");
+    }).listen(8786);
