@@ -1,0 +1,13 @@
+// EXPORTS
+
+Para exportar um objeto / função / variavel...
+Você deve criar um arquivo com o nome que você deseja e dentro dele criar o objeto que será exportado, após o objeto ser criado você deve colocar o export default para exportar o objeto.
+
+function sum (a,b) { return a+b; }
+module.exports = sum;
+
+Então para usar o objeto que foi exportado, você deve importar o objeto por meio da função require, passando o caminho até o arquivo e atribuindo a uma variavel, por definição todo objeto que foi exportado deve ter o mesmo nome do arquivo que ele está.
+
+var sumFunction = require("./source/sum");
+
+Dessa forma poderá ser usado a função soma mesmo ela estando em outro arquivo.
