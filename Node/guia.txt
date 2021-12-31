@@ -115,3 +115,43 @@ Dentro da função createServer ela recebe um callback (nada mais é do que uma 
     Após isso para executar utilize :
 
         nodemon nome_arquivo.js
+
+// Sequelize
+
+    https://sequelize.org // site do sequelize
+
+    Sequelize é um pacote que facilita a conexão com o banco de dados.
+
+    Primeiramente instale o pacote com o comando:
+
+        npm install --save sequelize
+
+    Para utilizar o mysql você irá precisar de outro pacote, instale ele :
+
+        npm install --save mysql2
+
+    Depois crie uma constante que irá receber a função Sequelize.
+
+        const Sequelize = require("sequelize");
+
+    Depois crie uma constante que irá receber todos os dados de Sequelize, dentro dessa constante você deve passar a database, nome de usuario, senha e um objeto contendo dois campos o primeiro chamado de host que é o endereço do banco de dados e o segundo chamado de dialect que é o tipo de banco de dados que será utilizado.
+
+        const sequelize = new Sequelize("database", "username", "password", {
+            host: "localhost",
+            dialect: "mysql"
+        });
+
+    Exemplo : 
+
+        const sequelize = new Sequelize('NODE', 'root', 'root', {
+            host : "localhost",
+            dialect : "mysql",
+        });
+
+    Dessa forma a conexão será criada com sucesso, para verificar se a conexão foi bem sucedida você pode fazer o seguinte :
+
+        sequelize.authenticate().then(function(){
+            console.log("Conectado com sucesso");
+        }).catch(function(erro){
+            console.log("Falha ao se conectar : " + erro);
+        }); 
