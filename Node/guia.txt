@@ -91,3 +91,15 @@ Dentro da função createServer ela recebe um callback (nada mais é do que uma 
         app.get("/hello/:name", function(req, res) {
             res.send(`<h1>Hello ${req.params.name}!</h1>`);
         });
+
+// Nodemon
+
+    O Nodemon é um pacote que executa o código automaticamente caso ele seja alterado.
+
+    Primeiramente instale ele a flag -g serve para instalar ele de forma global.
+
+    sudo npm install nodemon -g
+
+    Após isso para executar utilize :
+
+        nodemon nome_arquivo.js
