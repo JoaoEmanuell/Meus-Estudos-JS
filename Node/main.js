@@ -1,7 +1,17 @@
-var http = require('http');
+const express = require("express");
+const app = express();
 
-http.createServer(function(req, res){
-    res.end("Hello World");
-}).listen(8786);
+// Routes
 
-console.log("Hello World");
+app.get("/", function(req, res) {
+    res.send("Hello World!");
+});
+
+app.get("/home", function(req, res) {
+    res.send("Hello Home!");
+});
+
+// Execute
+app.listen(8081, function(){
+    console.log("Server is running on port 8081");
+});
