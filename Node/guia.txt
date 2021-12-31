@@ -92,6 +92,18 @@ Dentro da função createServer ela recebe um callback (nada mais é do que uma 
             res.send(`<h1>Hello ${req.params.name}!</h1>`);
         });
 
+    // Enviando arquivo html pela rota.
+
+    Para enviar uma arquivo html utilize o res.sendFile passando o caminho até o arquivo.
+
+        app.get("/rota", function(req, res){
+            res.sendFile(__dirname + "/index.html"); // A variavel __dirname serve para indicar o caminho completo até a aplicação.
+        });
+
+        app.get("/", function(req, res) {
+            res.sendFile(`${__dirname}/templates/html/index.html`);
+        });
+
 // Nodemon
 
     O Nodemon é um pacote que executa o código automaticamente caso ele seja alterado.
