@@ -73,3 +73,21 @@ Dentro da função createServer ela recebe um callback (nada mais é do que uma 
         app.listen(8081, function(){
             console.log("Server is running on port 8081");
         });
+
+    // Paramentos nas rotas
+
+    Para criar um paramentro na rota faça o seguinte :
+
+        app.get("/nome_rota/:nome_do_paramentro")
+
+    Para utlizar os dados do paramentro utilize a função de callback e no paramentro req você utilize .params.nome_do_paramentro :
+
+        app.get("/nome_rota/:nome_do_paramentro", function(req, res){
+            res.send(req.params.nome_do_paramentro);
+        });
+
+    Exemplo :
+
+        app.get("/hello/:name", function(req, res) {
+            res.send(`<h1>Hello ${req.params.name}!</h1>`);
+        });

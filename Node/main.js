@@ -7,8 +7,8 @@ app.get("/", function(req, res) {
     res.send("Hello World!");
 });
 
-app.get("/home", function(req, res) {
-    res.send("Hello Home!");
+app.get("/hello/:name", function(req, res) {
+    res.send(`<h1>Hello ${req.params.name}!</h1>`);
 });
 
 // Execute
