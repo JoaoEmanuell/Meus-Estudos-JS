@@ -155,3 +155,68 @@ Dentro da função createServer ela recebe um callback (nada mais é do que uma 
         }).catch(function(erro){
             console.log("Falha ao se conectar : " + erro);
         }); 
+
+    // Criando tabelas
+
+    https://sequelize.org/v5/manual/data-types.html // Documentação dos tipos de dados do sequelize.
+
+    https://sequelize.org/v5/manual/models-definition.html // Documentação dos models do sequelize.
+
+    Para criar uma tabela import o sequelize e o connection que está conectando com o banco de dados :
+
+        const Sequelize = require("sequelize");
+        const connection = require('./connection');
+
+    Depois crie uma constante que irá receber a tabela, dentro dele você irá passar o nome da tabela e um json com os campos da tabela.
+
+    const Nome = connection.define('nome_tabela', {
+        campo : {
+            type : Sequelize.type,
+            constrags
+        }
+    })
+
+    Exemplo :
+
+        const User = connection.define('user', {
+            id : {
+                type : Sequelize.INTEGER,
+                primaryKey : true,
+                autoIncrement : true
+            },
+            name : {
+                type : Sequelize.STRING,
+                allowNull : false
+            },
+            password : {
+                type : Sequelize.STRING,
+                allowNull : false
+            }
+        });
+
+    // O id não é necessario o sequelize acaba criando ele de forma automatica.
+
+    // allowNull indica que aquele campo não pode ser nulo.
+
+    Para enviar a sua tabela para o mysql utilize : 
+
+    Nome.sync({force : true});
+
+    // User.sync({force : true});
+
+    // Criando dados
+
+    Para criar um dado utilize o método create :
+
+        Nome.create({
+            campo : valor
+        });
+
+    Exemplo :
+
+        User.create({
+            name : "Nome",
+            password : "senha"
+        });
+
+    Dessa forma o dado será automaticamente enviado para o banco de dados assim que o código for executado.
