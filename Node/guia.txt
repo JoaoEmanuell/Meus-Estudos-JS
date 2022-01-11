@@ -220,3 +220,23 @@ Dentro da função createServer ela recebe um callback (nada mais é do que uma 
         });
 
     Dessa forma o dado será automaticamente enviado para o banco de dados assim que o código for executado.
+
+// Handlebars
+
+    Handlebars é uma template engine que permite que você crie páginas dinâmicas, adicionando mais funcionalidades ao html.
+
+    Para instalar o pacote utilize o comando :
+
+        npm install --save express-handlebars
+
+    Para configurar o handlebars no arquivo js faça o seguinte : 
+
+        const exphbs = require("express-handlebars"); // constante chamada de express-handlebars.
+        const handlebars = exphbs.create({ defaultLayout: "main" }); // constante de configuração do handlebars, dentro dele iremos criar um novo objeto handlebars e configurar para o layout padrão dele ser o main.
+
+    Para configurar o handlebars no app faça o seguinte :
+
+        app.engine("handlebars", handlebars.engine); // configuração do handlebars no app.
+        app.set("view engine", "handlebars"); // Seta o handlebars como a engine padrão para templates.
+
+    Para utilizar o handlebars seguindo o modelo acima é necessario criar uma pasta chamada templates e dentro dela outra chamada de layouts, dentro dessa pasta layouts você deve criar um arquivo chamado de main.handlebars, esse arquivo será o arquivo que será utilizado como layout padrão.

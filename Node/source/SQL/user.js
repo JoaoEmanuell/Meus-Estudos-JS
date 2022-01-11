@@ -17,4 +17,6 @@ const User = connection.define('user', {
     }
 });
 
+// Create User
+
 User.create({ name : "root", password : "root"});

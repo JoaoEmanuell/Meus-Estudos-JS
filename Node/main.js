@@ -1,11 +1,15 @@
 const express = require("express");
 const app = express();
+const connection = require("./source/SQL/connection.js");
+const exphbs = require("express-handlebars");
+const handlebars = exphbs.create({ defaultLayout: "main" });
+
+// Config
+    // Template Engine
+        app.engine("handlebars", handlebars.engine);
+        app.set("view engine", "handlebars");
 
 // Routes
-
-app.get("/", function(req, res) {
-    res.sendFile(`${__dirname}/templates/html/index.html`);
-});
 
 // Execute
 app.listen(8081, function(){
