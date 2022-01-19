@@ -1,22 +1,19 @@
-const Sequelize = require('sequelize');
-const connection = require('./connection');
+const db = require('./connection');
 
-const Post = connection.define('post', {
+const Post = db.sequelize.define('post', {
     id : {
-        type : Sequelize.INTEGER,
+        type : db.Sequelize.INTEGER,
         primaryKey : true,
         autoIncrement : true
     },
     title : {
-        type : Sequelize.STRING,
+        type : db.Sequelize.STRING,
         allowNull : false
     },
     content : {
-        type : Sequelize.STRING,
+        type : db.Sequelize.STRING,
         allowNull : false
     }
 })
 
-// Create Post
-
-Post.create({ title : "Post 1", content : "Content 1"});
+module.exports = Post;

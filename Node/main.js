@@ -4,6 +4,7 @@ const connection = require("./source/SQL/connection.js");
 const exphbs = require("express-handlebars");
 const handlebars = exphbs.create({ defaultLayout: "main" });
 const bodyParser = require("body-parser");
+const Post = require("./source/SQL/post.js");
 
 // Config
 
@@ -18,7 +19,7 @@ const bodyParser = require("body-parser");
 // Routes
 
 app.get('/', function(req, res) {
-    res.send("home");
+    res.render("home");
 });
 
 app.get('/cad', function(req, res) {
@@ -28,7 +29,21 @@ app.get('/cad', function(req, res) {
 app.post('/visualize', function(req, res) {
     const title = req.body.title;
     const content = req.body.content;
-    res.send(`<p>Title : ${title}</p><p>Content : ${content}</p>`);
+    if (title == "" || content == "") {
+        res.send("Preencha todos os campos");
+    }
+    else {
+        // Create a new post
+        Post.create({
+            title : title,
+            content : content
+        }).then(function() {
+            // If success, redirect to home
+            res.redirect('/');
+        }).catch(function(err) {
+            // If error, error message
+            res.send(`Erro ao adicionar post ${err}`);
+        })};
 });
 
 // Execute

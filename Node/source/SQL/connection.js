@@ -4,4 +4,7 @@ const sequelize = new Sequelize('NODE', 'root', 'root', {
     dialect : "mysql",
 });
 
-module.exports = sequelize;
+module.exports = {
+    Sequelize : Sequelize,
+    sequelize : sequelize,
+};

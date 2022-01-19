@@ -307,3 +307,5 @@ Dentro da função createServer ela recebe um callback (nada mais é do que uma 
     });
 
     Dessa forma o dado que foi passado será atribuindo a constante indicada e você poderá utiliza-lo da maneira que desejar.
+
+res.redirect('/rota'); // redireciona para a rota especificada.
