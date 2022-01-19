@@ -276,3 +276,34 @@ Dentro da função createServer ela recebe um callback (nada mais é do que uma 
     });
 
     Rotas do tipo post não podem ser acessadas pela url, se ela for colocado como tipo get ela não irá funcionar.
+
+// Body Parse
+
+    O pacote body-parser é um pacote que permite que você receba dados via post, ou seja, dados que serão enviados via formulário e tratar esses dados no seu back-end.
+
+    Para instalar o pacote utilize o comando :
+
+        npm install --save body-parser
+
+    Para configurar o body-parser no app faça o seguinte :
+    
+        const bodyParser = require("body-parser"); // constante chamada de body-parser.
+        app.use(bodyParser.urlencoded({ extended: false })); // configuração do body-parser, dentro dele iremos passar um json com um objeto que irá permitir que o body-parser entenda o formato urlencoded.
+        app.use(bodyParser.json());
+
+    Dessa forma o bodyParser está configurado.
+
+    Para pegar os valores que vem via post na rota desejado você deve fazer o seguinte :
+
+    app.post('/visualize', function(req, res) {
+        const nome_elemento = req.body.nome_elemento;
+        res.send(nome_elemento);
+    });
+
+    app.post('/visualize', function(req, res) {
+        const title = req.body.title;
+        const content = req.body.content;
+        res.send(`<p>Title : ${title}</p><p>Content : ${content}</p>`);
+    });
+
+    Dessa forma o dado que foi passado será atribuindo a constante indicada e você poderá utiliza-lo da maneira que desejar.
