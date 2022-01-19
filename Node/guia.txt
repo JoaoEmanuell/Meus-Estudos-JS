@@ -239,4 +239,20 @@ Dentro da função createServer ela recebe um callback (nada mais é do que uma 
         app.engine("handlebars", handlebars.engine); // configuração do handlebars no app.
         app.set("view engine", "handlebars"); // Seta o handlebars como a engine padrão para templates.
 
-    Para utilizar o handlebars seguindo o modelo acima é necessario criar uma pasta chamada templates e dentro dela outra chamada de layouts, dentro dessa pasta layouts você deve criar um arquivo chamado de main.handlebars, esse arquivo será o arquivo que será utilizado como layout padrão.
+    Para utilizar o handlebars seguindo o modelo acima é necessario criar uma pasta chamada views e dentro dela outra chamada de layouts, dentro dessa pasta layouts você deve criar um arquivo chamado de main.handlebars, esse arquivo será o arquivo que será utilizado como layout padrão, normalmente é utilizado um arquivo com o template html simples.
+
+    Dentro do body do arquivo main.handlebars você deve colocar {{{body}}}, isso será subisituido pela outra view quando ela for chamada pela rota, ai nesse caso não será necessario criar o html padrão, somente o que você deseja exibir.
+
+    // Renderizar templates
+
+    Para renderizar um template utilizar o método render dentro da sua rota:
+
+        app.get('/rota', function(req, res) {
+            res.render('nome_view');
+        });
+
+        app.get('/cad', function(req, res) {
+            res.render('form');
+        });
+
+    Os templates devem estar dentro da pasta views, como já temos o template padrão configurado devemos apenas colocar os elementos desejados no nosso novo template.

@@ -11,6 +11,14 @@ const handlebars = exphbs.create({ defaultLayout: "main" });
 
 // Routes
 
+app.get('/', function(req, res) {
+    res.send("home");
+});
+
+app.get('/cad', function(req, res) {
+    res.render('form');
+});
+
 // Execute
 app.listen(8081, function(){
     console.log("Server is running on port 8081");
