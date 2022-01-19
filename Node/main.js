@@ -19,6 +19,10 @@ app.get('/cad', function(req, res) {
     res.render('form');
 });
 
+app.post('/visualize', function(req, res) {
+    res.send('Form added');
+});
+
 // Execute
 app.listen(8081, function(){
     console.log("Server is running on port 8081");

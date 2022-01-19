@@ -256,3 +256,23 @@ Dentro da função createServer ela recebe um callback (nada mais é do que uma 
         });
 
     Os templates devem estar dentro da pasta views, como já temos o template padrão configurado devemos apenas colocar os elementos desejados no nosso novo template.
+
+    // Enviando dados via post
+
+    Dentro da tag form você deve colocar o método post, e um action que irá redirecionar para a rota desejada.
+
+    <form action="/visualize" method="POST">...</form>
+
+    Dessa forma os dados serão enviados para a rota especificada.
+
+    No app você deve criar uma rota do tipo post, essa rota só poderá ser acessada quando um evento do tipo post for acionado.
+
+    app.post('/nome_rota', function(req, res) {
+        res.send('Send');
+    });
+
+    app.post('/visualize', function(req, res) {
+        res.send('Form added');
+    });
+
+    Rotas do tipo post não podem ser acessadas pela url, se ela for colocado como tipo get ela não irá funcionar.
