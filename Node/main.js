@@ -1,19 +1,18 @@
 const express = require("express");
 const app = express();
 const connection = require("./source/SQL/connection.js");
-const exphbs = require("express-handlebars");
-const handlebars = exphbs.create({ defaultLayout: "main" });
+const handlebars = require("express-handlebars");
 const bodyParser = require("body-parser");
 const Post = require("./source/SQL/post.js");
 
 // Config
 
     // Body Parser
-    app.use(bodyParser.urlencoded({ extended: false }));
-    app.use(bodyParser.json());
+        app.use(bodyParser.urlencoded({ extended: false }));
+        app.use(bodyParser.json());
 
     // Template Engine
-        app.engine("handlebars", handlebars.engine);
+        app.engine("handlebars", handlebars({ defaultLayout: "main" }));
         app.set("view engine", "handlebars");
 
 // Routes
