@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const connection = require("./source/SQL/connection.js");
 const handlebars = require("express-handlebars");
 const bodyParser = require("body-parser");
 const Post = require("./source/SQL/post.js");
@@ -12,13 +11,19 @@ const Post = require("./source/SQL/post.js");
         app.use(bodyParser.json());
 
     // Template Engine
-        app.engine("handlebars", handlebars({ defaultLayout: "main" }));
-        app.set("view engine", "handlebars");
+    app.engine('handlebars',handlebars({defautLayout: 'main',
+    runtimeOptions: {
+        allowProtoPropertiesByDefault: true,
+        allowProtoMethodsByDefault: true,
+    }}))
+    app.set('view engine', 'handlebars')
 
 // Routes
 
 app.get('/', function(req, res) {
-    res.render("home");
+    Post.findAll({order : [['id', 'desc']]}).then(function(posts) {
+        res.render("home", { posts: posts });
+    });
 });
 
 app.get('/cad', function(req, res) {
@@ -47,5 +52,5 @@ app.post('/visualize', function(req, res) {
 
 // Execute
 app.listen(8081, function(){
-    console.log("Server is running on port 8081");
+    console.log("Server is running in http://localhost:8081");
 });

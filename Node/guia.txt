@@ -309,3 +309,53 @@ Dentro da função createServer ela recebe um callback (nada mais é do que uma 
     Dessa forma o dado que foi passado será atribuindo a constante indicada e você poderá utiliza-lo da maneira que desejar.
 
 res.redirect('/rota'); // redireciona para a rota especificada.
+
+// Listando os dados do banco de dados
+
+    Primeiramente no arquivo js na rota especificada precisamos pegar todos os dados do banco de dados, para isso utilizaremos o método findAll que pertence ao objeto que está com o modelo de dados :
+
+        app.get('rota', function(req, res) {
+            Nome.findAll({
+                {order : [['id', 'desc']]} // Esse order serve para ordernar do mais novo para o mais antigo.
+            }).then(function(dados) {
+                res.render("template", {dados : dados}); // Isso irá enviar os dados para o template
+            });
+        });
+
+    Exemplo : 
+
+    app.get('/', function(req, res) {
+        Post.findAll({order : [['id', 'desc']]}).then(function(posts) {
+            res.render("home", { posts: posts });
+        });
+    });
+
+    O retorno de Post.findAll é um objeto que contém todos os dados do banco de dados.
+
+    /* Essa solulção só funciona no express-handlebars 3.0.0 e utilizando a 
+    "devDependencies": {
+        "handlebars": "^4.5.0"
+    }
+
+    Pois o handlebars atualizou e acabou invalidando essa forma de enviar dados.
+    */
+
+    Para exibir os dados na pagina você deve fazer o seguinte no seu arquivo de layout :
+
+    {{#each dados}} <!--Essa estrutura é semelhante ao for in do python, ela basicamente pega os dados de dados e permite que utilizemos eles.-->
+        <div>
+            <p>{{dado_valor}}</p>
+        </div>
+    {{/each}}
+
+    Exemplo :
+
+    {{#each posts}}
+        <div>
+            <h1>{{title}}</h2>
+            <p>{{content}}</p>
+            <p>{{createdAt}}</p>
+        </div>
+    {{/each}}
+
+    Dessa forma os dados serão exibidos no página.
