@@ -20,6 +20,8 @@
   - [Mongoose](#mongoose-1)
     - [Instalando o pacote](#instalando-o-pacote)
     - [Configurando uma conexão com o banco de dados](#configurando-uma-conexão-com-o-banco-de-dados)
+  - [Criando um modelo de dados](#criando-um-modelo-de-dados)
+  - [Inserindo valor no modelo](#inserindo-valor-no-modelo)
 
 
 # EXPORTS
@@ -463,3 +465,88 @@ Para conectar ele com banco de dados você irá passar "mongodb://localhost/nome
     });
 
 Dessa forma você estará conectado com o banco de dados.
+
+## Criando um modelo de dados
+
+Para criar um novo modelo de dados utilizando o mongoose você deve criar um objeto que irá ter o modelo de dados.
+
+    const mongoose = require('mongoose'); // Objeto que irá ter o mongoose
+    const name_Schema = mongoose.Schema({. . .}); // Objeto que irá ter o Schema
+
+Esse objeto dentro de Schema são os campos do model, eles são referenciados por : 
+
+    nome : {
+        type : tipo_do_dado,
+        required : true // Caso seja definido como true, o campo é obrigatório, por padrão é false.
+    }
+
+Exemplo : 
+
+    name : {
+        type: String,
+        required: true
+    }
+
+O mongoose permite trabalhar com os tipos do javascript.
+
+[Documentação do mongoose com os tipos de dados.](https://mongoosejs.com/docs/schematypes.html)
+
+Para exportar o model você deve utilizar : 
+    
+    module.exports = mongoose.model('nome_do_modelo', name_Schema);
+
+Exemplo : 
+
+    const mongoose = require('./connection.js');
+
+    // Create a schema
+
+    const User_Schema = mongoose.Schema({
+        name : {
+            type: String,
+            required: true
+        }, 
+        email : {
+            type: String,
+            required: true
+        },
+        password : {
+            type: String,
+            required: true
+        },
+        age : {
+            type: Date,
+            required: true
+        },
+        country : {
+            type: String
+        }
+    });
+
+    mongoose.model('User', User_Schema); // Export the model
+
+## Inserindo valor no modelo
+
+Para inserir valor no modelo primeiro você deve criar uma constante que irá receber o modelo.
+
+    const constante = mongoose.model('nome_do_modelo');
+
+Exemplo : 
+
+    const new_user = mongoose.model('User');
+
+Para inserir dados nesse modelo você deve utilizar a seguinte sintaxe : 
+
+    new constante({
+        campo : 'valor'
+    }).save(); // Salve o dado no banco de dados.
+
+Exemplo : 
+
+    new new_user({
+        name : 'root',
+        email : 'root@root.com.br',
+        password : 'root',
+        age : new Date(2000, 1, 1),
+        country : 'Brasil'
+    }).save();

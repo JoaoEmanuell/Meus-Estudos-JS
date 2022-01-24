@@ -9,3 +9,5 @@ mongoose.connect('mongodb://localhost/node', {
 }).catch(err => {
     console.log(`Error connecting to MongoDB ${err}`);
 });
+
+module.exports = mongoose;
