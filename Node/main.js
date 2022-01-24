@@ -50,6 +50,15 @@ app.post('/visualize', function(req, res) {
         })};
 });
 
+app.get('/delete/:id', function(req, res) {
+    Post.destroy({where : {id : req.params.id}}).then(function() {
+        res.redirect('/');
+    }).catch(function(err) {
+        res.send(`Erro ao deletar post ${err}`);
+    }
+    );
+});
+
 // Execute
 app.listen(8081, function(){
     console.log("Server is running in http://localhost:8081");

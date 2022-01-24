@@ -15,6 +15,7 @@
   - [Enviando dados via post](#enviando-dados-via-post)
 - [Body-Parse](#body-parse)
 - [Listando-os-dados-do-banco-de-dados](#listando-os-dados-do-banco-de-dados)
+- [Apagando dados do banco de dados](#apagando-dados-do-banco-de-dados)
 
 
 # EXPORTS
@@ -398,3 +399,29 @@ Para exibir os dados na pagina você deve fazer o seguinte no seu arquivo de lay
     {{/each}}
 
 Dessa forma os dados serão exibidos na página.
+
+# Apagando dados do banco de dados
+
+Para apagar um dado do banco de dados você deve utilizar : 
+
+    Objeto_banco_de_dados.destroy({
+        where : {
+            campo : valor
+        }
+    });
+
+Exemplo :
+
+    app.get('/delete/:id', function(req, res) {
+        Post.destroy(
+            {where : {id : req.params.id}} // Destrua o registro onde o id seja igual o id passado na rota
+        ).then(function() {
+        res.redirect('/'); // Caso seja bem sucedido redirecione para a rota /
+        });
+        }).catch(function(err) {
+            res.send(`Erro ao deletar post ${err}`); // Caso ocorra algum erro, mostre o erro.
+        }
+        );
+    });
+
+Dessa forma o dado será apagado do banco de dados.
