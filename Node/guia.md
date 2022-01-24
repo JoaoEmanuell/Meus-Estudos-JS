@@ -16,6 +16,10 @@
 - [Body-Parse](#body-parse)
 - [Listando-os-dados-do-banco-de-dados](#listando-os-dados-do-banco-de-dados)
 - [Apagando dados do banco de dados](#apagando-dados-do-banco-de-dados)
+- [Mongoose](#mongoose)
+  - [Mongoose](#mongoose-1)
+    - [Instalando o pacote](#instalando-o-pacote)
+    - [Configurando uma conexão com o banco de dados](#configurando-uma-conexão-com-o-banco-de-dados)
 
 
 # EXPORTS
@@ -425,3 +429,37 @@ Exemplo :
     });
 
 Dessa forma o dado será apagado do banco de dados.
+
+# Mongoose
+
+## Mongoose
+
+Mongoose é um pacote que permite trabalhar com o mongodb
+
+### Instalando o pacote
+
+    npm install --save mongoose
+
+### Configurando uma conexão com o banco de dados
+
+Para conectar com o banco de dados crie um objeto que irá ter o mongoose
+
+    const mongoose = require('mongoose'); // Objeto que irá ter o mongoose
+
+Configure ele para utilizar a promisse do node.js
+
+    mongoose.Promise = global.Promise; // Configura o mongoose para utilizar o promise do node.js
+
+Para conectar ele com banco de dados você irá passar "mongodb://localhost/nome_do_banco" e parametros opcionais para evitar erros.
+
+    mongoose.connect('mongodb://localhost/node', {
+        // Paramentors de conexão com o banco de dados
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    }).then(() => {
+        console.log('Connected to MongoDB'); // Caso a conexão seja bem sucedida, mostre a mensagem de conexão.
+    }).catch(err => {
+        console.log(`Error connecting to MongoDB ${err}`); // Caso ocorra algum erro, mostre o erro.
+    });
+
+Dessa forma você estará conectado com o banco de dados.
