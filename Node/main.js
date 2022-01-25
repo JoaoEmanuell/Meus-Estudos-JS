@@ -4,6 +4,7 @@ const express = require("express");
 const app = express();
 const handlebars = require("express-handlebars");
 const bodyParser = require("body-parser");
+const admin = require("./routes/admin");
 
 // Config
 
@@ -22,6 +23,7 @@ const bodyParser = require("body-parser");
     app.set('view engine', 'handlebars')
 
 // Routes
+    app.use('/admin', admin);
 
 // Execute
 app.listen(8081, () =>{

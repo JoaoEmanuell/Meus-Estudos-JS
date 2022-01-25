@@ -6,6 +6,9 @@
 - [Express](#express)
   - [PARAMENTOS-NAS-ROTAS](#paramentos-nas-rotas)
   - [ENVIANDO-ARQUIVO-HTML-PELA-ROTA.](#enviando-arquivo-html-pela-rota)
+  - [Grupo de rotas](#grupo-de-rotas)
+    - [Arquivo de rota](#arquivo-de-rota)
+    - [Arquivo principal](#arquivo-principal)
 - [Nodemon](#nodemon)
 - [Sequelize](#sequelize)
   - [Criando tabelas](#criando-tabelas)
@@ -135,6 +138,59 @@ Para enviar uma arquivo html utilize o res.sendFile passando o caminho até o ar
     app.get("/", function(req, res) {
         res.sendFile(`${__dirname}/templates/html/index.html`);
     });
+
+## Grupo de rotas
+
+Grupo de rotas é uma forma fácil de gerenciar rotas sem ter que colocar todas elas no mesmo arquivo.
+
+Crie uma pasta com o nome routes que irá ter as rotas, para organizar o projeto.
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/81983803/151057811-2f2fb62a-851b-47d4-a5a0-69912de6cdb8.png" alt="Routes directory example"/>
+</p>
+
+Dentro dessa pasta crie um arquivo js que irá ter algumas rotas.
+
+### Arquivo de rota
+
+Dentro desse arquivo você deve ter duas constantes, uma é o express e a outra é o Router que irá direcionar as rotas.
+
+    const express = require("express");
+    const router = express.Router();
+
+Para criar uma rota nova nesse arquivo você deve fazer o seguinte :
+
+    router.get("/nome_da_rota", function(req, res){
+        res.send("Resposta da rota");
+    });
+
+Exemplo :
+
+    router.get('/', (req, res) => {
+        res.send('Admin Page');
+    });
+
+Exporte o router para o arquivo principal.
+
+    module.exports = router;
+
+### Arquivo principal
+
+Dentro do seu arquivo principal importe o arquivo de rotas, de preferencia que o nome da constante seja o mesmo do arquivo de rotas.
+
+    const index = require("./routes/index");
+
+    const admin = require("./routes/admin");
+
+Para o app utilizar o arquivo de rotas use : 
+
+    app.use('/prefixo_da_rota', index);
+
+    app.use('/admin', admin);
+
+Esse prefixo da rota serve para acessar as rotas, sendo assim será necessario colocar :
+
+    http://localhost:8081/prefixo_da_rota/rota
 
 # Nodemon
 
