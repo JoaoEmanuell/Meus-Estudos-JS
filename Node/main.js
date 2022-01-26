@@ -5,6 +5,7 @@ const app = express();
 const handlebars = require("express-handlebars");
 const bodyParser = require("body-parser");
 const admin = require("./routes/admin");
+const path = require("path")
 
 // Config
 
@@ -22,6 +23,9 @@ const admin = require("./routes/admin");
     }}))
     app.set('view engine', 'handlebars')
 
+    // Public
+    
+    app.use(express.static(path.join(__dirname, 'public')));
 // Routes
     app.use('/admin', admin);
 

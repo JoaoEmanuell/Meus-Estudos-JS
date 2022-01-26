@@ -9,6 +9,8 @@
   - [Grupo de rotas](#grupo-de-rotas)
     - [Arquivo de rota](#arquivo-de-rota)
     - [Arquivo principal](#arquivo-principal)
+  - [Renderizando templates nos grupos de rotas](#renderizando-templates-nos-grupos-de-rotas)
+  - [Configurando a pasta com os arquivos estaticos](#configurando-a-pasta-com-os-arquivos-estaticos)
 - [Nodemon](#nodemon)
 - [Sequelize](#sequelize)
   - [Criando tabelas](#criando-tabelas)
@@ -16,6 +18,7 @@
 - [Handlebars](#handlebars)
   - [Renderizar templates](#renderizar-templates)
   - [Enviando dados via post](#enviando-dados-via-post)
+  - [Dividindo template em partes](#dividindo-template-em-partes)
 - [Body-Parse](#body-parse)
 - [Listando-os-dados-do-banco-de-dados](#listando-os-dados-do-banco-de-dados)
 - [Apagando dados do banco de dados](#apagando-dados-do-banco-de-dados)
@@ -192,6 +195,45 @@ Esse prefixo da rota serve para acessar as rotas, sendo assim será necessario c
 
     http://localhost:8081/prefixo_da_rota/rota
 
+## Renderizando templates nos grupos de rotas
+
+Para renderizar templates devemos criar uma pasta com o nome do nosso grupo de rotas dentro da nossa pasta views
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/81983803/151227977-24221a21-24db-44e7-9ee1-98479b52f914.png" alt="Example"/>
+</p>
+
+Dentro dessa pasta os nossos arquivos de template do grupo de rotas serão mantidos.
+
+Para renderizar um template devemos utilizar : 
+
+    router.get('/rota', (req, res) => {
+        res.render('./pasta_template_grupos/template');
+    });
+
+    router.get('/', (req, res) => {
+        res.render('./admin/index');
+    });
+
+## Configurando a pasta com os arquivos estaticos
+
+Dentro do seu arquivo main utilize : 
+
+    const path = require("path")
+
+Nas configs utilize : 
+
+    // Public
+        
+    app.use(express.static(path.join(__dirname, 'public')));
+
+*__dirname* é uma variavel padrão do node que indica o caminho absoluto até o diretório atual.
+
+Agora para utilizar os arquivo estaticos basta ir no seu template e digitar 
+
+    <tag>/pasta/arquivo.extensão</tag>
+
+    <img src="/img/logo.png" alt="Logo"/>
 # Nodemon
 
 O Nodemon é um pacote que executa o código automaticamente caso ele seja alterado.
@@ -376,6 +418,26 @@ Exemplo :
     });
 
 Rotas do tipo post não podem ser acessadas pela url, se ela for colocado como tipo get ela não irá funcionar.
+
+## Dividindo template em partes
+
+Dividir um template em partes siginifica que podemos utilizar ele diversas vezes.
+
+Para dividir o template devemos criar uma pasta chamada "partials" dentro da nossa pasta views, essa pasta irá guardar os templates divididos.
+
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/81983803/151228796-75c5f392-f333-4eeb-9835-56517d7b58ce.png" alt="Exemple"/>
+</p>
+
+A nomeclatura do template dividido deve ser "_nome_template"
+
+Para utilizar o template dividido vá no template desejado e digite :
+
+{{>_nome_template}}
+
+Esse > antes do nome do template serve para indicar ao handlebars que ele é um template dividido.
+
+Dessa forma o template será utilizado dentro do site.
 
 # Body-Parse
 
