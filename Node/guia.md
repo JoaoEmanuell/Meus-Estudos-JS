@@ -595,7 +595,8 @@ Esse objeto dentro de Schema são os campos do model, eles são referenciados po
 
     nome : {
         type : tipo_do_dado,
-        required : true // Caso seja definido como true, o campo é obrigatório, por padrão é false.
+        required : true, // Caso seja definido como true, o campo é obrigatório, por padrão é false.
+        default : valor_padrão, // Caso nenhum valor seja passado esse valor será utilizado.
     }
 
 Exemplo : 

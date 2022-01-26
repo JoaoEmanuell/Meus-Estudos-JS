@@ -1,4 +1,4 @@
-const mongoose = require('./connection.js');
+const mongoose = require('../source/connection.js');
 
 // Create a schema
 
