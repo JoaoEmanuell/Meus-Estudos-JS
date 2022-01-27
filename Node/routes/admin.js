@@ -10,6 +10,10 @@ router.get('/posts', (req, res) => {
 });
 
 router.get('/categories', (req, res) => {
-    res.send('Admin categories');
+    res.render('./admin/categories');
 });
+
+router.get('/addcategories', (req, res) => {
+    res.render('./admin/addcategories');
+})
 module.exports = router;
