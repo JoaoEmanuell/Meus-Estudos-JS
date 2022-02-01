@@ -27,6 +27,13 @@ const mongoose = require("./source/connection");
     // Public
     
     app.use(express.static(path.join(__dirname, 'public')));
+
+    // Middlewares
+
+    app.use((req, res, next) => {
+        console.log(`${req.url} - ${(new Date()).toLocaleDateString()} : ${(new Date()).toLocaleTimeString()}`);
+        next();
+    });
 // Routes
     app.use('/admin', admin);
 

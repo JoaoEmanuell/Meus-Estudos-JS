@@ -28,6 +28,8 @@
     - [Configurando uma conexão com o banco de dados](#configurando-uma-conexão-com-o-banco-de-dados)
   - [Criando um modelo de dados](#criando-um-modelo-de-dados)
   - [Inserindo valor no modelo](#inserindo-valor-no-modelo)
+- [Middlewares](#middlewares)
+  - [Declarando um Middleware](#declarando-um-middleware)
 
 
 # EXPORTS
@@ -669,3 +671,25 @@ Exemplo :
         age : new Date(2000, 1, 1),
         country : 'Brasil'
     }).save();
+
+# Middlewares
+
+Middlewares são funções que atuam entre o cliente e o servidor, básicamente o cliente faz uma requisição ao servidor e a resposta do servidor passa pelo Middleware antes de ser entregue ao cliente.
+
+## Declarando um Middleware
+
+    // Middlewares
+
+    app.use((req, res, next) => {
+        [ . . . ]
+        next(); // Sempre coloque o next no final do middleware pois se não for colocado ele não irá retornar nada para o cliente e a pagina irá ficar carregando infinitamente.
+    });
+
+Exemplo :
+
+    // Middlewares
+
+    app.use((req, res, next) => {
+        console.log(`${req.url}`);
+        next();
+    });
