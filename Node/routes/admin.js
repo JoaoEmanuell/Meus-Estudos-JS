@@ -13,10 +13,7 @@ router.get('/posts', (req, res) => {
 });
 
 router.get('/categories', (req, res) => {
-    Category.findAll({
-        order : [['date', 'desc']]
-    }).then((categories) => {
-        console.log(categories);
+    Category.find({}).lean().exec().then((categories) => {
         res.render('./admin/categories', {categories : categories});
     });
 });

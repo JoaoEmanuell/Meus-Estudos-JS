@@ -10,14 +10,19 @@
 <body>
     {{>_navbar}}
     <div class="container">
-        <h2>Lista de categorias</h2>
-        <div>
+        <h1 style="text-align: center; margin : 15px;">Lista de categorias</h1>
             {{#each categories}}
-            <p>{{name}}</p>
-            <p>{{date}}</p>
-            <p>{{slug}}</p>
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h2>{{name}}</h2>
+                    </div>
+                    <p>{{date}}</p>
+                    <p class="card-text">{{slug}}</p>
+                </div>
+            </div>
+            <br>
             {{/each}}
-        </div>
         <a href="/admin/addcategories/"><button class="btn btn-success btn-lg">Nova categoria</button></a>
     </div>
 </body>
