@@ -30,6 +30,9 @@
   - [Inserindo valor no modelo](#inserindo-valor-no-modelo)
 - [Middlewares](#middlewares)
   - [Declarando um Middleware](#declarando-um-middleware)
+- [Sessions](#sessions)
+  - [Instalações](#instalações)
+  - [Configurando Sessions](#configurando-sessions)
 
 
 # EXPORTS
@@ -693,3 +696,42 @@ Exemplo :
         console.log(`${req.url}`);
         next();
     });
+
+# Sessions
+
+Sessions são dados que ficam guardados do lado do servidor, o úsuario recebe uma chave e então quando o úsuario acessa a aplicação passando essa chave os dados podem ser transeferidos para o lado do cliente [seria semelhante ao cookie mas com um maior poder de armazenamento].
+
+## Instalações
+
+    npm install --save express-session@1.15.6
+
+    npm install --save connect-flash@0.1.1
+
+## Configurando Sessions
+
+Para configurar um session você deve criar um objeto que irá ter o session e um objeto que irá ter o flash.
+
+    const session = require('express-session');
+    const flash = require("connect-flash");
+
+Após isso configurar no seu app :
+
+    app.use(session({
+        secret: "secret",
+        resave: true,
+        saveUninitialized: true
+    }));
+
+    app.use(flash());
+
+Agora configure o middleware para a session : 
+
+    // Middlewares
+
+    app.use((req, res, next) => {
+        res.locals.success_msg = req.flash("success_msg");
+        res.locals.error_msg = req.flash("error_msg");
+        next();
+    });
+
+As duas variaves criadas "success_msg" e "error_msg" irão receber as mensagens de sucesso e erro, elas são variaves globais e podem ser acessadas em qualquer lugar do código do projeto.
