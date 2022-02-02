@@ -717,7 +717,7 @@ Para configurar um session você deve criar um objeto que irá ter o session e u
 Após isso configurar no seu app :
 
     app.use(session({
-        secret: "secret",
+        secret: "secret", // Isso é a chave secreta,quanto maior a chave mais seguro.
         resave: true,
         saveUninitialized: true
     }));
