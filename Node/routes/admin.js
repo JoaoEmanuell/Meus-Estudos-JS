@@ -28,15 +28,35 @@ router.post('/categories/new', (req, res) => {
         slug : String(req.body.slug).toLowerCase().replace(' ', '-'),
     }
 
-    new Category({
-        name : new_category.name,
-        slug : new_category.slug
-    }).save().then(() => {
-        res.redirect('/admin/categories');
-    }
-    ).catch(err => {
-        res.send(`Erro ao cadastrar categoria ${err}`);
-    }
-    );
+    const erros = [];
+
+    if(!new_category.name || typeof new_category.name.length == undefined || new_category.name.length == null) {
+        erros.push({text : 'Nome inválido'});
+    };
+
+    if(!new_category.slug || typeof new_category.slug.length == undefined || new_category.slug.length == null) {
+        erros.push({text : 'Slug inválido'});
+    };
+
+    if (new_category.slug < 3) {
+        erros.push({text : 'Slug muito curto'});
+    };
+
+    if (erros.length > 0) {
+        res.render('./admin/addcategories', {erros : erros});
+    } else {
+        new Category({
+            name : new_category.name,
+            slug : new_category.slug
+        }).save().then(() => {
+            req.flash('success_msg', 'Categoria criada com sucesso');
+            res.redirect('/admin/categories');
+        }
+        ).catch(err => {
+            req.flash('error_msg', 'Houve um erro ao salvar a categoria, tente novamente');
+            res.redirect('/admin/categories');
+        }
+        )
+    };
 });
 module.exports = router;

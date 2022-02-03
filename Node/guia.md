@@ -33,6 +33,10 @@
 - [Sessions](#sessions)
   - [Instalações](#instalações)
   - [Configurando Sessions](#configurando-sessions)
+  - [Enviando dados para o session](#enviando-dados-para-o-session)
+  - [Acessando a session em um template partial](#acessando-a-session-em-um-template-partial)
+
+****
 
 
 # EXPORTS
@@ -76,6 +80,8 @@ Exemplo :
     http.createServer(function(req, res){
         res.end("Hello World");
     }).listen(8786);
+
+****
 
 # Express
 
@@ -239,6 +245,9 @@ Agora para utilizar os arquivo estaticos basta ir no seu template e digitar
     <tag>/pasta/arquivo.extensão</tag>
 
     <img src="/img/logo.png" alt="Logo"/>
+
+****
+
 # Nodemon
 
 O Nodemon é um pacote que executa o código automaticamente caso ele seja alterado.
@@ -250,6 +259,8 @@ Primeiramente instale ele a flag -g serve para instalar ele de forma global.
 Após isso para executar utilize :
 
     nodemon nome_arquivo.js
+
+****
 
 # Sequelize
 
@@ -358,6 +369,8 @@ Exemplo :
 
 Dessa forma o dado será automaticamente enviado para o banco de dados assim que o código for executado.
 
+****
+
 # Handlebars
 
 Handlebars é uma template engine que permite que você crie páginas dinâmicas, adicionando mais funcionalidades ao html.
@@ -444,6 +457,8 @@ Esse > antes do nome do template serve para indicar ao handlebars que ele é um 
 
 Dessa forma o template será utilizado dentro do site.
 
+****
+
 # Body-Parse
 
 O pacote body-parser é um pacote que permite que você receba dados via post, ou seja, dados que serão enviados via formulário e tratar esses dados no seu back-end.
@@ -478,6 +493,8 @@ Exemplo :
 Dessa forma o dado que foi passado será atribuindo a constante indicada e você poderá utiliza-lo da maneira que desejar.
 
     res.redirect('/rota'); // redireciona para a rota especificada.
+
+****
 
 # Listando-os-dados-do-banco-de-dados
 
@@ -529,6 +546,8 @@ Para exibir os dados na pagina você deve fazer o seguinte no seu arquivo de lay
 
 Dessa forma os dados serão exibidos na página.
 
+****
+
 # Apagando dados do banco de dados
 
 Para apagar um dado do banco de dados você deve utilizar : 
@@ -554,6 +573,8 @@ Exemplo :
     });
 
 Dessa forma o dado será apagado do banco de dados.
+
+****
 
 # Mongoose
 
@@ -675,6 +696,8 @@ Exemplo :
         country : 'Brasil'
     }).save();
 
+****
+
 # Middlewares
 
 Middlewares são funções que atuam entre o cliente e o servidor, básicamente o cliente faz uma requisição ao servidor e a resposta do servidor passa pelo Middleware antes de ser entregue ao cliente.
@@ -696,6 +719,8 @@ Exemplo :
         console.log(`${req.url}`);
         next();
     });
+
+****
 
 # Sessions
 
@@ -735,3 +760,46 @@ Agora configure o middleware para a session :
     });
 
 As duas variaves criadas "success_msg" e "error_msg" irão receber as mensagens de sucesso e erro, elas são variaves globais e podem ser acessadas em qualquer lugar do código do projeto.
+
+## Enviando dados para o session
+
+Para enviar dados para o session você deve utilizar o seguinte dentro da sua rota :
+
+    req.flash("Nome_da_session", "Mensagem");
+
+    req.flash('error_msg', 'Houve um erro ao salvar a categoria, tente novamente');
+
+Dessa forma essa mensagem se tornará uma variavel global e poderá ser acessada de qualquer lugar do código do projeto.
+
+****
+
+## Acessando a session em um template partial
+
+Para acessar a session em um template você utilza o seguinte : 
+
+    {{#if nome_session}}
+        {{success_msg}}
+    {{/if}}
+
+    {{#if success_msg}}
+        <div class="alert alert-success">
+            {{success_msg}}
+        </div>
+    {{/if}}
+
+O if irá servir para validar se a session existe, caso exista ele irá exibir a mensagem, caso não exista ele irá não exibir nada.
+
+Para exibir essa mensagem na pagina, após o envio pelo flash coloque um redirect para o template desejado.
+
+    res.redirect('/admin/categories');
+
+E dentro do seu template adicione o template partial
+
+    <div>
+        {{>_msg}}
+    </div>
+
+Quando o redirect for ativado a mensagem será exibida, caso a pagina seja recaregada a mensagem será excluida.
+
+**Nota : O redirect deve estar no mesmo bloco do flash, caso contrario a mensagem não irá ser enviada!**
+****
