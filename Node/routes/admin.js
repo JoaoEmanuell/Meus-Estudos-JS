@@ -26,6 +26,16 @@ router.get('/addcategories', (req, res) => {
     res.render('./admin/addcategories');
 });
 
+router.get('/removecategorie/:id', (req, res) => {
+    Category.remove({_id : req.params.id}).then(() => {
+        req.flash('success_msg', 'Categoria removida com sucesso');
+        res.redirect('/admin/categories');
+    }).catch(err => {
+        req.flash('error_msg', 'Erro ao remover categoria');
+        res.redirect('/admin/categories');
+    });
+});
+
 router.post('/categories/new', (req, res) => {
     const new_category = {
         name : String(req.body.name).toUpperCase(),
