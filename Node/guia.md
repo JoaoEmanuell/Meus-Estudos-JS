@@ -28,6 +28,7 @@
     - [Configurando uma conexão com o banco de dados](#configurando-uma-conexão-com-o-banco-de-dados)
   - [Criando um modelo de dados](#criando-um-modelo-de-dados)
   - [Inserindo valor no modelo](#inserindo-valor-no-modelo)
+  - [Listando os dados do banco de dados](#listando-os-dados-do-banco-de-dados-1)
 - [Middlewares](#middlewares)
   - [Declarando um Middleware](#declarando-um-middleware)
 - [Sessions](#sessions)
@@ -695,6 +696,32 @@ Exemplo :
         age : new Date(2000, 1, 1),
         country : 'Brasil'
     }).save();
+
+## Listando os dados do banco de dados
+
+Para listar os dados é bastante simples, primeiramente chame o metodo find do objeto de banco de dados que você deseja listar e dentro do find passe um objeto vazio *esse objeto vazio irá retornar todos os dados, caso queira retornar dados especificos coloque {campo : 'valor'}*, depois chame o método *lean* ele irá converter os dados em modo json ao inves do objeto virutal mongoose e por fim chame o método *exec* que irá executar a consulta, crie um then para o retorno do método find e passe ele para onde você desejar exibir os dados.
+
+[Documentação contendo o find](https://mongoosejs.com/docs/api.html#model_Model.find)
+
+    OBJ.find({}).lean().then(function(data) {
+        console.log(data);
+    });
+
+Entre o *find* e o *lean* você pode utilizar varios paramentros, entre eles está o sort, que quando passado um objeto com o campo e o valor, irá ordenar os dados por esse campo.
+
+**Nota os valores que podem ser passados são : "asc, desc, ascending, descending, 1, and -1"**
+
+[Documentação com o sort](https://mongoosejs.com/docs/api.html#query_Query-sort)
+
+[Documentação com o lean](https://mongoosejs.com/docs/api.html#query_Query-lean)
+
+Exemplo :
+
+    Category.find({}).sort({
+        date : 'desc'
+    }).lean().exec().then((categories) => {
+        res.render('./admin/categories', {categories : categories});
+    })
 
 ****
 

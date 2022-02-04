@@ -13,9 +13,13 @@ router.get('/posts', (req, res) => {
 });
 
 router.get('/categories', (req, res) => {
-    Category.find({}).lean().exec().then((categories) => {
+    Category.find({}).sort({date : 'desc'}).lean().exec().then((categories) => {
         res.render('./admin/categories', {categories : categories});
-    });
+    }).catch(err => {
+        req.flash('error_msg', `Erro ao listar as categorias`);
+        res.redirect('/admin/categories');
+    }
+    );
 });
 
 router.get('/addcategories', (req, res) => {

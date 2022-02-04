@@ -15,7 +15,7 @@
         </div>
         <h1 style="text-align: center; margin : 15px;">Lista de categorias</h1>
             {{#each categories}}
-            <div class="card">
+            <div class="card mt-4 mb-4">
                 <div class="card-body">
                     <div class="card-title">
                         <h2>{{name}}</h2>
@@ -24,7 +24,6 @@
                     <p class="card-text">{{slug}}</p>
                 </div>
             </div>
-            <br>
             {{/each}}
         <a href="/admin/addcategories/"><button class="btn btn-success btn-lg">Nova categoria</button></a>
     </div>
