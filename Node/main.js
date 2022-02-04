@@ -9,6 +9,7 @@ const path = require("path")
 const mongoose = require("./source/connection");
 const session = require("express-session");
 const flash = require("connect-flash");
+mongoose.set('useFindAndModify', false);
 
 // Config
 

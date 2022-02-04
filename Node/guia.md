@@ -26,9 +26,12 @@
   - [Mongoose](#mongoose-1)
     - [Instalando o pacote](#instalando-o-pacote)
     - [Configurando uma conexão com o banco de dados](#configurando-uma-conexão-com-o-banco-de-dados)
+    - [Métodos anti-bug](#métodos-anti-bug)
   - [Criando um modelo de dados](#criando-um-modelo-de-dados)
   - [Inserindo valor no modelo](#inserindo-valor-no-modelo)
   - [Listando os dados do banco de dados](#listando-os-dados-do-banco-de-dados-1)
+  - [Editando os dados do banco de dados](#editando-os-dados-do-banco-de-dados)
+  - [Deletando dados do banco](#deletando-dados-do-banco)
 - [Middlewares](#middlewares)
   - [Declarando um Middleware](#declarando-um-middleware)
 - [Sessions](#sessions)
@@ -611,6 +614,16 @@ Para conectar ele com banco de dados você irá passar "mongodb://localhost/nome
 
 Dessa forma você estará conectado com o banco de dados.
 
+### Métodos anti-bug
+
+    mongoose.set('useFindAndModify', false); 
+    
+Remove a mensagem :
+
+*"DeprecationWarning: Mongoose: `findOneAndUpdate()` and `findOneAndDelete()` without the `useFindAndModify` option set to false are deprecated. See: https://mongoosejs.com/docs/deprecations.html#findandmodify (Use `node --trace-deprecation ...` to show where the warning was created)"*
+
+Ao utilizar os métodos *findOneAndUpdate* e *findOneAndDelete*
+
 ## Criando um modelo de dados
 
 Para criar um novo modelo de dados utilizando o mongoose você deve criar um objeto que irá ter o modelo de dados.
@@ -723,6 +736,41 @@ Exemplo :
         res.render('./admin/categories', {categories : categories});
     })
 
+Você também pode retornar apenas um elemento por meio do *findOne* passando um objeto com campo e valor desejados.
+
+    Category.findOne({_id : req.params.id}).lean().exec().then((category) => {
+        res.render('./admin/editcategories', {category : category});
+    }).catch(err => {
+        req.flash('error_msg', `Erro, categoria inexistente`);
+        res.redirect('/admin/categories');
+    }
+    );
+
+## Editando os dados do banco de dados
+
+Para editar dados do banco precisamos utilzar o método *findOneAndUpdate*, passando 2 objetos, o primeiro objeto será a query que irá selecionar aquele elemento especifico que desejamos editar e o segundo campo será o objeto que irá atualizar os dados.
+
+    ObjetoBanco.findOneAndUpdate({campo : valor}, {campo : valor_modificado}).lean().exec()
+
+Exemplo :
+
+    Category.findOneAndUpdate({_id : req.body.id}, { name : new_category.category.name, slug : new_category.category.slug }).lean().exec().then(() => {
+        req.flash('success_msg', `Categoria editada com sucesso`);
+        res.redirect('/admin/categories');
+    }).catch(err => {
+        req.flash('error_msg', `Erro ao editar categoria`);
+        res.redirect('/admin/categories');
+    });
+
+## Deletando dados do banco
+
+Para deletar o um dado do banco utilizaremos o método deleteOne passando uma query com o campo e o valor que desejamos deletar.
+
+    ObjetoBanco.deleteOne({campo : valor}).lean().exec()
+
+Exemplo :
+
+    Category.deleteOne({_id : req.params.id})
 ****
 
 # Middlewares

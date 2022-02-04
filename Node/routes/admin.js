@@ -3,6 +3,7 @@ const router = express.Router();
 const mongoose = require("mongoose");
 require("../models/Category");
 const Category = mongoose.model("Categorys");
+const CategoryValidation = require("../validations/CategoryValidation");
 
 router.get('/', (req, res) => {
     res.render('./admin/index');
@@ -26,8 +27,35 @@ router.get('/addcategories', (req, res) => {
     res.render('./admin/addcategories');
 });
 
+router.get('/editcategories/:id', (req, res) => {
+    Category.findOne({_id : req.params.id}).lean().exec().then((category) => {
+        res.render('./admin/editcategories', {category : category});
+    }).catch(err => {
+        req.flash('error_msg', `Erro, categoria inexistente`);
+        res.redirect('/admin/categories');
+    }
+    );
+});
+
+router.post('/editcategory', (req, res) => {
+    const new_category = CategoryValidation({name : req.body.name, slug : req.body.slug});  
+    if (new_category.status) {
+        req.flash('error_msg', `${new_category.erros[0].text}`);
+        res.redirect(`/admin/editcategories/${req.body.id}`);
+    } else {
+        Category.findOneAndUpdate({_id : req.body.id}, { name : new_category.category.name, slug : new_category.category.slug }).lean().exec().then(() => {
+            req.flash('success_msg', `Categoria editada com sucesso`);
+            res.redirect('/admin/categories');
+        }).catch(err => {
+            req.flash('error_msg', `Erro ao editar categoria`);
+            res.redirect('/admin/categories');
+        });
+    }
+
+});
+
 router.get('/removecategorie/:id', (req, res) => {
-    Category.remove({_id : req.params.id}).then(() => {
+    Category.deleteOne({_id : req.params.id}).then(() => {
         req.flash('success_msg', 'Categoria removida com sucesso');
         res.redirect('/admin/categories');
     }).catch(err => {
@@ -37,31 +65,13 @@ router.get('/removecategorie/:id', (req, res) => {
 });
 
 router.post('/categories/new', (req, res) => {
-    const new_category = {
-        name : String(req.body.name).toUpperCase(),
-        slug : String(req.body.slug).toLowerCase().replace(' ', '-'),
-    }
-
-    const erros = [];
-
-    if(!new_category.name || typeof new_category.name.length == undefined || new_category.name.length == null) {
-        erros.push({text : 'Nome inválido'});
-    };
-
-    if(!new_category.slug || typeof new_category.slug.length == undefined || new_category.slug.length == null) {
-        erros.push({text : 'Slug inválido'});
-    };
-
-    if (new_category.slug < 3) {
-        erros.push({text : 'Slug muito curto'});
-    };
-
-    if (erros.length > 0) {
-        res.render('./admin/addcategories', {erros : erros});
+    const new_category = CategoryValidation({name : req.body.name, slug : req.body.slug});  
+    if (new_category.status) {
+        res.render('./admin/addcategories', {erros : new_category.erros});
     } else {
         new Category({
-            name : new_category.name,
-            slug : new_category.slug
+            name : new_category.category.name,
+            slug : new_category.category.slug
         }).save().then(() => {
             req.flash('success_msg', 'Categoria criada com sucesso');
             res.redirect('/admin/categories');
