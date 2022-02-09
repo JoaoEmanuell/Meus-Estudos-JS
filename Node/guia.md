@@ -19,6 +19,7 @@
   - [Renderizar templates](#renderizar-templates)
   - [Enviando dados via post](#enviando-dados-via-post)
   - [Dividindo template em partes](#dividindo-template-em-partes)
+  - [Inserido dados dinamicamente](#inserido-dados-dinamicamente)
 - [Body-Parse](#body-parse)
 - [Listando-os-dados-do-banco-de-dados](#listando-os-dados-do-banco-de-dados)
 - [Apagando dados do banco de dados](#apagando-dados-do-banco-de-dados)
@@ -460,6 +461,31 @@ Para utilizar o template dividido vá no template desejado e digite :
 Esse > antes do nome do template serve para indicar ao handlebars que ele é um template dividido.
 
 Dessa forma o template será utilizado dentro do site.
+
+## Inserido dados dinamicamente
+
+Primeiramente passe o elemento que você deseja passar para dentro do seu template, utilzando o javascript na rota especificada : 
+
+    router.get('/posts/new/', (req, res) => {
+    Category.find().sort({date : 'desc'}).lean().exec().then(categories => {
+        res.render('./admin/posts_new', { categories: categories });
+    }).catch(err => {
+        req.flash("error_msg", "Houve um erro ao listar as categorias");
+        res.redirect('/admin');
+    });
+    });
+
+Agora no seu template escreve *{{#each nome_elemento}}* e *{{/each}}* para que os elementos seja exibido dentro do template.
+
+    {{#each categories}}
+        <option value="{{_id}}">{{name}}</option>
+        {{else}}
+        <option value="0">Nenhuma categoria cadastrada</option>
+    {{/each}}
+
+O *#each* é semelhante ao for in do python, o *else* serve para caso não tenha nenhum elemento, ai ele será chamado.
+
+No caso {{_id}} serve para chamar o id da categoria, você pode passar qualquer elemento valido que pertença a categoria requisitada, uma vez que o mongoose retorna um json, por exemplo {{name}} para chamar o nome da categoria.
 
 ****
 

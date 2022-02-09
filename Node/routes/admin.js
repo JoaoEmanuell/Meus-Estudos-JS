@@ -10,7 +10,16 @@ router.get('/', (req, res) => {
 });
 
 router.get('/posts', (req, res) => {
-    res.send('Admin Posts');
+    res.render('./admin/posts');
+});
+
+router.get('/posts/new/', (req, res) => {
+    Category.find().sort({date : 'desc'}).lean().exec().then(categories => {
+        res.render('./admin/posts_new', { categories: categories });
+    }).catch(err => {
+        req.flash("error_msg", "Houve um erro ao listar as categorias");
+        res.redirect('/admin');
+    });
 });
 
 router.get('/categories', (req, res) => {
@@ -83,4 +92,5 @@ router.post('/categories/new', (req, res) => {
         )
     };
 });
+
 module.exports = router;
