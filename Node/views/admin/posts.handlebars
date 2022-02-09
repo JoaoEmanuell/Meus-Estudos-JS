@@ -12,7 +12,27 @@
         {{>_msg}}
     </div>
     <div class="container">
-        
+    {{#each posts}}
+        <div class="card mt-4">
+            <div class="card-header">
+                <h2 class="d-flex justify-content-center">{{title}}</h2>
+            </div>
+            <div class="card-body">
+                <p>{{slug}}</p>
+                <p>{{descb}}</p>
+                <p>{{content}}</p>
+                <p>{{category.name}}</p>
+                <p>{{date}}</p>
+            </div>
+    </div>
+    {{else}}
+        <div class="alert alert-danger">
+            Nenhum post encontrado
+        </div>
+    {{/each}}
+
+    <div class="d-flex justify-content-center mt-4">
+        <p><a href="/admin/posts/add" class="btn btn-success">Criar novo post</a></p>
     </div>
 </body>
 </html>

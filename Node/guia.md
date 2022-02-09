@@ -33,6 +33,7 @@
   - [Listando os dados do banco de dados](#listando-os-dados-do-banco-de-dados-1)
   - [Editando os dados do banco de dados](#editando-os-dados-do-banco-de-dados)
   - [Deletando dados do banco](#deletando-dados-do-banco)
+  - [Relacionamento entre collections](#relacionamento-entre-collections)
 - [Middlewares](#middlewares)
   - [Declarando um Middleware](#declarando-um-middleware)
 - [Sessions](#sessions)
@@ -797,6 +798,75 @@ Para deletar o um dado do banco utilizaremos o método deleteOne passando uma qu
 Exemplo :
 
     Category.deleteOne({_id : req.params.id})
+
+## Relacionamento entre collections
+
+Primeiramente no seu arquivo do model crie um campo que deve ser do tipo ObjectId, para isso basta utilizar a classe *ObjectId* de *Schema.Types* e passar o nome da collection que você deseja relacionar.
+
+    const new_Schema = new Schema({
+        campo : {
+        type : Schema.Types.ObjectId,
+        ref : 'Nome_Collection',
+        required : true
+        }
+    });
+
+    const Post = new Schema({
+        category : {
+        type : Schema.Types.ObjectId,
+        ref : 'Categorys',
+        required : true
+    },
+    });
+
+Agora na hora de enviar os dados basta passar uma string contendo o id do elemento da collection que você referenciou.
+
+Agora no seu arquivo js na hora de listar os dados da categoria você utilzar o método *populate* passando o nome do campo que você colocou, isso irá forçar o id do campo a se tornar um objeto do tipo referenciado, esse objeto por sua vez conterá os dados daquele elemento da collection referenciada, dessa forma é só passar *elemento.propriedade* dentro do template que ela será acessada :
+
+    ObjetoBanco.find().sort({date : 'desc'}).populate("campo").lean().exec().then((obj) => {
+        res.render('./template', {data : obj});
+    }).catch((err) => {
+        req.flash("error_msg", "Houve um erro ao listar a data");
+        res.redirect('/rota');
+    });
+
+Exemplo : 
+
+    Posts.find().sort({date : 'desc'}).populate("category").lean().exec().then((posts) => {
+        res.render('./admin/posts', {posts : posts});
+    }).catch((err) => {
+        req.flash("error_msg", "Houve um erro ao listar os posts");
+        res.redirect('/admin');
+    });
+
+Agora no arquivo handlebars : 
+
+    {{#each posts}}
+        <div class="card mt-4">
+            <div class="card-body">
+                <p>{{campo.propriedade}}</p>
+            </div>
+    </div>
+    {{else}}
+        <div class="alert alert-danger">
+            Nenhum post encontrado
+        </div>
+    {{/each}}
+
+Exemplo : 
+
+    {{#each posts}}
+        <div class="card mt-4">
+            <div class="card-body">
+                <p>{{category.name}}</p>
+                <p>{{date}}</p>
+            </div>
+    </div>
+    {{else}}
+        <div class="alert alert-danger">
+            Nenhum post encontrado
+        </div>
+    {{/each}}
 ****
 
 # Middlewares

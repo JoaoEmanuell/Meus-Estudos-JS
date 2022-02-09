@@ -14,7 +14,12 @@ router.get('/', (req, res) => {
 });
 
 router.get('/posts', (req, res) => {
-    res.render('./admin/posts');
+    Posts.find().sort({date : 'desc'}).populate("category").lean().exec().then((posts) => {
+        res.render('./admin/posts', {posts : posts});
+    }).catch((err) => {
+        req.flash("error_msg", "Houve um erro ao listar os posts");
+        res.redirect('/admin');
+    });
 });
 
 router.get('/posts/add/', (req, res) => {
