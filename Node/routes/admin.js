@@ -1,9 +1,13 @@
 const express = require("express");
+const { redirect } = require("express/lib/response");
 const router = express.Router();
 const mongoose = require("mongoose");
 require("../models/Category");
+require("../models/Post");
 const Category = mongoose.model("Categorys");
 const CategoryValidation = require("../validations/CategoryValidation");
+const Posts = mongoose.model("Posts");
+const PostValidation = require("../validations/PostValidation");
 
 router.get('/', (req, res) => {
     res.render('./admin/index');
@@ -13,13 +17,44 @@ router.get('/posts', (req, res) => {
     res.render('./admin/posts');
 });
 
-router.get('/posts/new/', (req, res) => {
+router.get('/posts/add/', (req, res) => {
     Category.find().sort({date : 'desc'}).lean().exec().then(categories => {
         res.render('./admin/posts_new', { categories: categories });
     }).catch(err => {
         req.flash("error_msg", "Houve um erro ao listar as categorias");
         res.redirect('/admin');
     });
+});
+
+router.post('/posts/new/', (req, res) => {
+    const new_post = PostValidation(req.body);
+    if (new_post.status) {
+        req.flash("error_msg", new_post.erros);
+        res.redirect('/admin/posts/add');
+    } else {
+        Category.findOne({ _id: new_post.post.category }).then(category => {
+            if (!category) {
+                req.flash("error_msg", "Categoria não encontrada");
+                res.redirect('/admin/posts/add');
+            } else {
+                const post = {
+                    title: new_post.post.title,
+                    slug: new_post.post.slug,
+                    descb: new_post.post.descb,
+                    content: new_post.post.content,
+                    category: new_post.post.category,
+                };
+                new Posts(post).save().then(() => {
+                    req.flash("success_msg", "Post criado com sucesso");
+                    res.redirect('/admin/posts/add');
+
+                }).catch(err => {
+                    req.flash("error_msg", `Houve um erro ao salvar o post : ${err}`);
+                    res.redirect('/admin/posts/add');
+                });
+            };
+        });
+    };
 });
 
 router.get('/categories', (req, res) => {

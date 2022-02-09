@@ -11,8 +11,11 @@
     <div class="container">
     <div class="card">
     <div class="card-body">
+    <div>
+        {{>_msg}}
+    </div>
         <h1>Nova postagem : </h1>
-        <form class="needs-validation" novalidate>
+        <form class="needs-validation" method="POST" action="/admin/posts/new/" novalidate>
             <div class="mb-4">
                 <label for="title" class="form-label">Titulo</label>
                 <input type="text" name="title" id="title" class="form-control" required autocomplete="off">
