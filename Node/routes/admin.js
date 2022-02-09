@@ -29,30 +29,31 @@ router.get('/posts/add/', (req, res) => {
 router.post('/posts/new/', (req, res) => {
     const new_post = PostValidation(req.body);
     if (new_post.status) {
-        req.flash("error_msg", new_post.erros);
+        console.log(`Post invalido : ${new_post.erros[0].text}`);
+        req.flash("error_msg", new_post.erros[0].text);
         res.redirect('/admin/posts/add');
     } else {
         Category.findOne({ _id: new_post.post.category }).then(category => {
-            if (!category) {
-                req.flash("error_msg", "Categoria não encontrada");
-                res.redirect('/admin/posts/add');
-            } else {
-                const post = {
-                    title: new_post.post.title,
-                    slug: new_post.post.slug,
-                    descb: new_post.post.descb,
-                    content: new_post.post.content,
-                    category: new_post.post.category,
-                };
-                new Posts(post).save().then(() => {
-                    req.flash("success_msg", "Post criado com sucesso");
-                    res.redirect('/admin/posts/add');
-
-                }).catch(err => {
-                    req.flash("error_msg", `Houve um erro ao salvar o post : ${err}`);
-                    res.redirect('/admin/posts/add');
-                });
+            const post = {
+                title: new_post.post.title,
+                slug: new_post.post.slug,
+                descb: new_post.post.descb,
+                content: new_post.post.content,
+                category: new_post.post.category,
             };
+            new Posts(post).save().then(() => {
+                req.flash("success_msg", "Post criado com sucesso");
+                res.redirect('/admin/posts/add');
+    
+            }).catch(err => {
+                console.log(`Erro ao salvar post: ${err}`);
+                req.flash("error_msg", `Houve um erro ao salvar o post : ${err}`);
+                res.redirect('/admin/posts/add');
+            });
+        }).catch(err => {
+            console.log(`Erro categoria: ${err}`);
+            req.flash("error_msg", "Categoria não encontrada");
+            res.redirect('/admin/posts/add');
         });
     };
 });
