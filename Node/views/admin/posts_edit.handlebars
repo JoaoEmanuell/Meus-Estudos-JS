@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar post</title>
+</head>
+<body>
+    {{>_navbar}}
+    <div class="container">
+    <div class="card">
+    <div class="card-body">
+    <div>
+        {{>_msg}}
+    </div>
+        <h1>Editar postagem : </h1>
+        <form class="needs-validation" method="POST" action="/admin/post/edit_post" novalidate>
+        <input type="hidden", name="id", value="{{post._id}}">
+            <div class="mb-4">
+                <label for="title" class="form-label">Titulo</label>
+                <input type="text" name="title" id="title" class="form-control" required autocomplete="off" value="{{post.title}}">
+                <div class="invalid-feedback">
+                    Coloque um titulo valido!
+                </div>
+            </div>
+            <div class="mb-4">
+                <label for="slug" class="form-label">Slug</label>
+                <input type="text" name="slug" id="slug" class="form-control" required autocomplete="off" value="{{post.slug}}">
+                <div class="invalid-feedback">
+                    Coloque um slug valido!
+                </div>
+            </div>
+            <div class="mb-4">
+                <label for="descb" class="form-label">Descrição</label>
+                <input type="text" name="descb" id="descb" class="form-control" required autocomplete="off" value="{{post.descb}}">
+                <div class="invalid-feedback">
+                    Coloque uma descrição valida!
+                </div>
+            </div>
+            <div class="mb-4">
+                <label for="content"  class="form-label">Conteudo</label>
+                <textarea type="text" name="content" id="content" class="form-control" style="resize: none;" required autocomplete="off" >{{post.content}}</textarea>
+                <div class="invalid-feedback">
+                    Coloque um conteudo valido!
+                </div>
+            </div>
+            <div class="mb-4">
+                <label for="category" class="form-label">Categoria</label>
+                <select name="category" id="category" class="form-select">
+                    {{#each categories}}
+                        <option value="{{_id}}">{{name}}</option>
+                        {{else}}
+                        <option value="0">Nenhuma categoria cadastrada</option>
+                    {{/each}}
+                </select>
+                <div class="invalid-feedback">
+                    Coloque uma categoria valida!
+                </div>
+            </div>
+            <div class="mb-4">
+                <p><button type="submit" class="btn btn-success">Salvar alterações</button></p>
+            </div>
+            {{>_form_validation}}
+        </form>
+    </div>
+    </div>
+    </div>
+</body>
+</html>

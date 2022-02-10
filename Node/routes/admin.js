@@ -1,12 +1,19 @@
+// Imports
+
 const express = require("express");
-const { redirect } = require("express/lib/response");
 const router = express.Router();
 const mongoose = require("mongoose");
+
+// Models import
+
 require("../models/Category");
 require("../models/Post");
 const Category = mongoose.model("Categorys");
-const CategoryValidation = require("../validations/CategoryValidation");
 const Posts = mongoose.model("Posts");
+
+// Validators
+
+const CategoryValidation = require("../validations/CategoryValidation");
 const PostValidation = require("../validations/PostValidation");
 
 router.get('/', (req, res) => {
@@ -48,7 +55,7 @@ router.post('/posts/new/', (req, res) => {
             };
             new Posts(post).save().then(() => {
                 req.flash("success_msg", "Post criado com sucesso");
-                res.redirect('/admin/posts/add');
+                res.redirect('/admin/posts/');
     
             }).catch(err => {
                 console.log(`Erro ao salvar post: ${err}`);
@@ -59,6 +66,49 @@ router.post('/posts/new/', (req, res) => {
             console.log(`Erro categoria: ${err}`);
             req.flash("error_msg", "Categoria não encontrada");
             res.redirect('/admin/posts/add');
+        });
+    };
+});
+
+router.get('/post/edit/:id', (req, res) => {
+    Posts.findOne({ _id: req.params.id }).lean().exec().then(post => {
+        Category.find().sort({date : 'desc'}).lean().exec().then(categories => {
+            res.render('./admin/posts_edit', { post: post, categories: categories });
+        }).catch(err => {
+            req.flash("error_msg", "Houve um erro ao listar as categorias");
+            res.redirect('/admin');
+        });
+    });
+});
+
+router.post('/post/edit_post', (req, res) => {
+    const new_post = PostValidation(req.body);
+    if (new_post.status) {
+        console.log(`Post invalido : ${new_post.erros[0].text}`);
+        req.flash("error_msg", new_post.erros[0].text);
+        res.redirect('/admin/posts/add');
+    } else {
+        Category.findOne({ _id: new_post.post.category }).then(category => {
+            const post = {
+                title: new_post.post.title,
+                slug: new_post.post.slug,
+                descb: new_post.post.descb,
+                content: new_post.post.content,
+                category: new_post.post.category,
+            };
+            Posts.findOneAndUpdate({_id : req.body.id}, post).exec().then(() => {
+                req.flash("success_msg", "Post editado com sucesso");
+                res.redirect('/admin/posts/');
+    
+            }).catch(err => {
+                console.log(`Erro ao salvar post: ${err}`);
+                req.flash("error_msg", `Houve um erro ao editar o post : ${err}`);
+                res.redirect(`/admin/posts/edit/${req.body.id}`);
+            });
+        }).catch(err => {
+            console.log(`Erro categoria: ${err}`);
+            req.flash("error_msg", "Categoria não encontrada");
+            res.redirect('/admin/posts/');
         });
     };
 });
