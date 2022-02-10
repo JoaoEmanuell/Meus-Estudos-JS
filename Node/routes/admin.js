@@ -41,7 +41,6 @@ router.get('/posts/add/', (req, res) => {
 router.post('/posts/new/', (req, res) => {
     const new_post = PostValidation(req.body);
     if (new_post.status) {
-        console.log(`Post invalido : ${new_post.erros[0].text}`);
         req.flash("error_msg", new_post.erros[0].text);
         res.redirect('/admin/posts/add');
     } else {
@@ -58,12 +57,10 @@ router.post('/posts/new/', (req, res) => {
                 res.redirect('/admin/posts/');
     
             }).catch(err => {
-                console.log(`Erro ao salvar post: ${err}`);
                 req.flash("error_msg", `Houve um erro ao salvar o post : ${err}`);
                 res.redirect('/admin/posts/add');
             });
         }).catch(err => {
-            console.log(`Erro categoria: ${err}`);
             req.flash("error_msg", "Categoria não encontrada");
             res.redirect('/admin/posts/add');
         });
@@ -84,9 +81,8 @@ router.get('/post/edit/:id', (req, res) => {
 router.post('/post/edit_post', (req, res) => {
     const new_post = PostValidation(req.body);
     if (new_post.status) {
-        console.log(`Post invalido : ${new_post.erros[0].text}`);
         req.flash("error_msg", new_post.erros[0].text);
-        res.redirect('/admin/posts/add');
+        res.redirect('/admin/posts/');
     } else {
         Category.findOne({ _id: new_post.post.category }).then(category => {
             const post = {
@@ -101,12 +97,10 @@ router.post('/post/edit_post', (req, res) => {
                 res.redirect('/admin/posts/');
     
             }).catch(err => {
-                console.log(`Erro ao salvar post: ${err}`);
                 req.flash("error_msg", `Houve um erro ao editar o post : ${err}`);
                 res.redirect(`/admin/posts/edit/${req.body.id}`);
             });
         }).catch(err => {
-            console.log(`Erro categoria: ${err}`);
             req.flash("error_msg", "Categoria não encontrada");
             res.redirect('/admin/posts/');
         });
