@@ -24,6 +24,10 @@
                 <p>{{category.name}}</p>
                 <p>{{date}}</p>
                 <p><a href="/admin/post/edit/{{_id}}" class="btn btn-success">Editar post</a></p>
+                <form action="/admin/post/delete/" method="POST">
+                    <input type="hidden" name="id" id="id" value="{{_id}}">
+                    <p><button type="submit" class="btn btn-danger">Deletar post</button></p>
+                </form>
             </div>
     </div>
     {{else}}

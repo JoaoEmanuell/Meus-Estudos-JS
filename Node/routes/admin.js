@@ -107,6 +107,17 @@ router.post('/post/edit_post', (req, res) => {
     };
 });
 
+router.post('/post/delete/', (req, res) => {
+    console.log(req.body.id);
+    Posts.deleteOne({ _id: req.body.id }).then(() => {
+        req.flash("success_msg", "Post deletado com sucesso");
+        res.redirect('/admin/posts/');
+    }).catch(err => {
+        req.flash("error_msg", `Houve um erro ao deletar o post : ${err}`);
+        res.redirect('/admin/posts/');
+    });
+});
+
 router.get('/categories', (req, res) => {
     Category.find({}).sort({date : 'desc'}).lean().exec().then((categories) => {
         res.render('./admin/categories', {categories : categories});
