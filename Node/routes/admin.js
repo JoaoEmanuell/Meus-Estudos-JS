@@ -108,7 +108,6 @@ router.post('/post/edit_post', (req, res) => {
 });
 
 router.post('/post/delete/', (req, res) => {
-    console.log(req.body.id);
     Posts.deleteOne({ _id: req.body.id }).then(() => {
         req.flash("success_msg", "Post deletado com sucesso");
         res.redirect('/admin/posts/');

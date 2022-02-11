@@ -11,6 +11,11 @@ const session = require("express-session");
 const flash = require("connect-flash");
 mongoose.set('useFindAndModify', false);
 
+// Models import
+
+require("./models/Post");
+const Posts = mongoose.model("Posts");
+
 // Config
 
     // Session
@@ -51,6 +56,19 @@ mongoose.set('useFindAndModify', false);
 
 // Routes
     app.use('/admin', admin);
+
+    app.get('/', (req, res) => {
+        Posts.find().sort({date : 'desc'}).populate("category").lean().exec().then((posts) => {
+            res.render('index', {posts : posts});
+        }).catch((err) => {
+            req.flash("error_msg", "Houve um erro ao listar os posts");
+            res.redirect('/404');
+        });
+    });
+
+    app.get('/404', (req, res) => {
+        res.send("404");
+    });
 
 // Execute
 app.listen(8081, () =>{
