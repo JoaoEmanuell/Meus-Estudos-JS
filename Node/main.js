@@ -15,6 +15,8 @@ mongoose.set('useFindAndModify', false);
 
 require("./models/Post");
 const Posts = mongoose.model("Posts");
+require("./models/Category");
+const Categories = mongoose.model("Categorys");
 
 // Config
 
@@ -62,6 +64,34 @@ const Posts = mongoose.model("Posts");
             res.render('index', {posts : posts});
         }).catch((err) => {
             req.flash("error_msg", "Houve um erro ao listar os posts");
+            res.redirect('/404');
+        });
+    });
+
+    app.get('/categories/', (req, res) => {
+        Categories.find().sort({date : 'desc'}).lean().exec().then((categories) => {
+            res.render('./categories/index', {categories : categories});
+        }).catch((err) => {
+            req.flash("error_msg", "Houve um erro ao listar as categorias");
+            res.redirect('/404');
+        });
+    });
+
+    app.get('/categories/posts/:slug', (req, res) => {
+        Categories.findOne({slug : req.params.slug}).lean().exec().then((category) => {
+            if(category){
+                Posts.find({category : category._id}).sort({date : 'desc'}).populate("category").lean().exec().then((posts) => {
+                    res.render('./categories/show', {category : category, posts : posts});
+                }).catch((err) => {
+                    req.flash("error_msg", "Houve um erro ao listar os posts");
+                    res.redirect('/404');
+                });
+            }else{
+                req.flash("error_msg", "Categoria não encontrada");
+                res.redirect('/404');
+            }
+        }).catch((err) => {
+            req.flash("error_msg", "Houve um erro ao listar as categorias");
             res.redirect('/404');
         });
     });
