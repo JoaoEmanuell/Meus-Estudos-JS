@@ -1,7 +1,7 @@
 function CategoryValidation(category_object){
     const category_basic = {
-        name : String(category_object.name).toUpperCase(),
-        slug : String(category_object.slug).toLowerCase().replaceAll(' ', '-')
+        name : String(category_object.name).trim().toUpperCase(),
+        slug : String(category_object.slug).trim().toLowerCase().replaceAll(' ', '-')
     }
     const erros = [];
 

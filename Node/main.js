@@ -96,8 +96,21 @@ const Categories = mongoose.model("Categorys");
         });
     });
 
+    app.get('/post/read/:title', (req, res) => {
+        Posts.findOne({title : req.params.title}).lean().exec().then((post) => {
+            if (post) {
+                res.render('./posts/show', {post : post});
+            } else {
+                req.flash("error_msg", "Post não encontrado");
+                res.redirect('/404');
+            }}).catch((err) => {
+                req.flash("error_msg", "Houve um erro ao carregat o post");
+                res.redirect('/404');
+            });
+    });
+
     app.get('/404', (req, res) => {
-        res.send("404");
+        res.render("404");
     });
 
 // Execute

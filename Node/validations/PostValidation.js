@@ -1,10 +1,10 @@
 function PostValidation(post_object){
     const post_basic = {
-        title : String(post_object.title).toUpperCase(),
-        slug : String(post_object.slug).toLowerCase().replaceAll(' ', '-'),
-        category : String(post_object.category).toLowerCase(),
-        descb : String(post_object.descb).toLowerCase(),
-        content : String(post_object.content).toLowerCase(),
+        title : String(post_object.title).trim().toUpperCase(),
+        slug : String(post_object.slug).trim().toLowerCase().replaceAll(' ', '-'),
+        category : String(post_object.category).trim().toLowerCase(),
+        descb : String(post_object.descb).trim().toLowerCase(),
+        content : String(post_object.content).trim().toLowerCase(),
     }
     const erros = [];
 
