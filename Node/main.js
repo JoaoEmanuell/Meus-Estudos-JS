@@ -4,11 +4,16 @@ const express = require("express");
 const app = express();
 const handlebars = require("express-handlebars");
 const bodyParser = require("body-parser");
-const admin = require("./routes/admin");
 const path = require("path")
 const mongoose = require("./source/connection");
 const session = require("express-session");
 const flash = require("connect-flash");
+
+// Routers import
+
+const admin = require("./routes/admin");
+const user = require('./routes/user');
+
 mongoose.set('useFindAndModify', false);
 
 // Models import
@@ -58,6 +63,8 @@ const Categories = mongoose.model("Categorys");
 
 // Routes
     app.use('/admin', admin);
+
+    app.use('/user', user);
 
     app.get('/', (req, res) => {
         Posts.find().sort({date : 'desc'}).populate("category").lean().exec().then((posts) => {

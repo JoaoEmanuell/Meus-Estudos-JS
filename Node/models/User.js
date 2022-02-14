@@ -17,4 +17,4 @@ const User_Schema = new Schema({
     }
 });
 
-mongoose.model('User', User_Schema); // Export the model
+mongoose.model('Users', User_Schema); // Export the model

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de usuário</title>
+</head>
+<body>
+    {{>_navbar}}
+    <div class="container mt-4">{{>_msg}}</div>
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-body">
+                <h1>Crie sua conta hoje :</h1>
+                <form class="needs-validation" action="/user/new" method="POST" novalidate>
+                    <div class="mb-4">
+                        <label for="name" class="form-label">Nome</label>
+                        <input type="text" name="name" id="name" class="form-control" autocomplete="off" required>
+                        <div class="invalid-feedback">
+                            O nome é obrigatório
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="form-label">E-mail</label>
+                        <input type="email" name="email" id="email" class="form-control" required>
+                        <div class="invalid-feedback">
+                            O e-mail é obrigatório
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label for="password" class="form-label">Senha</label>
+                        <input type="password" name="password" id="password" minlength="8" class="form-control" required>
+                        <div class="invalid-feedback">
+                            A senha é obrigatória
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label for="confirm-password">Confirmar senha</label>
+                        <input type="password" name="confirm_password" id="confirm_password" minlength="8" class="form-control" required>
+                        <div class="invalid-feedback">
+                            Digite a senha novamente
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success mt-4">Cadastrar</button>
+                    {{>_form_validation}}
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
