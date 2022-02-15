@@ -41,6 +41,9 @@
   - [Configurando Sessions](#configurando-sessions)
   - [Enviando dados para o session](#enviando-dados-para-o-session)
   - [Acessando a session em um template partial](#acessando-a-session-em-um-template-partial)
+- [Bcrypt](#bcrypt)
+  - [Instalando](#instalando)
+  - [Gerando um hash de um valor](#gerando-um-hash-de-um-valor)
 
 ****
 
@@ -974,3 +977,29 @@ Quando o redirect for ativado a mensagem será exibida, caso a pagina seja recar
 
 **Nota : O redirect deve estar no mesmo bloco do flash, caso contrario a mensagem não irá ser enviada!**
 ****
+
+# Bcrypt
+
+Bycript é uma lib para criptografia por meio de hash.
+
+## Instalando
+
+    npm install --save bcryptjs
+
+## Gerando um hash de um valor
+
+Importe o bcrypt :
+
+    const bcrypt = require('bcryptjs');
+
+Faça a geração do hash do valor : 
+
+    bcrypt.genSalt(10, (err, salt) => { // Gera um salto, isso aumenta o tamanho do valor mas o deixa mais seguro.
+        bcrypt.hash("valor", salt, (err, hash) => { // Gera o hash do valor.
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(hash);
+            }
+        });
+    });

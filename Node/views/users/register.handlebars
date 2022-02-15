@@ -12,7 +12,9 @@
     <div class="container mt-4">
         <div class="card">
             <div class="card-body">
-                <h1>Crie sua conta hoje :</h1>
+                <div class="d-flex justify-content-center">
+                    <h1>Crie sua conta hoje!</h1>
+                </div>
                 <form class="needs-validation" action="/user/new" method="POST" novalidate>
                     <div class="mb-4">
                         <label for="name" class="form-label">Nome</label>
@@ -36,7 +38,7 @@
                         </div>
                     </div>
                     <div class="mb-4">
-                        <label for="confirm-password">Confirmar senha</label>
+                        <label for="confirm-password" class="form-label">Confirmar senha</label>
                         <input type="password" name="confirm_password" id="confirm_password" minlength="8" class="form-control" required>
                         <div class="invalid-feedback">
                             Digite a senha novamente
