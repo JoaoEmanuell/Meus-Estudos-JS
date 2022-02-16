@@ -16,11 +16,15 @@ const Posts = mongoose.model("Posts");
 const CategoryValidation = require("../validations/CategoryValidation");
 const PostValidation = require("../validations/PostValidation");
 
-router.get('/', (req, res) => {
+// Helpers
+
+const {isAdmin} = require("../helpers/isAdmin");
+
+router.get('/', isAdmin, (req, res) => {
     res.render('./admin/index');
 });
 
-router.get('/posts', (req, res) => {
+router.get('/posts', isAdmin, (req, res) => {
     Posts.find().sort({date : 'desc'}).populate("category").lean().exec().then((posts) => {
         res.render('./admin/posts', {posts : posts});
     }).catch((err) => {
@@ -29,7 +33,7 @@ router.get('/posts', (req, res) => {
     });
 });
 
-router.get('/posts/add/', (req, res) => {
+router.get('/posts/add/', isAdmin, (req, res) => {
     Category.find().sort({date : 'desc'}).lean().exec().then(categories => {
         res.render('./admin/posts_new', { categories: categories });
     }).catch(err => {
@@ -38,7 +42,7 @@ router.get('/posts/add/', (req, res) => {
     });
 });
 
-router.post('/posts/new/', (req, res) => {
+router.post('/posts/new/', isAdmin, (req, res) => {
     const new_post = PostValidation(req.body);
     if (new_post.status) {
         req.flash("error_msg", new_post.erros[0].text);
@@ -67,7 +71,7 @@ router.post('/posts/new/', (req, res) => {
     };
 });
 
-router.get('/post/edit/:id', (req, res) => {
+router.get('/post/edit/:id', isAdmin, (req, res) => {
     Posts.findOne({ _id: req.params.id }).lean().exec().then(post => {
         Category.find().sort({date : 'desc'}).lean().exec().then(categories => {
             res.render('./admin/posts_edit', { post: post, categories: categories });
@@ -78,7 +82,7 @@ router.get('/post/edit/:id', (req, res) => {
     });
 });
 
-router.post('/post/edit_post', (req, res) => {
+router.post('/post/edit_post', isAdmin, (req, res) => {
     const new_post = PostValidation(req.body);
     if (new_post.status) {
         req.flash("error_msg", new_post.erros[0].text);
@@ -107,7 +111,7 @@ router.post('/post/edit_post', (req, res) => {
     };
 });
 
-router.post('/post/delete/', (req, res) => {
+router.post('/post/delete/', isAdmin, (req, res) => {
     Posts.deleteOne({ _id: req.body.id }).then(() => {
         req.flash("success_msg", "Post deletado com sucesso");
         res.redirect('/admin/posts/');
@@ -117,7 +121,7 @@ router.post('/post/delete/', (req, res) => {
     });
 });
 
-router.get('/categories', (req, res) => {
+router.get('/categories', isAdmin, (req, res) => {
     Category.find({}).sort({date : 'desc'}).lean().exec().then((categories) => {
         res.render('./admin/categories', {categories : categories});
     }).catch(err => {
@@ -127,11 +131,11 @@ router.get('/categories', (req, res) => {
     );
 });
 
-router.get('/addcategories', (req, res) => {
+router.get('/addcategories', isAdmin, (req, res) => {
     res.render('./admin/addcategories');
 });
 
-router.get('/editcategories/:id', (req, res) => {
+router.get('/editcategories/:id', isAdmin, (req, res) => {
     Category.findOne({_id : req.params.id}).lean().exec().then((category) => {
         res.render('./admin/editcategories', {category : category});
     }).catch(err => {
@@ -141,7 +145,7 @@ router.get('/editcategories/:id', (req, res) => {
     );
 });
 
-router.post('/editcategory', (req, res) => {
+router.post('/editcategory', isAdmin, (req, res) => {
     const new_category = CategoryValidation({name : req.body.name, slug : req.body.slug});  
     if (new_category.status) {
         req.flash('error_msg', `${new_category.erros[0].text}`);
@@ -158,7 +162,7 @@ router.post('/editcategory', (req, res) => {
 
 });
 
-router.get('/removecategorie/:id', (req, res) => {
+router.get('/removecategorie/:id', isAdmin, (req, res) => {
     Category.deleteOne({_id : req.params.id}).then(() => {
         req.flash('success_msg', 'Categoria removida com sucesso');
         res.redirect('/admin/categories');
@@ -168,7 +172,7 @@ router.get('/removecategorie/:id', (req, res) => {
     });
 });
 
-router.post('/categories/new', (req, res) => {
+router.post('/categories/new', isAdmin, (req, res) => {
     const new_category = CategoryValidation({name : req.body.name, slug : req.body.slug});  
     if (new_category.status) {
         res.render('./admin/addcategories', {erros : new_category.erros});

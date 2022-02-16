@@ -51,6 +51,10 @@
   - [Arquivo main](#arquivo-main)
   - [Autenticando](#autenticando)
   - [Exibindo as mensagens de erro](#exibindo-as-mensagens-de-erro)
+  - [Protegendo rotas](#protegendo-rotas)
+    - [Arquivo main](#arquivo-main-1)
+    - [Arquivo isAdmin](#arquivo-isadmin)
+    - [Arquivo de rota](#arquivo-de-rota-1)
 
 ****
 
@@ -1163,5 +1167,52 @@ Agora dentro do arquivo de *_msg* exiba da seguinte maneira :
         {{error}}
     </div>
     {{/if}}
+
+## Protegendo rotas
+
+### Arquivo main
+
+Primeiramente no arquivo main será necessario criar um novo middleware chamado de user.
+
+    res.locals.user = req.user || null; // Nesse caso dizemos que ele recebe o valor de user global que vem da autenticação ou null
+
+Crie uma nova pasta chamada de *helpers* e dentro dela um arquivo js com o nome desejado [no nosso caso vai ser chamado de *isAdmin* ele irá servir para validar se o usuario é admin]
+
+### Arquivo isAdmin
+
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/81983803/154356681-57a3bfe8-fbb4-43c3-ba8c-e280acf21734.png" alt="Example"/>
+</p>
+
+Dentro desse arquivo crie um module.exports que irá receber um objeto, esse objeto terá o isAdmin que irá ser uma função, essa função irá receber, req, res e next como paramentros.
+
+    module.exports = {
+        isAdmin : function(req, res, next) { . . . }
+    }
+
+Dentro dela vamos fazer um if para validar se o usuario está autenticado [por meio do méotod isAuthenticated do passport que irá ser passado pelo req] e se ele é um admin, caso seja ele poderá acessar a rota
+
+    if (req.isAuthenticated() && req.user.is_admin) {
+        next();
+    }
+
+Senão iremos enviar uma mensagem de erro e redirecionar ele para a */*
+
+    else {
+        req.flash('error_msg', 'Você não tem permissão para acessar esta página!');
+        res.redirect('/');
+    }
+
+### Arquivo de rota
+
+Dentro do arquivo de rota iremos importar o isAdmin
+
+    const {isAdmin} = require("../helpers/isAdmin");
+
+Agora para adicionar a proteção a rota iremos colocar após o nome da rota.
+
+    router.get('/', isAdmin, (req, res) => {. . .});
+
+Dessa forma a rota estara protegida e só poderá ser acessada caso o usuario seja um admin.
 
 ****
