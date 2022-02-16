@@ -70,4 +70,10 @@ router.post('/login_post', (req, res, next) => {
     })(req, res, next);
 });
 
+router.get('/logout', (req, res) => {
+    req.logout();
+    req.flash('success_msg', 'Logout realizado com sucesso!');
+    res.redirect('/');
+})
+
 module.exports = router;
