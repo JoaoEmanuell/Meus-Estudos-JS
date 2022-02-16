@@ -8,6 +8,13 @@ const path = require("path")
 const mongoose = require("./source/connection");
 const session = require("express-session");
 const flash = require("connect-flash");
+const passport = require("passport");
+
+// Local imports
+
+// Auth
+
+require("./config/auth")(passport);
 
 // Routers import
 
@@ -32,6 +39,10 @@ const Categories = mongoose.model("Categorys");
             resave: true,
             saveUninitialized: true
         }));
+
+        app.use(passport.initialize());
+        
+        app.use(passport.session());
 
         app.use(flash());
 

@@ -61,4 +61,14 @@ router.get('/login', (req, res) => {
     res.render('./users/login');
 });
 
+router.post('/login_post', (req, res) => {
+    const user = user_validation(req.body);
+    if (user.status){
+        req.flash('error_msg', user.erros[0].text);
+        res.redirect('/user/login');
+    } else {
+        
+    }
+});
+
 module.exports = router;

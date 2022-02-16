@@ -44,6 +44,11 @@
 - [Bcrypt](#bcrypt)
   - [Instalando](#instalando)
   - [Gerando um hash de um valor](#gerando-um-hash-de-um-valor)
+- [Passport](#passport)
+  - [Instalações](#instalações-1)
+  - [Configurando](#configurando)
+  - [Arquivo auth](#arquivo-auth)
+  - [Arquivo main](#arquivo-main)
 
 ****
 
@@ -1003,3 +1008,118 @@ Faça a geração do hash do valor :
             }
         });
     });
+
+****
+
+# Passport
+
+Passport é um modulo utilizado para autenticação de usuários.
+
+## Instalações
+
+    npm install --save passport@0.4.0
+
+    npm install --save passport-local@1.0.0
+
+Passport-local servirá para realizar atuenticações utilzando o banco de dados local.
+
+## Configurando
+
+Para organizar crie uma pasta chamada *config* na raiz da aplicação, dentro dela crie um arquivo chado auth.js
+
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/81983803/154289716-c11a11ff-a2ac-44fb-9e12-463ca2b3ad9a.png" alt="Example"/>
+</p>
+
+## Arquivo auth
+
+[Exemplo do arquivo auth](https://github.com/JoaoEmanuell/Meus-Estudos-JS/commit/fe8068f83ecbd59518c130eb6991636cb238b16e#diff-1245ba9732714f464a6a522c4a26db7bf46053b84998271fc016a8b92b6da63d)
+
+Dentro desse arquivo faça a importação do passport-local, mongoose, bcryptjs e do model do banco de dados que irá servir para encontrar os dados do usuario.
+
+    const localStrategy = require('passport-local').Strategy;
+    const mongoose = require('mongoose');
+    const bcrypt = require('bcryptjs');
+
+    require('../models/User');
+    const User = mongoose.model('Users');
+
+Crie o *module.exports* recebendo uma função que irá ter como paramentro o passport.
+
+    module.exports = (passport) => {
+        . . .
+    };
+
+Utilize o método use do parametnro *passport* passando um *new localStrategy* e dentro como paramentros, um objeto contendo o nome do campo que será utilizado para a autenticação, e uma função de callback, que irá receber tanto o campo de autenticação como outro fator *na maioria das vezes o email e a senha* e um outro paramentro chamado de done.
+
+    passport.use(new localStrategy({usernameField : 'email'}, (email, password, done) => { . . . }
+
+Relize uma consulta pelo email no banco de dados, e verifique se existe um usuario com aquele email
+
+    User.findOne({email : email}).then((user) => { . . . }
+
+Caso não exista retorne o done passando null como erro, false como usuario e uma objeto contendo *message* e o valor dessa mensagem.
+
+    if (!user){
+        return done(null, false, {message : 'This account not exist'});
+    }
+
+Caso exista um usuario você irá utilzar o campo *password* para comparar com o valor do hash da senha do usuario.
+
+    else {
+
+        bcrypt.compare(password, user.password, (err, isMatch) => { . . . }
+
+    }
+
+Caso essa comparação seja valida você irá retornar o done com um null como erros e o usuario.
+
+    if (isMatch){
+        return done(null, user);
+    }
+
+Se não retorne o done com o null de erro, usuario falso e uma mensagem de senha incorreta
+
+    else {
+        return done(null, false, {message : "Password incorrect"});
+    }
+
+Após isso dentro do bloco da função, utilze o método *serializeUser* do passport, passando uma função de callback que irá receber o usuario e um done, o done irá ter um null como erros e o id do usuario.
+
+    passport.serializeUser((user, done) => { 
+        done(null, user.id);
+    }
+
+Por fim utilze o método *deserializeUser* do passport, passando uma função de callback que irá receber o id do usuario e um done.
+
+    passport.deserializeUser((id, done) => { 
+        . . .
+    }
+
+Dentro dessa função use o *findById* do mongoose para encontrar o usuario pelo id, passando uma callback com um paramentro de erro e o outro de usuario.
+
+    User.findById(id, (err, user) => {
+        done(err, user);
+    });
+
+## Arquivo main
+
+Crie uma constante chamada passport que irá requerir passport
+
+    const passport = require("passport");
+
+Importe o arquivo auth e passe passport como paramentro.
+
+    require("./config/auth")(passport);
+
+Dentro da área de configuração, entre a session e o flash do express, adicione o passport.
+
+    . . .
+
+    app.use(passport.initialize());
+
+    app.use(passport.session());
+
+    . . .
+
+Dessa forma a autenticação estará concluida.
