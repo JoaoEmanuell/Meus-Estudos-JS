@@ -55,6 +55,7 @@
     - [Arquivo main](#arquivo-main-1)
     - [Arquivo isAdmin](#arquivo-isadmin)
     - [Arquivo de rota](#arquivo-de-rota-1)
+  - [Logout](#logout)
 
 ****
 
@@ -1214,5 +1215,11 @@ Agora para adicionar a proteção a rota iremos colocar após o nome da rota.
     router.get('/', isAdmin, (req, res) => {. . .});
 
 Dessa forma a rota estara protegida e só poderá ser acessada caso o usuario seja um admin.
+
+## Logout
+
+Para fazer logout é só ir na rota desejada e utilzar função *logout* do req :
+
+    req.logout();
 
 ****
