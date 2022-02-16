@@ -49,6 +49,8 @@
   - [Configurando](#configurando)
   - [Arquivo auth](#arquivo-auth)
   - [Arquivo main](#arquivo-main)
+  - [Autenticando](#autenticando)
+  - [Exibindo as mensagens de erro](#exibindo-as-mensagens-de-erro)
 
 ****
 
@@ -1123,3 +1125,43 @@ Dentro da área de configuração, entre a session e o flash do express, adicion
     . . .
 
 Dessa forma a autenticação estará concluida.
+
+## Autenticando
+
+Para fazer a autenticação, na sua rota desejada, importe o passport. 
+
+    const passport = require("passport");
+
+Crie uma rota do tipo post na função de callback dela ela deve receber, req, res e next.
+
+    app.post('/login', (req, res, next) => { . . . }
+
+Dentro dela chame o método *authenticate* do passport, passando o tipo de autenticação que será utilizado, e um objeto, esse objeto irá ter três itens.
+
+1. *successRedirect* - Onde o usuario será redirecionado caso a autenticação seja bem sucedida.
+2. *failureRedirect* - Onde o usuario será redirecionado caso a autenticação falhe.
+3. *failureFlash* - Que é um boleano que indica se o flash de erro será mostrado.
+
+    passport.authenticate('local', (err, user, info) => {
+        successRedirect: '/',
+        failureRedirect: '/user/login',
+        failureFlash: true
+    })(req, res, next);
+
+Por fim chame novamente o (req, res, next)
+
+## Exibindo as mensagens de erro
+
+Dentro do arquivo main crie uma nova menssagem flash chamada de *error*
+
+    res.locals.error = req.flash("error");
+    
+Agora dentro do arquivo de *_msg* exiba da seguinte maneira : 
+
+    {{#if error}}
+    <div class="alert alert-danger mt-4">
+        {{error}}
+    </div>
+    {{/if}}
+
+****
