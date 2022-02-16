@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    {{>_navbar}}
+    <div class="container mt-4">
+        {{>_msg}}
+        <h1>Login</h1>
+        <div class="card">
+            <div class="card-body">
+                <form action="/user/login_post" method="post" class="needs-validation" novalidate>
+                <div>
+                    <label for="email" class="form-label">Email : </label>
+                    <input type="email" name="email" id="email" class="form-control" required>
+                    <div class="invalid-feedback">
+                        Email não cadastrado, realize um cadastro clicando <a href="/user/register">aqui</a>
+                    </div>
+                </div>
+                <div>
+                    <label for="password" class="form-label">Senha : </label>
+                    <input type="password" name="password" id="password" class="form-control" required>
+                    <div class="invalid-feedback">
+                        Senha incorreta!
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success mt-4">Login</button>
+                {{>_form_validation}}
+                </form>
+            <a href="/user/register" class="btn btn-primary mt-4">Crie uma nova conta caso não tenha uma</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
