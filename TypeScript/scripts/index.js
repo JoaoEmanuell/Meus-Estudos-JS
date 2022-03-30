@@ -1,6 +1,7 @@
-var input1 = document.getElementById('num1');
-var input2 = document.getElementById('num2');
-var button = document.getElementById('sum');
+"use strict";
+const input1 = document.getElementById('num1');
+const input2 = document.getElementById('num2');
+const button = document.getElementById('sum');
 function sum(a, b) {
     return a + b;
 }

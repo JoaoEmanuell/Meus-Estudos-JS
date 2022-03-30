@@ -5,6 +5,9 @@
   - [Compilação](#compilação)
 - [Variáveis](#variáveis)
 - [Funções](#funções)
+- [Tsconfig](#tsconfig)
+  - [Criando](#criando)
+  - [Configurações importantes](#configurações-importantes)
 
 # Começando
 
@@ -19,6 +22,10 @@
     tsc arquivo.ts --watch
 
 *a flag watch serve para recompilar o arquivo a cada nova alteração*
+
+    tsc --watch
+
+A forma acima compila todos os arquivos.
 
 # Variáveis
 
@@ -41,3 +48,25 @@ No typescript os parâmetros das funções devem ser tipados.
     };
 
 O ts tem a vantagem gigantesca de exibir erros que aconteceriam no javascript, assim sendo quando você for compilar o código ts para js e tiver algo errado ele irá exibir o erro imediatamente.
+
+# Tsconfig
+
+Tsconfig é um arquivo de configuração do typescript.
+
+## Criando
+
+Para criar ele digite :
+
+    tsc --init
+
+## Configurações importantes
+
+Existem diversas configurações que podem ser feitos nele, as principiais são :
+
+    "outDir": "./scripts" 
+
+Ele representa a pasta de saída dos scripts quando eles forem compilados.
+
+    "noImplicitAny": true
+
+Ele diz que não deve ser utilizado o any como tipagem de variáveis ou de parâmetros.
