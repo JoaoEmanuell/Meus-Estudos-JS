@@ -20,6 +20,7 @@
   - [null / undefined](#null--undefined)
   - [never](#never)
   - [object](#object)
+- [Type Inference](#type-inference)
 
 # Começando
 
@@ -167,3 +168,19 @@ Never indica que nunca terá retorno, normalmente utilizado em funções que cri
 Object é um objeto onde os elementos não tem o tipo definido, suportando muitos tipos.
 
     let obj : object;
+
+# Type Inference
+
+Type Inference é quando o typescript infere o tipo de uma variável, ou seja, se ela não for especificada, o typescript infere (coloca) o tipo de forma automática.
+
+    let message = 'hello';
+
+Esse let só irá aceitar valores do tipo string.
+
+    message = '1';
+
+No exemplo abaixo o typescript sabe que *e* é do tipo *MouseEvent*, não precisamos especificar o tipo, apesar disso poder ser feito, sendo assim *e* tem todos os métodos e propriedades do tipo MouseEvent.
+
+    window.addEventListener("click", (e) => {
+        console.log(e.target);
+    });
