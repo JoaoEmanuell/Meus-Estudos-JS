@@ -21,6 +21,8 @@
   - [never](#never)
   - [object](#object)
 - [Type Inference](#type-inference)
+- [Union](#union)
+- [Alias](#alias)
 
 # Começando
 
@@ -184,3 +186,33 @@ No exemplo abaixo o typescript sabe que *e* é do tipo *MouseEvent*, não precis
     window.addEventListener("click", (e) => {
         console.log(e.target);
     });
+
+# Union
+
+Union serve para especificar que algo *um parâmetro, variável* pode ter vários tipos.
+
+    let value : number | string;
+
+# Alias
+
+O Alias serve tanto para poupar linhas de código, quanto para evitar bugs.
+
+    type StringOrNumber = string | number; 
+    
+Aqui especificamos que o tipo *StringOrNumber* é um *union* entre *string* e *number*.
+
+    let value : StringOrNumber; 
+    
+Aqui especificamos que o tipo value é do tipo *StringOrNumber*, ou seja, ele pode ser *string* ou *number*.
+
+    type Platform = 'windows' | 'linux' | 'mac';
+
+Aqui dizemos que o tipo *Platform* só pode ser *windows*, *linux* ou *mac*, caso a variável ou o parâmetro não seja nenhum desses tipos, o typescript irá gerar um erro.
+
+    function render_platform(platform : Platform) {
+        console.log(`The platform is ${platform}`);
+    };
+
+    render_platform('windows');
+
+Caso coloquemos *android* ou qualquer coisa diferente dos valores de *Platform*, o typescript irá gerar um erro.
