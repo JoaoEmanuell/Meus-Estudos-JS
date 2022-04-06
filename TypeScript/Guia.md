@@ -23,6 +23,8 @@
 - [Type Inference](#type-inference)
 - [Union](#union)
 - [Alias](#alias)
+  - [Objetos](#objetos)
+- [Intersection](#intersection)
 
 # Começando
 
@@ -216,3 +218,41 @@ Aqui dizemos que o tipo *Platform* só pode ser *windows*, *linux* ou *mac*, cas
     render_platform('windows');
 
 Caso coloquemos *android* ou qualquer coisa diferente dos valores de *Platform*, o typescript irá gerar um erro.
+
+## Objetos
+
+Caso o *alias* seja do tipo objeto, você pode ter tanto *keys* obrigatórias quanto *keys* opcionais.
+
+Utilizamos uma *?* após o nome da *key* para indicar que ela é opcional.
+
+    type User = {
+        name : string,
+        age? : number
+    };
+
+*age* é **opcional**, pois ela tem uma *?* após a *declaração*.
+
+# Intersection
+
+Intersection é quando criamos um *alias* que une dois *alias* diferentes.
+
+    type User = {
+        name : string,
+        age : number
+    };
+
+    type Admin = {
+        name : string,
+        age : number,
+        is_admin : boolean
+    };
+
+    type UserOrAdmin = User & Admin;
+
+    const user : UserOrAdmin = {
+        name : "John Doe",
+        age : 30,
+        is_admin : false
+    }
+
+Sendo assim a constante *user* irá requisitar todos os dados dos *alias* User e Admin.
