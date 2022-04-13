@@ -36,6 +36,13 @@
   - [Herança](#herança)
   - [Classe abstrata](#classe-abstrata)
   - [Instanciando uma classe](#instanciando-uma-classe)
+- [Interfaces](#interfaces)
+  - [Criando uma interface](#criando-uma-interface)
+  - [Propriedades](#propriedades-1)
+  - [Métodos](#métodos-1)
+  - [Instanciando um objeto](#instanciando-um-objeto)
+  - [Estendendo uma interface](#estendendo-uma-interface)
+  - [Implementando uma interface](#implementando-uma-interface)
 
 # Começando
 
@@ -400,3 +407,105 @@ Classes abstratas são classes que **não** podem ser instanciadas, mas podem se
 ## Instanciando uma classe
 
     const class_instance = new Class('Class Name');
+
+# Interfaces
+
+## Criando uma interface
+
+Para criar uma interface você irá utilizar a palavra chave *interface* e o nome da interface.
+
+    interface Interface { . . . }
+
+## Propriedades
+
+Assim como nas classes as propriedades das interfaces também podem especificar a [visibilidade](#visibilidade) dela, além de indicar se elas são opcionais como no [alias](#alias) :
+
+    interface Interface {
+        readonly title : string;
+        platform? : string[];
+    }
+
+## Métodos
+
+Nas interfaces os métodos devem conter : 
+
+1. Nome
+2. Parâmetros
+3. Tipo do retorno
+
+```
+
+interface Interface {
+    log_details(log : string) : void;
+}
+
+```
+
+## Instanciando um objeto
+
+Para instanciar um objeto do tipo da interface [isso não é muito comum, mas pode ser feito], você deve passar os parâmetros como se estivesse criando um objeto :
+
+    interface Interface {
+        title : string;
+        age : number;
+    }
+
+    const interface_object : Interface = {
+        title : 'Hello World',
+        age : 20
+    }
+
+Sendo assim você poderá acessar os valores da interface através do nome da propriedade.
+
+    interface_object.title
+
+## Estendendo uma interface
+
+Uma interface pode estender outra, isso é semelhante ao conceito de herança : 
+
+    interface Interface {
+        title : string;
+        age : number;
+    }
+
+    interface InterfaceExtended extends Interface {
+        platform : string;
+    }
+
+Assim na hora de instanciar um objeto é necessário passar as propriedades de ambas as interfaces : 
+
+    const interface_object : InterfaceExtended = {
+        title : 'Hello World',
+        age : 20,
+        platform : 'Web'
+    }
+
+## Implementando uma interface
+
+Esse é o uso mais comum das interfaces, a implementação dela em *classes*, sendo assim a *classe* deve ter todas as propriedades e métodos da interface :
+
+    interface Interface {
+
+        title : string;
+        age : number;
+        log_details() : void;
+
+    }
+
+    class InterfaceClass implements Interface {
+
+        title : string;
+        age : number;
+
+        constructor (title : string, age : number) {
+            this.title = title;
+            this.age = age;
+        }
+        
+        log_details() : void {
+            console.log(`Name : ${this.title}`);
+        }
+
+    }
+
+Lembre-se de passar as propriedades no construtor e permitir que elas sejam acessadas de qualquer lugar do código.
