@@ -25,6 +25,17 @@
 - [Alias](#alias)
   - [Objetos](#objetos)
 - [Intersection](#intersection)
+- [Classes](#classes)
+  - [Criando uma classe](#criando-uma-classe)
+  - [Propriedades](#propriedades)
+    - [Visibilidade](#visibilidade)
+  - [Construtor](#construtor)
+  - [Métodos](#métodos)
+  - [Get](#get)
+  - [Set](#set)
+  - [Herança](#herança)
+  - [Classe abstrata](#classe-abstrata)
+  - [Instanciando uma classe](#instanciando-uma-classe)
 
 # Começando
 
@@ -256,3 +267,136 @@ Intersection é quando criamos um *alias* que une dois *alias* diferentes.
     }
 
 Sendo assim a constante *user* irá requisitar todos os dados dos *alias* User e Admin.
+
+# Classes
+
+## Criando uma classe
+
+Primeiramente para criar uma classe é necessário definir o nome dela [iremos utilizar PascalCase para isso].
+
+    class Class {. . .}
+
+## Propriedades
+
+Para definir as propriedades da classe, iremos fazer logo após a declaração dela, dentro do bloco da mesma, para definir uma propriedade é necessário colocar : 
+
+  1. [visibilidade](#visibilidade) (public, private, protected, readonly)
+  2. nome da propriedade
+  3. [tipo da propriedade](#tipos)
+
+    class Class {
+        public name : string;
+    }
+
+### Visibilidade
+
+public - A propriedade é visível para todos os outros métodos e classes, é a padrão então não precisa ser colocada.
+
+    class Class {
+        public name : string;
+    }
+
+private - A propriedade só pode ser acessada pela própria classe, não pode ser acessada por outras classes ou métodos externos.
+
+    class Class {
+        private name : string;
+    }
+
+protected - A propriedade só pode ser acessada pela classe que ela pertence e por classes que [estendem](#herança) ela.
+
+    class Class {
+        protected name : string;
+    }
+
+readonly - A propriedade só pode ser lida, não pode ser alterada.
+
+    class Class {
+        readonly name : string;
+    }
+
+## Construtor
+
+O método construtor serve para 'construir' uma classe, ele será o método chamado ao instanciar a classe, deve ser passado as propriedades criadas para ele.
+
+    class Class {
+
+        public name : string;
+
+        constructor(name : string) {
+            this.name = name; // this serve para permitir que essa propriedade seja acessada dentro da classe.
+        }
+    }
+
+## Métodos
+
+Para declara um método você irá colocar :
+
+1. O nome do método
+2. Parâmetros do método
+3. [Tipo de retorno](#tipos)
+
+```
+
+. . .
+
+log_details() : void {
+    console.log(`Name : ${this.name}`);
+}
+
+. . .
+
+```
+
+## Get
+
+O get é uma espécie de método especial, que serve para retornar o valor de uma propriedade, por convenção se declara da seguinte forma :
+
+    get get_name() : string {
+        return this.name;
+    }
+
+## Set
+
+O set é uma espécie de método especial, que serve para setar o valor de uma propriedade [desde que ela não seja do tipo readonly]. 
+
+Por convenção se declara da seguinte forma :
+
+    set set_name(name : string) {
+        this.name = name;
+    }
+
+O set não deve ter retorno, nem utilize o *: void* para demonstrar que ele não retorna nada.
+
+## Herança
+
+A herança de *classes* no *typescript* é feita por de uma extensão da *classe mãe* para a *classe filha* : 
+
+    class Class {
+        public name : string;
+    }
+
+    class ChildClass extends Class {
+        public age : number;
+    }
+
+O construtor deve incluir tanto as propriedades da *classe mãe* quanto as propriedades da *classe filha*, e deve ter um *super* passando os parâmetros para o construtor da *classe mãe*.
+
+    class ChildClass extends Class {
+        public age : number;
+        constructor (name : string, age : number) {
+            super(name); // Passando o parâmetro name para o construtor da classe mãe
+            this.age = age;
+        }
+    }
+
+## Classe abstrata
+
+Classes abstratas são classes que **não** podem ser instanciadas, mas podem ser estendidas, ela serve como molde para outras classes.
+
+    abstract class Class {
+        public name : string;
+    }
+
+## Instanciando uma classe
+
+    const class_instance = new Class('Class Name');
