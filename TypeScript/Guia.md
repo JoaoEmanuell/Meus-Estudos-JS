@@ -217,6 +217,8 @@ Union serve para especificar que algo *um parâmetro, variável* pode ter vário
 
 O Alias serve tanto para poupar linhas de código, quanto para evitar bugs.
 
+**Nota** : Só é possível ter um type Alias com o mesmo nome por escopo, ele não permite a você reescrever, ou criar um novo com o mesmo nome.
+
     type StringOrNumber = string | number; 
     
 Aqui especificamos que o tipo *StringOrNumber* é um *union* entre *string* e *number*.
@@ -471,6 +473,10 @@ Uma interface pode estender outra, isso é semelhante ao conceito de herança :
     interface InterfaceExtended extends Interface {
         platform : string;
     }
+
+No caso você também pode estender mais de uma interface, sendo assim é só passar o nome da outra interface separado por virgula :
+
+    interface InterfaceExtended extends Interface, Interface2 { . . .}
 
 Assim na hora de instanciar um objeto é necessário passar as propriedades de ambas as interfaces : 
 
