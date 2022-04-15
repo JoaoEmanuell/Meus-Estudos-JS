@@ -43,6 +43,7 @@
   - [Instanciando um objeto](#instanciando-um-objeto)
   - [Estendendo uma interface](#estendendo-uma-interface)
   - [Implementando uma interface](#implementando-uma-interface)
+- [Generics](#generics)
 
 # Começando
 
@@ -515,3 +516,60 @@ Esse é o uso mais comum das interfaces, a implementação dela em *classes*, se
     }
 
 Lembre-se de passar as propriedades no construtor e permitir que elas sejam acessadas de qualquer lugar do código.
+
+# Generics
+
+Generics é uma forma de definir um tipo genérico, ou seja, um tipo que pode receber qualquer tipo de valor (esse tipo pode ser setado como sendo algum padrão) e uma vez que o tipo for definido ele não pode ser alterado.
+
+    function generic< G extends tipo = tipo_padrão>() {. . .}
+
+    function use_state< S extends number | string = string >() {. . .}
+
+As letras tem significados diferentes : 
+
+S => State
+T => Type
+K => Key
+V => Value
+E => Element
+
+Normalmente são utilizados essas por padrão.
+
+Iremos dizer que o tipo genérico pode ser tanto *number* como *string* e por padrão é uma *string*.
+
+    function use_state< S extends number | string = string >() {
+
+        let state : S;
+
+        function get_state() : S {
+            return state;
+        };
+
+        function set_state(new_state : S) : void {
+            state = new_state;
+        };
+
+        return {get_state, set_state};
+    };
+
+    const new_state = use_state();
+
+Iremos setar state como sendo uma *string*, dessa forma só poderemos alterar para novas *strings*.
+
+    new_state.set_state('foo');
+
+    new_state.set_state('bar');
+
+Caso tentemos setar para um *number*, ele irá da erro : 
+
+    new_state.set_state(1);
+
+Agora caso no inicio dizemos que ele é um *number*, só poderemos alterar esse valor para *numbers* : 
+
+    const new_state = use_state<number>();
+    new_state.set_state(123);
+    new_state.set_state(321);
+
+Caso tentemos setar para uma string, ele irá da erro : 
+
+    new_state.set_state('foo');
