@@ -44,6 +44,12 @@
   - [Estendendo uma interface](#estendendo-uma-interface)
   - [Implementando uma interface](#implementando-uma-interface)
 - [Generics](#generics)
+- [Type utilities](#type-utilities)
+  - [Readonly](#readonly)
+  - [Partial](#partial)
+  - [Pick](#pick)
+  - [Omit](#omit)
+- [Spread operator](#spread-operator)
 
 # Começando
 
@@ -573,3 +579,59 @@ Agora caso no inicio dizemos que ele é um *number*, só poderemos alterar esse 
 Caso tentemos setar para uma string, ele irá da erro : 
 
     new_state.set_state('foo');
+
+# Type utilities
+
+Type utilities são types que modificam o funcionamento do type-alias, adicionando recursos a ele.
+
+A estrutura deles se parece com o [Generic](#generics)
+
+## Readonly
+
+Força os campos do alias a serem somente leitura, dessa forma não é possível edita-los.
+
+    const alias_object : Readonly<Alias> = {
+        key : value;
+    }
+
+## Partial
+
+Partial força os campos a se tornarem opcionais.
+
+    const alias_object : Partial<Alias> = {
+        key : value;
+    }
+
+## Pick
+
+Pick basicamente permite que você escolha alguns campos específicos e ignore todo o restante :
+
+    type alias_type : Pick<Alias, 'key' | 'value'> 
+
+## Omit
+
+O omit tem o funcionamento parecido com o Pick, porém ele ignora os campos que você escolheu.
+
+    type alias_type : Omit<Alias, 'key'>
+
+# Spread operator
+
+Spread operator é um operador que faz unpack de objetos, assim permitindo adicionar os seus campos dentro de outro objeto [semelhante ao \*\* do python]
+
+    const obj_1 = {
+        foo : 'bar';
+    }
+
+    const obj_2 = {
+        ...obj_1,
+        bar : 'foo';
+    }
+
+    console.log(obj_2);
+
+    /*
+    {
+        foo : 'bar',
+        bar : 'foo'
+    }
+    */
