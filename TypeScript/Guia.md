@@ -50,6 +50,10 @@
   - [Pick](#pick)
   - [Omit](#omit)
 - [Spread operator](#spread-operator)
+- [Decorators](#decorators)
+  - [Class decorator](#class-decorator)
+  - [Property decorator](#property-decorator)
+  - [Method decorator](#method-decorator)
 
 # Começando
 
@@ -635,3 +639,156 @@ Spread operator é um operador que faz unpack de objetos, assim permitindo adici
         bar : 'foo'
     }
     */
+
+# Decorators
+
+Decorators são funções que adicionam recursos a elementos [métodos, classes, propriedades] do código.
+
+Eles são os *@* antes do nome do método, classe ou propriedade.
+
+## Class decorator
+
+O class decorator permite adicionar funcionalidades a uma classe, no exemplo abaixo é utilizado um que seta a versão da api de uma classe :
+
+Esse é o decorator que será utilizado, ele recebe um parâmetro que é a versão da api.
+
+    function SetApiVersion(api_version : string) {
+    
+Após isso ele irá retornar uma função que irá receber a classe que será decorada, o parâmetro *target* é a classe.
+
+        return (target : any) => {
+
+Após isso ele irá retornar uma class que estende *target*, dentro desse bloco de código é que pode ser escrito as alterações que serão feitas na classe.
+
+            return class extends target {
+                version = api_version
+            }
+        }
+    }
+
+Aqui decoramos a classe
+
+    @SetApiVersion('5')
+    class Api {}
+
+## Property decorator
+
+Property decorator é um decorator que adicionar funcionalidades a uma propriedade, normalmente utilizado para validações.
+
+No exemplo abaixo ele serve para validar o tamanho de uma propriedade.
+
+Inicialmente ele recebe um parâmetro chamado de *mim*, esse parâmetro é o tamanho mínimo que a propriedade deve ter.
+
+    function MinLength(min : number) {
+
+Após isso ele irá retornar uma função que irá receber dois parâmetros, o primeiro é o *target* que é o objeto da classe e o segundo é o nome da propriedade, chamado de *key*.
+
+        return function(target : any, key : string) {
+
+Criamos uma *let* chamada de *val* que irá armazenar o valor da variável, ela irá basicamente receber o valor da propriedade.
+
+            let val = target[key]
+
+*getter* é uma constante que armazena uma função que retornar *val*, vai ser util mais na frente pois precisaremos definir o *get* e o *set* da propriedade.
+
+            const getter = () => val;
+
+O *setter* é uma constante que armazena uma função que recebe um valor e irá atribuí-lo a *val*, dentro desse set iremos fazer a validação, caso o tamanho de value [que é o tamanho de val] for menor que o *mim*, iremos gerar um erro.
+
+            const setter = (value : string) => {
+                if (value.length < min) {
+                    throw new Error(`${key} must be at least ${min} characters`);
+                }
+
+Se não iremos atribuir o valor a *val*.
+
+                val = value;
+            }
+
+Aqui definiremos o *get* e o *set* da propriedade.
+
+        Object.defineProperty(target, key, {
+            get: getter,
+            set: setter,
+        });
+        };
+    };
+
+Aqui demonstramos ela sendo utilizada.
+
+    class Movie {
+
+Decoramos a propriedade com um tamanho mínimo de 5 caracteres.
+
+        @MinLength(5)
+        title : string;
+
+        constructor (title : string){
+
+Aqui atribuímos o valor, caso ele seja menor que 5 o erro será disparado
+
+            this.title = title;
+        }
+
+    }
+
+## Method decorator 
+
+Method decorator é o decorator mais comum, ele adiciona novos recursos a um método.
+
+O exemplo abaixo é um decorator que adiciona um delay, após esse delay acabar o método é executado.
+
+Primeiramente iremos criar a função que irá ser o decorator, ela irá receber *ms* como parâmetro, que é o tempo que o método irá ficar bloqueado.
+
+    function delay(ms : number) {
+
+Ela irá retornar uma função que irá receber 3 parâmetros
+
+O primeiro é *target* que é a classe do método que será decorado
+
+O segundo é *key* que é o nome do método que será decorado.
+
+O terceiro é chamado de *descriptor*, que é o objeto que irá armazenar as informações do método.
+
+        return function(target : any, key : string, descriptor : PropertyDescriptor) {
+
+Criaremos uma constante chamada de *original*, ela irá armazenar método original.
+
+            const original = descriptor.value; // Save the original function
+
+Após isso vamos fazer com que o método receba uma nova função, essa função irá receber um [Spread operator](#spread-operator) chamado de *args*, que irá receber os parâmetros que foram passados para o método, ele será uma lista do tipo *any*.
+
+            descriptor.value = function(...args : any[]) {
+
+Após isso iremos aplicar o delay, ou seja, o método irá ficar bloqueado por *ms*.
+
+                setTimeout(() => {
+
+Aqui chamamos o método original e passamos o *this*, e os *args* para ele.
+
+                    original.apply(this, args); // Claim the original function
+                }
+                , ms);
+                console.log(`Await ${ms}ms`);
+
+No final iremos retornar o *descriptor*.
+
+                return descriptor;
+            }
+        }
+    }
+
+Exemplo de aplicação dele.
+
+    class Person {
+        name : string;
+        constructor (name : string){
+            this.name = name;
+        }
+        @delay(100)
+        hello() : void {
+            console.log(`Hello, I'm ${this.name}`);
+        }
+    }
+
+Após 100 ms o método será executado.
